@@ -1,0 +1,254 @@
+.App {
+  text-align: center;
+  font-size: 13px;
+  padding: 0px 8px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input {
+  width: 300px;
+  padding: 3px 5px;
+}
+
+textarea {
+  width: 300px;
+  outline: 0px;
+}
+
+.submit {
+  width: 200px;
+  text-align: center;
+}
+
+button {
+  background-color: white;
+  border: 0px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 7px 19px;
+}
+button:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  display: inline;
+  background-color: #303179;
+  color: white;
+  padding: 6px 19px;
+}
+
+.h3:hover {  
+  display: inline;
+  background-color: rgb(235, 235, 235);
+  color: black;
+  padding: 6px 19px;
+}
+
+th {
+  font-weight: 700;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  max-width: 200px;
+  text-align: left;
+
+  font-weight: 400;
+  background-color: #303179;
+  color: white;
+  padding: 6px 19px;
+}
+
+td {
+  padding-right: 30px;
+  text-align: left; 
+  overflow-x: scroll;
+  max-width: 130px;
+}
+
+table {
+  display: inline;
+}
+
+.a:hover {
+  background-color: #303179;
+  color: #303179 !important;
+}
+
+.fa-times-circle:hover {
+  color: red !important;
+}
+
+select {
+  outline: 0px;
+  border: 0px;
+}
+
+.fa-thumbs-up{
+  color: rgb(0, 143, 0);
+}
+.fa-thumbs-down {
+  /* color: rgb(225, 0, 0); */
+  color: grey;
+}
+
+
+.question:hover { 
+  background-color: rgb(235, 235, 235);
+}
+
+input[type="checkbox"].checkboxInput {
+  -webkit-appearance: none; 
+  width: 16px;
+  height: 12px; 
+  position: relative; 
+}
+
+input[type="checkbox"].checkboxInput:checked::before {
+  content: "\2714";
+  position: absolute;
+  top: -1px; 
+  right: 5px;
+  color: rgb(121, 199, 5);
+
+  font-size: 13px;
+  line-height: 1;
+}
+
+input[type="checkbox"].checkboxInputTopic {
+  -webkit-appearance: none; 
+  height: 12px; 
+  position: relative; 
+  top: 4px;
+  border: 1px solid silver;
+  border-radius: 3px;
+}
+
+input[type="checkbox"].checkboxInputTopic:checked::before {
+  content: "\2714";
+  position: absolute;
+  top: -1px; 
+  right: -1px;
+  color: rgb(113, 185, 4);
+
+  font-size: 11px;
+  line-height: 1;
+}
+
+input[type="submit"] {
+  font-weight: 300;
+  display: inline;
+  background-color: #303179;
+  color: white;
+  padding: 5px 19px; 
+}
+
+/* sidenav for the pathpage */
+.sidenav {
+  height: 83%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 57px;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.pathCard:hover{
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 7px;
+
+}
+
+.pathCard{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 7px;
+}
+
+.searchResult:hover {
+  background-color: #a8a8a8;
+  color: white !important;
+}
+
+
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}

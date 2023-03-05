@@ -1,0 +1,102 @@
+import React, { useEffect, useState } from 'react';
+import { disciplinesCollection, getAllDocuments } from '../db';
+
+import '../App.css';
+import PathCard from '../components/PathCard';
+import { Empty } from '../assets';
+import { browserStorage, discDataKey } from '../BrowserStorage';
+import Loader from '../components/Loader';
+import { primaryBlueColour, primarySilverColour, showPage } from '../App';
+import SearchBar from '../components/Searchbar';
+ 
+ function Home(props) {
+    useEffect(()=>{
+        showPage();
+    });
+
+    const [ discData, setDiscData ] = useState(null);
+    const [ pathsData, setPathsData ] = useState(null);
+    const [ loading, setLoading ] = useState(true);
+    const [ activeDisc, setActiveDisc ] = useState(true);
+
+    useEffect(()=>{ 
+        
+        setLoading(true);
+        Promise.resolve(getAllDocuments(disciplinesCollection)).then(res => {
+            let arr = [];
+            res.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+                arr.push({...doc.data(), id: doc.id})
+            });
+            console.log(arr);
+            setDiscData(arr);
+            browserStorage.setItem(discDataKey, arr);
+             
+            
+            setLoading(false);
+        })
+    }, [])
+
+    return ( loading ? <Loader/>:<>
+            {/* <div align="left" style={{marginRight: '20px'}}><h3 style={{ padding: '3px', lineHeight: '2.5', backgroundColor: 'white', color: 'black', border: '0px solid silver'}}>Disciplines:</h3>
+            </div> */}
+        
+
+        <div align="left" style={{position: 'sticky', top: '0', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', backgroundColor: primarySilverColour, paddingBottom: '15px', zIndex: '999'}}>
+        
+            {discData? discData.map(disc => {
+                return <h3
+                            onClick={() => {
+                                let obj = discData?.find(item => item.title === disc.title);
+                                setPathsData({...obj, id: disc.id});
+                                setActiveDisc(disc);
+                            }}
+                            className='h3'
+                            style={{  position: disc.title == activeDisc.title ? 'stiky' : 'relative', cursor: 'pointer', backgroundColor: disc.title == activeDisc.title ? primaryBlueColour : 'white', color: disc.title == activeDisc.title ? primarySilverColour : 'black', border: '0px solid rgb(219, 219, 219)', marginRight: '15px', marginBottom: '0px', top: '0'}}>
+                            {disc.title}
+                        </h3>
+            }) : ''
+            }
+        </div> 
+        <br/> 
+        {/* <hr style={{border: '0.5px solid rgb(219, 219, 219)'}}/>  */}
+ 
+        { 
+            !pathsData && <div align="center">
+                
+                <br/>
+                <br/>
+                <br/>
+                <br/> 
+                        <br/> 
+                <br/>
+                <SearchBar data={discData ? discData : []} />
+            </div> 
+        } 
+        <br/>
+        <div align="center">
+            {
+                pathsData?.paths?.sort((x, y) => {
+                    if(JSON.parse(y).title > JSON.parse(x).title){
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                    }).map(path => {
+                    path = JSON.parse(path);
+                    return <><PathCard data={{...path, id: pathsData.id}} /></>
+                })
+            }
+            {
+                pathsData && !pathsData.paths && <><br/><br/><br/><br/><br/>
+                  <SearchBar data={discData ? discData : []} />
+
+                </>
+            }
+        </div>
+        </>
+    );
+ }
+ 
+ export default Home;
