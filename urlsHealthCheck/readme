@@ -1,0 +1,17 @@
+* The script in index.js fetches all the urls(including optional urls, though testing for optional URLs is pending) from all the available paths in the database and checks if the links are running or not
+
+command to run: 
+"npm run script"
+
+* format of output file :
+- an array of *FAULTY URLs*
+[
+    {
+        "id": "Programming and Computer Science -> asdqfdaf -> afsdfds",
+        "url": "http://localfasdfadsfadsfasdfahost:3000/#/createpath"
+    },
+    {
+        "id": "Programming and Computer Science -> asdqfdaf -> fadsfadsfasdfsd node",
+        "url": "https://nodefsfsfsfsjs.org/en/"
+    }
+]

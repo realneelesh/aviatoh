@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { primaryBlueColour, primarySilverColour, showPage } from '../App';
+import { Calendar, Exercise, PathPageView } from '../assets';
 import { browserStorage, discDataKey } from '../BrowserStorage';
-import { getDocument, updateOrCreateDocument, usersCollection } from '../db';
+import { disciplinesCollection, getAllDocuments, getDocument, updateOrCreateDocument, usersCollection } from '../db';
 
 
 function PathPage(props) {
@@ -19,12 +20,26 @@ function PathPage(props) {
     
     const [ currentUser, setCurrentUser ] = useState(null);
 
-    const data = browserStorage.getItem(discDataKey); // array of { title, id, paths[] }
+    const [data, setData] = useState(null); // array of { title, id, paths[] }
     // template for "path" is available in path.json in json_formats folder
 
     const pathsArray = [];
 
     useEffect(()=>{
+
+        if(!browserStorage.getItem(discDataKey)){
+        Promise.resolve(getAllDocuments(disciplinesCollection)).then(res => {
+            let arr = [];
+            res.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+                arr.push({...doc.data(), id: doc.id})
+            });
+            setData(arr); 
+        })} else {
+            setData(browserStorage.getItem(discDataKey));
+        }
+
        if(email) {
          getDocument(usersCollection, email).then(res => {
             setCurrentUser(res.data());
@@ -36,8 +51,6 @@ function PathPage(props) {
 
     const checkTopic = (topic) => { 
      
-
-        console.log(topic.urls, completedResourcesUrls);
             let flag = true;
             topic.urls.map(url => { 
                 if(!completedResourcesUrls?.includes(url.url)){
@@ -56,10 +69,12 @@ function PathPage(props) {
         document.getElementById("mySidenav").style.width = "0";
       }
 
-    const pathData = JSON.parse(data.find(x=>x.id===discid).paths.find(p=>JSON.parse(p).title===title));
+    const pathData = data ? JSON.parse(data.find(x=>x.id===discid).paths.find(p=>JSON.parse(p).title===title)) : null;
 
     return (
         <div>
+            <br/>
+            <br/>
             {/* <pre>{JSON.stringify(pathData)}</pre> */}
             {/* <div id="mySidenav" className="sidenav" align="left">
                 <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
@@ -82,7 +97,7 @@ function PathPage(props) {
                 {/* &nbsp;Topics:
                 <br/>
                 <br/> */}
-                 { currentUser?.pathsEnrolled?.includes(discid+'/'+title) ? 
+                 {  
                 <>
                 <><button
                 style={{
@@ -99,7 +114,11 @@ function PathPage(props) {
                 }}
                 ><input className="checkboxInput" type="checkbox"
                 checked={true}
-                style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} />Introduction</button></>
+                style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} />Introduction</button>
+                <br/>
+                <br/>
+                </>
+                <div align="center"></div>
                     {pathData?.topics.map((topic, i) => {
                         return <><button
                         style={{
@@ -119,79 +138,63 @@ function PathPage(props) {
                         style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} /> {i+1}. {topic.title}</button></>
                     })}
                     </>
-                 :
-                currentUser == null ? '' : <button
-                style={{
-                    position: 'relative', 
-                    width: '95%',
-                    backgroundColor: primaryBlueColour,
-                    color: 'white',
-                    margin: '2px',
-                    fontSize: '13px'
-                }}
-                onClick={()=>{
-                    let cU = currentUser;
-                    if(!currentUser.hasOwnProperty('pathsEnrolled')){
-                        cU = {...currentUser, pathsEnrolled: []};
-                    }
-                    updateOrCreateDocument(usersCollection, email, { ...currentUser, pathsEnrolled: [...cU.pathsEnrolled, discid+'/'+title] }).then(res=>{
-                        if(email) {
-                            getDocument(usersCollection, email).then(res => {
-                               setCurrentUser(res.data());
-                               setCompletedResourcesUrls(res.data().completedResourcesUrls);
-                           });
-                        }
-                    }).catch(err => {
-                        alert(err);
-                    })
-                }}
-                > Click here to join</button>
+                  
             }
 
             </div>  
             <div style={{overflowY: 'scroll', height: '82vh', width: '75vw', paddingTop: '0', paddingRight: '20px'}} align="left">
                 {
                     !activeTopic && <div>  
-                 <div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: primaryBlueColour}}>{title}</span></div>
+                 <div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: '#254B62'}}>{title}</span></div>
                     <hr/>
                     <br/>
-                        <sub>Approved by:</sub><br/> 
-                        <>{pathData.approver}</>
+                        <sub style={{marginBottom: '7px', display: 'block'}}>Created / Approved by:</sub>
+                        <h4 style={{color: 'black', backgroundColor: 'white', paddingLeft: '0px'}}>
+                            {pathData?.approver}
+                        </h4>
                         <br/>
                         <br/>
-                        <sub>Contributors:</sub><br/>
+                       {pathData?.contributors &&<><sub>Contributors:</sub>
+                       <br/>
                         {
-                            pathData.contributors?.map(cont => {
+                            pathData?.contributors?.split(',').map(cont => {
                                 return <>{cont} | </>
                             })
-                        }
+                        }</>
+                       }
                         
                          <br/>
                          <br/>
-                        <i>demo of the topic view explaining where is what e.g resourses or knowledgecheck and how to utilize them best (a muted video demo or a screenshot with markings!)</i>
+                        <br/> 
+                        <h4 style={{
+                            color:'black',
+                            backgroundColor: 'white',
+                            paddingLeft: '0px'
+                        }}>Book an appointment with the instructor</h4>
                         <br/>
                         <br/>
-                        <br/>
-                        <i>also a component(kind of a bar with height around 50px/9vh) here to ask for review and rating for the curriculum</i>
+                        <a target={pathData?.contactApprover} href={pathData?.contactApprover} style={{
+                            textDecoration: 'none'
+                        }}><img width="50" src={Calendar}></img></a>
+                        <br/> 
                         
 
                     </div>
                 }
-                {activeTopic && <><div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: primaryBlueColour}}>{title} - {activeTopic?.title}</span><i title="contribute" className='fas fa-edit' style={{color: 'grey', cursor: 'pointer'}}></i></div>
+                {activeTopic && <><div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: '#254B62'}}>{title} - {activeTopic?.title}</span><i title="contribute" className='fas fa-edit' style={{color: 'grey', cursor: 'pointer'}}></i></div>
                 <hr/></>}
-                {
+               {activeTopic && <h4 style={{display: 'block', padding: '10px 15px', backgroundColor: '#254B62'}}> {
                     activeTopic?.guidelinesForUrls
                 }
-<br/>
-<br/>
-<br/>
+                </h4>}
+<br/> 
                 
                 {
-                    activeTopic && <span> &nbsp;Resources:
+                    activeTopic && activeTopic?.urls.length != 0 && <span> &nbsp;Resources:
                         &nbsp;<i onClick={()=>{
               document.getElementById('info-resources').style.display = 'inline';
-             }} className="fa fa-info-circle" style={{ zIndex: '9999', display: 'inline', fontSize: '13px', color: primaryBlueColour, cursor: 'pointer'}}></i>
-             <span id="info-resources" style={{display: 'none', width: '300px', padding: '15px', paddingRight: '30px', textAlign: 'left', position: 'absolute', color: primarySilverColour, backgroundColor: primaryBlueColour, marginLeft: '-18px'}}>
+             }} className="fa fa-info-circle" style={{ zIndex: '9999', display: 'inline', fontSize: '13px', color: '#254B62', cursor: 'pointer'}}></i>
+             <span id="info-resources" style={{display: 'none', width: '300px', padding: '15px', paddingRight: '30px', textAlign: 'left', position: 'absolute', color: primarySilverColour, backgroundColor: '#254B62', marginLeft: '-18px'}}>
                 <span onClick={()=>{
               document.getElementById('info-resources').style.display = 'none';
              }}  style={{position: 'absolute', top: '14px', right: '15px', cursor: 'pointer'}}><b>x</b></span>
@@ -199,11 +202,13 @@ function PathPage(props) {
                 Curated list of useful resources for {activeTopic.title}
              </span> ( You can use the checkboxes to mark them completed )
            
-                    
+             <br/>
+                <br/>
                     </span>
                 }
-                <br/>
-                <br/>
+                 
+               
+                
                 {
                     activeTopic?.urls.map(url => {
                         return <>
@@ -223,6 +228,22 @@ function PathPage(props) {
                                             defaultChecked={false}
                                             checked={completedResourcesUrls?.includes(url.url)}
                                             onChange={(e) => {
+                                                let cU = currentUser;
+                                                if(!currentUser.hasOwnProperty('pathsEnrolled')){
+                                                    cU = {...currentUser, pathsEnrolled: []};
+                                                }
+                                                if(!currentUser.pathsEnrolled.includes(discid+'/'+title)){
+                                                updateOrCreateDocument(usersCollection, email, { ...currentUser, pathsEnrolled: [...cU.pathsEnrolled, discid+'/'+title] }).then(res=>{
+                                                    if(email) {
+                                                        getDocument(usersCollection, email).then(res => {
+                                                        setCurrentUser(res.data());
+                                                        setCompletedResourcesUrls(res.data().completedResourcesUrls);
+                                                    });
+                                                    }
+                                                }).catch(err => {
+                                                    alert(err);
+                                                });
+                                            }
                                                 // e.target.checked gives boolean
                                                 if(e.target.checked) {
                                                     if(email) {
@@ -270,7 +291,34 @@ function PathPage(props) {
                                </>
                     })
                 }
-                <br/> 
+               
+                 {
+                    activeTopic?.exercise ? <span>
+                         <br/>
+                <br/>
+                     
+                        <span> &nbsp; Exercise:
+
+&nbsp;<i onClick={()=>{
+              document.getElementById('info-exercise').style.display = 'inline';
+             }} className="fa fa-info-circle" style={{ zIndex: '9999', display: 'inline', fontSize: '13px', color: '#254B62', cursor: 'pointer'}}></i>
+             <span id="info-exercise" style={{display: 'none', width: '300px', padding: '15px', paddingRight: '30px', textAlign: 'left', position: 'absolute', color: primarySilverColour, backgroundColor: '#254B62', marginLeft: '-18px'}}>
+                <span onClick={()=>{
+              document.getElementById('info-exercise').style.display = 'none';
+             }}  style={{position: 'absolute', top: '14px', right: '15px', cursor: 'pointer'}}><b>x</b></span>
+                
+               This is not a graded exercise, the purpose is to learn so in case you find this exercise too hard then it's good! Do some research on internet about the topics you struggle with.
+             </span>
+</span>
+                        <br/>
+                        <br/>
+                    <a href={activeTopic?.exercise} target={activeTopic?.exercise} style={{textDecoration: 'none'}}>
+                        <img style={{width: '80px'}} src={Exercise} title="Exercise" />
+                        
+                    </a>
+                    <br/>  </span> : null
+                }
+                <br/>  
                 <br/> 
                 {/* {
                     activeTopic && <span>Lecture:</span>
@@ -281,14 +329,14 @@ function PathPage(props) {
                 } */}
 
 {
-                    activeTopic && <span> &nbsp; Knowledge check:
+                    activeTopic && activeTopic?.knowledgeCheck.length != 0 &&  <span> &nbsp; Knowledge check:
 
 &nbsp;<i onClick={()=>{
-              document.getElementById('info-exercise').style.display = 'inline';
-             }} className="fa fa-info-circle" style={{ zIndex: '9999', display: 'inline', fontSize: '13px', color: primaryBlueColour, cursor: 'pointer'}}></i>
-             <span id="info-exercise" style={{display: 'none', width: '300px', padding: '15px', paddingRight: '30px', textAlign: 'left', position: 'absolute', color: primarySilverColour, backgroundColor: primaryBlueColour, marginLeft: '-18px'}}>
+              document.getElementById('info-kc').style.display = 'inline';
+             }} className="fa fa-info-circle" style={{ zIndex: '9999', display: 'inline', fontSize: '13px', color: '#254B62', cursor: 'pointer'}}></i>
+             <span id="info-kc" style={{display: 'none', width: '300px', padding: '15px', paddingRight: '30px', textAlign: 'left', position: 'absolute', color: primarySilverColour, backgroundColor: '#254B62', marginLeft: '-18px'}}>
                 <span onClick={()=>{
-              document.getElementById('info-exercise').style.display = 'none';
+              document.getElementById('info-kc').style.display = 'none';
              }}  style={{position: 'absolute', top: '14px', right: '15px', cursor: 'pointer'}}><b>x</b></span>
                 
                 Before you move on to the next topic, you should know the answers to the following questions

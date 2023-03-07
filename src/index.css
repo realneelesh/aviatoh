@@ -14,5 +14,5 @@ code {
 
 * {
   opacity: 0;
-  transition: opacity 0.25s ease-in-out; /* or use animation instead */
+  transition: opacity 0.3s ease-in-out; /* or use animation instead */
 }

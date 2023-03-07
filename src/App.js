@@ -19,6 +19,8 @@ import Home from './pages/Home';
 import { MyClock } from './components/Clock';
 import PathPage from './pages/PathPage';
 import { AviatohPronunciation, FreeTrial, Logo, logo } from './assets';
+import CreatePath from './components/CreatePath';
+import axios from 'axios';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -55,6 +57,7 @@ function App() {
 const [ email, setEmail ] = useState(null);
 
   useEffect( ()=>{
+     
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
@@ -104,6 +107,9 @@ const [ email, setEmail ] = useState(null);
               <Route path="/editprofile" element={<>
                 <ParticularsForm email={email} />
               </>} />
+              <Route path="/createpath" element={<>
+                <CreatePath />
+              </>} />
               </Routes>
     </BrowserRouter>}
 
@@ -117,8 +123,8 @@ const [ email, setEmail ] = useState(null);
           flexDirection: 'column'
         }}> 
         <div align="left" style={{position: 'absolute', top: '-10px', left: '10px'}}>
-        <h1 style={{backgroundColor: 'transparent', color: 'grey', fontWeight: '800', paddingLeft: '4px', display: 'flex', alignItems: 'center'}}>
-          <img src={Logo} style={{width: '160px'}} />
+        <h1 style={{marginTop: '17px', backgroundColor: 'transparent', color: 'grey', fontWeight: '800', paddingLeft: '4px', display: 'flex', alignItems: 'center'}}>
+          <img src={Logo} style={{width: '80px'}} />
         &nbsp; 
         &nbsp; 
          {/* <sub
@@ -139,14 +145,12 @@ const [ email, setEmail ] = useState(null);
         <br/> 
         <br/> 
         <br/> 
-        <br/> 
-        <br/> 
-        <br/> 
+        <br/>  
           <div>
-            <h1 style={{fontSize: '36px', fontWeight: '600', color: 'silver', backgroundColor: primarySilverColour}}>
+            <h1 style={{fontSize: '34px', fontWeight: '600', color: 'grey', backgroundColor: 'transparent'}}>
           {("Comprehensive")}
           </h1>  
-          <h1 style={{fontSize: '35px', fontWeight: '600'}}>
+          <h1 style={{fontSize: '33px', fontWeight: '500'}}>
           {("Study curriculums").toUpperCase()}
           </h1>
 
@@ -155,35 +159,40 @@ const [ email, setEmail ] = useState(null);
           <br/>
           <br/>
              </div> 
-             <div align="center">{("We show you what to learn, in which order to learn and from where to learn").toUpperCase()}
-             <br/>
-             <br/>
-             <br/>
+             <div style={{fontSize: '14px'}}  align="center">
+             <div style={{fontSize: '17px'}}>
+              {('Your mentor for online studies').toUpperCase()}
+              </div>
+          <br/>
+          <br/> 
+             
               <div style={{width: '100vw', backgroundColor: primaryBlueColour}}>
              <div align="center" id="info-home" 
              style={{width: '50%', padding: '35px', color: 'white', backgroundColor: primaryBlueColour}}>
-              We are not an alternative to online learning platforms like Coursera or Edx, rather we provide you learning curriculums which combine courses from such platforms along with links to other freely available resource on internet.
+              Curriculums with links to freely available academic resources on internet
+              <br/>
+              Content curated by experts
+              <br/>
+              Schedule weekly meetings with the instructors
               <br/>
               <br/>  
 
 <div align="center" style={{
-  paddingTop: '2px',
   color: 'white',
-  backgroundColor: primaryBlueColour,
-  fontSize: '14px',
-  alignItems: 'center',
-  display: 'flex',
-  justifyContent: 'center',
-  borderRadius: '7px'
+  backgroundColor: primaryBlueColour
 }}
 >
-  <img style={{width: '80px', cursor: 'pointer'}} alt="Trial Icon" src={FreeTrial}
+  
+  <br/>
+  <img style={{width: '165px', cursor: 'pointer', display: 'block'}} alt="Trial Icon" src={FreeTrial}
   onClick={()=>{
     signInWithPopup(auth, provider);
  }}
   ></img>
-  &nbsp; &nbsp;
-  <span>BEGIN YOUR 7 DAYS FREE TRIAL<br/>  ✨ No credit card required ✨</span>
+  <br/>
+  <sup style={{ display: 'block', marginTop: '-13px'}}>
+   ✨ No credit card required ✨
+  </sup>
   </div>
 {/* <div style={{backgroundColor: 'white', color: primaryBlueColour, padding: '10px 5px'}}>
 <u>What Aviatoh is NOT:</u>
@@ -210,12 +219,15 @@ const [ email, setEmail ] = useState(null);
           <span style={{
             position: 'absolute',
             top: '10px',
-            right: '-10px',
-            transform: 'scale(0.8)'
+            right: '-5px',
+            transform: 'scale(0.7)'
           }}>
           <GoogleButton 
           type='light'
-          style={{outline: 'silver', boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 7px'
+          label='Sign in '
+          style={{outline: 'silver', boxShadow: 'rgba(0, 0, 0, 0.4) 0px 0px 7px',
+          fontSize: '19px',
+          width: '150px'
         }}
   onClick={() => {           signInWithPopup(auth, provider);
   }}

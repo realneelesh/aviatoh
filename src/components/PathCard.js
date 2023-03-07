@@ -9,11 +9,11 @@ function PathCard(props) {
 
        <div 
         className='pathCard'
-       align="left"
-       style={{
+        align="left"
+        style={{
         alignItems: 'center',
         position: 'relative',
-        width: '360px',
+        width: '500px',
         marginBottom: '20px',
         margintop: '30px',
         backgroundColor: 'white',
@@ -22,7 +22,7 @@ function PathCard(props) {
        <h2 style={{
                 textAlign: 'left',
                 color: 'black', 
-                backgroundColor: 'white',
+                backgroundColor: 'transparent',
                 width: '35%',
                 fontSize: '23px',
                 paddingLeft: '0px'

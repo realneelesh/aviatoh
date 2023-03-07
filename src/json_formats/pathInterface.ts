@@ -22,11 +22,11 @@
     }
 
     export interface Path {
-        prerequisitesUrls: string[];
+        prerequisites: string;
         approver: string;
         title: string;
         description: string;
         duration: string;
-        contributors: string[];
+        contributors: string;
         topics: Topic[];
     }
