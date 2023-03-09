@@ -70,7 +70,7 @@ function SearchBar(props) {
                     border: '0px',
                     borderBottom: '1px solid silver',
                     color: 'rgb(140, 140, 140)',
-                    fontWeight: '300',
+                    fontWeight: '300'
                 }}
             /> 
             </form>

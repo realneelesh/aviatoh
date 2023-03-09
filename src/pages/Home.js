@@ -43,7 +43,10 @@ import SearchBar from '../components/Searchbar';
             </div> */}
         
 
-        <div align="left" style={{position: 'sticky', top: '0', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', backgroundColor: primarySilverColour, paddingBottom: '15px', zIndex: '999'}}>
+        <div align="left" style={{position: 'sticky', top: '0', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', backgroundColor: primarySilverColour, paddingBottom: '15px', zIndex: '999',
+        width: '100vw',
+        marginLeft: '-8px'
+    }}>
         
             {discData? discData.map(disc => {
                 return <h3
@@ -58,8 +61,7 @@ import SearchBar from '../components/Searchbar';
                         </h3>
             }) : ''
             }
-        </div> 
-        <br/> 
+        </div>  
         {/* <hr style={{border: '0.5px solid rgb(219, 219, 219)'}}/>  */}
  
         { 
@@ -73,9 +75,8 @@ import SearchBar from '../components/Searchbar';
                 <br/>
                 <SearchBar data={discData ? discData : []} />
             </div> 
-        } 
-        <br/>
-        <div align="center">
+        }  
+        <div align="center" style={{ width: '100vw', marginLeft: '-8px', marginTop: '0px', paddingTop: '35px'}}>
             {
                 pathsData?.paths?.sort((x, y) => {
                     if(JSON.parse(y).title > JSON.parse(x).title){

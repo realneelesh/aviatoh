@@ -34,8 +34,8 @@ const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
-export const primaryBlueColour = '#303179';
-export const primarySilverColour = 'rgb(246,246,246)';
+export const primaryBlueColour = '#2e4057';
+export const primarySilverColour = 'rgb(242,242,242)';
 
 export const showPage = () => {
   setTimeout(()=>{
@@ -46,7 +46,6 @@ export const showPage = () => {
     elements[i].style.opacity = '1';
   }
   }, 0)
-  
 }
 
 function App() {
@@ -120,7 +119,10 @@ const [ email, setEmail ] = useState(null);
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center', 
-          flexDirection: 'column'
+          flexDirection: 'column',
+          width: '100vw',
+          marginLeft: '-8px',
+          height: '80vh'
         }}> 
         <div align="left" style={{position: 'absolute', top: '-10px', left: '10px'}}>
         <h1 style={{marginTop: '17px', backgroundColor: 'transparent', color: 'grey', fontWeight: '800', paddingLeft: '4px', display: 'flex', alignItems: 'center'}}>
@@ -140,44 +142,40 @@ const [ email, setEmail ] = useState(null);
          >🗣️</sub> */}
          </h1>
 <audio id="aviatohPronunciation" src={AviatohPronunciation} style={{opacity: '0'}} />
-        </div>
-        <br/> 
-        <br/> 
-        <br/> 
-        <br/> 
-        <br/>  
-          <div>
-            <h1 style={{fontSize: '34px', fontWeight: '600', color: 'grey', backgroundColor: 'transparent'}}>
+        </div> 
+          <div align="center">
+            <h1 style={{fontSize: '36px', paddingRight: '12px', fontWeight: '600', color: 'grey', backgroundColor: 'transparent'}}>
           {("Comprehensive")}
           </h1>  
           <h1 style={{fontSize: '33px', fontWeight: '500'}}>
-          {("Study curriculums").toUpperCase()}
+          {("curriculums").toUpperCase()}
           </h1>
 
              {/* Open source alternative to college curriculums */}
           <br/>
-          <br/>
-          <br/>
+      
+         
              </div> 
              <div style={{fontSize: '14px'}}  align="center">
-             <div style={{fontSize: '17px'}}>
+             {/* <div style={{fontSize: '17px'}}>
               {('Your mentor for online studies').toUpperCase()}
-              </div>
-          <br/>
-          <br/> 
+              </div> */}
+<br/> 
+<br/>
+<br/>
+           
              
               <div style={{width: '100vw', backgroundColor: primaryBlueColour}}>
              <div align="center" id="info-home" 
-             style={{width: '50%', padding: '35px', color: 'white', backgroundColor: primaryBlueColour}}>
-              Curriculums with links to freely available academic resources on internet
+             style={{width: '70%', padding: '35px', color: 'white', backgroundColor: primaryBlueColour}}>
+              <h3 style={{backgroundColor: 'transparent'}}>Organised, topic wise collection of freely available resources, curated by experts.</h3>
               <br/>
-              Content curated by experts
-              <br/>
-              Schedule weekly meetings with the instructors
-              <br/>
-              <br/>  
+              <br/> 
+              <h2 style={{backgroundColor: 'transparent'}}>✨ Open Source ✨</h2>
+              {/* <br/>
+              <br/>   */}
 
-<div align="center" style={{
+{/* <div align="center" style={{
   color: 'white',
   backgroundColor: primaryBlueColour
 }}
@@ -193,7 +191,7 @@ const [ email, setEmail ] = useState(null);
   <sup style={{ display: 'block', marginTop: '-13px'}}>
    ✨ No credit card required ✨
   </sup>
-  </div>
+  </div> */}
 {/* <div style={{backgroundColor: 'white', color: primaryBlueColour, padding: '10px 5px'}}>
 <u>What Aviatoh is NOT:</u>
 <br/> 
@@ -216,22 +214,30 @@ const [ email, setEmail ] = useState(null);
              </div>
              </div>
           <br/>  
-          <span style={{
-            position: 'absolute',
-            top: '10px',
-            right: '-5px',
-            transform: 'scale(0.7)'
+          <br/>  
+          <div style={{ 
+            position: 'relative',
+            backgroundColor: 'white',
+            padding: '2px 10px',
+            cursor: 'pointer'
+          }}
+          onClick={() => {           signInWithPopup(auth, provider);
           }}>
           <GoogleButton 
           type='light'
           label='Sign in '
-          style={{outline: 'silver', boxShadow: 'rgba(0, 0, 0, 0.4) 0px 0px 7px',
-          fontSize: '19px',
-          width: '150px'
+          style={{
+          outline: 'silver', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 0px 7px',
+          backgroundColor: 'white !important',
+          fontSize: '16px',
+          width: '120px',
+          textAlign: 'left',
+          height: '0px',
+          marginLeft: '-10px'
         }}
-  onClick={() => {           signInWithPopup(auth, provider);
-  }}
-/></span>
+  
+/></div>
+     
           {/* <button style={{
             position: 'absolute',
             top: '10px',
@@ -242,7 +248,7 @@ const [ email, setEmail ] = useState(null);
 
      
             {/* <span style={{fontFamily: 'fantasy', fontSize: '18px'}}>REVIEWS</span>  */}
-          <div style={{
+          {/* <div style={{
           display: 'flex',
           flexWrap: 'no-wrap',
           overflowX: 'scroll' ,
@@ -270,16 +276,10 @@ const [ email, setEmail ] = useState(null);
           </div>
          
       
-        </div>
+        </div> */}
        </div>
               
         }
- 
-
-
-<br/>
-<br/>
- 
     </div>
   );
 }

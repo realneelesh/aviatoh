@@ -36,3 +36,4 @@ export const updateOrCreateDocument = async (collec, documentId, newDataObjectTo
 
 export const usersCollection = 'Users';
 export const disciplinesCollection = 'Disciplines';
+export const topicMRCollection = 'TopicMergeRequests';

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { primaryBlueColour, primarySilverColour, showPage } from '../App';
 import { Calendar, Exercise, PathPageView } from '../assets';
 import { browserStorage, discDataKey } from '../BrowserStorage';
+import RaiseTopicMR from '../components/RaiseTopicMR';
 import { disciplinesCollection, getAllDocuments, getDocument, updateOrCreateDocument, usersCollection } from '../db';
 
 
@@ -15,6 +16,7 @@ function PathPage(props) {
     const { email } = props;
     const { discid, title } = useParams();
     const [ activeTopic, setActiveTopic ] = useState(null);
+    const [ showContri, setShowContri ] = useState(false);
     const [ activeQuestion, setActiveQuestion ] = useState(null);
     const [ completedResourcesUrls, setCompletedResourcesUrls ] = useState(null);
     
@@ -72,6 +74,7 @@ function PathPage(props) {
     const pathData = data ? JSON.parse(data.find(x=>x.id===discid).paths.find(p=>JSON.parse(p).title===title)) : null;
 
     return (
+        <>
         <div>
             <br/>
             <br/>
@@ -93,7 +96,7 @@ function PathPage(props) {
             justifyContent: 'space-between'
          }}>
            
-            <div align="left" style={{overflowY: 'scroll', height: '83vh', width: '20vw', backgroundColor: '', paddingTop: '0px'}}>
+            <div align="left" style={{overflowY: 'scroll', height: '83vh', width: '23vw', backgroundColor: '', paddingTop: '0px'}}>
                 {/* &nbsp;Topics:
                 <br/>
                 <br/> */}
@@ -104,8 +107,8 @@ function PathPage(props) {
                     position: 'relative',
                     textAlign: 'left',
                     width: '95%',
-                    backgroundColor: activeTopic?.title == null ? primaryBlueColour : primarySilverColour,
-                    color: activeTopic?.title == null ? 'white' : 'black',
+                    backgroundColor: activeTopic?.title == null ? primarySilverColour : 'transparent',
+                    color: activeTopic?.title == null ? 'black' : 'black',
                     margin: '2px',
                     fontSize: '13px'
                 }}
@@ -114,7 +117,9 @@ function PathPage(props) {
                 }}
                 ><input className="checkboxInput" type="checkbox"
                 checked={true}
-                style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} />Introduction</button>
+                style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} />
+                    00. Introduction
+                </button>
                 <br/>
                 <br/>
                 </>
@@ -125,8 +130,8 @@ function PathPage(props) {
                             position: 'relative',
                             textAlign: 'left',
                             width: '95%',
-                            backgroundColor: topic.title === activeTopic?.title ? primaryBlueColour : primarySilverColour,
-                            color: topic.title === activeTopic?.title ? 'white' : 'black',
+                            backgroundColor: topic.title === activeTopic?.title ? primarySilverColour : 'white',
+                            color: topic.title === activeTopic?.title ? 'black' : 'black',
                             margin: '2px',
                             fontSize: '13px'
                         }}
@@ -135,7 +140,7 @@ function PathPage(props) {
                         }}
                         ><input className="checkboxInput" type="checkbox"
                         checked={checkTopic(topic)}
-                        style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} /> {i+1}. {topic.title}</button></>
+                        style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} /> {i<9 ? `0${i+1}` : i+1}. {topic.title}</button></>
                     })}
                     </>
                   
@@ -181,16 +186,27 @@ function PathPage(props) {
 
                     </div>
                 }
-                {activeTopic && <><div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: '#254B62'}}>{title} - {activeTopic?.title}</span><i title="contribute" className='fas fa-edit' style={{color: 'grey', cursor: 'pointer'}}></i></div>
+                {activeTopic && <><div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: '#254B62'}}>{activeTopic?.title} <br/> <sup style={{color: 'grey'}}>{title}</sup> </span>
+                
+                <div>
+                <span
+                onClick={()=>{
+                    setShowContri(!showContri);
+                }}
+                title="contribute" style={{color: showContri ? '#a21028' :'grey', cursor: 'pointer'}}>Contribute &nbsp;<i className='fas fa-edit'></i></span>
+            
+                </div> 
+                </div>
                 <hr/></>}
-               {activeTopic && <h4 style={{display: 'block', padding: '10px 15px', backgroundColor: '#254B62'}}> {
+               {activeTopic && <h4 style={{display: 'block', padding: '10px 0px', backgroundColor: 'transparent', color: "black"}}> {
                     activeTopic?.guidelinesForUrls
                 }
                 </h4>}
 <br/> 
                 
                 {
-                    activeTopic && activeTopic?.urls.length != 0 && <span> &nbsp;Resources:
+                    activeTopic && activeTopic?.urls.length != 0 && <span>  
+                        Resources:
                         &nbsp;<i onClick={()=>{
               document.getElementById('info-resources').style.display = 'inline';
              }} className="fa fa-info-circle" style={{ zIndex: '9999', display: 'inline', fontSize: '13px', color: '#254B62', cursor: 'pointer'}}></i>
@@ -208,9 +224,9 @@ function PathPage(props) {
                 }
                  
                
-                
+                <div>
                 {
-                    activeTopic?.urls.map(url => {
+                    activeTopic?.urls.map((url, i) => {
                         return <>
                                 <a
                                     target={url.url}
@@ -218,9 +234,11 @@ function PathPage(props) {
                                     style={{
                                         textDecoration: 'none',
                                         textAlign: 'left',
-                                        margin: '2px',
+                                        marginLeft: '0px',
+                                        marginRight: '20px',
+                                        marginBottom: '20px',
                                         color: 'black',
-                                        fontSize: '12px'
+                                        fontSize: '11px'
                                     }}
                                     >
                                         <h3 style={{backgroundColor: primarySilverColour, color: 'black', paddingLeft: '13px'}}>
@@ -291,6 +309,7 @@ function PathPage(props) {
                                </>
                     })
                 }
+                </div>
                
                  {
                     activeTopic?.exercise ? <span>
@@ -329,7 +348,7 @@ function PathPage(props) {
                 } */}
 
 {
-                    activeTopic && activeTopic?.knowledgeCheck.length != 0 &&  <span> &nbsp; Knowledge check:
+                    activeTopic && activeTopic?.knowledgeCheck.length != 0 &&  <span>   Knowledge check:
 
 &nbsp;<i onClick={()=>{
               document.getElementById('info-kc').style.display = 'inline';
@@ -344,6 +363,7 @@ function PathPage(props) {
 </span>
                 }
                 <br/> 
+                <br/> 
                 {
                     activeTopic?.knowledgeCheck.map((kc, i) => {
                         return <><span
@@ -351,6 +371,7 @@ function PathPage(props) {
                             textDecoration: 'none',
                             textAlign: 'left',
                             margin: '2px',
+                            marginLeft: '0px',
                             color: 'black',
                             fontSize: '13px'
                         }}
@@ -360,10 +381,10 @@ function PathPage(props) {
                         onClick={()=>{
                             setActiveQuestion(activeQuestion === kc.question ? null : kc.question)
                         }}
-                        style={{cursor: 'pointer', backgroundColor: activeQuestion === kc.question ? 'silver' : primarySilverColour, color: 'black', padding: '15px'}}><b>&#187;</b> &nbsp;{kc.question}
+                        style={{cursor: 'pointer', backgroundColor: activeQuestion === kc.question ? primarySilverColour : primarySilverColour, color: 'black', padding: '15px'}}><b>&#187;</b> &nbsp;{kc.question}
                       
                         <div id={kc.question} 
-                        style={{ marginTop: '18px', display: activeQuestion === kc.question ? 'block' : 'none', cursor: 'pointer', backgroundColor: primarySilverColour, color: 'black', padding: '15px'}}
+                        style={{ marginTop: '18px', display: activeQuestion === kc.question ? 'block' : 'none', cursor: 'pointer', backgroundColor: 'white', color: 'black', padding: '15px'}}
                         >
                         {
                             kc.answer
@@ -378,7 +399,21 @@ function PathPage(props) {
             </div>
          </div>
 
+
+       
+
         </div>
+        
+        <span 
+        id="contri"
+        style={{
+          position: 'absolute',
+          display: showContri ? 'block' : 'none',
+          right: '25px',
+          top: '110px'
+        }}><RaiseTopicMR discId={discid} pathTitle={title} topic={activeTopic} email={email}/>
+  </span>
+        </>
     );
 }
 
