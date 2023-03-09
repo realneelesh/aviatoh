@@ -148,10 +148,20 @@ function PathPage(props) {
             <div style={{overflowY: 'scroll', height: '82vh', width: '75vw', paddingTop: '0', paddingRight: '20px'}} align="left">
                 {
                     !activeTopic && <div>  
-                 <div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: '#254B62'}}>{title}</span></div>
-                    <hr/>
-                    <br/>  
-                    <div style={{width: '100%', background: `url(${pathData?.banner})`, backgroundPosition: 'left top', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    <div align="center" style={{
+                        padding: '40px 0px',
+                        width: '100%', background: `url(${pathData?.banner})`, backgroundPosition: 'left top', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    
+                    <span align="center" style={{
+                        borderRadius: '10px',
+                        backgroundColor: 'rgb(255, 255, 255, 0.7)', padding: '10px 20px', fontSize: '40px', width: '80%'}}>
+                        {
+                            pathData?.title
+                        }
+                    </span>
+                    </div> 
+
+                    <br/>
                     <div style={{backgroundColor: 'rgb(255, 255, 255, 0.4)', padding: '20px'}}>
                    
 
@@ -168,8 +178,6 @@ function PathPage(props) {
                     <br/> 
 
                     </div>
-                    
-                    </div> 
                        {pathData?.contributors && <div>
                         <br/>
                        <br/>
@@ -187,7 +195,7 @@ function PathPage(props) {
                          <br/>
                         <br/> 
                         
-                        <div style={{display: 'flex', justifyContent: 'flex-start'}}>
+                        {/* <div style={{display: 'flex', justifyContent: 'flex-start'}}>
                         <a target={pathData?.contactApprover} href={pathData?.contactApprover} style={{
                             textDecoration: 'none'
                         }}><img width="45" src={Calendar}></img> &nbsp;</a>
@@ -195,7 +203,7 @@ function PathPage(props) {
                             textDecoration: 'none',
                             fontSize: '36px'
                         }}>🔖</a>
-                        </div>
+                        </div> */}
                         <br/> 
                         
 
