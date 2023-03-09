@@ -139,11 +139,10 @@ const [ email, setEmail ] = useState(null);
 <br/>
      
        
-        <div style={{width: '100vw', backgroundColor: primaryBlueColour}}>
+        <div style={{width: '100%', backgroundColor: primaryBlueColour}}>
        <div align="center" id="info-home" 
-       style={{width: '70%', padding: '35px', color: 'white', backgroundColor: primaryBlueColour}}>
-        <h3 style={{backgroundColor: 'transparent'}}>Organised, topic wise collection of freely available resources, curated by experts.</h3>
-        <br/>
+       style={{width: '80%', padding: '35px', color: 'white', backgroundColor: primaryBlueColour}}>
+        <div align="center" style={{backgroundColor: 'transparent'}}>Organised, topic wise collection of freely available resources, curated by experts.</div>
         <br/> 
         <h3 style={{backgroundColor: 'transparent'}}>✨ Open Source ✨</h3>
         {/* <br/>
