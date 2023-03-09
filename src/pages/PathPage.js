@@ -158,7 +158,7 @@ function PathPage(props) {
                    
 
                     <sub style={{marginBottom: '7px', display: 'block'}}>&nbsp;&nbsp;&nbsp;Created / Approved by:</sub>
-                    <span style={{display: 'inline-block', color: 'rgb(50, 50, 50)', padding: '5px 10px', borderRadius: '5px', backgroundColor: 'rgb(255, 255, 255, 0.4)'}}>
+                    <span style={{display: 'inline-block', color: 'rgb(50, 50, 50)', padding: '5px 10px', borderRadius: '5px', backgroundColor: 'rgb(255, 255, 255, 0.8)'}}>
                             {pathData?.approver}
                         </span>
                         <br/>
@@ -166,7 +166,7 @@ function PathPage(props) {
                         <br/>
                     <sub style={{marginBottom: '7px', display: 'block'}}>&nbsp;&nbsp;&nbsp;Description:</sub>
 
-                    <div style={{display: 'inline-block', color: 'rgb(50, 50, 50)', padding: '5px 10px', borderRadius: '5px', backgroundColor: 'rgb(255, 255, 255, 0.4)'}}>{pathData?.description}</div> 
+                    <div style={{display: 'inline-block', color: 'rgb(50, 50, 50)', padding: '5px 10px', borderRadius: '5px', backgroundColor: 'rgb(255, 255, 255, 0.8)'}}>{pathData?.description}</div> 
                     <br/> 
 
                     </div>

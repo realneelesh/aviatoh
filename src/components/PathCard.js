@@ -5,19 +5,19 @@ import { primaryBlueColour, primarySilverColour } from '../App';
 function PathCard(props) {
     const { data } = props;
     return (
-        <Link style={{marginRight: '20px', textDecoration: 'none'}} to={'/path/'+data.id+'/'+data.title}>
+        <Link style={{maxWidth: '500px', marginRight: '20px', textDecoration: 'none'}} to={'/path/'+data.id+'/'+data.title}>
 
        <div 
         className='pathCard'
         align="left"
         style={{
-        alignItems: 'center',
-        position: 'relative',
-        width: '500px',
-        marginBottom: '20px',
-        margintop: '30px',
-        backgroundColor: 'white',
-        padding: '30px'
+            alignItems: 'center',
+            position: 'relative',
+            width: '500px',
+            marginBottom: '20px',
+            margintop: '30px',
+            backgroundColor: 'white',
+            padding: '30px'
        }}>
        <h2 style={{
                 textAlign: 'left',

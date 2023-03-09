@@ -245,7 +245,7 @@ signInWithPopup(auth, provider);
 
             <Routes>
             <Route exact path="/" element={<>
-              <Home />
+              <Home email={email} />
             </>}
             />
             <Route path="/profile" element={<>
@@ -381,7 +381,11 @@ signInWithPopup(auth, provider);
             padding: '2px 10px',
             cursor: 'pointer'
           }}
-          onClick={() => {           signInWithPopup(auth, provider);
+          onClick={() => {           
+            document.querySelectorAll("*").forEach(i => {
+              i.style.opacity = '0';
+            })
+            signInWithPopup(auth, provider);
           }}>
           <GoogleButton 
           type='light'

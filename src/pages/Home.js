@@ -8,8 +8,12 @@ import { browserStorage, discDataKey } from '../BrowserStorage';
 import Loader from '../components/Loader';
 import { primaryBlueColour, primarySilverColour, showPage } from '../App';
 import SearchBar from '../components/Searchbar';
+import PathsEnrolled from '../components/PathsEnrolled';
  
  function Home(props) {
+
+    const { email } = props;
+
     useEffect(()=>{
         showPage();
     });
@@ -17,10 +21,11 @@ import SearchBar from '../components/Searchbar';
     const [ discData, setDiscData ] = useState(null);
     const [ pathsData, setPathsData ] = useState(null);
     const [ loading, setLoading ] = useState(true);
-    const [ activeDisc, setActiveDisc ] = useState(true);
+    const [ activeDisc, setActiveDisc ] = useState({
+        title: true
+    });
 
-    useEffect(()=>{ 
-        
+    useEffect(()=>{
         setLoading(true);
         Promise.resolve(getAllDocuments(disciplinesCollection)).then(res => {
             let arr = [];
@@ -38,7 +43,7 @@ import SearchBar from '../components/Searchbar';
         })
     }, [])
 
-    return ( loading ? <Loader/>:<>
+    return ( loading ? <Loader/>:<div align="center">
             {/* <div align="left" style={{marginRight: '20px'}}><h3 style={{ padding: '3px', lineHeight: '2.5', backgroundColor: 'white', color: 'black', border: '0px solid silver'}}>Disciplines:</h3>
             </div> */}
         
@@ -47,6 +52,18 @@ import SearchBar from '../components/Searchbar';
         width: '100vw',
         marginLeft: '-8px'
     }}>
+        <h3
+                            onClick={() => { 
+                                setPathsData(null);
+                                setActiveDisc({
+                                    title: true
+                                });
+                            }}
+                            className='h3'
+                            style={{  paddingLeft: '10px', paddingRight: '10px' ,position: true == activeDisc.title ? 'stiky' : 'relative', cursor: 'pointer', backgroundColor: true == activeDisc.title ? primarySilverColour : 'white', color: 'black', border: '0px solid rgb(219, 219, 219)', marginRight: '15px', marginBottom: '0px', top: '0'}}>
+                            <i className='fa fa-home'></i>
+                            {/* <span style={{transform: 'scale(1.25)', display: 'block'}}>🏠 </span> */}
+                        </h3>
         
             {discData? discData.map(disc => {
                 return <h3
@@ -74,9 +91,13 @@ import SearchBar from '../components/Searchbar';
                         <br/> 
                 <br/>
                 <SearchBar data={discData ? discData : []} />
+                <br/>
+                <br/>
+                <br/>
+                 <PathsEnrolled email={email} /> 
             </div> 
         }  
-        <div align="center" style={{ width: '100vw', marginLeft: '-8px', marginTop: '0px', paddingTop: '35px'}}>
+       <div align="center" style={{ width: '500px', marginLeft: '-8px', marginTop: '0px', paddingTop: '35px'}}>
             {
                 pathsData?.paths?.sort((x, y) => {
                     if(JSON.parse(y).title > JSON.parse(x).title){
@@ -95,8 +116,9 @@ import SearchBar from '../components/Searchbar';
 
                 </>
             }
+            </div>
+            
         </div>
-        </>
     );
  }
  
