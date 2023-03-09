@@ -119,9 +119,7 @@ function PathPage(props) {
                 checked={true}
                 style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} />
                     00. Introduction
-                </button>
-                <br/>
-                <br/>
+                </button> 
                 </>
                 <div align="center"></div>
                     {pathData?.topics.map((topic, i) => {
@@ -267,7 +265,7 @@ function PathPage(props) {
                                                 if(!currentUser.hasOwnProperty('pathsEnrolled')){
                                                     cU = {...currentUser, pathsEnrolled: []};
                                                 }
-                                                if(!currentUser.pathsEnrolled.includes(discid+'/'+title)){
+                                                if(!currentUser.pathsEnrolled?.includes(discid+'/'+title)){
                                                 updateOrCreateDocument(usersCollection, email, { ...currentUser, pathsEnrolled: [...cU.pathsEnrolled, discid+'/'+title] }).then(res=>{
                                                     if(email) {
                                                         getDocument(usersCollection, email).then(res => {
@@ -427,7 +425,7 @@ function PathPage(props) {
           position: 'absolute',
           display: showContri ? 'block' : 'none',
           right: '25px',
-          top: '110px'
+          top: '140px'
         }}><RaiseTopicMR discId={discid} pathTitle={title} topic={activeTopic} email={email}/>
   </span>
         </>

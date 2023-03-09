@@ -332,7 +332,7 @@ signInWithPopup(auth, provider);
               <h3 style={{backgroundColor: 'transparent'}}>Organised, topic wise collection of freely available resources, curated by experts.</h3>
               <br/>
               <br/> 
-              <h2 style={{backgroundColor: 'transparent'}}>✨ Open Source ✨</h2>
+              <h3 style={{backgroundColor: 'transparent'}}>✨ Open Source ✨</h3>
               {/* <br/>
               <br/>   */}
 

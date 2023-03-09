@@ -46,7 +46,7 @@ function RaiseTopicMR(props) {
             &nbsp;
             <h4 style={{padding:'3px', backgroundColor: 'white', color: 'black'}}>&nbsp;{topic?.title} &nbsp;</h4>
             <br/> */} 
-            *Contribute resource for this topic, for in the act of giving, we receive as well!
+            *Contribute this topic, the resource that you will add will be added to the list below the submit button and everyone can see it. 
             <br/>
             <br/> 
             <input
@@ -108,12 +108,12 @@ function RaiseTopicMR(props) {
                 <br/> 
                  <h4 style={{padding:'3px 0px', backgroundColor: 'transparent', color: 'black'}}>&nbsp;{topic?.title} &nbsp;</h4>
             
-            <br/>
+            <hr/>
             <br/> 
             {
                 mrArray.map(mr => {
                     return ( mr.discipline == discId && mr.curriculum == pathTitle && mr.topic == topic?.title && 
-                    <div draggable="true" style={{ padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgb(225, 225, 225)', marginBottom: '5px'}}>
+                    <><div draggable="true" style={{ padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgb(225, 225, 225)', marginBottom: '5px'}}>
                         <a target={mr.resourceURL} style={{color: 'black', textDecoration: 'none'}} href={mr.resourceURL}>{mr.resourceTitle}</a>
                         <div
             style={{textAlign: 'left'}}>
@@ -128,7 +128,11 @@ function RaiseTopicMR(props) {
                 <span style={{color: 'black', fontSize: '11px'}}>{((mr.upVotes/(mr.upVotes+mr.downVotes))*100).toFixed(1)}%</span>
                 </span>
             </div> 
-                    </div>)
+                    </div>
+                    <sup>{mr.email.split('@')[0]}</sup>
+                    <br/>
+                    <br/>
+                    </>)
                 })
             } 
 
