@@ -152,35 +152,52 @@ function PathPage(props) {
                     !activeTopic && <div>  
                  <div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: '#254B62'}}>{title}</span></div>
                     <hr/>
-                    <br/>
-                        <sub style={{marginBottom: '7px', display: 'block'}}>Created / Approved by:</sub>
-                        <h4 style={{color: 'black', backgroundColor: 'white', paddingLeft: '0px'}}>
+                    <br/>  
+                    <div style={{width: '100%', background: `url(${pathData?.banner})`, backgroundPosition: 'left center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    <div style={{backgroundColor: 'rgb(255, 255, 255, 0.4)', padding: '20px'}}>
+                   
+
+                    <sub style={{marginBottom: '7px', display: 'block'}}>&nbsp;&nbsp;&nbsp;Created / Approved by:</sub>
+                    <span style={{display: 'inline-block', color: 'rgb(50, 50, 50)', padding: '5px 10px', borderRadius: '5px', backgroundColor: 'rgb(255, 255, 255, 0.4)'}}>
                             {pathData?.approver}
-                        </h4>
+                        </span>
                         <br/>
                         <br/>
-                       {pathData?.contributors &&<><sub>Contributors:</sub>
+                        <br/>
+                    <sub style={{marginBottom: '7px', display: 'block'}}>&nbsp;&nbsp;&nbsp;Description:</sub>
+
+                    <div style={{display: 'inline-block', color: 'rgb(50, 50, 50)', padding: '5px 10px', borderRadius: '5px', backgroundColor: 'rgb(255, 255, 255, 0.4)'}}>{pathData?.description}</div> 
+                    <br/> 
+
+                    </div>
+                    
+                    </div> 
+                       {pathData?.contributors && <div>
+                        <br/>
                        <br/>
+                       {pathData?.contributors &&<><sub>Contributors:</sub>
+                      
                         {
                             pathData?.contributors?.split(',').map(cont => {
                                 return <>{cont} | </>
                             })
                         }</>
                        }
+                       </div>}
                         
                          <br/>
                          <br/>
                         <br/> 
-                        <h4 style={{
-                            color:'black',
-                            backgroundColor: 'white',
-                            paddingLeft: '0px'
-                        }}>Book an appointment with the instructor</h4>
-                        <br/>
-                        <br/>
+                        
+                        <div style={{display: 'flex', justifyContent: 'flex-start'}}>
                         <a target={pathData?.contactApprover} href={pathData?.contactApprover} style={{
                             textDecoration: 'none'
-                        }}><img width="50" src={Calendar}></img></a>
+                        }}><img width="45" src={Calendar}></img> &nbsp;</a>
+                        <a target={pathData?.contactApprover} href={pathData?.contactApprover} style={{
+                            textDecoration: 'none',
+                            fontSize: '36px'
+                        }}>🔖</a>
+                        </div>
                         <br/> 
                         
 
