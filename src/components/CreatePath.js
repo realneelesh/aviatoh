@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { showPage, primarySilverColour } from "../App";
 import { auth, updateOrCreateDocument, usersCollection } from "../db";
 // import the react-json-view component
-import ReactJson from 'react-json-view'
+//import ReactJson from 'react-json-view'
 
 
 
@@ -309,7 +309,7 @@ function CreatePath(props) {
                     <br/>
                 <span style={{ position: 'absolute', height: '70vh', overflowY: 'scroll'}}>
                     
-                    <ReactJson collapsed src={path} />
+                    {/* <ReactJson collapsed src={path} />*/}
                 </span>
                 </span>
            } 
