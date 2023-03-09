@@ -17,7 +17,7 @@ function SearchResult(props) {
             textDecoration: 'none',
             fontSize: '18px',
             width: '100%',
-            padding: '5px 5px',
+            padding: '5px 20px',
             color: 'black',
         }}>
              {res.pathTitle}

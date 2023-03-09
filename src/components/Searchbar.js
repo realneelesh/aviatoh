@@ -60,7 +60,7 @@ function SearchBar(props) {
             
             <input
                 id="searchInput"
-                placeholder=' Search curriculums'
+                placeholder=' Search'
                 onChange={search}
                 type="search"
                 style={{

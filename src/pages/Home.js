@@ -6,9 +6,10 @@ import PathCard from '../components/PathCard';
 import { Empty } from '../assets';
 import { browserStorage, discDataKey } from '../BrowserStorage';
 import Loader from '../components/Loader';
-import { primaryBlueColour, primarySilverColour, showPage } from '../App';
+import { primaryBlueColour, primaryRedColour, primarySilverColour, showPage } from '../App';
 import SearchBar from '../components/Searchbar';
 import PathsEnrolled from '../components/PathsEnrolled';
+import { Link } from 'react-router-dom';
  
  function Home(props) {
 
@@ -60,7 +61,7 @@ import PathsEnrolled from '../components/PathsEnrolled';
                                 });
                             }}
                             className='h3'
-                            style={{  paddingLeft: '10px', paddingRight: '10px' ,position: true == activeDisc.title ? 'stiky' : 'relative', cursor: 'pointer', backgroundColor: true == activeDisc.title ? primarySilverColour : 'white', color: 'black', border: '0px solid rgb(219, 219, 219)', marginRight: '15px', marginBottom: '0px', top: '0'}}>
+                            style={{  paddingLeft: '10px', paddingRight: '10px' ,position: true == activeDisc.title ? 'stiky' : 'relative', cursor: 'pointer', backgroundColor: true == activeDisc.title ? primarySilverColour : 'white', color: 'rgb(80, 80, 80)', border: '0px solid rgb(219, 219, 219)', marginRight: '15px', marginBottom: '0px', top: '0'}}>
                             <i className='fa fa-home'></i>
                             {/* <span style={{transform: 'scale(1.25)', display: 'block'}}>🏠 </span> */}
                         </h3>
@@ -78,6 +79,19 @@ import PathsEnrolled from '../components/PathsEnrolled';
                         </h3>
             }) : ''
             }
+
+<h3
+                            onClick={() => { 
+                                setPathsData(null);
+                                setActiveDisc({
+                                    title: true
+                                });
+                            }}
+                            className='h3'
+                            style={{  paddingLeft: '10px', paddingRight: '10px' ,position: true == activeDisc.title ? 'stiky' : 'relative', cursor: 'pointer', backgroundColor: true == activeDisc.title ? primarySilverColour : primarySilverColour, color: 'rgb(90, 90, 90)', border: '0px solid rgb(219, 219, 219)', marginRight: '15px', marginBottom: '0px', top: '0'}}>
+                            <i className='fa fa-bars'></i> &nbsp;More
+                            {/* <span style={{transform: 'scale(1.25)', display: 'block'}}>🏠 </span> */}
+                        </h3>
         </div>  
         {/* <hr style={{border: '0.5px solid rgb(219, 219, 219)'}}/>  */}
  
@@ -94,18 +108,49 @@ import PathsEnrolled from '../components/PathsEnrolled';
                 <br/>
                 <br/>
                 <br/>
+                <div>
+                <div align="left" style={{width: '60vw'}}>
+        <h3 style={{display: 'block', backgroundColor: primarySilverColour, color: 'black'}}> Most popular curriculums</h3>
+         
+        <div style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center'}}> 
+        
+            {
+                ['Arts and Design/Film and Video', 'Programming and Computer Science/Introduction to Web Development', 'Programming and Computer Science/Artificial Intelligence', 'Business and Entrepreneurship/Finance'].map(path => {
+                    return <>
+                    <Link to={'/path/'+path.split('/')[0]+'/'+path.split('/')[1]} style={{
+                          backgroundColor: '', cursor: 'pointer', textDecoration: 'none'}}>
+                          <h3 style={{marginRight: '23px', marginBottom: '0', color: 'black', backgroundColor: 'transparent', display: 'inline-block'}}>
+
+                        {
+                            path.split('/')[1]
+                        }
+                        </h3>
+                    </Link>
+                    
+                    </>
+                })
+            }
+        </div>
+                </div>
+                <br/> 
+                <br/> 
+                <br/> 
+                <div>
                  <PathsEnrolled email={email} /> 
+                </div>
+            </div>
             </div> 
         }  
        <div align="center" style={{ width: '500px', marginLeft: '-8px', marginTop: '0px', paddingTop: '35px'}}>
             {
-                pathsData?.paths?.sort((x, y) => {
-                    if(JSON.parse(y).title > JSON.parse(x).title){
-                        return -1;
-                    } else {
-                        return 1;
-                    }
-                    }).map(path => {
+                // .sort((x, y) => {
+                //     if(JSON.parse(y).title > JSON.parse(x).title){
+                //         return -1;
+                //     } else {
+                //         return 1;
+                //     }
+                //     })
+                pathsData?.paths?.map(path => {
                     path = JSON.parse(path);
                     return <><PathCard data={{...path, id: pathsData.id}} /></>
                 })

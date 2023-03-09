@@ -153,7 +153,7 @@ function PathPage(props) {
                  <div style={{fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><span style={{color: '#254B62'}}>{title}</span></div>
                     <hr/>
                     <br/>  
-                    <div style={{width: '100%', background: `url(${pathData?.banner})`, backgroundPosition: 'left center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    <div style={{width: '100%', background: `url(${pathData?.banner})`, backgroundPosition: 'left top', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                     <div style={{backgroundColor: 'rgb(255, 255, 255, 0.4)', padding: '20px'}}>
                    
 

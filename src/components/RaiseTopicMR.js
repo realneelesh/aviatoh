@@ -114,7 +114,7 @@ function RaiseTopicMR(props) {
                 mrArray.map(mr => {
                     return ( mr.discipline == discId && mr.curriculum == pathTitle && mr.topic == topic?.title && 
                     <div draggable="true" style={{ padding: '5px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgb(225, 225, 225)', marginBottom: '5px'}}>
-                        <a style={{color: 'black', textDecoration: 'none'}} href={mr.resourceURL}>{mr.resourceTitle}</a>
+                        <a target={mr.resourceURL} style={{color: 'black', textDecoration: 'none'}} href={mr.resourceURL}>{mr.resourceTitle}</a>
                         <div
             style={{textAlign: 'left'}}>
                 <span style={{cursor: 'pointer', fontSize: '12px', color: 'black'}}>

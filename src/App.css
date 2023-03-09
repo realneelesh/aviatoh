@@ -229,8 +229,8 @@ input[type="submit"] {
 }
 
 .searchResult:hover {
-  background-color: #a8a8a8;
-  color: white !important;
+  background-color: rgb(243, 243, 243) !important;
+  color: black !important;
 }
 
 

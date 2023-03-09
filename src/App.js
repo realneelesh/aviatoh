@@ -35,6 +35,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
 export const primaryBlueColour = '#2e4057';
+export const primaryRedColour = '#a21028';
 export const primarySilverColour = 'rgb(242,242,242)';
 
 window.mobileCheck = function() {
@@ -446,7 +447,7 @@ signInWithPopup(auth, provider);
         }
     </div>
       }
-
+ 
     </div>
   );
 }
