@@ -101,6 +101,7 @@ import { Link } from 'react-router-dom';
                 <br/>
                 <br/>
                 <br/>
+                <br/>
                 <br/> 
                         <br/> 
                 <br/>
@@ -109,7 +110,7 @@ import { Link } from 'react-router-dom';
                 <br/>
                 <br/>
                 <div>
-                <div align="left" style={{width: '60vw'}}>
+                {/* <div align="left" style={{width: '60vw'}}>
         <h3 style={{display: 'block', backgroundColor: primarySilverColour, color: 'black'}}> Most popular curriculums</h3>
          
         <div style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center'}}> 
@@ -131,7 +132,7 @@ import { Link } from 'react-router-dom';
                 })
             }
         </div>
-                </div>
+                </div> */}
                 <br/> 
                 <br/> 
                 <br/> 
@@ -151,7 +152,7 @@ import { Link } from 'react-router-dom';
                 //     }
                 //     })
                 pathsData?.paths?.map(path => {
-                    path = JSON.parse(path);
+                    path = JSON.parse(path !== "" ? path : null);
                     return <><PathCard data={{...path, id: pathsData.id}} /></>
                 })
             }

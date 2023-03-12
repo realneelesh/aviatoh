@@ -13,8 +13,7 @@
             "urls": [
                 {
                     "title": "Understanding URLs ( video )",
-                    "url": "https://www.youtube.com/embed/5Jr-_Za5yQM",
-                    "expectedContent": ""
+                    "url": "https://www.youtube.com/embed/5Jr-_Za5yQM"
                 },
                 {
                     "title": "What is a URL",

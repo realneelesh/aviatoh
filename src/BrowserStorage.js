@@ -2,6 +2,7 @@ const bStorage = sessionStorage;
 
 export const userInfoKey = 'userInfoKey';
 export const discDataKey = 'aviatohDiscData';
+export const currentAviatohApp = "currentAviatohApp";
 
 
 // this handles JSON stringify and JSON parsing
