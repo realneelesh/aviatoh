@@ -23,6 +23,7 @@ import CreatePath from './components/CreatePath';
 import axios from 'axios';
 import AppCard from './components/CurriculumsAppCard';
 import FigmaLens from './apps/FigmaLens';
+import AutoMedium from './apps/automedium';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -175,8 +176,8 @@ function App() {
                 
 
               {/* app2 */}
-              <Route path="/app2" element={<>
-                <FigmaLens />
+              <Route path="/automedium" element={<>
+                <AutoMedium />
               </>} />
 
 
@@ -252,11 +253,12 @@ function App() {
                   browserStorage.setItem(currentAviatohApp, '0');
                   signInWithPopup(auth, provider);
                 }} 
-                appName={<><span style={{fontSize: '24px'}}>🎯</span> &nbsp; Curiosity</>} description="Self-study curriculums with an application that keeps you from distracting on the web. Organised, topic wise collection of freely available resources, curated by experts." />
+                appName={<><span style={{fontSize: '25px'}}>🎯</span> &nbsp; Curiosity</>} 
+                description="Self-study curriculums with an application that keeps you from distracting on the web. Organised, topic wise collection of freely available resources, curated by experts." />
 </a>
  
-                {/* <a
-              href="/#/app2"
+                <a
+              href="/#/automedium"
               onClick={()=>{
                 document.querySelectorAll("*").forEach(i => {
                   i.style.opacity = '0';
@@ -267,9 +269,9 @@ function App() {
               }}
               style={{textDecoration: 'none'}}>
               <AppCard 
-                appName="Figma lens"
-                description="coming soon..." />
-             </a>  */}
+                appName={<><span style={{fontSize: '25px'}}>🌱</span> &nbsp; Auto.Medium</>}
+                description="Automated content creation for medium using openai tools. Provide titles for blogs and it will create content and publish them for you. Uses cypress for automation." />
+             </a>  
 
               </div>   
              <span 
