@@ -123,7 +123,7 @@ function AutoMedium(props) {
             <br/>
             <br/>
             <br/>
-            * We have multiple medium accounts,<br/> for different types of niche!
+            * for nsharma1@me.iitr.ac.in<br/>
         </div>
         <div style={{
             width: '40%',
