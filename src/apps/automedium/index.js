@@ -123,7 +123,7 @@ function AutoMedium(props) {
             <br/>
             <br/>
             <br/>
-            * for nsharma1@me.iitr.ac.in<br/>
+            <br/>
         </div>
         <div style={{
             width: '40%',
@@ -135,7 +135,7 @@ function AutoMedium(props) {
         align="left"
         >
             <div style={{backgroundColor: primaryBlueColour, width: '100%', padding: '2px 0px'}}>
-                <span style={{color: 'white'}}>&nbsp;Monitoring</span> &nbsp;{apiBaseUrl}
+                <span style={{color: 'white'}}>&nbsp;Monitoring</span> &nbsp;{apiBaseUrl} for node server (openai and cypress)
             </div>
             <ul id="terminal" style={{display: 'flex', flexDirection: 'column'}}>
             </ul>

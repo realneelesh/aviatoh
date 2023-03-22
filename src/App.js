@@ -24,6 +24,7 @@ import axios from 'axios';
 import AppCard from './components/CurriculumsAppCard';
 import FigmaLens from './apps/FigmaLens';
 import AutoMedium from './apps/automedium';
+import HomeHome from './pages/HomeHome';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -167,6 +168,10 @@ function App() {
 
               {/* study curriculums */}
               <Route exact path="/" element={<>
+                <HomeHome email={email} /> 
+              </>}
+              /> 
+              <Route path="/academia" element={<>
                 <Home email={email} /> 
               </>}
               /> 
@@ -205,7 +210,7 @@ function App() {
 
     { !browserStorage.getItem(userInfoKey) && 
     <>
-              <div style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', padding: '150px 0', justifyContent: 'flex-start'}}>
+              <div style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', padding: '150px 0', justifyContent: 'center'}}>
                 <h1 style={{
                   position: 'absolute',
                   top: '-10px',
@@ -234,46 +239,10 @@ function App() {
                   display: 'flex', alignItems: 'center'}}>
         Products 
          </h1> */}
-         <a
-              href="/#/"
-              onClick={()=>{
-                document.querySelectorAll("*").forEach(i => {
-                  i.style.opacity = '0';
-                })
-                browserStorage.setItem(currentAviatohApp, '1');
-                
+         <button style={{borderBottom: '1px solid silver'}} onClick={()=>{
                 signInWithPopup(auth, provider);
-              }}
-              style={{textDecoration: 'none'}}>
-                <AppCard 
-                onClick={()=>{
-                  document.querySelectorAll("*").forEach(i => {
-                    i.style.opacity = '0';
-                  })
-                  browserStorage.setItem(currentAviatohApp, '0');
-                  signInWithPopup(auth, provider);
-                }} 
-                appName={<><span style={{fontSize: '25px'}}>🎯</span> &nbsp; Curiosity</>} 
-                description="Self-study curriculums with an application that keeps you from distracting on the web. Organised, topic wise collection of freely available resources, curated by experts." />
-</a>
- 
-                <a
-              href="/#/automedium"
-              onClick={()=>{
-                document.querySelectorAll("*").forEach(i => {
-                  i.style.opacity = '0';
-                })
-                browserStorage.setItem(currentAviatohApp, '1');
-                
-                signInWithPopup(auth, provider);
-              }}
-              style={{textDecoration: 'none'}}>
-              <AppCard 
-                appName={<><span style={{fontSize: '25px'}}>🌱</span> &nbsp; Auto.Medium</>}
-                description="Automated content creation for medium using openai tools. Provide titles for blogs and it will create content and publish them for you. Uses cypress for automation." />
-             </a>  
-
-              </div>   
+         }}>Sign In</button>
+           </div>   
              <span 
              align="right"
              style={{
