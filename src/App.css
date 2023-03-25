@@ -4,6 +4,10 @@
   padding: 0px 8px;
 }
 
+* {
+  font-family: 'Sen';
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -59,12 +63,14 @@ textarea {
 button {
   background-color: white;
   border: 0px;
-  cursor: pointer;
   margin: 10px;
-  padding: 7px 19px;
+  padding: 7px 10px;
+  border-radius: 3px;
 }
 button:hover {
   background-color: rgb(240, 240, 240);
+
+  cursor: pointer;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -73,6 +79,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #a21028;
   color: white;
   padding: 6px 19px;
+  border-radius: 4px;
 }
 
 .h3:hover {  
@@ -253,4 +260,33 @@ input[type="submit"] {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: transparent;
+}
+
+.tox-statusbar__branding{
+  display: none;
+}
+
+.tox-notifications-container{
+  display: none;
+}
+
+.fa.fa-trash:hover {
+ color: #e81c3e !important;
+}
+ 
+.tox-statusbar__path{
+  display: none !important;
+}
+
+.tox-tinymce {
+  border-radius: 0px !important; 
+  border: 0px solid silver !important;
+}
+
+button[aria-label="Help"]{
+  display: none !important;
+}
+
+.fa.gear:hover{
+  color: grey;
 }

@@ -95,57 +95,7 @@ function PathPage(props) {
             display: 'flex',
             justifyContent: 'space-between'
          }}>
-           
-            <div align="left" style={{overflowY: 'scroll', height: '83vh', width: '23vw', backgroundColor: '', paddingTop: '0px'}}>
-                {/* &nbsp;Topics:
-                <br/>
-                <br/> */}
-                 {  
-                <>
-                <><button
-                style={{
-                    position: 'relative',
-                    textAlign: 'left',
-                    width: '95%',
-                    backgroundColor: activeTopic?.title == null ? primarySilverColour : 'transparent',
-                    color: activeTopic?.title == null ? 'black' : 'black',
-                    margin: '2px',
-                    fontSize: '13px'
-                }}
-                onClick={()=>{
-                    setActiveTopic(null);
-                }}
-                ><input className="checkboxInput" type="checkbox"
-                checked={true}
-                style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} />
-                    00. Introduction
-                </button> 
-                </>
-                <div align="center"></div>
-                    {pathData?.topics.map((topic, i) => {
-                        return <><button
-                        style={{
-                            position: 'relative',
-                            textAlign: 'left',
-                            width: '95%',
-                            backgroundColor: topic.title === activeTopic?.title ? primarySilverColour : 'white',
-                            color: topic.title === activeTopic?.title ? 'black' : 'black',
-                            margin: '2px',
-                            fontSize: '13px'
-                        }}
-                        onClick={()=>{
-                            setActiveTopic(topic);
-                        }}
-                        ><input className="checkboxInput" type="checkbox"
-                        checked={checkTopic(topic)}
-                        style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} /> {i<9 ? `0${i+1}` : i+1}. {topic.title}</button></>
-                    })}
-                    </>
-                  
-            }
-
-            </div>  
-            <div style={{overflowY: 'scroll', height: '82vh', width: '75vw', paddingTop: '0', paddingRight: '20px'}} align="left">
+            <div style={{overflowY: 'scroll', height: '82vh', width: '75vw', padding: '0 20px'}} align="left">
                 {
                     !activeTopic && <div>  
                     <div align="center" style={{
@@ -420,6 +370,55 @@ function PathPage(props) {
                     })
                 }
             </div>
+            <div align="left" style={{overflowY: 'scroll', height: '83vh', width: '23vw', backgroundColor: '', paddingTop: '0px'}}>
+                {/* &nbsp;Topics:
+                <br/>
+                <br/> */}
+                 {  
+                <>
+                <><button
+                style={{
+                    position: 'relative',
+                    textAlign: 'left',
+                    width: '95%',
+                    backgroundColor: activeTopic?.title == null ? primarySilverColour : 'transparent',
+                    color: activeTopic?.title == null ? 'black' : 'black',
+                    margin: '2px',
+                    fontSize: '13px'
+                }}
+                onClick={()=>{
+                    setActiveTopic(null);
+                }}
+                ><input className="checkboxInput" type="checkbox"
+                checked={true}
+                style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} />
+                    00. Introduction
+                </button> 
+                </>
+                <div align="center"></div>
+                    {pathData?.topics.map((topic, i) => {
+                        return <><button
+                        style={{
+                            position: 'relative',
+                            textAlign: 'left',
+                            width: '95%',
+                            backgroundColor: topic.title === activeTopic?.title ? primarySilverColour : 'white',
+                            color: topic.title === activeTopic?.title ? 'black' : 'black',
+                            margin: '2px',
+                            fontSize: '13px'
+                        }}
+                        onClick={()=>{
+                            setActiveTopic(topic);
+                        }}
+                        ><input className="checkboxInput" type="checkbox"
+                        checked={checkTopic(topic)}
+                        style={{cursor: 'pointer', display: 'inline-block', width: '16%', position: 'absolute', right: '5px', bottom: '5px'}} /> {i<9 ? `0${i+1}` : i+1}. {topic.title}</button></>
+                    })}
+                    </>
+                  
+            }
+
+            </div>  
          </div>
 
 

@@ -5,6 +5,7 @@ import '../App.css';
 import { browserStorage, userInfoKey } from '../BrowserStorage';
 import { signOut } from 'firebase/auth';
 import { showPage } from '../App';
+import { Logo } from '../assets';
 
 
 function Profile(props) {
@@ -74,7 +75,8 @@ function Profile(props) {
     }
 
     return (
-        <div align="left"> 
+        <div align="left">
+            <img src={Logo} style={{padding: '10px', width: '200px', position: 'absolute', bottom: '27px', right: '100px'}} /> 
             <br/>
             <br/>
             <br/>

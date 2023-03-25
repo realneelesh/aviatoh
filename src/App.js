@@ -12,19 +12,22 @@ import EducationForm from './pages/EducationForm';
 import ParticularsForm from './pages/ParticularsForm';
 import Profile from './pages/Profile';
 
-import { HashRouter as BrowserRouter, Routes, Route, useNavigate, useNavigation } from 'react-router-dom';
+import { HashRouter as BrowserRouter, Routes, Route, useNavigate, useNavigation, Link } from 'react-router-dom';
 import ProfileShow from './pages/ProfileShow';
 import NavigationBar from './pages/NavigationBar';
 import Home from './pages/Home';
 import { MyClock } from './components/Clock';
 import PathPage from './pages/PathPage';
 import { AviatohPronunciation, FreeTrial, Logo, logo } from './assets';
-import CreatePath from './components/CreatePath';
+import CreatePath from './pages/CreatePath';
 import axios from 'axios';
 import AppCard from './components/CurriculumsAppCard';
 import FigmaLens from './apps/FigmaLens';
 import AutoMedium from './apps/automedium';
 import HomeHome from './pages/HomeHome';
+import TextEditor from './components/TextEditor';
+import YourPaths from './pages/YourPaths';
+import DocumentationLandingPage from './pages/landing_pages/DocumentationLandingPage';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -38,8 +41,10 @@ const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
-export const primaryBlueColour = '#2e4057';
-export const primaryRedColour = '#a21028';
+export const primaryBlueColour = '#2e4c57';
+export const primaryRedColour = '#FF5733';
+export const primaryYellowColour = '#ffb43b';
+
 export const primarySilverColour = 'rgb(242,242,242)';
 
 window.mobileCheck = function() {
@@ -50,8 +55,7 @@ window.mobileCheck = function() {
 
 export const showPage = () => {
   setTimeout(()=>{
-  const elements = document.querySelectorAll('*');
-  console.log(elements);
+  const elements = document.querySelectorAll('*'); 
 
   for (let i = 0; i < elements.length; i++) {
     elements[i].style.opacity = '1';
@@ -79,7 +83,7 @@ function App() {
         console.log(user.email);
         if(!browserStorage.getItem(userInfoKey)){
           browserStorage.setItem(userInfoKey, user);
-          updateOrCreateDocument(usersCollection, user.email, { })
+          updateOrCreateDocument(usersCollection, user.email, {})
             .then((res) => { 
             })
             .catch(() => {
@@ -161,14 +165,17 @@ function App() {
    </div>
   :
 <div>
-    { browserStorage.getItem(userInfoKey) && <BrowserRouter>
-      <NavigationBar />
+    { browserStorage.getItem(userInfoKey) && <BrowserRouter >
+    <div style={{
+      minHeight: '100vh'
+    }}>
+      {/* <NavigationBar /> */}
 
             <Routes>
 
               {/* study curriculums */}
               <Route exact path="/" element={<>
-                <HomeHome email={email} /> 
+                <YourPaths email={email} /> 
               </>}
               /> 
               <Route path="/academia" element={<>
@@ -178,7 +185,15 @@ function App() {
               <Route path="/path/:discid/:title" element={<>
                 <PathPage email={email} />
               </>} />
-                
+              <Route path="/texteditor" element={<>
+                <TextEditor email={email} />
+              </>} />
+              <Route path="edit/:email/:pathtitle" element={<>
+                <CreatePath email={email} />
+              </>} />
+              <Route path="/app/documentations" element={<>
+                <YourPaths email={email}/>
+              </>} />
 
               {/* app2 */}
               <Route path="/automedium" element={<>
@@ -205,55 +220,25 @@ function App() {
 
               </>} />
               </Routes>
+              <Link to="/profile" style={{color: 'black'}}><i style={{fontSize:'33px',
+            position: 'absolute',
+            bottom: '35px',
+            right: '35px',
+            cursor: 'pointer',
+            borderRadius: '50%',
+            boxShadow: '0px 0px 150px 30px '+ 'grey',
+            backgroundColor: 'transparent',
+            padding: '5px'
+            }} className="fa gear">&#xf013;</i>
+            </Link>
+            </div>
     </BrowserRouter>}
 
 
     { !browserStorage.getItem(userInfoKey) && 
     <>
-              <div style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', padding: '150px 0', justifyContent: 'center'}}>
-                <h1 style={{
-                  position: 'absolute',
-                  top: '-10px',
-                  left: '8px',
-                  marginTop: '17px', backgroundColor: 'transparent', color: 'grey', fontWeight: '800', paddingLeft: '4px', display: 'flex', alignItems: 'center'}}>
-          <img src={Logo} style={{width: '80px'}} />
-        &nbsp; 
-        &nbsp;  
-         </h1>
-         {/* <h4 style={{
-                  position: 'absolute',
-                  top: '-10px',
-                  right: '8px',
-                  marginTop: '17px',
-                  fontWeight: '800'}}>
-          This website is for sale 
-         </h4> */}
-         {/* <marquee
-         style={{position: 'absolute', bottom: '0px'}}
-         >This website is for sale</marquee> */}
-         {/* <h1 style={{
-                  position: 'absolute',
-                  top: '90px',
-                  marginTop: '17px', backgroundColor: 'transparent',
-                  color: 'silver', fontWeight: '500', paddingLeft: '4px',
-                  display: 'flex', alignItems: 'center'}}>
-        Products 
-         </h1> */}
-         <button style={{borderBottom: '1px solid silver'}} onClick={()=>{
-                signInWithPopup(auth, provider);
-         }}>Sign In</button>
-           </div>   
-             <span 
-             align="right"
-             style={{
-                padding: '10px',
-                position: 'absolute', 
-                bottom: '0px',
-                right: '8px'
-             }}>
-             Instagram: @avitoh_group
-            </span>
-              </> 
+             <DocumentationLandingPage />
+                 </> 
         }
     </div>
       }
