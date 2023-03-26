@@ -57,7 +57,7 @@ function DocumentationLandingPage(props) {
       <br />
      
       <br />
-      {!from === 'mobile' && <div style={{ display: "flex", justifyContent: "center", alignItems: 'center' }}>
+      {from !== 'mobile' && <div style={{ display: "flex", justifyContent: "center", alignItems: 'center' }}>
        
       <div
           style={{ cursor: "pointer", marginRight: '33px' }}
