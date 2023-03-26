@@ -107,14 +107,14 @@ function Project(props) {
           }}>
         
     {
-        user?.paths?.filter(x=>x.project === projecttitle).map((path, i) => {
+        user?.paths?.filter(x=>x.project === projecttitle).reverse().map((path, i) => {
             return <Link
                 to={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 style={{
                   textDecoration: "none",
                   color: primaryBlueColour,
-                  fontSize: "20px",
-                  fontWeight: '900',
+                  fontSize: "18px",
+                  fontWeight: '700',
                   width: '32vw',
                   backgroundColor: 'rgb(245, 245, 245)',
                   margin: '15px',
@@ -122,7 +122,7 @@ function Project(props) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  minHeight: '100px',
+                  minHeight: '80px',
                   borderLeft: '12px solid rgb(230, 230, 230)'
                   //   borderLeft: '12px solid ' + `rgb(${Math.random()*150}, ${Math.random()*102}, ${Math.random()*225})`
 
@@ -138,7 +138,7 @@ function Project(props) {
                   }}
                   className="docs"
                 >
-                  {path.title}
+                  {path.title.toUpperCase()}
                 </div>
               </Link>
         })
@@ -157,7 +157,7 @@ function Project(props) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '100px',
+        minHeight: '80px',
         borderLeft: '12px solid ' + `transparent`
 
      }}

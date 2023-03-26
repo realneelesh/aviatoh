@@ -140,7 +140,7 @@ function YourPaths(props) {
               {" "}
               <div
                 style={{
-                  padding: "5px 20px",
+                  padding: "15px 20px",
                   borderRadius: "4px",
                   boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
                   backgroundColor: "white",
