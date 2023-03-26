@@ -12,6 +12,7 @@ import { Logo, Signinwithgoogleicon } from "../../assets";
 const provider = new GoogleAuthProvider();
 
 function DocumentationLandingPage(props) {
+    const {from } = props;
   return (
     <div
       style={{
@@ -56,7 +57,7 @@ function DocumentationLandingPage(props) {
       <br />
      
       <br />
-      <div style={{ display: "flex", justifyContent: "center", alignItems: 'center' }}>
+      {!from === 'mobile' && <div style={{ display: "flex", justifyContent: "center", alignItems: 'center' }}>
        
       <div
           style={{ cursor: "pointer", marginRight: '33px' }}
@@ -95,7 +96,21 @@ function DocumentationLandingPage(props) {
            <i style={{ fontSize: '42px', color: 'black'}} className='fab'>&#xf09b;
   </i>
         </div>
-      </div> 
+      </div> }
+
+      {
+        from === 'mobile' && <div align="center">
+        <br/>
+        <br/>
+        <br/>
+        <h3 style={{
+            position: 'fixed',
+            bottom: '290px',
+            width: '100vw',
+            left: '0px'
+        }}>Only available for desktop screens</h3>
+        </div>
+      }
     </div>
   );
 }

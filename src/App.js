@@ -106,7 +106,8 @@ function App() {
 
       {
         window.mobileCheck() ? 
-         <DocumentationLandingPage />
+        
+         <DocumentationLandingPage from={'mobile'} />
   :
 <div>
     { browserStorage.getItem(userInfoKey) && <BrowserRouter >
