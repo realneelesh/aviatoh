@@ -45,7 +45,7 @@ function DocumentationLandingPage(props) {
             autoStart: true,
             loop: true,
             deleteSpeed: 20,
-            delay: 35,
+            delay: 50,
             pauseFor: 800,
           }}
         />
