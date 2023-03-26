@@ -7,7 +7,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { browserStorage, currentAviatohApp, userInfoKey } from './BrowserStorage';
 import ExperienceForm from './pages/ExperienceForm';
-import { firebaseConfig, updateOrCreateDocument, usersCollection } from './db';
+import { firebaseConfig, getDocument, updateOrCreateDocument, usersCollection } from './db';
 import EducationForm from './pages/EducationForm';
 import ParticularsForm from './pages/ParticularsForm';
 import Profile from './pages/Profile';
@@ -29,6 +29,7 @@ import TextEditor from './components/TextEditor';
 import YourPaths from './pages/YourPaths';
 import DocumentationLandingPage from './pages/landing_pages/DocumentationLandingPage';
 import Project from './pages/Project';
+import ViewDoc from './pages/ViewDoc';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -46,7 +47,7 @@ export const primaryBlueColour = '#2e4c57';
 export const primaryRedColour = '#a21028';
 export const primaryYellowColour = '#ffb43b';
 
-export const primarySilverColour = 'rgb(242,242,242)';
+export const primarySilverColour = 'rgb(240,240,240)';
 
 window.mobileCheck = function() {
   let check = false;
@@ -84,12 +85,57 @@ function App() {
         console.log(user.email);
         if(!browserStorage.getItem(userInfoKey)){
           browserStorage.setItem(userInfoKey, user);
-          updateOrCreateDocument(usersCollection, user.email, {})
+          getDocument(usersCollection, user.email).then(res => {
+            if(!res.data()){
+              updateOrCreateDocument(usersCollection, user.email, {
+                projects: [
+                  {
+                    title: 'Mobile App (Sample Project)',
+                    description: ''
+                  }
+                ],
+                paths: [
+                  {
+                    title: 'Proof of Concept',
+                    project: 'Mobile App (Sample Project)',
+                    description: '',
+                    topics: []
+                  },
+                  {
+                    title: 'Technical Documentation',
+                    project: 'Mobile App (Sample Project)',
+                    description: '',
+                    topics: []
+                  },
+                  {
+                    title: 'UI/UX Design Docs',
+                    project: 'Mobile App (Sample Project)',
+                    description: '',
+                    topics: []
+                  },
+                  {
+                    title: 'New Developer Onboarding',
+                    project: 'Mobile App (Sample Project)',
+                    description: '',
+                    topics: []
+                  },
+                  {
+                    title: 'FAQs',
+                    project: 'Mobile App (Sample Project)',
+                    description: '',
+                    topics: []
+                  }
+                ]
+              })
             .then((res) => { 
+              window.location.reload();
             })
             .catch(() => {
               alert("Something went wrong");
             });
+            }
+          })
+
          // window.location.reload();
         }
         // ...
@@ -126,7 +172,7 @@ function App() {
               <Route path="/academia" element={<>
                 <Home email={email} /> 
               </>}
-              /> 
+              /> /project" + "/view/" + email + "/" + project.title
               <Route path="/path/:discid/:title" element={<>
                 <PathPage email={email} />
               </>} />
@@ -141,6 +187,10 @@ function App() {
               </>} />
               <Route path="/project/:projecttitle" element={<>
                 <Project email={email}/>
+              </>} />
+              <Route path="/project/view/:email/:projecttitle" element={<>
+                <ViewDoc />
+
               </>} />
 
               {/* app2 */}
@@ -170,8 +220,8 @@ function App() {
 
               <Link to="/profile" style={{color: 'grey'}}><i style={{fontSize:'33px',
                 position: 'fixed',
-                bottom: '30px',
-                right: '30px',
+                bottom: '5px',
+                right: '5px',
                 cursor: 'pointer',
                 borderRadius: '50%',
                 // boxShadow: '0px 0px 150px 30px '+ 'grey',

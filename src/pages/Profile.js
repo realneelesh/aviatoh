@@ -201,7 +201,7 @@ function Profile(props) {
             
 
            
-            <img src={Logo} style={{padding: '10px', width: '150px', position: 'absolute', bottom: '25px', right: '78px'}} /> 
+            <img src={Logo} style={{padding: '10px', width: '150px', position: 'absolute', bottom: '2px', right: '50px'}} /> 
 
         </div>
     );

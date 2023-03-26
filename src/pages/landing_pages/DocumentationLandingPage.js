@@ -17,16 +17,16 @@ function DocumentationLandingPage(props) {
     <div
       style={{
         minHeight: "100vh",
-        background: `url(https://images.pexels.com/photos/7262790/pexels-photo-7262790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)`,
-        backgroundSize: "cover",
+        // background: `url(https://images.pexels.com/photos/2078126/pexels-photo-2078126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)`,
+        backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "left 53%",
+        backgroundPosition: "right top",
         width: "100vw",
         marginLeft: "-8px",
-        backgroundColor: primaryBlueColour,
+        backgroundColor: 'white',
       }}
     >
-      <div style={{ fontSize: "35px", color: "black" }}>
+      <div style={{ fontSize: "35px", color: "silver", fontWeight:'300' }}>
         <br />
         <br />
         <br />
@@ -39,14 +39,14 @@ function DocumentationLandingPage(props) {
         <Typewriter
           options={{
             strings: [
-              "Streamline your documentation process.",
-              "Create professional-grade documents effortlessly.",
+              "Effortlessly document your product prototypes.",
+              "Simplified documentation flow, Robust text editor.",
             ],
             autoStart: true,
             loop: true,
             deleteSpeed: 20,
-            delay: 50,
-            pauseFor: 800,
+            delay: 45,
+            pauseFor: 1000,
           }}
         />
       </div>
@@ -65,7 +65,7 @@ function DocumentationLandingPage(props) {
             signInWithPopup(auth, provider);
           }}
         >
-           <i style={{ fontSize: '38px', color: 'black' }} className="fab">
+           <i style={{ fontSize: '38px', color: 'grey' }} className="fab">
     
   </i>
         </div>
@@ -93,7 +93,7 @@ function DocumentationLandingPage(props) {
             signInWithPopup(auth, provider);
           }}
         >
-           <i style={{ fontSize: '42px', color: 'black'}} className='fab'>&#xf09b;
+           <i style={{ fontSize: '42px', color: 'grey'}} className='fab'>&#xf09b;
   </i>
         </div>
       </div> }

@@ -18,7 +18,7 @@ function Project(props) {
     const { projecttitle } = useParams();
     const [pathToAdd, setPathToAdd] = useState({
         title: "",
-        description: `<h3 align="center" style="color: rgb(149, 165, 166); font-weight: 500;" data-mce-style="color: rgb(149, 165, 166);text-align: center; font-weight: 500;"><br/><br/><br/><br/>Add or select items from the menu to enable the editor...</h3>`,
+        description: ``,
         topics: [{}],
         project: null
       });
@@ -62,6 +62,7 @@ function Project(props) {
     top: '0px',
     width: '100vw',
     marginLeft: '-8px',
+    backgroundColor: primarySilverColour,
     padding: '7px 0px'}}>
   
   <span> 
@@ -96,8 +97,7 @@ function Project(props) {
               </button>
 
   </div>
-       <br/>
-       <br/>
+       <br/> 
         <div style={{
             display: 'flex'
         }}>
@@ -107,30 +107,30 @@ function Project(props) {
             paddingLeft: '9px',
             display: 'flex',
             flexWrap: 'wrap',
-            width: '100%',
-            justifyContent: 'center',
+            width: '100%', 
           }}>
         
     {
-        user?.paths?.filter(x=>x.project === projecttitle).reverse().map((path, i) => {
+        user?.paths?.filter(x=>x.project === projecttitle).map((path, i) => {
+            var asciiValueSumOfTitle = 0;
+            path.title.split('').forEach(i=>{
+                asciiValueSumOfTitle+=i.charCodeAt(0);
+            }); 
+            asciiValueSumOfTitle=(asciiValueSumOfTitle*i)%90; 
             return <Link
                 to={"/edit/" + email + "/" + projecttitle + "/" + path.title}
+                className="scopes"
                 style={{
-                  textDecoration: "none",
-                  color: primaryBlueColour,
-                  fontSize: "18px",
-                  fontWeight: '700',
-                  width: '30vw',
-                  backgroundColor: 'rgb(245, 245, 245)',
-                  margin: '15px',
-                  borderRadius: '6px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  minHeight: '80px',
-                  borderLeft: '12px solid rgb(230, 230, 230)'
-                  //   borderLeft: '12px solid ' + `rgb(${Math.random()*150}, ${Math.random()*102}, ${Math.random()*225})`
-
+                    paddingBottom: "23px",
+                    paddingTop: "21px",
+                    paddingLeft: "25px",
+                    paddingRight: "25px",
+                    boxShadow: "rgba(0, 0, 0, 0.08) 0px 0px 7px",
+                    backgroundColor: "white", 
+                    color: "grey",
+                    fontSize: '18px',
+                    textDecoration: 'none',
+                    marginBottom: '1px'
                 }}
               > 
                 <div
@@ -138,49 +138,15 @@ function Project(props) {
                   style={{ 
                   textAlign: 'center',
                     borderRadius: "4px", 
-                    backgroundColor: 'inherit',
-                    margin: "5px",
+                    backgroundColor: 'inherit'
                   }}
-                  className="docs"
                 >
                   {path.title}
                 </div>
               </Link>
         })
     }
-    {
-     user?.paths?.filter(x=>x.project === projecttitle).length%2 === 0 ? null : 
-     <Link
-     style={{
-       opacity: '0',
-       textDecoration: "none",
-       color: "gray",
-       fontSize: "29px",
-        width: '30vw',
-        margin: '15px',
-        borderRadius: '6px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '80px',
-        borderLeft: '12px solid ' + `transparent`
-
-     }}
-   > 
-     <div
-     align="left"
-       style={{ 
-       opacity: '0',
-       textAlign: 'center',
-         borderRadius: "4px", 
-         backgroundColor: 'inherit',
-         margin: "5px",
-       }}
-       className="docs"
-     > 
-     </div>
-   </Link>
-    }
+   
 </div>
 
 
@@ -224,7 +190,7 @@ function Project(props) {
         }}
         onChange={(e) => {
           console.log(user.paths, email);
-          setPathToAdd({ ...pathToAdd, title: e.target.value.trim() });
+          setPathToAdd({ ...pathToAdd, title: e.target.value.trim().replaceAll('/', '|') });
         }}
         placeholder="Scope title"
       />
@@ -246,24 +212,23 @@ function Project(props) {
                 ...user.paths,
                 {
                   ...pathToAdd,
-                  topics: [
-                    {
-                      title: "Sample Feature 1",
-                      id: key,
-                    },
-                  ],
-                  project: projecttitle
+                  project: projecttitle,
+                  topics: [],
+                  description: ""
                 },
               ],
             })
               .then((res) => {
-                updateOrCreateDocument(topicsCollection, key, {
-                  data: '<p style="color: rgb(126, 140, 141);" align="center">Feature</p><h2 style="text-align: center;"><span style="color: rgb(126, 140, 141);">Sample Feature Title</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
-                }).then((res) => {
-                  setPathAdded(!pathAdded);
-                  setAddNewPath(false);
+                setPathAdded(!pathAdded);
+                 setAddNewPath(false);
                   document.getElementById("doctitle").value = "";
-                });
+                // updateOrCreateDocument(topicsCollection, key, {
+                //   data: '<p style="color: rgb(126, 140, 141);" align="center">Feature</p><h2 style="text-align: center;"><span style="color: rgb(126, 140, 141);">Sample Feature Title</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
+                // }).then((res) => {
+                //   setPathAdded(!pathAdded);
+                //   setAddNewPath(false);
+                //   document.getElementById("doctitle").value = "";
+                // });
               })
               .catch((e) => {
                 alert(e);

@@ -1,6 +1,6 @@
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { primaryBlueColour, primaryRedColour, primarySilverColour, primaryYellowColour } from "../App";
 import TextEditor from "../components/TextEditor";
 import {
@@ -201,8 +201,7 @@ function CreatePath(props) {
                 background: !changesSaved ? 'white' : 'transparent',
                 color: !changesSaved ? primaryBlueColour : 'transparent',
                 fontWeight: 400,
-                display: "inline", 
-                marginRight: '3px',
+                display: "inline",
                 padding: '5px 15px'
                 }}
                 onClick={() => {
@@ -213,15 +212,14 @@ function CreatePath(props) {
             >
                 Save
             </button> }
-            &nbsp;
-            &nbsp;
-            &nbsp;
-            &nbsp;
             &nbsp; 
 
-            <i onClick={()=>{
-             }} className="fa fa-share-alt" style={{ zIndex: '9999', position: 'absolute', right: '13px', top:'10px', fontSize: '23px', cursor: 'pointer', color: 'grey'}}></i>
-              &nbsp;
+            {changesSaved && <Link to={"/project/view/"+email+"/"+projecttitle}>
+              <span onClick={()=>{
+                }} style={{ zIndex: '9999', position: 'absolute', right: '13px', top:'10px', fontSize: '17px', cursor: 'pointer', color: 'grey'}}>
+                  Preview
+             </span> 
+              </Link>}
             
   </span>
   </div>

@@ -77,8 +77,19 @@ button:hover {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 250;
   display: inline;
-  background-color: #a21028;
-  color: white;
+  border: 1px solid #bbbbbb;
+  /* background-color: #254B62; */
+  color: #254B62;
+  padding: 6px 19px;
+  border-radius: 4px;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  font-weight: 250;
+  display: inline;
+  border: 1px solid #254B62;
+  /* background-color: #254B62; */
+  color: #254B62;
   padding: 6px 19px;
   border-radius: 4px;
 }
@@ -254,6 +265,12 @@ button[aria-label="Help"]{
   transition-duration: 1000ms;
 }
  
-.docs:hover {
-  color:rgb(41, 41, 41);
+ 
+.ignore-css{
+  all:unset !important;
 }
+
+.scopes:hover {
+  background-color: rgb(241, 241, 241) !important; 
+}
+ 
