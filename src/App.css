@@ -120,7 +120,7 @@ table {
 }
 
 .fa-times-circle:hover {
-  color: red !important;
+  color: rgb(198, 27, 27) !important;
 }
 
 select {

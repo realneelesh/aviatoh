@@ -176,6 +176,18 @@ function YourPaths(props) {
     }}
     align="center"
     >
+        <i 
+        onClick={()=>{
+            setAddNewProject(false);
+        }}
+        style={{
+            position: 'absolute',
+            right: '20px',
+            cursor: 'pointer',
+            top: '15px',
+            fontSize: '20px',
+        }} className='fas fa-times-circle'></i>
+
         <br/>
         <br/> 
       <input
@@ -258,7 +270,7 @@ function YourPaths(props) {
           options={{
             strings: [
                " ⚠️  No projects found", 
-               " Click on '+ Add Project' button to add one"
+               " Click on '+ Add Project' to add"
             ],
             autoStart: true,
             loop: true,

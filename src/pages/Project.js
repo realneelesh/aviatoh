@@ -202,6 +202,17 @@ function Project(props) {
     }}
     align="center"
     >
+        <i 
+        onClick={()=>{
+            setAddNewPath(false);
+        }}
+        style={{
+            position: 'absolute',
+            right: '20px',
+            cursor: 'pointer',
+            top: '15px',
+            fontSize: '20px',
+        }} className='fas fa-times-circle'></i>
         <br/> 
       
         <br/> 
@@ -290,7 +301,7 @@ function Project(props) {
           options={{
             strings: [
                " ⚠️  No documentation scopes found for this project", 
-               " Click on '+ Add a Scope' button to add one"
+               " Click on '+ Add a Scope' to add"
             ],
             autoStart: true,
             loop: true,
