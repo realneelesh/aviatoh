@@ -92,7 +92,7 @@ function TextEditor(props) {
           toolbar:
             "blocks | " +
             "bold italic forecolor backcolor | alignleft aligncenter " +
-            "alignright | bullist numlist | " +
+            "alignright alignjustify | bullist numlist | " +
             "table | image | link",
           content_style:
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px; borderRadius: 0px;}",
