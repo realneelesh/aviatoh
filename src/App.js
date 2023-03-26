@@ -106,64 +106,7 @@ function App() {
 
       {
         window.mobileCheck() ? 
-        <div
-        style={{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center', 
-    flexDirection: 'column',
-    width: '100vw',
-    marginLeft: '-8px',
-    height: '80vh'
-  }}> 
-  <div align="left" style={{position: 'absolute', top: '-10px', left: '10px'}}>
-  <h1 style={{marginTop: '17px', backgroundColor: 'transparent', color: 'grey', fontWeight: '800', paddingLeft: '4px', display: 'flex', alignItems: 'center'}}>
-    <img src={Logo} style={{width: '80px'}} />
-  &nbsp; 
-  &nbsp;  
-   </h1>
-<audio id="aviatohPronunciation" src={AviatohPronunciation} style={{opacity: '0'}} />
-  </div> 
-    <div align="center" style={{ padding: '0'}}>
-      <h3 style={{fontSize: '20px', paddingRight: '12px', fontWeight: '600', color: 'grey', backgroundColor: 'transparent'}}>
-    {("Comprehensive")}
-    </h3>  
-    <h3 style={{fontSize: '20px', fontWeight: '500'}}>
-    {("curriculums").toUpperCase()}
-    </h3> 
-    <br/>
-
-   
-       </div> 
-       <div style={{fontSize: '14px'}}  align="center">
-     
-<br/> 
-<br/>
-<br/>
-     
-       
-        <div style={{width: '100%', backgroundColor: primaryBlueColour}}>
-       <div align="center" id="info-home" 
-       style={{width: '80%', padding: '35px', color: 'white', backgroundColor: primaryBlueColour}}>
-        <div align="center" style={{backgroundColor: 'transparent'}}>Organised, topic wise collection of freely available resources, curated by experts.</div>
-        <br/> 
-        <h3 style={{backgroundColor: 'transparent'}}>✨ Open Source ✨</h3>
-       </div>
-       </div>
-       </div>
-    <br/>  
-    <br/>  
-    <br/>  
-    <h2 style={{ 
-      position: 'relative',  
-      backgroundColor: primarySilverColour,
-      color: 'black',
-      cursor: 'pointer'
-    }}>
-      Not available for mobile screens 
- </h2>
-
-   </div>
+         <DocumentationLandingPage />
   :
 <div>
     { browserStorage.getItem(userInfoKey) && <BrowserRouter >
