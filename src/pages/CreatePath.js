@@ -14,7 +14,7 @@ import {
 function CreatePath(props) {
   const [user, setUser] = useState(null);
 
-  const { email, pathtitle } = useParams();
+  const { email, projecttitle, pathtitle } = useParams();
 
   const [cTopicId, setCTopicId] = useState(null);
   const [cTopicTitle, setCTopicTitle] = useState(null);
@@ -32,7 +32,7 @@ function CreatePath(props) {
   useEffect(() => { 
 
     if(cTopicId === null){
-        setCurrentTopicData(user?.paths.find((x) => x.title === pathtitle)
+        setCurrentTopicData(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle)
         .description)
     }
     if (cTopicId) {
@@ -77,7 +77,7 @@ function CreatePath(props) {
     let cPaths = user?.paths;
     if (
       cPaths
-        ?.find((x) => x.title === pathtitle)
+        ?.find((x) => x.title === pathtitle && x.project === projecttitle)
         .topics.find((x) => x.title === topic) || topic === ""
     ) {
       alert("Title must be unique and non-empty");
@@ -86,7 +86,7 @@ function CreatePath(props) {
       updateOrCreateDocument(topicsCollection, key, {data: `<p align='center'>feature #</p><h1 align='center' style='color:grey;'>${topic}</h1>`})
         .then((res) => {
           cPaths
-            ?.find((x) => x.title === pathtitle)
+            ?.find((x) => x.title === pathtitle && x.project === projecttitle)
             .topics.push({
               title: topic,
               id: key,
@@ -114,11 +114,11 @@ function CreatePath(props) {
     let cPaths = user?.paths;
 
     var index = cPaths
-      ?.find((x) => x.title === pathtitle)
+      ?.find((x) => x.title === pathtitle && x.project === projecttitle)
       .topics.map((x) => x.title)
       .indexOf(topic);
 
-    cPaths?.find((x) => x.title === pathtitle).topics.splice(index, 1);
+    cPaths?.find((x) => x.title === pathtitle && x.project === projecttitle).topics.splice(index, 1);
     updateOrCreateDocument(usersCollection, email, {
       paths: user?.paths,
     })
@@ -162,16 +162,34 @@ function CreatePath(props) {
     justifyContent: 'space-between',
     alignItems: 'center',
     marginRight: '-2px', 
-    background: `linear-gradient( to right, ${primarySilverColour},${primarySilverColour}, ${!changesSaved ? primaryBlueColour : 'rgb(225, 225, 225)'})`, padding: '7px 10px'}}>
+    background: `linear-gradient( to right, ${primarySilverColour},${primarySilverColour}, ${!changesSaved ? primaryBlueColour : 'rgb(225, 225, 225)'})`, 
+    padding: '8px 9px'}}>
   
   <span> 
-  <span>&nbsp;{pathtitle}</span>
   &nbsp;
-  |
+
+    Projects
+  &nbsp;
+  &nbsp;
+  <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i>
+  &nbsp;
+  &nbsp;
+  <span>{projecttitle}</span>
+  &nbsp;
+  &nbsp;
+  <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i>
+  &nbsp;
+  &nbsp;
+
+  {pathtitle}
+  {/* &nbsp;
+  &nbsp;
+  <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i>
+  &nbsp;
   &nbsp;
 
   {cTopicTitle == null ? 'Editor' : cTopicTitle}
- 
+  */}
   </span>
     
   <span>
@@ -202,7 +220,7 @@ function CreatePath(props) {
             &nbsp; 
 
             <i onClick={()=>{
-             }} className="fa fa-info-circle" style={{ zIndex: '9999', position: 'absolute', right: '11px', top:'8px', fontSize: '23px', color: primarySilverColour, background: 'grey', cursor: 'pointer', borderRadius: '50%'}}></i>
+             }} className="fa fa-share-alt" style={{ zIndex: '9999', position: 'absolute', right: '13px', top:'10px', fontSize: '23px', cursor: 'pointer', color: 'grey'}}></i>
               &nbsp;
             
   </span>
@@ -228,7 +246,7 @@ function CreatePath(props) {
             
             <input
                 id="newTopic"
-                placeholder="New Feature Title..."
+                placeholder="New topic title..."
                 style={{ display: "inline", padding: '6px 12px', width: '100%',
                 border: '0', borderBottom: '1px solid transparent', marginLeft: '2px'
               }}
@@ -254,7 +272,7 @@ function CreatePath(props) {
             </div>   
              
             {user?.paths
-            .find((x) => x.title === pathtitle)
+            .find((x) => x.title === pathtitle && x.project === projecttitle)
             .topics?.map((topic, i) => {
                 return (
                 <button

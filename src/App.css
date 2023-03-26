@@ -2,6 +2,7 @@
   text-align: center;
   font-size: 13px;
   padding: 0px 8px;
+  z-index: 999999;
 }
 
 * {
@@ -186,46 +187,6 @@ input[type="submit"] {
   padding: 5px 19px; 
 }
 
-/* sidenav for the pathpage */
-.sidenav {
-  height: 83%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 57px;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 18px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
 .pathCard:hover{
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 7px;
 
@@ -289,4 +250,8 @@ button[aria-label="Help"]{
 
 .fa.gear:hover{
   color: grey;
+}
+ 
+.docs:hover {
+  color:rgb(41, 41, 41);
 }

@@ -28,6 +28,7 @@ import HomeHome from './pages/HomeHome';
 import TextEditor from './components/TextEditor';
 import YourPaths from './pages/YourPaths';
 import DocumentationLandingPage from './pages/landing_pages/DocumentationLandingPage';
+import Project from './pages/Project';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -42,7 +43,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
 export const primaryBlueColour = '#2e4c57';
-export const primaryRedColour = '#FF5733';
+export const primaryRedColour = '#a21028';
 export const primaryYellowColour = '#ffb43b';
 
 export const primarySilverColour = 'rgb(242,242,242)';
@@ -188,11 +189,14 @@ function App() {
               <Route path="/texteditor" element={<>
                 <TextEditor email={email} />
               </>} />
-              <Route path="edit/:email/:pathtitle" element={<>
+              <Route path="edit/:email/:projecttitle/:pathtitle" element={<>
                 <CreatePath email={email} />
               </>} />
               <Route path="/app/documentations" element={<>
                 <YourPaths email={email}/>
+              </>} />
+              <Route path="/project/:projecttitle" element={<>
+                <Project email={email}/>
               </>} />
 
               {/* app2 */}
@@ -207,6 +211,7 @@ function App() {
               </>} />
               <Route path="/profile/:email" element={<>
                 <ProfileShow />
+                </>} />
               <Route path="/editprofile" element={<>
                 <ParticularsForm email={email} />
               </>} />
@@ -216,14 +221,13 @@ function App() {
               <Route path="/exp" element={<>
                 <ExperienceForm email={email} />
               </>} />
-             
-
-              </>} />
+              
               </Routes>
+
               <Link to="/profile" style={{color: 'black'}}><i style={{fontSize:'33px',
-            position: 'absolute',
-            bottom: '35px',
-            right: '35px',
+            position: 'fixed',
+            bottom: '30px',
+            right: '30px',
             cursor: 'pointer',
             borderRadius: '50%',
             boxShadow: '0px 0px 150px 30px '+ 'grey',

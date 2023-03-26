@@ -7,6 +7,7 @@ import Exercise from './exercise.png';
 import PathPageView from './pathpageview.png';
 import Calendar from './calander.png';
 import Signinwithgoogleicon from './signinwithgoogle.png';
+import Tick from './tick.png';
 
 export {
     Empty,
@@ -17,5 +18,6 @@ export {
     Exercise,
     PathPageView,
     Calendar,
-    Signinwithgoogleicon
+    Signinwithgoogleicon,
+    Tick
 }
