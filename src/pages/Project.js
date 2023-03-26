@@ -10,6 +10,8 @@ import {
   updateOrCreateDocument,
   usersCollection,
 } from "../db";
+import Typewriter from "typewriter-effect";
+
 
 function Project(props) {
     const { email } = props;
@@ -86,7 +88,7 @@ function Project(props) {
                   margin: '0px',
                   marginRight: '10px',
                   fontSize: '13px',
-                  zIndex: '99999'
+                  zIndex: '999999 !important'
                 }}
                 className="hoverbgdark"
               >
@@ -141,7 +143,7 @@ function Project(props) {
                   }}
                   className="docs"
                 >
-                  {path.title.toUpperCase()}
+                  {path.title}
                 </div>
               </Link>
         })
@@ -275,17 +277,29 @@ function Project(props) {
 
       </div>
 
-      { user?.paths?.length === 0 && <div align="right" style={{position: 'absolute', top: '30px', right: '50px',
-    borderRight: '1px solid '+ primaryBlueColour, borderBottom: '1px solid '+ primaryBlueColour, height: '180px', display: 'flex', alignItems: 'flex-end', padding: '0px',
+      { user?.paths?.filter(x=>x.project === projecttitle)?.length === 0 && <div align="right" style={{position: 'absolute', top: '37px', right: '50px',
+    borderRight: '1px solid '+ 'silver', height: '120px', display: 'flex', alignItems: 'flex-end', padding: '0px',
+    zIndex: '9'
     
     }}>
         <span style={{
-            borderTop: '1px solid '+ primaryBlueColour,
-            borderLeft: '1px solid '+ primaryBlueColour,
-            padding: '15px'
-        }}>
-            <b style={{fontSize: '30px'}}>❕</b>
-        You do not have any documentation scopes related to this project,<br/> click on '+ Add a Scope' button to add one
+            padding: '5px',
+            fontSize: '25px'
+        }}> 
+            <Typewriter
+          options={{
+            strings: [
+               " ⚠️  No documentation scopes found for this project", 
+               " Click on '+ Add a Scope' button to add one"
+            ],
+            autoStart: true,
+            loop: true,
+            deleteSpeed: 20,
+            delay: 40,
+            pauseFor: 900,
+          }}
+        />
+        
          
         </span>
       </div>}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import  Typewriter  from "typewriter-effect";
 import {
   primaryBlueColour,
   primaryRedColour,
@@ -53,7 +54,7 @@ function YourPaths(props) {
 
   return ( 
     
-    <div style={{position: 'relative', minHeight: '100vh', padding: '0px'}}>
+    <div style={{position: 'relative', minHeight: '100vh'}}>
     {user === null && <SearchLoader /> }
       
       <div style={{
@@ -134,20 +135,27 @@ function YourPaths(props) {
               style={{
                 textDecoration: "none",
                 color: "gray",
-                fontSize: "17px",
+                fontSize: "20px",
               }}
             >
-              {" "}
               <div
-                style={{
-                  padding: "15px 20px",
-                  borderRadius: "4px",
-                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
+              align="left"
+                style={{ 
+                 
+                  paddingBottom: '17px',
+                  paddingLeft: '25px',
+                  paddingRight: '25px',
+                  boxShadow: "rgba(0, 0, 0, 0.1) 1px 1px 7px",
                   backgroundColor: "white",
                   margin: "10px 15px",
+                  color: 'grey',
+                  
                 }}
               >
-                {project.title}
+                <span style={{fontSize: '12px', color: 'silver'}}>Project {i+1}</span>
+ 
+               <div align="center" style={{  width: '100%'}}> {project.title.toUpperCase()}</div> 
+
               </div>
             </Link>
           );
@@ -238,18 +246,64 @@ function YourPaths(props) {
 
       </div>
 
-      { user?.projects?.length === 0 && <div align="right" style={{position: 'absolute', top: '30px', right: '50px',
-    borderRight: '1px solid '+ primaryBlueColour, borderBottom: '1px solid '+ primaryBlueColour, height: '180px', display: 'flex', alignItems: 'flex-end', padding: '0px',
+      { user?.projects?.length === 0 && <div align="right" style={{position: 'absolute', top: '37px', right: '50px',
+    borderRight: '1px solid '+ 'silver', height: '120px', display: 'flex', alignItems: 'flex-end', padding: '0px',
     
     }}>
         <span style={{
-            borderTop: '1px solid '+ primaryBlueColour,
-            borderLeft: '1px solid '+ primaryBlueColour,
-            padding: '15px'
+            padding: '5px',
+            fontSize: '25px'
         }}>
-            <b style={{fontSize: '30px'}}>❕</b>
+            <Typewriter
+          options={{
+            strings: [
+               " ⚠️  No projects found", 
+               " Click on '+ Add Project' button to add one"
+            ],
+            autoStart: true,
+            loop: true,
+            deleteSpeed: 20,
+            delay: 40,
+            pauseFor: 900,
+          }}
+          />
+        </span>
+      </div>}
 
-        You do not have any projects yet,<br/> click on '+ Add Project' button to add one
+
+
+      { user?.projects?.length === 0 && <div 
+      style={{
+        position: 'absolute', top: '245px', width: '100%',
+     height: '120px', display: 'flex', justifyContent: 'center', flexDirection: 'column'
+    
+    }}>
+        <span>Steps to Follow</span>
+        <br/>
+        <br/>
+        <span style={{
+            color: 'silver'
+        }}>
+          <span style={{fontSize: '20px'}}>Add project</span>
+          &nbsp;
+  &nbsp;
+  &nbsp;
+  <i style={{color: 'grey', fontSize: '17px'}} className="fa">&#xf061;</i>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <span style={{fontSize: '20px'}}>Add scopes to the project</span>
+
+           
+           &nbsp;
+  &nbsp;
+  &nbsp;
+  <i style={{color: 'grey', fontSize: '17px'}} className="fa">&#xf061;</i>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+         <span style={{fontSize: '20px'}}>Create and Edit documentation</span>
+
         </span>
       </div>}
     </div>

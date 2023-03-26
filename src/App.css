@@ -248,8 +248,10 @@ button[aria-label="Help"]{
   display: none !important;
 }
 
-.fa.gear:hover{
-  color: grey;
+.fa.gear:hover{ 
+  color: rgb(40, 40, 40);
+  transform: rotate(120deg);
+  transition-duration: 1000ms;
 }
  
 .docs:hover {

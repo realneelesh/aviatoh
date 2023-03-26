@@ -224,17 +224,17 @@ function App() {
               
               </Routes>
 
-              <Link to="/profile" style={{color: 'black'}}><i style={{fontSize:'33px',
-            position: 'fixed',
-            bottom: '30px',
-            right: '30px',
-            cursor: 'pointer',
-            borderRadius: '50%',
-            boxShadow: '0px 0px 150px 30px '+ 'grey',
-            backgroundColor: 'transparent',
-            padding: '5px'
-            }} className="fa gear">&#xf013;</i>
-            </Link>
+              <Link to="/profile" style={{color: 'grey'}}><i style={{fontSize:'33px',
+                position: 'fixed',
+                bottom: '30px',
+                right: '30px',
+                cursor: 'pointer',
+                borderRadius: '50%',
+                // boxShadow: '0px 0px 150px 30px '+ 'grey',
+                backgroundColor: 'transparent',
+                padding: '5px'
+                }} className="fa gear">&#xf013;</i>
+              </Link>
             </div>
     </BrowserRouter>}
 
