@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import {
   primaryBlueColour, primaryRedColour, primarySilverColour, primaryYellowColour, showPage
 } from "../App";
+import { SearchLoader } from '../components/Loaders';
 import {
     getDocument,
   topicsCollection,
@@ -20,7 +21,7 @@ function Project(props) {
         project: null
       });
 
-      const [user, setUser] = useState({});
+      const [user, setUser] = useState(null);
       const [addNewPath, setAddNewPath] = useState(false);
       const [ pathAdded, setPathAdded ] = useState(false);
 
@@ -50,6 +51,7 @@ function Project(props) {
             position: 'relative',
             minHeight: '100vh'
         }}>  
+        {user === null && <SearchLoader /> }
              <div style={{
     display: 'flex',
     justifyContent: 'space-between',
@@ -83,7 +85,8 @@ function Project(props) {
                   color: 'white',
                   margin: '0px',
                   marginRight: '10px',
-                  fontSize: '13px'
+                  fontSize: '13px',
+                  zIndex: '99999'
                 }}
                 className="hoverbgdark"
               >
@@ -271,6 +274,21 @@ function Project(props) {
       <br/>
 
       </div>
+
+      { user?.paths?.length === 0 && <div align="right" style={{position: 'absolute', top: '30px', right: '50px',
+    borderRight: '1px solid '+ primaryBlueColour, borderBottom: '1px solid '+ primaryBlueColour, height: '180px', display: 'flex', alignItems: 'flex-end', padding: '0px',
+    
+    }}>
+        <span style={{
+            borderTop: '1px solid '+ primaryBlueColour,
+            borderLeft: '1px solid '+ primaryBlueColour,
+            padding: '15px'
+        }}>
+            <b style={{fontSize: '30px'}}>❕</b>
+        You do not have any documentation scopes related to this project,<br/> click on '+ Add a Scope' button to add one
+         
+        </span>
+      </div>}
         </div>
     );
 }

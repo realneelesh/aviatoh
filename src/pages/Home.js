@@ -4,12 +4,12 @@ import { disciplinesCollection, getAllDocuments } from '../db';
 import '../App.css';
 import PathCard from '../components/PathCard';
 import { Empty } from '../assets';
-import { browserStorage, discDataKey } from '../BrowserStorage';
-import Loader from '../components/Loader';
+import { browserStorage, discDataKey } from '../BrowserStorage'; 
 import { primaryBlueColour, primaryRedColour, primarySilverColour, showPage } from '../App';
 import SearchBar from '../components/Searchbar';
 import PathsEnrolled from '../components/PathsEnrolled';
 import { Link } from 'react-router-dom';
+import { SearchLoader } from '../components/Loaders';
  
  function Home(props) {
 
@@ -44,7 +44,7 @@ import { Link } from 'react-router-dom';
         })
     }, [])
 
-    return ( loading ? <Loader/>:<div align="center">
+    return ( loading ? <SearchLoader/>:<div align="center">
             {/* <div align="left" style={{marginRight: '20px'}}><h3 style={{ padding: '3px', lineHeight: '2.5', backgroundColor: 'white', color: 'black', border: '0px solid silver'}}>Disciplines:</h3>
             </div> */}
         

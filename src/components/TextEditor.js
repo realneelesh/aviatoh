@@ -100,7 +100,7 @@ function TextEditor(props) {
       />}
       {
         disabled && <div><div align="center" style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', height:'18vh'}}>
-          <h3 style={{backgroundColor: primaryBlueColour, border: '1px solid silver'}}>Add or select items from the menu to enable the editor</h3>
+          <h3 style={{backgroundColor: 'white', color: primaryBlueColour, border: '1px solid '+primaryBlueColour}}>Add or select items from the menu to enable the editor</h3>
            
           {/* <i className='fas fa-arrow-right' style={{color: 'silver', fontSize: '27px', marginLeft: '30px'}}></i> */}
           <div style={{height: '0px',borderTop: '1px solid '+ primaryBlueColour, width: '10%'}}></div>

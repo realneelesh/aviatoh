@@ -8,6 +8,7 @@ import {
   showPage,
 } from "../App";
 import { Empty, Tick } from "../assets";
+import { SearchLoader } from "../components/Loaders";
 import {
   getDocument,
   topicsCollection,
@@ -17,10 +18,7 @@ import {
 
 function YourPaths(props) {
   const { email } = props;
-  const [user, setUser] = useState({
-    paths: [],
-    projects: [],
-  });
+  const [user, setUser] = useState(null);
   const [projectToAdd, setprojectToAdd] = useState({
     title: "",
   });
@@ -53,9 +51,10 @@ function YourPaths(props) {
     }
   }, [email, pathAdded]);
 
-  return (
-    <div style={{position: 'relative', minHeight: '100vh', padding: '0px'}}>
+  return ( 
     
+    <div style={{position: 'relative', minHeight: '100vh', padding: '0px'}}>
+    {user === null && <SearchLoader /> }
       
       <div style={{
     display: 'flex',
@@ -85,7 +84,8 @@ function YourPaths(props) {
                   color: 'white',
                   margin: '0px',
                   marginRight: '10px',
-                  fontSize: '13px'
+                  fontSize: '13px',
+                  zIndex: '99999'
                 }}
                 className="hoverbgdark"
               >
@@ -237,6 +237,21 @@ function YourPaths(props) {
       <br/> 
 
       </div>
+
+      { user?.projects?.length === 0 && <div align="right" style={{position: 'absolute', top: '30px', right: '50px',
+    borderRight: '1px solid '+ primaryBlueColour, borderBottom: '1px solid '+ primaryBlueColour, height: '180px', display: 'flex', alignItems: 'flex-end', padding: '0px',
+    
+    }}>
+        <span style={{
+            borderTop: '1px solid '+ primaryBlueColour,
+            borderLeft: '1px solid '+ primaryBlueColour,
+            padding: '15px'
+        }}>
+            <b style={{fontSize: '30px'}}>❕</b>
+
+        You do not have any projects yet,<br/> click on '+ Add Project' button to add one
+        </span>
+      </div>}
     </div>
   );
 }

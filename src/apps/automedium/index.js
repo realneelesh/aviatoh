@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { primaryBlueColour, primaryRedColour, primarySilverColour, showPage } from '../../App';
-import Loader from '../../components/Loader';
+import Loader from '../../components/Loaders';
 
 const apiBaseUrl = 'http://localhost:9000';
 

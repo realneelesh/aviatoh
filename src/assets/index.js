@@ -8,6 +8,7 @@ import PathPageView from './pathpageview.png';
 import Calendar from './calander.png';
 import Signinwithgoogleicon from './signinwithgoogle.png';
 import Tick from './tick.png';
+import Loader from './loader.gif';
 
 export {
     Empty,
@@ -19,5 +20,6 @@ export {
     PathPageView,
     Calendar,
     Signinwithgoogleicon,
-    Tick
+    Tick,
+    Loader
 }
