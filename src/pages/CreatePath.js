@@ -162,7 +162,7 @@ function CreatePath(props) {
     justifyContent: 'space-between',
     alignItems: 'center',
     marginRight: '-2px', 
-    background: `linear-gradient( to right, ${primarySilverColour},${primarySilverColour}, ${!changesSaved ? primaryBlueColour : 'rgb(225, 225, 225)'})`, 
+    background: `linear-gradient( to right, ${!changesSaved ? primaryBlueColour : 'rgb(225, 225, 225)'},${primarySilverColour},${primarySilverColour})`, 
     padding: '8px 9px'}}>
   
   <span> 
@@ -234,9 +234,7 @@ function CreatePath(props) {
             padding: '0px 0px'
         }}
         >
-        <div style={{ width: "80vw", marginLeft: "10px" }}>
-            {<TextEditor disabled={cTopicId !== null ? false : true} setDataToBeSaved={setDataToBeSaved}  onChange={onEditorChange} onSave={saveTopic} initialContent={currentTopicData} />}
-        </div>
+        
     <div> 
         <div
             style={{ width: "20vw",
@@ -318,6 +316,9 @@ function CreatePath(props) {
                 );
             })}
         </div>
+        </div>
+        <div style={{ width: "80vw", marginLeft: "10px" }}>
+            {<TextEditor disabled={cTopicId !== null ? false : true} setDataToBeSaved={setDataToBeSaved}  onChange={onEditorChange} onSave={saveTopic} initialContent={currentTopicData} />}
         </div>
 
         </div> 
