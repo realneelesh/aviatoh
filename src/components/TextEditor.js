@@ -105,14 +105,14 @@ function TextEditor(props) {
         }}
       />}
       {
-        disabled && <div style={{marginLeft: '-27px'}}><div align="center" style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-          <div style={{height: '0px',borderTop: '1px solid '+ primaryBlueColour, width: '13%'}}></div>
+        // disabled && <div style={{marginLeft: '-18px'}}><div align="center" style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+        //   <div style={{height: '0px',borderTop: '1px solid '+ primaryBlueColour, width: '13%'}}></div>
           
-          <h3 style={{backgroundColor: 'white', color: primaryBlueColour, border: '1px solid '+primaryBlueColour, margin: '5px 0px'}}>Add topics to this documentation block to enable editor</h3>
+        //   <h3 style={{backgroundColor: 'white', color: primaryBlueColour, border: '1px solid '+primaryBlueColour, margin: '5px 0px'}}>You can add topics to this documentation block</h3>
            
-          {/* <i className='fas fa-arrow-right' style={{color: 'silver', fontSize: '27px', marginLeft: '30px'}}></i> */}
-        </div> 
-        </div>
+        //   {/* <i className='fas fa-arrow-right' style={{color: 'silver', fontSize: '27px', marginLeft: '30px'}}></i> */}
+        // </div> 
+        // </div>
       }
    
     </div>

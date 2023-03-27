@@ -127,11 +127,11 @@ function Project(props) {
                 to={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 className="scopes"
                 style={{
-                    paddingBottom: "23px",
-                    paddingTop: "21px",
+                    paddingBottom: "15px",
+                    paddingTop: "15px",
                     paddingLeft: "25px",
                     paddingRight: "25px",
-                    boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
+                    boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 6px",
                     backgroundColor: "white", 
                     color: "grey",
                     fontSize: '18px',

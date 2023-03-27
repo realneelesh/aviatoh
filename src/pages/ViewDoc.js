@@ -73,7 +73,7 @@ function ViewDoc(props) {
     <div align="left">
       <div
         style={{
-          paddingTop: "20px",
+          paddingTop: "15px",
           paddingBottom: "80px",
           backgroundColor: primaryGreenColour(0.3),
           width: "100vw",
@@ -141,9 +141,7 @@ function ViewDoc(props) {
             flexDirection: "column",
             justifyContent: "flex-start",
             marginTop: '-70px',
-            background:`linear-gradient(${primarySilverColour}, white, white)`,
-            paddingTop: '5px',
-            paddingLeft: '5px'
+            background:`linear-gradient(${primarySilverColour},${primarySilverColour}, white)`,
           }}
         >
           {user?.paths
@@ -158,15 +156,18 @@ function ViewDoc(props) {
                   style={{
                     textAlign: "left",
                     margin: '0px',
-                    // backgroundColor:
-                    //   currentTopicId !== topic.id
-                    //     ? primarySilverColour
-                    backgroundColor: "transparent",
-                    borderRight: currentTopicId === topic.id
-                    ? '3.5px solid '+primaryBlueColour
+                     backgroundColor:
+                      currentTopicId !== topic.id
+                      ? primarySilverColour :
+                      "white",
+                    borderLeft: currentTopicId === topic.id
+                    ? '3px solid '+primaryBlueColour
                     : '0px',
                     color: currentTopicId !== topic.id ? "black" : "black",
                     borderRadius: '0px',
+                    paddingLeft: currentTopicId === topic.id
+                    ? '7px'
+                    : '10px'
                   }}
                 >
                   {i + 1}. {topic?.title}
@@ -174,13 +175,14 @@ function ViewDoc(props) {
               );
             })}
         </div>
-        <div style={{ width: "74vw", marginTop: '-70px', backgroundColor:'white' }} align="center">
+        <div style={{ width: "72vw", marginTop: '-70px', backgroundColor:'white', paddingRight: '14px' }} align="center">
           {currentTopicId && (
             <iframe
               style={{
-                width: "97%",
+                width: "100%",
+                paddingLeft:'10px',
                 border: "0px",
-                height: "70vh",
+                height: "77vh",
               }}
               srcDoc={currentTopicData}
             ></iframe>

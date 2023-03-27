@@ -33,8 +33,16 @@ function CreatePath(props) {
 
     if(cTopicId === null){
         setCTopicId(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics?.length > 0 ?
-        user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0].id:
-        null )
+        user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0]?.id:
+        null );
+        if(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0]?.id){
+          getDocument(topicsCollection, user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0].id).then((res) => {
+            setCurrentTopicData(res.data().data);
+          }).catch(()=>{
+            alert('something went wrong');
+          });
+        }
+       
     }
     if (cTopicId) {
 
@@ -231,8 +239,9 @@ function CreatePath(props) {
         <div
         style={{
             display: "flex",
-            justifyContent: "space-between",
-            padding: '0px 0px'
+            justifyContent: "center",
+            padding: '0px 0px',
+            background:`linear-gradient(${primarySilverColour}, white)`
         }}
         >
         
@@ -318,9 +327,11 @@ function CreatePath(props) {
             })}
         </div>
         </div>
-        <div style={{ width: "80vw", marginLeft: "10px" }}>
+        {/* <div style={{width: '80vw', background:`linear-gradient(${primarySilverColour}, white)`}}> */}
+        <div style={{ width: "72vw"}} align="center">
             {<TextEditor disabled={cTopicId !== null ? false : true} setDataToBeSaved={setDataToBeSaved}  onChange={onEditorChange} onSave={saveTopic} initialContent={currentTopicData} />}
         </div>
+        {/* </div> */}
 
         </div> 
     </div>
