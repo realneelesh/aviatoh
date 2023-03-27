@@ -35,6 +35,7 @@ function TextEditor(props) {
             console.log(url);
 
             document.querySelector('[type="url"]').value = url;
+            e.target.value = null;
             document.querySelector('#form-field_2162870596771679733597765').value = '120';
             document.querySelector('#form-field_3972544796781679733597765').value = '120';
             e.target.value = null;

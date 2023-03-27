@@ -47,6 +47,10 @@ export const primaryBlueColour = '#2e4c57';
 export const primaryRedColour = '#a21028';
 export const primaryYellowColour = '#ffb43b';
 
+export const primaryGreenColour = (alpha) => {
+  return `rgb(61, 153, 112, ${alpha})`
+}
+
 export const primarySilverColour = 'rgb(240,240,240)';
 
 window.mobileCheck = function() {
@@ -90,38 +94,38 @@ function App() {
               updateOrCreateDocument(usersCollection, user.email, {
                 projects: [
                   {
-                    title: 'Mobile App (Sample Project)',
+                    title: 'My App (Sample Project)',
                     description: ''
                   }
                 ],
                 paths: [
                   {
                     title: 'Proof of Concept',
-                    project: 'Mobile App (Sample Project)',
+                    project: 'My App (Sample Project)',
                     description: '',
                     topics: []
                   },
                   {
                     title: 'Technical Documentation',
-                    project: 'Mobile App (Sample Project)',
+                    project: 'My App (Sample Project)',
                     description: '',
                     topics: []
                   },
                   {
-                    title: 'UI/UX Design Docs',
-                    project: 'Mobile App (Sample Project)',
+                    title: 'UI|UX Design Docs',
+                    project: 'My App (Sample Project)',
                     description: '',
                     topics: []
                   },
                   {
                     title: 'New Developer Onboarding',
-                    project: 'Mobile App (Sample Project)',
+                    project: 'My App (Sample Project)',
                     description: '',
                     topics: []
                   },
                   {
                     title: 'FAQs',
-                    project: 'Mobile App (Sample Project)',
+                    project: 'My App (Sample Project)',
                     description: '',
                     topics: []
                   }

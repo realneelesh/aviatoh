@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import {
   primaryBlueColour,
+  primaryGreenColour,
   primaryRedColour,
   primarySilverColour,
   primaryYellowColour,
@@ -56,6 +57,15 @@ function YourPaths(props) {
     <div style={{ position: "relative", minHeight: "100vh" }}>
       {user === null && <SearchLoader />}
 
+      <div style={{
+        position: 'absolute',
+        zIndex: '-1',
+        width: '100vw',
+        marginLeft: '-8px',
+        backgroundColor: primaryGreenColour(0.4),
+        height: '230px'
+      }}></div>
+
       <div
         style={{
           display: "flex",
@@ -69,7 +79,9 @@ function YourPaths(props) {
           padding: "7px 0px",
         }}
       >
-        <span>&nbsp; &nbsp; Projects</span>
+         
+        <span>
+            &nbsp; &nbsp; Dashboard</span>
 
         <button
           onClick={() => {
@@ -88,8 +100,13 @@ function YourPaths(props) {
           + Add Project
         </button>
       </div>
+ 
+      <div align="left" style={{marginTop: '30px', marginBottom: '20px'}}>
+        <h1 style={{border: '0px', paddingLeft: '11px'}}>
+            Your Projects
+        </h1>
+      </div>
 
-      <br />
       <div
         style={{
           display: "flex",
@@ -125,7 +142,9 @@ function YourPaths(props) {
           })} */}
         {user?.projects?.map((project, i) => {
           return (
-            <div> 
+            <div style={{
+                maxWidth: '98vw',
+            }}> 
                 <div
                   align="left"
                   style={{
@@ -133,7 +152,7 @@ function YourPaths(props) {
                     paddingTop: "17px",
                     paddingLeft: "25px",
                     paddingRight: "25px",
-                    boxShadow: "rgba(0, 0, 0, 0.14) 0px 0px 7px",
+                    boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
                     backgroundColor: "white",
                     margin: "10px 15px",
                     color: "grey",
@@ -143,14 +162,23 @@ function YourPaths(props) {
                     Project {i + 1}
                   </span>
 
-                  <div align="left" style={{ width: "100%", 
+                  <div align="left" style={{ 
+                  overflow: 'scroll',
                   fontSize: "20px",
                 }}>
                 
                     {project.title.toUpperCase()}
                   </div>
-                  <br />
-                  <br />
+                  <br /> 
+                  <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}
+                  >
+
+<div>
                   <Link
                 to={"/project" + "/view/" + email + "/" + project.title}
                 style={{
@@ -175,6 +203,26 @@ function YourPaths(props) {
                   Edit
                 </h3>  
                 </Link>
+                </div>
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+ 
+                <i
+                    style={{ color: "silver" }}
+                    onClick={() => { 
+                    }}
+                    className="fa fa-trash"
+                    ></i> 
+
+
+                  </div>
+               
                 </div> 
             </div>
           );
@@ -229,36 +277,34 @@ function YourPaths(props) {
             fontSize: "13px",
           }}
           onClick={() => {
-            if (projectToAdd.title && projectToAdd.title !== "") {
-              var key = email + new Date().toString().replaceAll(" ", "");
-              updateOrCreateDocument(usersCollection, email, {
-                projects: [
-                  ...user.projects,
-                  {
-                    ...projectToAdd,
-                    topics: [
-                      {
-                        title: "Sample Feature 1",
-                        id: key,
-                      },
-                    ],
-                  },
-                ],
-              })
-                .then((res) => {
-                  updateOrCreateDocument(topicsCollection, key, {
-                    data: '<p style="color: rgb(126, 140, 141);" align="center">Feature</p><h2 style="text-align: center;"><span style="color: rgb(126, 140, 141);">Sample Feature Title</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
-                  }).then((res) => {
-                    setPathAdded(!pathAdded);
-                    setAddNewProject(false);
-                    document.getElementById("booktitle").value = "";
-                  });
-                })
-                .catch((e) => {
-                  alert(e);
-                });
+            if(user?.projects?.find(x => x.title.toLowerCase() === projectToAdd.title.toLowerCase())){
+                alert("Project with this title already exists");
             } else {
-              alert("Title can not be empty");
+                if (projectToAdd.title && projectToAdd.title !== "") {
+                    var key = email + new Date().toString().replaceAll(" ", "");
+                    updateOrCreateDocument(usersCollection, email, {
+                      projects: [
+                        ...user.projects,
+                        {
+                          ...projectToAdd
+                        },
+                      ],
+                    })
+                      .then((res) => {
+                        updateOrCreateDocument(topicsCollection, key, {
+                          data: '<p style="color: rgb(126, 140, 141);" align="center">Feature</p><h2 style="text-align: center;"><span style="color: rgb(126, 140, 141);">Sample Feature Title</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
+                        }).then((res) => {
+                          setPathAdded(!pathAdded);
+                          setAddNewProject(false);
+                          document.getElementById("booktitle").value = "";
+                        });
+                      })
+                      .catch((e) => {
+                        alert(e);
+                      });
+                  } else {
+                    alert("Title can not be empty");
+                  }
             }
           }}
         >

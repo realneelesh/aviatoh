@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
-  primaryBlueColour, primaryRedColour, primarySilverColour, primaryYellowColour, showPage
+  primaryBlueColour, primaryGreenColour, primaryRedColour, primarySilverColour, primaryYellowColour, showPage
 } from "../App";
 import { SearchLoader } from '../components/Loaders';
 import {
@@ -53,6 +53,14 @@ function Project(props) {
             position: 'relative',
             minHeight: '100vh'
         }}>  
+         <div style={{
+        position: 'absolute',
+        zIndex: '-1',
+        width: '100vw',
+        marginLeft: '-8px',
+        backgroundColor: primaryGreenColour(0.38),
+        height: '170px'
+      }}></div>
         {user === null && <SearchLoader /> }
              <div style={{
     display: 'flex',
@@ -65,19 +73,11 @@ function Project(props) {
     backgroundColor: primarySilverColour,
     padding: '7px 0px'}}>
   
-  <span> 
-  &nbsp;
-  &nbsp;
-  Projects 
-  &nbsp;
-  &nbsp;
-  <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i>
-  &nbsp;
-  &nbsp;
-
-  { projecttitle }
- 
-  </span>
+  <span>
+  &nbsp; &nbsp;
+    <Link to={'/'} style={{textDecoration: 'none', color: primaryBlueColour}}>
+  <i className='far fa-arrow-alt-circle-left' style={{fontSize: '19px', position: 'absolute', top: '12px'}} /> 
+   </Link> &nbsp; &nbsp;&nbsp;&nbsp; Documentation Blocks </span>
 
   <button
                onClick={()=>{
@@ -93,16 +93,22 @@ function Project(props) {
                 }}
                 className="hoverbgdark"
               >
-                + Add a Scope
+                + Add a Block
               </button>
 
   </div>
-       <br/> 
+       
+  <div align="left" style={{marginTop: '30px', marginBottom: '20px'}}>
+      <h1 style={{border: '0px', paddingLeft: '11px'}}>
+      { projecttitle }
+        </h1>
+      </div>
+                
         <div style={{
             display: 'flex'
         }}>
       <div style={{ 
-            marginLeft: "-8px",
+            marginLeft: "0px",
             paddingTop: '10px',
             paddingLeft: '9px',
             display: 'flex',
@@ -125,7 +131,7 @@ function Project(props) {
                     paddingTop: "21px",
                     paddingLeft: "25px",
                     paddingRight: "25px",
-                    boxShadow: "rgba(0, 0, 0, 0.08) 0px 0px 7px",
+                    boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
                     backgroundColor: "white", 
                     color: "grey",
                     fontSize: '18px',
@@ -192,7 +198,7 @@ function Project(props) {
           console.log(user.paths, email);
           setPathToAdd({ ...pathToAdd, title: e.target.value.trim().replaceAll('/', '|') });
         }}
-        placeholder="Scope title"
+        placeholder="Block title"
       />
       &nbsp; 
       &nbsp;
@@ -238,7 +244,7 @@ function Project(props) {
           }
         }}
       >
-        Add Scope
+        Add Block
       </button>
       <br/> 
       &nbsp; &nbsp; 
@@ -254,7 +260,7 @@ function Project(props) {
       </div>
 
       { user?.paths?.filter(x=>x.project === projecttitle)?.length === 0 && <div align="right" style={{position: 'absolute', top: '37px', right: '50px',
-    borderRight: '1px solid '+ 'silver', height: '120px', display: 'flex', alignItems: 'flex-end', padding: '0px',
+    borderRight: '1px solid '+ primaryBlueColour, height: '120px', display: 'flex', alignItems: 'flex-end', padding: '0px',
     zIndex: '9'
     
     }}>
@@ -265,8 +271,8 @@ function Project(props) {
             <Typewriter
           options={{
             strings: [
-               " ⚠️  No documentation scopes found for this project", 
-               " Click on '+ Add a Scope' to add"
+               " ⚠️  No documentation blocks found for this project", 
+               " Click on '+ Add a Block' to add"
             ],
             autoStart: true,
             loop: true,

@@ -1,6 +1,7 @@
 import React from "react";
 import {
   primaryBlueColour,
+  primaryGreenColour,
   primaryRedColour,
   primarySilverColour,
   primaryYellowColour,
@@ -13,7 +14,7 @@ const provider = new GoogleAuthProvider();
 
 function DocumentationLandingPage(props) {
     const {from } = props;
-  return (
+  return (<> 
     <div
       style={{
         minHeight: "100vh",
@@ -23,33 +24,40 @@ function DocumentationLandingPage(props) {
         backgroundPosition: "right top",
         width: "100vw",
         marginLeft: "-8px",
-        backgroundColor: 'white',
+        backgroundColor: 'transparent',
+        zIndex: '999999'
       }}
     >
       <div style={{ fontSize: "35px", color: "silver", fontWeight:'300' }}>
         <br />
-        <br />
-        <br />
-        <img src={Logo} style={{ width: "270px" }} />
-
-        <br />
-        <br />
-        <br />
+        <br /> 
+        <img src={Logo} style={{ width: "280px" }} />
+        <br/>
+        <div style={{ fontWeight: '100', fontSize: '13px', color: 'grey', transform: 'translate(17px, 0px)', position: 'relative' }}>
+            {/* Documentation Systems */}
+            </div>
+ <br/>
+ <br/>
 
         <Typewriter
           options={{
             strings: [
-              "Effortlessly document your product prototypes.",
-              "Simplified documentation flow, Robust text editor.",
+              "Streamline Your Product Documentations,",
+              "Let's Begin!"
             ],
             autoStart: true,
             loop: true,
             deleteSpeed: 20,
-            delay: 45,
+            delay: 42,
             pauseFor: 1000,
           }}
         />
       </div>
+      <br />
+      <br />
+ <br/>
+      <br />
+      <br />
       <br />
       <br />
       <br />
@@ -58,8 +66,9 @@ function DocumentationLandingPage(props) {
      
       <br />
       {from !== 'mobile' && <div style={{ display: "flex", justifyContent: "center", alignItems: 'center' }}>
+
        
-      <div
+      {/* <div
           style={{ cursor: "pointer", marginRight: '33px' }}
           onClick={() => {
             signInWithPopup(auth, provider);
@@ -68,7 +77,7 @@ function DocumentationLandingPage(props) {
            <i style={{ fontSize: '38px', color: 'grey' }} className="fab">
     
   </i>
-        </div>
+        </div> */}
 
 
         <div
@@ -83,11 +92,13 @@ function DocumentationLandingPage(props) {
             }}
             src={Signinwithgoogleicon}
           />
+          <br/>
+          Sign In
         </div>
       
 
 
-        <div
+        {/* <div
           style={{ cursor: "pointer" }}
           onClick={() => {
             signInWithPopup(auth, provider);
@@ -95,7 +106,7 @@ function DocumentationLandingPage(props) {
         >
            <i style={{ fontSize: '42px', color: 'grey'}} className='fab'>&#xf09b;
   </i>
-        </div>
+        </div> */}
       </div> }
 
       {
@@ -111,7 +122,17 @@ function DocumentationLandingPage(props) {
         }}>Only available for desktop screens</h3>
         </div>
       }
+
+<div style={{
+        position: 'absolute', 
+        bottom: '0px',
+        width: '100vw', 
+        backgroundColor: primaryGreenColour(0),
+        height: '100vh',
+        zIndex: '-1'
+      }}></div>
     </div>
+    </>
   );
 }
 

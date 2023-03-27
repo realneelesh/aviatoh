@@ -27,35 +27,26 @@ function ViewDoc(props) {
     if (
       res.data()?.paths &&
       user?.paths?.find(
-        (x) =>
-          x.title ===
-          res.data()?.paths?.filter((x) => x.project === projecttitle)[0]
-            ?.title
-      )?.topics[0]?.id
+        (x) => x.title === res.data()?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]
     ) {
+    //   alert(res.data()?.paths?.filter((x) => x.project === projecttitle)?.filter((x) => x.topics.length > 0)[0]?.title);
       setCurrentPath(
-        res
-          .data()
-          ?.paths?.filter((x) => x.project === projecttitle)
-          ?.filter((x) => x.topics.length > 0)[0]?.title
+        res.data()?.paths?.filter((x) => x.project === projecttitle)?.filter((x) => x.topics.length > 0)[0]?.title
       );
       setCurrentTopicId(
         user?.paths
           ?.filter((x) => x.project === projecttitle)
           .find(
-            (x) =>
-              x.title ===
-              res.data()?.paths.filter((x) => x.project === projecttitle)[0]
-                .title
+            (x) => x.title === res.data()?.paths.filter((x) => x.project === projecttitle)[0].title
           )?.topics[0]?.id
       );
-    
+
         getDocument(
           topicsCollection,
           user?.paths?.find(
             (x) =>
               x.title ===
-              res.data()?.paths?.filter((x) => x.project === projecttitle)[0]
+              res.data()?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]
                 ?.title
           )?.topics[0]?.id
         )
@@ -64,7 +55,7 @@ function ViewDoc(props) {
           })
           .catch((err) => {
             alert(err);
-          }); 
+          });
     }
   }, [user]);
 

@@ -83,7 +83,7 @@ function CreatePath(props) {
       alert("Title must be unique and non-empty");
     } else {
       var key = email + new Date().toString().replaceAll(" ", "");
-      updateOrCreateDocument(topicsCollection, key, {data: `<p align='center'>feature #</p><h1 align='center' style='color:grey;'>${topic}</h1>`})
+      updateOrCreateDocument(topicsCollection, key, {data: `<p align='left'>Sr. no.</p><h1 align='left' style='color:grey;'>${topic}</h1><br/><p>No content on this page...</p>`})
         .then((res) => {
           cPaths
             ?.find((x) => x.title === pathtitle && x.project === projecttitle)
@@ -166,20 +166,24 @@ function CreatePath(props) {
     padding: '8px 9px'}}>
   
   <span> 
+ 
   &nbsp;
-
-    Projects
-  &nbsp;
-  &nbsp;
-  <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i>
-  &nbsp;
-  &nbsp;
-  <span>{projecttitle}</span>
+  <span style={{display: 'inline'}}>
+  <Link to={'/project/'+projecttitle} style={{textDecoration: 'none', color: primaryBlueColour}}>
+  <i className='far fa-arrow-alt-circle-left' style={{fontSize: '19px', position: 'absolute', top: '12px'}} /> 
   &nbsp;
   &nbsp;
-  <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i>
   &nbsp;
   &nbsp;
+  
+ </Link>
+    </span>
+       {projecttitle}
+  &nbsp; 
+  &nbsp; 
+  {/* <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i> */}
+  |
+  &nbsp; 
 
   {pathtitle}
   {/* &nbsp;
