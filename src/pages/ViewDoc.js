@@ -74,6 +74,7 @@ function ViewDoc(props) {
       <div
         style={{
           paddingTop: "20px",
+          paddingBottom: "80px",
           backgroundColor: primaryGreenColour(0.3),
           width: "100vw",
           marginLeft: "-8px",
@@ -111,7 +112,10 @@ function ViewDoc(props) {
                         : primaryBlueColour,
                     color: currentPath !== path.title ? "black" : "white",
                     margin: '0px',
-                    borderRadius: '0px'
+                    borderRadius: '0px',
+                    paddingLeft: '23px',
+                    paddingRight: '23px',
+                    boxShadow: "rgba(0, 0, 0, 0.15) 0px 0px 5px",
                   }}
                 >
                   {path.title}
@@ -119,13 +123,11 @@ function ViewDoc(props) {
               );
             })}
         </div>
-      </div>
-      <br />
-      <br />
+      </div> 
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
           width: "100vw",
           marginLeft: "-8px",
         }}
@@ -138,6 +140,10 @@ function ViewDoc(props) {
             overflow: "scroll",
             flexDirection: "column",
             justifyContent: "flex-start",
+            marginTop: '-70px',
+            background:`linear-gradient(${primarySilverColour}, white, white)`,
+            paddingTop: '8px',
+            paddingLeft: '8px'
           }}
         >
           {user?.paths
@@ -151,17 +157,16 @@ function ViewDoc(props) {
                   }}
                   style={{
                     textAlign: "left",
-                    marginBottom: "0px",
-                    marginTop: "0px",
+                    margin: '0px',
                     // backgroundColor:
                     //   currentTopicId !== topic.id
                     //     ? primarySilverColour
-                    backgroundColor: primarySilverColour,
+                    backgroundColor: "transparent",
                     borderRight: currentTopicId === topic.id
                     ? '3.5px solid '+primaryBlueColour
                     : '0px',
                     color: currentTopicId !== topic.id ? "black" : "black",
-                    borderRadius: '0px'
+                    borderRadius: '0px',
                   }}
                 >
                   {i + 1}. {topic?.title}
@@ -169,7 +174,7 @@ function ViewDoc(props) {
               );
             })}
         </div>
-        <div style={{ width: "82vw" }} align="center">
+        <div style={{ width: "74vw", marginTop: '-70px', backgroundColor:'white' }} align="center">
           {currentTopicId && (
             <iframe
               style={{
