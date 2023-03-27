@@ -142,8 +142,8 @@ function ViewDoc(props) {
             justifyContent: "flex-start",
             marginTop: '-70px',
             background:`linear-gradient(${primarySilverColour}, white, white)`,
-            paddingTop: '8px',
-            paddingLeft: '8px'
+            paddingTop: '5px',
+            paddingLeft: '5px'
           }}
         >
           {user?.paths
