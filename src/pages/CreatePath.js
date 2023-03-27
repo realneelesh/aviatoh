@@ -32,8 +32,9 @@ function CreatePath(props) {
   useEffect(() => { 
 
     if(cTopicId === null){
-        setCurrentTopicData(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle)
-        .description)
+        setCTopicId(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics?.length > 0 ?
+        user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0].id:
+        null )
     }
     if (cTopicId) {
 
@@ -162,7 +163,7 @@ function CreatePath(props) {
     justifyContent: 'space-between',
     alignItems: 'center',
     marginRight: '-2px', 
-    background: `linear-gradient( to right, ${!changesSaved ? primaryBlueColour : 'rgb(225, 225, 225)'},${primarySilverColour},${primarySilverColour})`, 
+    background: changesSaved ? `linear-gradient( to right, ${'rgb(225, 225, 225)'},${primarySilverColour},${primarySilverColour})`:`linear-gradient( to right,${primarySilverColour},${primarySilverColour},${primaryBlueColour})`, 
     padding: '8px 9px'}}>
   
   <span> 

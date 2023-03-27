@@ -230,7 +230,8 @@ function App() {
                 borderRadius: '50%',
                 // boxShadow: '0px 0px 150px 30px '+ 'grey',
                 backgroundColor: 'transparent',
-                padding: '5px'
+                padding: '5px',
+                fontSize: '15px'
                 }} className="fa gear">&#xf013;</i>
               </Link>
             </div>

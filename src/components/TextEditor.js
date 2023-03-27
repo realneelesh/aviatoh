@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { primaryBlueColour, primaryRedColour, primarySilverColour, showPage } from "../App";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -7,6 +7,9 @@ import { storage } from "../db";
 function TextEditor(props) {
   const { initialContent, onSave, onChange, setDataToBeSaved, disabled, email } = props;
   const editorRef = useRef(null);
+
+  const [ editorLoading, setEditorLoading ] = useState(true);
+
   const log = (e) => {
     if (editorRef.current) {
       console.log(editorRef.current.getContent());
@@ -19,6 +22,7 @@ function TextEditor(props) {
       showPage();
     }, 0);
   });
+
   return (
     <div align="right" style={{ marginTop: "0px", position: 'relative' }}>
       <input style={{position: 'absolute', display: 'none'}}
@@ -48,10 +52,11 @@ function TextEditor(props) {
         console.log(e.target.files[0])
       }}
       id="imgUpload" type="file"/>
-      {!disabled && <Editor
+      {!disabled &&  <Editor
         disabled={disabled}
         apiKey="your-api-key"
         onInit={(evt, editor) => {
+          setEditorLoading(false);
           const uploadImageElement = document.querySelector('[aria-label="Insert/edit image"]');
           uploadImageElement.addEventListener('click', () => {
             document.querySelector('#imgUpload').click();
