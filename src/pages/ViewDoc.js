@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { primaryBlueColour, primarySilverColour } from "../App";
+import { primaryBlueColour, primaryGreenColour, primarySilverColour } from "../App";
 import { Loader } from "../assets";
 import { SearchLoader } from "../components/Loaders";
 import { getDocument, topicsCollection, usersCollection } from "../db";
@@ -29,7 +29,7 @@ function ViewDoc(props) {
       user?.paths?.find(
         (x) => x.title === res.data()?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]
     ) {
-    //   alert(res.data()?.paths?.filter((x) => x.project === projecttitle)?.filter((x) => x.topics.length > 0)[0]?.title);
+      //alert(user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id);
       setCurrentPath(
         res.data()?.paths?.filter((x) => x.project === projecttitle)?.filter((x) => x.topics.length > 0)[0]?.title
       );
@@ -43,14 +43,10 @@ function ViewDoc(props) {
 
         getDocument(
           topicsCollection,
-          user?.paths?.find(
-            (x) =>
-              x.title ===
-              res.data()?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]
-                ?.title
-          )?.topics[0]?.id
+          user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id
         )
-          .then((res) => {
+          .then((res) => { 
+            setCurrentTopicId(user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id);
             setCurrentTopicData(res.data()?.data);
           })
           .catch((err) => {
@@ -77,16 +73,16 @@ function ViewDoc(props) {
     <div align="left">
       <div
         style={{
-          padding: "10px 0px",
-          backgroundColor: primarySilverColour,
+          paddingTop: "20px",
+          backgroundColor: primaryGreenColour(0.3),
           width: "100vw",
           marginLeft: "-8px",
         }}
       >
         <div style={{ fontSize: "30px", paddingLeft: "10px" }}>
           {projecttitle}
-        </div>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+        </div> 
+        <div style={{ display: "flex", flexWrap: "wrap", paddingLeft: '10px', paddingBottom: '15px', marginTop: '15px' }}>
           {user?.paths
             ?.filter((x) => x.project === projecttitle)
             .filter((x) => x.topics.length > 0)
@@ -114,6 +110,8 @@ function ViewDoc(props) {
                         ? primarySilverColour
                         : primaryBlueColour,
                     color: currentPath !== path.title ? "black" : "white",
+                    margin: '0px',
+                    borderRadius: '0px'
                   }}
                 >
                   {path.title}
@@ -154,11 +152,16 @@ function ViewDoc(props) {
                   style={{
                     textAlign: "left",
                     marginBottom: "0px",
-                    backgroundColor:
-                      currentTopicId !== topic.id
-                        ? primarySilverColour
-                        : primaryBlueColour,
-                    color: currentTopicId !== topic.id ? "black" : "white",
+                    marginTop: "0px",
+                    // backgroundColor:
+                    //   currentTopicId !== topic.id
+                    //     ? primarySilverColour
+                    backgroundColor: primarySilverColour,
+                    borderRight: currentTopicId === topic.id
+                    ? '3.5px solid '+primaryBlueColour
+                    : '0px',
+                    color: currentTopicId !== topic.id ? "black" : "black",
+                    borderRadius: '0px'
                   }}
                 >
                   {i + 1}. {topic?.title}
