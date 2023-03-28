@@ -249,7 +249,7 @@ function CreatePath(props) {
         <div
             style={{ width: "20vw",
             background: `linear-gradient(${primarySilverColour},white)`,
-            marginTop: "0px", height: '83vh', overflowY: 'scroll', overflowX:'hidden', padding: '7px 10px' }}
+            marginTop: "0px", height: '83vh', overflowY: 'scroll', overflowX:'hidden', paddingTop: '7px', paddingRight: '10px' }}
             align="center"
         >  
   <div style={{ display: "flex",height: '27px', justifyContent: 'space-between', width: '100%', marginBottom: '12px' }}>
