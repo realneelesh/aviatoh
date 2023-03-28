@@ -26,28 +26,26 @@ function ViewDoc(props) {
     };
     if (
       res.data()?.paths &&
-      user?.paths?.find(
-        (x) => x.title === res.data()?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]
+      user?.paths?.find((x) => x.title === res.data()?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]
     ) {
+
       //alert(user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id);
       setCurrentPath(
         res.data()?.paths?.filter((x) => x.project === projecttitle)?.filter((x) => x.topics.length > 0)[0]?.title
       );
-      setCurrentTopicId(
-        user?.paths
-          ?.filter((x) => x.project === projecttitle)
-          .find(
-            (x) => x.title === res.data()?.paths.filter((x) => x.project === projecttitle)[0].title
-          )?.topics[0]?.id
-      );
+      const currentTopicId = user?.paths?.filter((x) => x.project === projecttitle).find((x) => x.title === res.data()?.paths.filter((x) => x.project === projecttitle && x.topics.length >0)[0].title && x.topics.length > 0)?.topics[0]?.id;
+      setCurrentTopicId(currentTopicId);
+    //   alert(currentTopicId);
 
-        getDocument(
+
+
+    //   alert(user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id)
+       if(currentTopicId) getDocument(
           topicsCollection,
-          user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id
+          currentTopicId
         )
-          .then((res) => { 
-            setCurrentTopicId(user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id);
-            setCurrentTopicData(res.data()?.data);
+          .then((res) => {
+            setCurrentTopicData(res.data()?.data.replaceAll('<a', '<a target="_blank"'));
           })
           .catch((err) => {
             alert(err);
@@ -59,7 +57,7 @@ function ViewDoc(props) {
     if (currentTopicId) {
       getDocument(topicsCollection, currentTopicId)
         .then((res) => {
-          setCurrentTopicData(res.data()?.data);
+          setCurrentTopicData(res.data()?.data.replaceAll('<a', '<a target="_blank"'));
         })
         .catch((err) => {
           alert(err);
@@ -82,7 +80,7 @@ function ViewDoc(props) {
       >
         <div style={{ fontSize: "30px", paddingLeft: "10px" }}>
           {projecttitle}
-        </div> 
+        </div>
         <div style={{ display: "flex", flexWrap: "wrap", paddingLeft: '10px', paddingBottom: '15px', marginTop: '15px' }}>
           {user?.paths
             ?.filter((x) => x.project === projecttitle)
@@ -93,11 +91,11 @@ function ViewDoc(props) {
                   onClick={() => {
                     setCurrentPath(path.title);
                     if (
-                      user?.paths?.find((x) => x.title === path.title)?.topics
+                      user?.paths?.find((x) => x.title === path.title && x.project === projecttitle)?.topics
                         ?.length > 0
                     ) {
                       setCurrentTopicId(
-                        user?.paths?.find((x) => x.title === path.title)
+                        user?.paths?.find((x) => x.title === path.title && x.project === projecttitle)
                           ?.topics[0].id
                       );
                     } else {
@@ -123,7 +121,7 @@ function ViewDoc(props) {
               );
             })}
         </div>
-      </div> 
+      </div>
       <div
         style={{
           display: "flex",

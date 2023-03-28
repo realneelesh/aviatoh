@@ -39,7 +39,7 @@ function CreatePath(props) {
           getDocument(topicsCollection, user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0].id).then((res) => {
             setCurrentTopicData(res.data().data);
           }).catch(()=>{
-            alert('something went wrong');
+           // alert('something went wrong');
           });
         }
        
@@ -49,7 +49,7 @@ function CreatePath(props) {
       getDocument(topicsCollection, cTopicId).then((res) => {
         setCurrentTopicData(res.data().data);
       }).catch(()=>{
-        alert('something went wrong');
+        // alert('something went wrong');
       });
     }
   }, [cTopicId, user]);

@@ -23,6 +23,7 @@ function YourPaths(props) {
   const [user, setUser] = useState(null);
   const [projectToAdd, setprojectToAdd] = useState({
     title: "",
+    description: ""
   });
 
   const [pathAdded, setPathAdded] = useState(false);
@@ -281,7 +282,7 @@ function YourPaths(props) {
                 alert("Project with this title already exists");
             } else {
                 if (projectToAdd.title && projectToAdd.title !== "") {
-                    var key = email + new Date().toString().replaceAll(" ", "");
+                    // var key = email + new Date().toString().replaceAll(" ", "");
                     updateOrCreateDocument(usersCollection, email, {
                       projects: [
                         ...user.projects,
@@ -289,15 +290,48 @@ function YourPaths(props) {
                           ...projectToAdd
                         },
                       ],
+                      paths: [
+                        ...user.paths,
+                        {
+                          title: 'Introduction',
+                          project: projectToAdd?.title,
+                          description: '',
+                          topics: []
+                        },
+                        {
+                          title: 'Product Design',
+                          project: projectToAdd?.title,
+                          description: '',
+                          topics: []
+                        },
+                        {
+                          title: 'Technical Documentation',
+                          project: projectToAdd?.title,
+                          description: '',
+                          topics: []
+                        },
+                        {
+                          title: 'Quality Assurance',
+                          project: projectToAdd?.title,
+                          description: '',
+                          topics: []
+                        },
+                        {
+                          title: 'FAQs',
+                          project: projectToAdd?.title,
+                          description: '',
+                          topics: []
+                        }
+                      ]
                     })
                       .then((res) => {
-                        updateOrCreateDocument(topicsCollection, key, {
-                          data: '<p style="color: rgb(126, 140, 141);" align="center">Feature</p><h2 style="text-align: center;"><span style="color: rgb(126, 140, 141);">Sample Feature Title</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
-                        }).then((res) => {
-                          setPathAdded(!pathAdded);
-                          setAddNewProject(false);
-                          document.getElementById("booktitle").value = "";
-                        });
+                        // updateOrCreateDocument(topicsCollection, key, {
+                        //   data: '<h2><span style="color: rgb(126, 140, 141);">Introduction</span></h2> <p><span style="color: rgb(126, 140, 141);">Thank you for visiting...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
+                        // }).then((res) => {
+                        //   setPathAdded(!pathAdded);
+                        //   setAddNewProject(false);
+                        //   document.getElementById("booktitle").value = "";
+                        // });
                       })
                       .catch((e) => {
                         alert(e);

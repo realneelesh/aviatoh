@@ -42,7 +42,7 @@ function DocumentationLandingPage(props) {
         <Typewriter
           options={{
             strings: [
-              "Ideation and Documentation System",
+              "Project Ideation and Documentation System",
               "Document, Refine and Share Instantly"
             ],
             autoStart: true,

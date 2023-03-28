@@ -94,38 +94,38 @@ function App() {
               updateOrCreateDocument(usersCollection, user.email, {
                 projects: [
                   {
-                    title: 'My App (Sample Project)',
+                    title: 'Sample Project',
                     description: ''
                   }
                 ],
                 paths: [
                   {
-                    title: 'Proof of Concept',
-                    project: 'My App (Sample Project)',
+                    title: 'Introduction',
+                    project: 'Sample Project',
+                    description: '',
+                    topics: []  // sending topics array is important for the view
+                  },
+                  {
+                    title: 'Product Design',
+                    project: 'Sample Project',
                     description: '',
                     topics: []
                   },
                   {
                     title: 'Technical Documentation',
-                    project: 'My App (Sample Project)',
+                    project: 'Sample Project',
                     description: '',
                     topics: []
                   },
                   {
-                    title: 'UI|UX Design Docs',
-                    project: 'My App (Sample Project)',
-                    description: '',
-                    topics: []
-                  },
-                  {
-                    title: 'New Developer Onboarding',
-                    project: 'My App (Sample Project)',
+                    title: 'QA',
+                    project: 'Sample Project',
                     description: '',
                     topics: []
                   },
                   {
                     title: 'FAQs',
-                    project: 'My App (Sample Project)',
+                    project: 'Sample Project',
                     description: '',
                     topics: []
                   }

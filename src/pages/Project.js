@@ -6,12 +6,10 @@ import {
 import { SearchLoader } from '../components/Loaders';
 import {
     getDocument,
-  topicsCollection,
-  updateOrCreateDocument,
-  usersCollection,
+    updateOrCreateDocument,
+    usersCollection,
 } from "../db";
 import Typewriter from "typewriter-effect";
-
 
 function Project(props) {
     const { email } = props;
@@ -77,7 +75,7 @@ function Project(props) {
   &nbsp; &nbsp;
     <Link to={'/'} style={{textDecoration: 'none', color: primaryBlueColour}}>
   <i className='far fa-arrow-alt-circle-left' style={{fontSize: '19px', position: 'absolute', top: '12px'}} /> 
-   </Link> &nbsp; &nbsp;&nbsp;&nbsp; Documentation Blocks </span>
+   </Link> &nbsp; &nbsp;&nbsp;&nbsp;</span>
 
   <button
                onClick={()=>{
@@ -103,13 +101,13 @@ function Project(props) {
       { projecttitle }
         </h1>
       </div>
-                
+      <div align="left" style={{paddingLeft: '10px'}}>Documentation Blocks  </div>  
         <div style={{
             display: 'flex'
         }}>
       <div style={{ 
             marginLeft: "0px",
-            paddingTop: '10px',
+            paddingTop: '3px',
             paddingLeft: '9px',
             display: 'flex',
             flexWrap: 'wrap',
@@ -153,10 +151,23 @@ function Project(props) {
         })
     }
    
+</div> 
 </div>
 
+<br/>
+<br/>
+<br/>
+{/* <br/>
+<div align="left" style={{paddingLeft: '10px'}}>Activity  </div>   */}
 
-</div>
+
+
+
+
+
+
+
+
 
 
 
