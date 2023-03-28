@@ -42,8 +42,8 @@ function DocumentationLandingPage(props) {
         <Typewriter
           options={{
             strings: [
-              "Streamline Your Product Documentations,",
-              "Let's Begin!"
+              "Ideation and Documentation System",
+              "Document, Refine and Share Instantly"
             ],
             autoStart: true,
             loop: true,
