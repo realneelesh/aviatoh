@@ -35,17 +35,17 @@ function DocumentationLandingPage(props) {
         zIndex: '999'
       }}
     >
-      <div align="left" style={{ fontSize: "25px", color: "silver", fontWeight:'300', padding: '0px 14px', width: '70%', zIndex: '99999', }}>
- <br/>
+      <div align="left" style={{ fontSize: "25px", color: "silver", fontWeight:'300', padding: '0px 14px', width: '70%', zIndex: '99999', height:from=='mobile'? '10vh':'auto' }}>
+ 
   
-        <img src={Logo} style={{ width: "200px" }} /> 
+        <img src={Logo} style={{ width: "180px", marginTop: '15px' }} /> 
  
 
         <Typewriter
           options={{
             strings: [
               "Ideation and Documentation System",
-              "Shape and Document Your Ideas"
+              "Document your side hustles",
             ],
             autoStart: true,
             loop: true,
@@ -54,6 +54,7 @@ function DocumentationLandingPage(props) {
             pauseFor: 1000,
           }}
         /> 
+      </div>
  
  
 {/* {from !== 'mobile' && <div style={{position :'absolute', fontSize: '16px', color: 'grey', bottom: '100px'}}>
@@ -82,7 +83,6 @@ function DocumentationLandingPage(props) {
  
 </div> } */}
 
-      </div>
  
       
       {
@@ -108,8 +108,8 @@ function DocumentationLandingPage(props) {
 
 
 
-    {from!="mobile" ? <div style={{height: '70vh', display: 'flex', width: '100vw', marginLeft: '-8px', justifyContent: 'space-around', alignItems: 'center'}}>
-       <Testimonial name="Namila" designation="Product Designer" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoe-c3Sj6BIHRIc22XqHSEH-2rMk4Kil4jBexY30kmWPU4coom9xVomxNKc92_RHsebzYWDMQB_w4&usqp=CAU&ec=48600112" text="This is so amazing I can t even explain quickly, I was struck when  realised I can have a platform that can serve so well and cater to my needs so well, I wish it was free to use, but its okay I guess" />
+    {from!="mobile" ? <div style={{height: '65vh', display: 'flex', width: '100vw', marginLeft: '-8px', justifyContent: 'space-around', alignItems: 'center'}}>
+       <Testimonial name="Namila" designation="Product Designer" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoe-c3Sj6BIHRIc22XqHSEH-2rMk4Kil4jBexY30kmWPU4coom9xVomxNKc92_RHsebzYWDMQB_w4&usqp=CAU&ec=48600112" text="This is going to be related to how she was able to focus on her side hustle ideas better after starting to use Aviatoh, earlier she couldn't work on an idea for more than a week and now Aviatoh provides her a path and a system to follow for refining her ideas" />
        {/* <Testimonial name="Crsitkop" designation="C.E.O. Bitsjoy" img="https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490__340.jpg" text="Th , I was struck w and cater to  well, Iplatform that can serve so well and cater to my needs so well, I wish it was free to use, but its okay I guess" /> */}
     </div>: null}
 
@@ -118,7 +118,10 @@ function DocumentationLandingPage(props) {
 
 
     <div style={{display: 'flex', flexDirection: 'column', width: '100vw', marginLeft: '-8px', justifyContent: 'center', alignItems: 'center', fontSize: '25px', color: "silver"}}>
-      <span>Retain and refine Ideas with AI powered Aviatoh</span>  
+      <span>
+        <br/>
+        <br/>
+        Retain and Refine Your Business Ideas with AI Powered Assistance</span>  
       </div>
  
  

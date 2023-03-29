@@ -17,7 +17,7 @@ function Testimonial(props) {
             maxWidth:'45vw'
         }}>
             <div style={{width: '50%'}} align="right">
-                <div align="left"  style={{color: primaryBlueColour}}>We deliver what we promise, thanks {name}!<hr style={{ border: '0px', borderBottom: '1px solid '+ 'silver', backgroundColor: 'transparent'}}/></div>
+                <div align="left"  style={{color: primaryBlueColour}}>We are glad to know, thanks {name}!<hr style={{ border: '0px', borderBottom: '1px solid '+ 'silver', backgroundColor: 'transparent'}}/></div>
                 {text}
                 <br/>
                 <br/>
