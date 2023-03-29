@@ -18,7 +18,7 @@ import NavigationBar from './pages/NavigationBar';
 import Home from './pages/Home';
 import { MyClock } from './components/Clock';
 import PathPage from './pages/PathPage';
-import { AviatohPronunciation, FreeTrial, Logo, logo } from './assets';
+import { AviatohPronunciation, FreeTrial, IconAviatoh, Logo, logo, PrismaticHead } from './assets';
 import CreatePath from './pages/CreatePath';
 import axios from 'axios';
 import AppCard from './components/CurriculumsAppCard';
@@ -30,6 +30,7 @@ import YourPaths from './pages/YourPaths';
 import DocumentationLandingPage from './pages/landing_pages/DocumentationLandingPage';
 import Project from './pages/Project';
 import ViewDoc from './pages/ViewDoc';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -222,17 +223,18 @@ function App() {
               
               </Routes>
 
-              <Link to="/profile" style={{color: 'grey'}}><i style={{fontSize:'33px',
+              <Link to="/profile" style={{color: 'grey'}}>
+                <i style={{
                 position: 'fixed',
-                bottom: '5px',
-                right: '5px',
+                bottom: '8px',
+                right: '8px',
                 cursor: 'pointer',
-                borderRadius: '50%',
                 // boxShadow: '0px 0px 150px 30px '+ 'grey',
                 backgroundColor: 'transparent',
-                padding: '5px',
-                fontSize: '15px'
-                }} className="fa gear">&#xf013;</i>
+                }} className="fa gear">
+              <img style={{width: '30px'}} src={IconAviatoh} />
+                  
+                  </i>
               </Link>
             </div>
     </BrowserRouter>}
@@ -245,6 +247,25 @@ function App() {
         }
     </div>
       }
+
+      <div 
+      align="center"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        position: 'absolute',
+        justifyContent: 'center',
+        width: '130px',
+        height: '130px',
+        borderRadius: '50%', 
+        bottom: '8px',
+        left: '10px',
+      }}>
+        {/* <img 
+        src={PrismaticHead} 
+        style={{width: '60px'}} /> */}
+      </div>
  
     </div>
   );

@@ -5,7 +5,6 @@ import { primaryBlueColour, primaryRedColour, primarySilverColour, primaryYellow
 import TextEditor from "../components/TextEditor";
 import {
   getDocument,
-  storage,
   topicsCollection,
   updateOrCreateDocument,
   usersCollection,
@@ -17,7 +16,7 @@ function CreatePath(props) {
   const { email, projecttitle, pathtitle } = useParams();
 
   const [cTopicId, setCTopicId] = useState(null);
-  const [cTopicTitle, setCTopicTitle] = useState(null);
+  // const [cTopicTitle, setCTopicTitle] = useState(null);
   const [currentTopicData, setCurrentTopicData] = useState(null);
   const [topicEdited, setTopicEdited] = useState(false);
 
@@ -30,6 +29,7 @@ function CreatePath(props) {
   }
 
   useEffect(() => { 
+    document.title = !changesSaved ? 'Unsaved changes' : pathtitle + ' | ' + projecttitle;
 
     if(cTopicId === null){
         setCTopicId(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics?.length > 0 ?
@@ -52,7 +52,7 @@ function CreatePath(props) {
         // alert('something went wrong');
       });
     }
-  }, [cTopicId, user]);
+  }, [cTopicId, user, changesSaved]);
 
   useEffect(() => {
     if (email) {
@@ -92,7 +92,11 @@ function CreatePath(props) {
       alert("Title must be unique and non-empty");
     } else {
       var key = email + new Date().toString().replaceAll(" ", "");
-      updateOrCreateDocument(topicsCollection, key, {data: `<p align='left'>Sr. no.</p><h1 align='left' style='color:grey;'>${topic}</h1><br/><p>No content on this page...</p>`})
+      updateOrCreateDocument(topicsCollection, key, {data: `<div style="background-color: ${'white'};">
+      <h1 style="margin: 0px;color:grey;">${topic}</h1>
+      <div style="color:grey;">A short description of the topic</div>
+      </div>
+      <p></p>`})
         .then((res) => {
           cPaths
             ?.find((x) => x.title === pathtitle && x.project === projecttitle)
@@ -106,7 +110,7 @@ function CreatePath(props) {
             .then((res) => {
               setTopicEdited(!topicEdited);
               setCTopicId(key);
-              setCTopicTitle(topic);
+              // setCTopicTitle(topic);
               document.getElementById('newTopic').value = '';
             })
             .catch((e) => {
@@ -134,7 +138,7 @@ function CreatePath(props) {
       .then((res) => {
         setTopicEdited(!topicEdited);
         setCTopicId(null);
-        setCTopicTitle(null);
+        // setCTopicTitle(null);
       })
       .catch((e) => {
         alert(e);
@@ -178,14 +182,15 @@ function CreatePath(props) {
  
   &nbsp;
   <span style={{display: 'inline'}}>
-  <Link to={'/project/'+projecttitle} style={{textDecoration: 'none', color: primaryBlueColour}}>
+  {/* <Link to={'/project/'+projecttitle} style={{textDecoration: 'none', color: primaryBlueColour}}>
   <i className='far fa-arrow-alt-circle-left' style={{fontSize: '19px', position: 'absolute', top: '12px'}} /> 
   &nbsp;
   &nbsp;
   &nbsp;
   &nbsp;
   
- </Link>
+ </Link> */}
+ &nbsp;
     </span>
        {projecttitle}
   &nbsp; 
@@ -227,12 +232,14 @@ function CreatePath(props) {
             </button> }
             &nbsp; 
 
-            {changesSaved && <Link to={"/project/view/"+email+"/"+projecttitle}>
+{/* Preview, -> opens a new tab  */}
+{/* 
+            {changesSaved && <Link target={'_preview'} to={"/project/view/"+email+"/"+projecttitle}>
               <span onClick={()=>{
                 }} style={{ zIndex: '9999', position: 'absolute', right: '13px', top:'10px', fontSize: '17px', cursor: 'pointer', color: 'grey'}}>
                   Preview
              </span> 
-              </Link>}
+              </Link>} */}
             
   </span>
   </div>
@@ -291,13 +298,13 @@ function CreatePath(props) {
                         var switchOrNot = window.confirm('Unsaved changes detected, press Cancel to go back, press OK to continue');
                         if(switchOrNot){
                           setCTopicId(topic.id);
-                          setCTopicTitle(topic.title);
+                          // setCTopicTitle(topic.title);
                       setChangesSaved(true);
 
                         }
                       } else {
                         setCTopicId(topic.id);
-                        setCTopicTitle(topic.title);
+                        // setCTopicTitle(topic.title);
                       setChangesSaved(true);
 
                       }
@@ -328,7 +335,7 @@ function CreatePath(props) {
         </div>
         </div>
         {/* <div style={{width: '80vw', background:`linear-gradient(${primarySilverColour}, white)`}}> */}
-        <div style={{ width: "72vw"}} align="center">
+        <div style={{ width: "72vw", backgroundColor: 'white'}} align="center">
             {<TextEditor disabled={cTopicId !== null ? false : true} setDataToBeSaved={setDataToBeSaved}  onChange={onEditorChange} onSave={saveTopic} initialContent={currentTopicData} />}
         </div>
         {/* </div> */}

@@ -9,6 +9,8 @@ import Calendar from './calander.png';
 import Signinwithgoogleicon from './signinwithgoogle.png';
 import Tick from './tick.png';
 import Loader from './loader.gif';
+import IconAviatoh from './icontabtitle-removebg-preview.png';
+import PrismaticHead from './PrismaticHead.svg';
 
 export {
     Empty,
@@ -21,5 +23,7 @@ export {
     Calendar,
     Signinwithgoogleicon,
     Tick,
-    Loader
+    Loader,
+    IconAviatoh,
+    PrismaticHead
 }

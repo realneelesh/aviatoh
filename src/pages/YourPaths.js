@@ -13,7 +13,6 @@ import { Empty, Tick } from "../assets";
 import { SearchLoader } from "../components/Loaders";
 import {
   getDocument,
-  topicsCollection,
   updateOrCreateDocument,
   usersCollection,
 } from "../db";
@@ -26,7 +25,7 @@ function YourPaths(props) {
     description: ""
   });
 
-  const [pathAdded, setPathAdded] = useState(false);
+  const [updateUserFlag, setUpdateUserFlag] = useState(false);
 
   const [addNewProject, setAddNewProject] = useState(false);
 
@@ -52,7 +51,39 @@ function YourPaths(props) {
         }
       });
     }
-  }, [email, pathAdded]);
+  }, [email, updateUserFlag]);
+
+  const projectArchiveStringSeparator = "%arch%archived" + new Date().toDateString();
+
+  const archiveProject= (project) => {
+    const confirmation = window.prompt('Are you sure? This action will archive the project, if you are sure, please type in the title of the project you are trying to delete.');
+    // alert(confirmation);
+    if(confirmation.toUpperCase() == project.toUpperCase()){
+         // as projects is an array of project objects with title and description, we would append "%arch%archived" to a project's title to mark it as archived
+    const tempProjects = user?.projects;
+    const index = tempProjects?.map(x=>x.title).indexOf(project);
+    const tempPaths = user.paths.map((path)=>{
+        if(path.project === project){
+            return {
+                ...path,
+                project: path.project + projectArchiveStringSeparator
+            }
+        } else {
+            return path
+        }
+    })
+    if(index != -1) tempProjects[index].title += projectArchiveStringSeparator;
+
+    updateOrCreateDocument(usersCollection, email, {
+        projects: tempProjects,
+        paths: tempPaths
+    }).then(res => {
+        setUpdateUserFlag(!updateUserFlag);
+    }).catch(err=>{
+        alert('Something went wrong');
+    })
+    }
+  }
 
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
@@ -141,7 +172,7 @@ function YourPaths(props) {
               </Link>
             );
           })} */}
-        {user?.projects?.map((project, i) => {
+        {user?.projects?.filter(x=>!x.title.includes(projectArchiveStringSeparator)).map((project, i) => {
           return (
             <div style={{
                 maxWidth: '98vw',
@@ -188,7 +219,7 @@ function YourPaths(props) {
                 }}
               >
                   <h3 style={{ fontSize: "12px"}}>
-                  Preview
+                  View
                 </h3>  
                 </Link>
                 &nbsp;
@@ -217,6 +248,7 @@ function YourPaths(props) {
                 <i
                     style={{ color: "silver" }}
                     onClick={() => { 
+                        archiveProject(project.title);
                     }}
                     className="fa fa-trash"
                     ></i> 
@@ -278,7 +310,7 @@ function YourPaths(props) {
             fontSize: "13px",
           }}
           onClick={() => {
-            if(user?.projects?.find(x => x.title.toLowerCase() === projectToAdd.title.toLowerCase())){
+            if(user?.projects?.find(x => x.title.toLowerCase() === projectToAdd.title.toLowerCase()+projectArchiveStringSeparator ||  x.title.toLowerCase() === projectToAdd.title.toLowerCase())){
                 alert("Project with this title already exists");
             } else {
                 if (projectToAdd.title && projectToAdd.title !== "") {
@@ -325,6 +357,9 @@ function YourPaths(props) {
                       ]
                     })
                       .then((res) => {
+                        setUpdateUserFlag(!updateUserFlag);
+                        setAddNewProject(false);
+                        document.getElementById("booktitle").value = "";
                         // updateOrCreateDocument(topicsCollection, key, {
                         //   data: '<h2><span style="color: rgb(126, 140, 141);">Introduction</span></h2> <p><span style="color: rgb(126, 140, 141);">Thank you for visiting...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
                         // }).then((res) => {
@@ -352,7 +387,7 @@ function YourPaths(props) {
         <br />
       </div>
 
-      {user?.projects?.length === 0 && (
+      {user?.projects?.filter(x=>!x.title.includes(projectArchiveStringSeparator)).length === 0 && (
         <div
           align="right"
           style={{

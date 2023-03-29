@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   primaryBlueColour, primaryGreenColour, primaryRedColour, primarySilverColour, primaryYellowColour, showPage
 } from "../App";
@@ -11,9 +11,13 @@ import {
 } from "../db";
 import Typewriter from "typewriter-effect";
 
+
 function Project(props) {
     const { email } = props;
     const { projecttitle } = useParams();
+
+    const navigate = useNavigate();
+
     const [pathToAdd, setPathToAdd] = useState({
         title: "",
         description: ``,
@@ -42,6 +46,37 @@ function Project(props) {
           });
         }
       }, [email, pathAdded]);
+
+
+const renameProject = (title) => {
+    if(title.trim()==""){
+        title=projecttitle;
+    }
+    const indexToUpdate = user.projects.map(x=>x.title).indexOf(projecttitle);
+    const tempProjes = user.projects;
+    tempProjes[indexToUpdate].title = title;
+    const tempPaths = user.paths.map(x=>{
+        if(x.project === projecttitle){
+            return {
+                ...x,
+                project: title
+            }
+        } else {
+            return x
+        }
+    })
+    updateOrCreateDocument(usersCollection, email, {
+        projects: tempProjes,
+        paths: tempPaths
+    }).then(res=>{
+        setPathAdded(!pathAdded);
+        navigate("/project/" + title);
+        window.location.reload();
+    }).catch((e)=>{
+        alert(e);
+        window.location.reload();
+    })
+}
 
 
     return (
@@ -97,9 +132,31 @@ function Project(props) {
   </div>
        
   <div align="left" style={{marginTop: '30px', marginBottom: '20px'}}>
-      <h1 style={{border: '0px', paddingLeft: '11px'}}>
-      { projecttitle }
+      <h1 id="projectTitle" style={{border: '0px', paddingLeft: '11px', paddingRight: '3px'}}>
+      { projecttitle.toUpperCase() }
         </h1>
+        <h1 id="projectTitleEdit" style={{padding:'0px', display: 'none', margin: '0px', border: '0px', paddingLeft: '5px'}}>
+            <input
+            id={'projectTitleEditInput'}
+            placeholder={projecttitle.toUpperCase()} style={{all: 'inherit'}} type="text">
+            </input></h1>
+            &nbsp; 
+            &nbsp; 
+        <i
+        onClick={(e)=>{
+            document.getElementById('projectTitle').style.display = 'none';
+            document.getElementById('projectTitleEdit').style.display = 'inline';
+            document.getElementById('titileSave').style.display = 'inline';
+            document.getElementById('projectTitleEditInput').focus();
+            e.target.style.display = 'none';
+        }}
+        title="Rename" style={{color: 'grey', cursor: 'pointer'}} className="fa fa-edit"></i>
+
+        <button id="titileSave" style={{display: 'none', margin: '0px', padding: '5px 10px'}}
+        onClick={()=>{
+            renameProject(document.getElementById('projectTitleEditInput').value)
+        }}
+        >Save</button>
       </div>
       <div align="left" style={{paddingLeft: '10px'}}>Documentation Blocks  </div>  
         <div style={{
@@ -121,7 +178,8 @@ function Project(props) {
                 asciiValueSumOfTitle+=i.charCodeAt(0);
             }); 
             asciiValueSumOfTitle=(asciiValueSumOfTitle*i)%90; 
-            return <Link
+            return <Link 
+                target={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 to={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 className="scopes"
                 style={{

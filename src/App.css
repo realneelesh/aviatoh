@@ -259,10 +259,13 @@ button[aria-label="Help"]{
   display: none !important;
 }
 
+.fa.gear{
+  transition-duration: 300ms;
+}
 .fa.gear:hover{ 
   color: rgb(40, 40, 40);
-  transform: rotate(120deg);
-  transition-duration: 1000ms;
+  transform: rotate(90deg);
+  transition-duration: 500ms;
 }
  
  
