@@ -108,10 +108,10 @@ function DocumentationLandingPage(props) {
 
 
 
-    <div style={{height: '70vh', display: 'flex', width: '100vw', marginLeft: '-8px', justifyContent: 'space-around', alignItems: 'center'}}>
+    {from!="mobile" ? <div style={{height: '70vh', display: 'flex', width: '100vw', marginLeft: '-8px', justifyContent: 'space-around', alignItems: 'center'}}>
        <Testimonial name="Namila" designation="Product Designer" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoe-c3Sj6BIHRIc22XqHSEH-2rMk4Kil4jBexY30kmWPU4coom9xVomxNKc92_RHsebzYWDMQB_w4&usqp=CAU&ec=48600112" text="This is so amazing I can t even explain quickly, I was struck when  realised I can have a platform that can serve so well and cater to my needs so well, I wish it was free to use, but its okay I guess" />
        {/* <Testimonial name="Crsitkop" designation="C.E.O. Bitsjoy" img="https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490__340.jpg" text="Th , I was struck w and cater to  well, Iplatform that can serve so well and cater to my needs so well, I wish it was free to use, but its okay I guess" /> */}
-    </div>
+    </div>: null}
 
 
     <div style={{display: 'flex', flexDirection: 'column', width: '100vw', marginLeft: '-8px', justifyContent: 'center', alignItems: 'center', fontSize: '25px', color: "silver"}}>
