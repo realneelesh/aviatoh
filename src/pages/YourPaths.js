@@ -172,7 +172,7 @@ function YourPaths(props) {
               </Link>
             );
           })} */}
-        {user?.projects?.filter(x=>!x.title.includes(projectArchiveStringSeparator)).map((project, i) => {
+        {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
           return (
             <div style={{
                 maxWidth: '98vw',

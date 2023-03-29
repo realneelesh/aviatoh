@@ -5,8 +5,13 @@
   z-index: 999999;
 }
 
-* {
-  font-family: 'Sen';
+*:not(#documentationLandingPageView) {
+  /* font-family: Sen; */
+}
+
+#documentationLandingPageView{
+  font-family: 'Poppins' !important;
+  font-weight: 700;
 }
 
 .App-logo {
@@ -94,7 +99,7 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   border-radius: 4px;
 }
 
-.h3:hover {  
+.h3:hover {
   display: inline;
   background-color: rgb(235, 235, 235);
   color: black;
@@ -116,7 +121,7 @@ th {
 
 td {
   padding-right: 30px;
-  text-align: left; 
+  text-align: left;
   overflow-x: scroll;
   max-width: 130px;
 }
@@ -148,21 +153,21 @@ select {
 }
 
 
-.question:hover { 
+.question:hover {
   background-color: rgb(235, 235, 235);
 }
 
 input[type="checkbox"].checkboxInput {
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   width: 16px;
-  height: 12px; 
-  position: relative; 
+  height: 12px;
+  position: relative;
 }
 
 input[type="checkbox"].checkboxInput:checked::before {
   content: "\2714";
   position: absolute;
-  top: -1px; 
+  top: -1px;
   right: 5px;
   color: rgb(113, 185, 4);
 
@@ -171,9 +176,9 @@ input[type="checkbox"].checkboxInput:checked::before {
 }
 
 input[type="checkbox"].checkboxInputTopic {
-  -webkit-appearance: none; 
-  height: 12px; 
-  position: relative; 
+  -webkit-appearance: none;
+  height: 12px;
+  position: relative;
   top: 4px;
   border: 1px solid silver;
   border-radius: 3px;
@@ -182,7 +187,7 @@ input[type="checkbox"].checkboxInputTopic {
 input[type="checkbox"].checkboxInputTopic:checked::before {
   content: "\2714";
   position: absolute;
-  top: -1px; 
+  top: -1px;
   right: -1px;
   color: rgb(113, 185, 4);
 
@@ -195,7 +200,7 @@ input[type="submit"] {
   display: inline;
   background-color: #254B62;
   color: white;
-  padding: 5px 19px; 
+  padding: 5px 19px;
 }
 
 .pathCard:hover{
@@ -245,13 +250,13 @@ input[type="submit"] {
 .fa.fa-trash:hover {
  color: #e81c3e !important;
 }
- 
+
 .tox-statusbar__path{
   display: none !important;
 }
 
 .tox-tinymce {
-  border-radius: 0px !important; 
+  border-radius: 0px !important;
   border: 0px solid silver !important;
 }
 
@@ -262,18 +267,17 @@ button[aria-label="Help"]{
 .fa.gear{
   transition-duration: 300ms;
 }
-.fa.gear:hover{ 
+.fa.gear:hover{
   color: rgb(40, 40, 40);
   transform: rotate(90deg);
   transition-duration: 500ms;
 }
- 
- 
+
+
 .ignore-css{
   all:unset !important;
 }
 
 .scopes:hover {
-  background-color: rgb(241, 241, 241) !important; 
+  background-color: rgb(241, 241, 241) !important;
 }
- 

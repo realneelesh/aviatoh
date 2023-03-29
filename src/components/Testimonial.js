@@ -1,5 +1,5 @@
 import React from 'react';
-import { primaryBlueColour, primarySilverColour } from '../App';
+import { primaryBlueColour, primaryGreenColour, primarySilverColour } from '../App';
 
 function Testimonial(props) {
     const {img, text, designation, name} = props;
@@ -13,11 +13,14 @@ function Testimonial(props) {
             // boxShadow: "rgba(0, 0, 0, 0.3) 0px 0px 7px",
             alignItems: 'center',
             borderRadius: '13px',
-            color: 'rgb(150, 150, 150)',
-            maxWidth:'45vw'
+            color: 'rgb(130, 130, 130)',
+            maxWidth:'45vw',
+            fontSize: '15px',
+            marginTop: '80px',
+            fontWeight: '300'
         }}>
-            <div style={{width: '50%'}} align="right">
-                <div align="left"  style={{color: primaryBlueColour}}>We are glad to know, thanks {name}!<hr style={{ border: '0px', borderBottom: '1px solid '+ 'silver', backgroundColor: 'transparent'}}/></div>
+            <div style={{width: '80%'}} align="right">
+                <div align="left"  style={{color: primaryGreenColour(1)}}>We are glad to know, thanks {name}!<hr style={{ border: '0px', borderBottom: '1px solid '+ 'silver', backgroundColor: 'transparent'}}/></div>
                 {text}
                 <br/>
                 <br/>
@@ -29,7 +32,7 @@ function Testimonial(props) {
             &nbsp;
             &nbsp;
             &nbsp;
-                <img style={{width: '105px', height: '105px', borderRadius: '50%', backgroundColor: primarySilverColour}} src={img} />
+                <img style={{width: '125px', height: '125px', borderRadius: '50%', backgroundColor: primarySilverColour}} src={img} />
  
         </div>
     );
