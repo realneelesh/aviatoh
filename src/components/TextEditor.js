@@ -93,13 +93,13 @@ function TextEditor(props) {
             "table",
             "code",
             "help",
-            "wordcount",
+            "wordcount"
           ],
           toolbar:
             "blocks | " +
             "bold italic forecolor backcolor | alignleft aligncenter " +
             "alignright alignjustify | bullist numlist | " +
-            "table | image | link",
+            "table | image | link ",
           content_style:
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px; borderRadius: 0px;}",
         }}

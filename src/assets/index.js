@@ -11,6 +11,10 @@ import Tick from './tick.png';
 import Loader from './loader.gif';
 import IconAviatoh from './icontabtitle-removebg-preview.png';
 import PrismaticHead from './PrismaticHead.svg';
+import Demo1 from './demo_one.png';
+import Demo2 from './demo_two.png';
+import Demo3 from './demo_three.png';
+import Demo4 from './demo_four.png';
 
 export {
     Empty,
@@ -25,5 +29,9 @@ export {
     Tick,
     Loader,
     IconAviatoh,
-    PrismaticHead
+    PrismaticHead,
+    Demo1,
+    Demo2,
+    Demo3,
+    Demo4
 }

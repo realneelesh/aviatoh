@@ -70,7 +70,8 @@ function CreatePath(props) {
   }, [email, topicEdited]);
 
   const saveTopic = (data) => {
-    updateOrCreateDocument(topicsCollection, cTopicId, {
+    if(data != null){
+      updateOrCreateDocument(topicsCollection, cTopicId, {
         data: data
       })
         .then((res) => { 
@@ -80,6 +81,7 @@ function CreatePath(props) {
         .catch((e) => {
           alert(e);
         });
+    }
   }
 
   const addTopic = (topic) => {

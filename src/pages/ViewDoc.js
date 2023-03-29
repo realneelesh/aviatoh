@@ -45,7 +45,8 @@ function ViewDoc(props) {
           currentTopicId
         )
           .then((res) => {
-            setCurrentTopicData(res.data()?.data.replaceAll('<a', '<a target="_blank"'));
+            alert(JSON.stringify(res.data()));
+            setCurrentTopicData(res.data()?.data?.replaceAll('<a', '<a target="_blank"'));
           })
           .catch((err) => {
             alert(err);
@@ -57,7 +58,7 @@ function ViewDoc(props) {
     if (currentTopicId) {
       getDocument(topicsCollection, currentTopicId)
         .then((res) => {
-          setCurrentTopicData(res.data()?.data.replaceAll('<a', '<a target="_blank"'));
+          setCurrentTopicData(res.data()?.data?.replaceAll('<a', '<a target="_blank"'));
         })
         .catch((err) => {
           alert(err);
