@@ -9,6 +9,10 @@
   /* font-family: Sen; */
 }
 
+*{
+  cursor: default;
+}
+
 #documentationLandingPageView{
   font-family: 'Poppins' !important;
   font-weight: 700;

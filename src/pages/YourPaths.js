@@ -468,13 +468,25 @@ function YourPaths(props) {
 <br/>
 <br/>
 <br/>
-
+<h1>Under Construction</h1>
+<br/>
+<br/>
+<br/>
         <span>
           Open up a large popup for ideation, checking feasibility of an idea, idea can be any business idea or any general conversation beginner for the initiation of a string of idea .. you get it,
         </span>
         <br/>
         <br/>
-          <h1>Refine an Idea</h1>
+          <h3>Fine tuned to refine an idea</h3>
+          <br/>
+          <br/>
+          <h3>Another one Fine tuned for startup related queries</h3>
+          <br/>
+          <br/>
+          <h3>Another one Fine tuned for Prototyping</h3>
+          <br/>
+          <br/>
+          Before you start a project on any idea, try knowing more about its scope and feasibility through a discussion with our fine tuned AI models
       </div>
     </div>
   );

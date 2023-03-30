@@ -101,7 +101,7 @@ function DocumentationLandingPage(props) {
                   bottom: "100px",
                   top: "23px",
                   right: "0px",
-                  cursor: "pointer",
+                  cursor: "auto"
                 }}
                 
               >
@@ -125,7 +125,6 @@ function DocumentationLandingPage(props) {
                   <div style={{
                     position: "absolute", 
                     right: "0px",
-                    cursor: "pointer",
                     width: '30vw',
                     color: 'grey',
                     fontSize: '13px'
@@ -331,12 +330,7 @@ function DocumentationLandingPage(props) {
           {/* this section will be about AI powered feature */}
    
           
- 
-        </div>
-        
-      )}
-
-      <br/>
+          <br/>
       <br/>
       <br/>
       <br/>
@@ -350,12 +344,17 @@ function DocumentationLandingPage(props) {
       <br/>
       <br/>
       <div style={{marginLeft: '-8px', width: '100vw',  
-      boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 70px",
+      boxShadow: "rgba(0, 0, 0, 0.08) 0px 0px 70px",
     }}> 
       <Footer />
 
       </div>
 
+        </div>
+        
+      )}
+
+   
 
 
       {/* mobile */}

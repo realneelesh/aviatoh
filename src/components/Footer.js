@@ -15,14 +15,14 @@ function Footer(props) {
         height: '45vh'
       }}
     >
-      <div style={{ paddingLeft: "20px", width: "40%" }}>
-        <img src={Logo} style={{ width: "40%" }} />
+      <div style={{ paddingLeft: "20px", width: "35%" }}>
+        <img src={Logo} style={{ width: "50%" }} />
       </div>
 
       <div
         style={{
           display: "flex",
-          width: "60%",
+          width: "65%",
           justifyContent: "space-around",
         //   borderLeft: "1px solid rgb(230,230,230)",
         }}
