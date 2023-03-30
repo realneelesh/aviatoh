@@ -330,7 +330,9 @@ function DocumentationLandingPage(props) {
       <br/>
       <br/>
       <br/>
-      <div style={{marginLeft: '-8px'}}>
+      <div style={{marginLeft: '-8px', width: '100vw',  
+      boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 70px",
+    }}> 
       <Footer />
 
       </div>

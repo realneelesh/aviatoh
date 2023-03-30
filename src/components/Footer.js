@@ -1,4 +1,5 @@
 import React from "react";
+import { primarySilverColour } from "../App";
 import { Logo } from "../assets";
 
 function Footer(props) {
@@ -7,9 +8,8 @@ function Footer(props) {
       style={{
         lineHeight: 1.5,
         width: "100vw",
-        backgroundColor: "#353740",
         display: "flex",
-        color: "silver",
+        color: "rgb(150,150,150)",
         justifyContent: "space-between",
         alignItems: "center",
         height: '45vh'
@@ -24,12 +24,12 @@ function Footer(props) {
           display: "flex",
           width: "60%",
           justifyContent: "space-around",
-          borderLeft: "1px solid rgb(100, 100, 100)",
+        //   borderLeft: "1px solid rgb(230,230,230)",
         }}
       >
         <div style={{ margin: "10px", fontSize: "15px" }} align="left">
-          <div style={{ fontSize: "22px" }}>Company</div>
-          <br />
+          <div style={{ fontSize: "25px" }}>Company</div>
+   
           <div>About Us</div>
           <div>Careers</div>
           <div>Management Team</div>
@@ -38,21 +38,21 @@ function Footer(props) {
         </div>
 
         <div style={{ margin: "10px", fontSize: "15px" }} align="left">
-          <div style={{ fontSize: "22px" }}>Customers</div>
-          <br />
+          <div style={{ fontSize: "25px" }}>Customers</div>
+       
           <div>Customermupport</div>
-          <div>Write at {'customercare@aviatoh.com'.toLowerCase()}</div>
+          <div>📧 {'customercare@aviatoh.com'.toLowerCase()}</div>
           <br />
-          <div style={{ fontSize: "22px" }}>Partners</div>
-          <br />
+          <div style={{ fontSize: "25px" }}>Partners</div>
+    
           <div>All Partner Programs</div>
           <div>App Partner Program</div>
           <div>Affiliate Program</div>
         </div>
 
         <div style={{ margin: "10px", fontSize: "15px" }} align="left">
-          <div style={{ fontSize: "22px" }}>Social Media</div>
-          <br />
+          <div style={{ fontSize: "25px" }}>Social Media</div>
+  
           <div>Instagram</div>
           <div>Facebook</div>
           <div>Twitter</div>
