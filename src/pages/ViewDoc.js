@@ -45,7 +45,7 @@ function ViewDoc(props) {
           currentTopicId
         )
           .then((res) => {
-            alert(JSON.stringify(res.data()));
+            // alert(JSON.stringify(res.data()));
             setCurrentTopicData(res.data()?.data?.replaceAll('<a', '<a target="_blank"'));
           })
           .catch((err) => {

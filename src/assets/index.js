@@ -16,6 +16,7 @@ import Demo2 from './demo_two.png';
 import Demo3 from './demo_three.png';
 import Demo4 from './demo_four.png';
 import DemoView from './demo_view.png';
+import Openailogo from './openai.svg';
 
 export {
     Empty,
@@ -35,5 +36,6 @@ export {
     Demo2,
     Demo3,
     Demo4,
-    DemoView
+    DemoView,
+    Openailogo
 }

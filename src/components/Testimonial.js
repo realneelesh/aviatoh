@@ -15,7 +15,7 @@ function Testimonial(props) {
             borderRadius: '13px',
             color: 'rgb(130, 130, 130)',
             maxWidth:'45vw',
-            fontSize: '15px',
+            fontSize: '17px',
             marginTop: '80px',
             fontWeight: '300'
         }}>
