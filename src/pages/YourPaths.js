@@ -462,6 +462,20 @@ function YourPaths(props) {
           </span>
         </div>
       )}
+
+
+<div style={{height: '50vh'}}>
+<br/>
+<br/>
+<br/>
+
+        <span>
+          Open up a large popup for ideation, checking feasibility of an idea, idea can be any business idea or any general conversation beginner for the initiation of a string of idea .. you get it,
+        </span>
+        <br/>
+        <br/>
+          <h1>Refine an Idea</h1>
+      </div>
     </div>
   );
 }

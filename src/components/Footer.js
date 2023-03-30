@@ -7,12 +7,12 @@ function Footer(props) {
       style={{
         lineHeight: 1.5,
         width: "100vw",
-        backgroundColor: "black",
+        backgroundColor: "#353740",
         display: "flex",
         color: "silver",
         justifyContent: "space-between",
         alignItems: "center",
-        height: '40vh'
+        height: '45vh'
       }}
     >
       <div style={{ paddingLeft: "20px", width: "40%" }}>

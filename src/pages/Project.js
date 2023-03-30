@@ -354,6 +354,21 @@ const renameProject = (title) => {
          
         </span>
       </div>}
+
+
+
+      <div style={{height: '20vh'}}>
+        1. <span>We will automatically generate a precise summmary for this project based on the documentation you build</span>
+        <br/>
+        <br/>
+          <h1>AI summary of the project documentation</h1>
+      </div> 
+      <div style={{height: '20vh'}}>
+      2. <span></span>
+        <br/>
+        <br/>
+          <h1>New features can be suggested for the particular project on the basis of documentation</h1>
+      </div>
         </div>
     );
 }
