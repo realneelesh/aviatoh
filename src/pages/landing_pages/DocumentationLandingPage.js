@@ -4,6 +4,7 @@ import {
   primaryGreenColour,
   primaryRedColour,
   primarySilverColour,
+  primaryYellowColour,
 } from "../../App";
 import Typewriter from "typewriter-effect";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -102,12 +103,15 @@ function DocumentationLandingPage(props) {
                   right: "0px",
                   cursor: "pointer",
                 }}
+                
+              >
+                <div
                 onClick={() => {
                   signInWithPopup(auth, provider);
                 }}
-              >
-                <div style={{ cursor: "pointer", marginRight: "33px" }}>
+                 style={{ cursor: "pointer", marginRight: "23px" }}>
                   Sign In
+                  
                   {/* <img
       style={{
         width: "50px",
@@ -117,6 +121,20 @@ function DocumentationLandingPage(props) {
      <br/>
     Sign In */}
                 </div>
+                <br/> 
+                  <div style={{
+                    position: "absolute", 
+                    right: "0px",
+                    cursor: "pointer",
+                    width: '30vw',
+                    color: 'grey',
+                    fontSize: '13px'
+                  }}
+                  align="right"
+                  >
+                    <span style={{paddingRight: '20px', backgroud: `linear-gradient(to right, white,${primaryGreenColour(0.8)},${primaryGreenColour(0.8)},${primaryGreenColour(0.8)})`, display: 'block'}}>
+                     7 Days free trial &nbsp; ✨ &nbsp; No Credit Card required 
+                    </span></div>
               </div>
             )}
 
@@ -155,8 +173,9 @@ function DocumentationLandingPage(props) {
               <Testimonial
                 name="Namila"
                 designation="Product Designer"
-                img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoe-c3Sj6BIHRIc22XqHSEH-2rMk4Kil4jBexY30kmWPU4coom9xVomxNKc92_RHsebzYWDMQB_w4&usqp=CAU&ec=48600112"
-                text="This is going to be related to how she was able to focus on her side hustle ideas better after starting to use Aviatoh, earlier she couldn't work on an idea for more than a week and now Aviatoh provides her a path and a system to follow for refining her ideas"
+                img="https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                text="This is a sample prototype testimonial, shall be replacedThis is a sample prototype testimonial, shall be replacedThis is a sample prototype testimonial, shall be replaced"
+                // text="This is going to be related to how she was able to focus on her side hustle ideas better after starting to use Aviatoh, earlier she couldn't work on an idea for more than a week and now Aviatoh provides her a path and a system to follow for refining her ideas"
               />
               {/* <Testimonial name="Crsitkop" designation="C.E.O. Bitsjoy" img="https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490__340.jpg" text="Th , I was struck w and cater to  well, Iplatform that can serve so well and cater to my needs so well, I wish it was free to use, but its okay I guess" /> */}
             </div>
