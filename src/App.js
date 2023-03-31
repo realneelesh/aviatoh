@@ -1,32 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { getAuth, signInWithRedirect, GoogleAuthProvider, getRedirectResult, signOut, onAuthStateChanged, signInWithPopup } from "firebase/auth";
-import GoogleButton from 'react-google-button'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { browserStorage, currentAviatohApp, userInfoKey } from './BrowserStorage';
-import ExperienceForm from './pages/ExperienceForm';
+import { browserStorage, userInfoKey } from './BrowserStorage';
 import { firebaseConfig, getDocument, updateOrCreateDocument, usersCollection } from './db';
-import EducationForm from './pages/EducationForm';
 import ParticularsForm from './pages/ParticularsForm';
 import Profile from './pages/Profile';
 
-import { HashRouter as BrowserRouter, Routes, Route, useNavigate, useNavigation, Link } from 'react-router-dom';
-import ProfileShow from './pages/ProfileShow';
-import NavigationBar from './pages/NavigationBar';
-import Home from './pages/Home';
-import { MyClock } from './components/Clock';
-import PathPage from './pages/PathPage';
-import { AviatohPronunciation, FreeTrial, IconAviatoh, Logo, logo, PrismaticHead } from './assets';
+import { HashRouter as BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { IconAviatoh  } from './assets';
 import CreatePath from './pages/CreatePath';
-import axios from 'axios';
-import AppCard from './components/CurriculumsAppCard';
-import FigmaLens from './apps/FigmaLens';
-import AutoMedium from './apps/automedium';
-import HomeHome from './pages/HomeHome';
 import TextEditor from './components/TextEditor';
-import YourPaths from './pages/YourPaths';
+import Dashboard from './pages/Dashboard';
 import DocumentationLandingPage from './pages/landing_pages/DocumentationLandingPage';
 import Project from './pages/Project';
 import ViewDoc from './pages/ViewDoc';
@@ -40,8 +27,7 @@ import ViewDoc from './pages/ViewDoc';
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
-const provider = new GoogleAuthProvider();
+ 
 const auth = getAuth(app);
 
 export const primaryBlueColour = '#2e4c57';
@@ -96,47 +82,48 @@ function App() {
                 projects: [
                   {
                     title: 'Sample Project',
-                    description: ''
+                    description: '',
+                    type: 'Project'
                   }
                 ],
                 paths: [
                   {
-                    title: 'Introduction',
+                    title: 'Sample Block 1',
                     project: 'Sample Project',
                     description: '',
                     topics: []  // sending topics array is important for the view
-                  },
-                  {
-                    title: 'Product Design',
-                    project: 'Sample Project',
-                    description: '',
-                    topics: []
-                  },
-                  {
-                    title: 'Technical Documentation',
-                    project: 'Sample Project',
-                    description: '',
-                    topics: []
-                  },
-                  {
-                    title: 'QA',
-                    project: 'Sample Project',
-                    description: '',
-                    topics: []
-                  },
-                  {
-                    title: 'FAQs',
-                    project: 'Sample Project',
-                    description: '',
-                    topics: []
-                  }
+                   },
+                  // {
+                  //   title: 'Product Design',
+                  //   project: 'Sample Project',
+                  //   description: '',
+                  //   topics: []
+                  // },
+                   {
+                     title: 'Sample Block 2',
+                     project: 'Sample Project',
+                     description: '',
+                     topics: []
+                   },
+                  // {
+                  //   title: 'QA',
+                  //   project: 'Sample Project',
+                  //   description: '',
+                  //   topics: []
+                  // },
+                  // {
+                  //   title: 'FAQs',
+                  //   project: 'Sample Project',
+                  //   description: '',
+                  //   topics: []
+                  // }
                 ]
               })
             .then((res) => { 
               window.location.reload();
             })
-            .catch(() => {
-              alert("Something went wrong");
+            .catch((err) => {
+              alert(err);
             });
             }
           })
@@ -171,24 +158,14 @@ function App() {
 
               {/* study curriculums */}
               <Route exact path="/" element={<>
-                <YourPaths email={email} /> 
+                <Dashboard email={email} /> 
               </>}
-              /> 
-              <Route path="/academia" element={<>
-                <Home email={email} /> 
-              </>}
-              /> /project" + "/view/" + email + "/" + project.title
-              <Route path="/path/:discid/:title" element={<>
-                <PathPage email={email} />
-              </>} />
+              />
               <Route path="/texteditor" element={<>
                 <TextEditor email={email} />
               </>} />
               <Route path="edit/:email/:projecttitle/:pathtitle" element={<>
                 <CreatePath email={email} />
-              </>} />
-              <Route path="/app/documentations" element={<>
-                <YourPaths email={email}/>
               </>} />
               <Route path="/project/:projecttitle" element={<>
                 <Project email={email}/>
@@ -198,27 +175,12 @@ function App() {
 
               </>} />
 
-              {/* app2 */}
-              <Route path="/automedium" element={<>
-                <AutoMedium />
-              </>} />
-
-
               {/* generic */}
               <Route path="/profile" element={<>
               <Profile email={email} auth={auth} />
               </>} />
-              <Route path="/profile/:email" element={<>
-                <ProfileShow />
-                </>} />
               <Route path="/editprofile" element={<>
                 <ParticularsForm email={email} />
-              </>} />
-              <Route path="/edu" element={<>
-                <EducationForm email={email} />
-              </>} /> 
-              <Route path="/exp" element={<>
-                <ExperienceForm email={email} />
               </>} />
               
               </Routes>

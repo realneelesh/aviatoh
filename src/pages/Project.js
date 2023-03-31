@@ -47,6 +47,23 @@ function Project(props) {
         }
       }, [email, pathAdded]);
 
+      const deleteDocumentationBlock = (block) => {
+        var confirmation = window.confirm(`The documentation block '${block}' shall be deleted permanently, are you sure?`);
+        if(confirmation) {
+          // 'paths' in user are blocks
+        let tempPaths = user.paths;
+        tempPaths = tempPaths.filter(x => x.project !== projecttitle ||  x.title !== block);
+        updateOrCreateDocument(usersCollection, email, {
+          paths: tempPaths
+        }).then(res =>{
+          //just to retrigger useEffect
+          setPathAdded(!pathAdded);
+        }).catch((err)=>{
+          alert(err);
+        })
+        }
+      }
+
 
 const renameProject = (title) => {
     if(title.trim()==""){
@@ -115,6 +132,9 @@ const renameProject = (title) => {
   <button
                onClick={()=>{
                 setAddNewPath(true);
+                setTimeout(()=>{
+                  document.getElementById('doctitle').focus();
+                }, 300)
               }}
                 style={{
                   backgroundColor: primaryBlueColour,
@@ -186,23 +206,37 @@ const renameProject = (title) => {
                     paddingBottom: "15px",
                     paddingTop: "15px",
                     paddingLeft: "25px",
-                    paddingRight: "25px",
+                    paddingRight: "35px",
                     boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 6px",
                     backgroundColor: "white", 
                     color: "grey",
                     fontSize: '18px',
                     textDecoration: 'none',
-                    marginBottom: '1px'
+                    marginBottom: '1px',
+                    position: 'relative'
                 }}
               > 
+              <div 
+              className='deleteblock'
+               style={{zIndex: '99999999', position: 'absolute', right: '4px', top: '6px', padding: '0px 5px',  display: 'flex', alignItems: 'center', fontSize: '13px'}}>
+                <i
+                onClick={(e)=>{
+                  e.preventDefault();
+                  deleteDocumentationBlock(path.title);
+                }}
+                    style={{ color: "silver" }} 
+                    className="fa fa-trash"
+                    ></i> 
+              </div>
                 <div
                 align="left"
                   style={{ 
                   textAlign: 'center',
                     borderRadius: "4px", 
-                    backgroundColor: 'inherit'
+                    backgroundColor: 'inherit',
                   }}
                 >
+                  
                   {path.title}
                 </div>
               </Link>
@@ -215,11 +249,6 @@ const renameProject = (title) => {
 <br/>
 <br/>
 <br/>
-{/* <br/>
-<div align="left" style={{paddingLeft: '10px'}}>Activity  </div>   */}
-
-
-
 
 
 
@@ -262,6 +291,7 @@ const renameProject = (title) => {
         style={{
           border: "0px",
           fontSize: "17px",
+          padding: '5px 10px'
         }}
         onChange={(e) => {
           console.log(user.paths, email);
@@ -318,6 +348,8 @@ const renameProject = (title) => {
       <br/> 
       &nbsp; &nbsp; 
       &nbsp;  
+      &nbsp;  
+      &nbsp;  
       &nbsp; &nbsp;  
       e.g. Technical Documentation, Project Plan, Training Plan, API Docs etc. 
       &nbsp;
@@ -329,7 +361,7 @@ const renameProject = (title) => {
       </div>
 
       { user?.paths?.filter(x=>x.project === projecttitle)?.length === 0 && <div align="right" style={{position: 'absolute', top: '37px', right: '50px',
-    borderRight: '1px solid '+ primaryBlueColour, height: '120px', display: 'flex', alignItems: 'flex-end', padding: '0px',
+    borderRight: '1px solid '+ 'grey', height: '120px', display: 'flex', alignItems: 'flex-end', padding: '0px',
     zIndex: '9'
     
     }}>
@@ -340,7 +372,7 @@ const renameProject = (title) => {
             <Typewriter
           options={{
             strings: [
-               " ⚠️  No documentation blocks found for this project", 
+               " ⚠️  No documentation blocks found", 
                " Click on '+ Add a Block' to add"
             ],
             autoStart: true,

@@ -72,7 +72,8 @@ function CreatePath(props) {
   const saveTopic = (data) => {
     if(data != null){
       updateOrCreateDocument(topicsCollection, cTopicId, {
-        data: data
+        data: data,
+        
       })
         .then((res) => { 
             setTopicEdited(!topicEdited);
@@ -98,7 +99,8 @@ function CreatePath(props) {
       <h1 style="margin: 0px;color:grey;">${topic}</h1>
       <div style="color:grey;">A short description of the topic</div>
       </div>
-      <p></p>`})
+      <p></p>`,
+      })
         .then((res) => {
           cPaths
             ?.find((x) => x.title === pathtitle && x.project === projecttitle)
@@ -146,28 +148,6 @@ function CreatePath(props) {
         alert(e);
       });
   };
-
-  const [topic, setTopic] = useState({
-    preRequisites: null,
-    author: email, //
-    contactAuthor: email, //
-    banner: null,
-    title: null,
-    description: null,
-    duration: null,
-    contributors: null,
-    topics: [
-      {
-        title: "What is a Resource and a URL",
-        topicId: null,
-        urls: [],
-        optionalUrls: [],
-        guidelinesForUrls:
-          "A resource on the internet is any type of digital content or information that can be accessed through the World Wide Web or other internet-based technologies. This can include websites, web pages, images, videos, audio files, documents, applications, and other forms of digital media.",
-        knowledgeCheck: [],
-      },
-    ],
-  });
 
   return (<div id="writebook" style={{marginLeft: '-10px', position: 'absolute', width: '100vw', top: '0px', backgroundColor: 'white'}} onClick={()=>{
     document.getElementById('writebook').scrollIntoView();

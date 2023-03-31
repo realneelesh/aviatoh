@@ -4,26 +4,26 @@ import Typewriter from "typewriter-effect";
 import {
   primaryBlueColour,
   primaryGreenColour,
-  primaryRedColour,
   primarySilverColour,
-  primaryYellowColour,
   showPage,
 } from "../App";
-import { Empty, Tick } from "../assets";
 import { SearchLoader } from "../components/Loaders";
 import {
   getDocument,
   updateOrCreateDocument,
   usersCollection,
 } from "../db";
+import { templatePaths } from "../projectTemplates";
 
-function YourPaths(props) {
+function Dashboard(props) {
   const { email } = props;
   const [user, setUser] = useState(null);
   const [projectToAdd, setprojectToAdd] = useState({
     title: "",
     description: ""
   });
+
+  const [ template, setTemplate ] = useState('Project');
 
   const [updateUserFlag, setUpdateUserFlag] = useState(false);
 
@@ -59,20 +59,14 @@ function YourPaths(props) {
     const confirmation = window.prompt('Are you sure? This action will archive the project, if you are sure, please type in the title of the project you are trying to delete.');
     // alert(confirmation);
     if(confirmation.toUpperCase() == project.toUpperCase()){
-         // as projects is an array of project objects with title and description, we would append "%arch%archived" to a project's title to mark it as archived
-    const tempProjects = user?.projects;
-    const index = tempProjects?.map(x=>x.title).indexOf(project);
-    const tempPaths = user.paths.map((path)=>{
-        if(path.project === project){
-            return {
-                ...path,
-                project: path.project + projectArchiveStringSeparator
-            }
-        } else {
-            return path
-        }
-    })
-    if(index != -1) tempProjects[index].title += projectArchiveStringSeparator;
+    // we delete the project from 'user.projects' array along with all the related paths(documentation-scopes)
+    let tempProjects = user?.projects;
+    const index = tempProjects?.map(x=>x.title.toLowerCase()).indexOf(project.toLowerCase());
+ 
+    let tempPaths = user.paths.filter(x => x.project.toLowerCase() !== project.toLowerCase())
+    if(index != -1) {
+      tempProjects = tempProjects.filter(x=>x.title.toLowerCase()!==project.toLowerCase());
+    }
 
     updateOrCreateDocument(usersCollection, email, {
         projects: tempProjects,
@@ -118,6 +112,9 @@ function YourPaths(props) {
         <button
           onClick={() => {
             setAddNewProject(true);
+            setTimeout(()=>{
+              document.getElementById('booktitle').focus();
+            },300);
           }}
           style={{
             backgroundColor: primaryBlueColour,
@@ -147,31 +144,6 @@ function YourPaths(props) {
           marginLeft: "-8px",
         }}
       >
-        {/* {user?.paths.map((path, i) => {
-            return (
-              <Link
-                to={"/edit" + "/" + email + "/" + path.title}
-                style={{
-                  textDecoration: "none",
-                  color: "gray",
-                  fontSize: "17px",
-                }}
-              >
-                {" "}
-                <div
-                  style={{
-                    padding: "5px 20px",
-                    borderRadius: "4px",
-                    boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
-                    backgroundColor: "white",
-                    margin: "20px 15px",
-                  }}
-                >
-                  {path.title} 
-                </div>
-              </Link>
-            );
-          })} */}
         {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
           return (
             <div style={{
@@ -191,7 +163,7 @@ function YourPaths(props) {
                   }}
                 > 
                   <span style={{ fontSize: "12px", color: "grey" }}>
-                    Project {i + 1}
+                    {project.type}
                   </span>
 
                   <div align="left" style={{ 
@@ -251,140 +223,13 @@ function YourPaths(props) {
                         archiveProject(project.title);
                     }}
                     className="fa fa-trash"
-                    ></i> 
-
-
-                  </div>
-               
-                </div> 
+                >
+                </i>
+                </div>
+                </div>
             </div>
           );
         })}
-      </div>
-      <div
-        style={{
-          display: addNewProject ? "block" : "none",
-
-          backgroundColor: "rgb(217, 217, 217)",
-          position: "fixed",
-          bottom: "0px",
-          width: "100%",
-          width: "100vw",
-          marginLeft: "-8px",
-          zIndex: "99999",
-        }}
-        align="center"
-      >
-        <i
-          onClick={() => {
-            setAddNewProject(false);
-          }}
-          style={{
-            position: "absolute",
-            right: "20px",
-            cursor: "pointer",
-            top: "15px",
-            fontSize: "20px",
-          }}
-          className="fas fa-times-circle"
-        ></i>
-        <br />
-        <br />
-        <input
-          id="booktitle"
-          style={{
-            border: "0px",
-            fontSize: "17px",
-          }}
-          onChange={(e) => {
-            console.log(user.paths, email);
-            setprojectToAdd({ ...projectToAdd, title: e.target.value.trim() });
-          }}
-          placeholder="New Project Title"
-        />
-        &nbsp; &nbsp;
-        <button
-          style={{
-            backgroundColor: primaryBlueColour,
-            color: "white",
-            fontSize: "13px",
-          }}
-          onClick={() => {
-            if(user?.projects?.find(x => x.title.toLowerCase() === projectToAdd.title.toLowerCase()+projectArchiveStringSeparator ||  x.title.toLowerCase() === projectToAdd.title.toLowerCase())){
-                alert("Project with this title already exists");
-            } else {
-                if (projectToAdd.title && projectToAdd.title !== "") {
-                    // var key = email + new Date().toString().replaceAll(" ", "");
-                    updateOrCreateDocument(usersCollection, email, {
-                      projects: [
-                        ...user.projects,
-                        {
-                          ...projectToAdd
-                        },
-                      ],
-                      paths: [
-                        ...user.paths,
-                        {
-                          title: 'Introduction',
-                          project: projectToAdd?.title,
-                          description: '',
-                          topics: []
-                        },
-                        {
-                          title: 'Product Design',
-                          project: projectToAdd?.title,
-                          description: '',
-                          topics: []
-                        },
-                        {
-                          title: 'Technical Documentation',
-                          project: projectToAdd?.title,
-                          description: '',
-                          topics: []
-                        },
-                        {
-                          title: 'Quality Assurance',
-                          project: projectToAdd?.title,
-                          description: '',
-                          topics: []
-                        },
-                        {
-                          title: 'FAQs',
-                          project: projectToAdd?.title,
-                          description: '',
-                          topics: []
-                        }
-                      ]
-                    })
-                      .then((res) => {
-                        setUpdateUserFlag(!updateUserFlag);
-                        setAddNewProject(false);
-                        document.getElementById("booktitle").value = "";
-                        // updateOrCreateDocument(topicsCollection, key, {
-                        //   data: '<h2><span style="color: rgb(126, 140, 141);">Introduction</span></h2> <p><span style="color: rgb(126, 140, 141);">Thank you for visiting...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
-                        // }).then((res) => {
-                        //   setPathAdded(!pathAdded);
-                        //   setAddNewProject(false);
-                        //   document.getElementById("booktitle").value = "";
-                        // });
-                      })
-                      .catch((e) => {
-                        alert(e);
-                      });
-                  } else {
-                    alert("Title can not be empty");
-                  }
-            }
-          }}
-        >
-          Add Project
-        </button>
-        <br />
-        Enter the name of the project that you want to document &nbsp; &nbsp;
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <br />
-        <br />
-        <br />
       </div>
 
       {user?.projects?.filter(x=>!x.title.includes(projectArchiveStringSeparator)).length === 0 && (
@@ -394,11 +239,11 @@ function YourPaths(props) {
             position: "absolute",
             top: "37px",
             right: "50px",
-            borderRight: "1px solid " + "silver",
+            borderRight: "1px solid " + "grey",
             height: "120px",
             display: "flex",
             alignItems: "flex-end",
-            padding: "0px",
+            padding: "0px"
           }}
         >
           <span
@@ -424,72 +269,173 @@ function YourPaths(props) {
         </div>
       )}
 
-      {user?.projects?.length === 0 && (
-        <div
+
+
+
+
+
+
+      {/* add project modal */}
+      <div
+        style={{
+          display: addNewProject ? "flex" : "none",
+          justifyContent: 'center',
+          backgroundColor: "rgb(240, 240, 240, 0.8)",
+          position: "fixed",
+          bottom: "0px",
+          width: "100vw",
+          height: '100vh',
+          marginLeft: '-8px',
+          zIndex: "99999",
+          alignItems: 'center',
+          flexDirection: 'column'
+        }}
+        align="center"
+      >
+    
+      
+      <div style={{backgroundColor: 'white', width: '50%', borderRadius: '0px', boxShadow: "rgba(0, 0, 0, 0.1) 10px 10px 10px", padding: '100px 0px', position: 'relative', height: ''}}>
+      <i
+          onClick={() => {
+            setAddNewProject(false);
+          }}
           style={{
             position: "absolute",
-            top: "245px",
-            width: "100%",
-            height: "120px",
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
+            right: "15px",
+            cursor: "pointer",
+            top: "15px",
+            fontSize: "20px",
+          }}
+          className="fas fa-times-circle"
+        ></i>
+
+<div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', backgroundColor: primaryGreenColour(0.4)}}></div>
+
+
+  
+ <div style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start'}}>
+         
+ 
+          <div style={{width: '100%', fontSize: '20px', color: 'grey'}} align="left">
+           1. Project Title  
+           <br/> 
+          </div>
+        <input
+          id="booktitle"
+          style={{
+            border: "0px",
+            marginTop: '18px',
+            fontSize: "20px",
+            borderBottom: '1px solid silver'
+          }}
+          onChange={(e) => {
+            console.log(user.paths, email);
+            setprojectToAdd({ ...projectToAdd, title: e.target.value.trim() });
+          }}
+          placeholder="Type here ..."
+        />
+        
+        <br/> 
+        <br/> 
+        <br/> 
+        <br/>
+
+          <div style={{width: '100%', fontSize: '20px', color: 'grey'}} align="left">
+           2. Choose a template  
+          <br/>
+        
+          
+  <p>
+    <input type="radio"
+    value='Project'
+    checked={template === 'Project'}
+    onChange={(e)=>{
+      if(e.target.checked){
+        setTemplate(e.target.value);
+      }
+    }}
+    id="test1" name="template"/>
+    <label for="test1">Default</label>
+  </p>
+
+  <p>
+    <input type="radio" 
+    value='Startup/Business'
+    onChange={(e)=>{
+      if(e.target.checked){
+        setTemplate(e.target.value);
+      }
+    }}
+    id="test2" name="template" />
+    <label for="test2">Startup/Business Idea</label>
+  </p> 
+  <p>
+    <input type="radio" 
+    value='Book'
+    onChange={(e)=>{
+      if(e.target.checked){
+        setTemplate(e.target.value);
+      }
+    }}
+    id="test3" name="template" />
+    <label for="test3">Write a Book </label>
+  </p>
+        <br/>  
+        </div>
+
+
+
+        <button
+          style={{
+            backgroundColor: primaryBlueColour,
+            color: "white",
+            fontSize: "17px",
+            margin: '0px'
+          }}
+          onClick={() => {
+            if(user?.projects?.find(x => x.title.toLowerCase() === projectToAdd.title.toLowerCase()+projectArchiveStringSeparator ||  x.title.toLowerCase() === projectToAdd.title.toLowerCase())){
+                alert("Project with this title already exists");
+            } else {
+                if (projectToAdd.title && projectToAdd.title !== "") {
+                    // var key = email + new Date().toString().replaceAll(" ", "");
+                    updateOrCreateDocument(usersCollection, email, {
+                      projects: [
+                        ...user.projects,
+                        {
+                          ...projectToAdd,
+                          type: template
+                        },
+                      ],
+                      paths: [
+                        ...user.paths,
+                        ...templatePaths(template, projectToAdd.title)
+                      ]
+                    })
+                      .then((res) => {
+                        setUpdateUserFlag(!updateUserFlag);
+                        setAddNewProject(false);
+                        document.getElementById("booktitle").value = "";
+                      })
+                      .catch((e) => {
+                        alert(e);
+                      });
+                  } else {
+                    alert("Title can not be empty");
+                  }
+            }
           }}
         >
-          <span>Steps to Follow</span>
-          <br />
-          <br />
-          <span
-            style={{
-              color: "silver",
-            }}
-          >
-            <span style={{ fontSize: "20px" }}>Add project</span>
-            &nbsp; &nbsp; &nbsp;
-            <i style={{ color: "grey", fontSize: "17px" }} className="fa">
-              &#xf061;
-            </i>
-            &nbsp; &nbsp; &nbsp;
-            <span style={{ fontSize: "20px" }}>Add scopes to the project</span>
-            &nbsp; &nbsp; &nbsp;
-            <i style={{ color: "grey", fontSize: "17px" }} className="fa">
-              &#xf061;
-            </i>
-            &nbsp; &nbsp; &nbsp;
-            <span style={{ fontSize: "20px" }}>
-              Create and Edit documentation
-            </span>
-          </span>
+          Add Project
+        </button>
         </div>
-      )}
-
-
-<div style={{height: '50vh'}}>
-<br/>
-<br/>
-<br/>
-<h1>Under Construction</h1>
-<br/>
-<br/>
-<br/>
-        <span>
-          Open up a large popup for ideation, checking feasibility of an idea, idea can be any business idea or any general conversation beginner for the initiation of a string of idea .. you get it,
-        </span>
-        <br/>
-        <br/>
-          <h3>Fine tuned to refine an idea</h3>
-          <br/>
-          <br/>
-          <h3>Another one Fine tuned for startup related queries</h3>
-          <br/>
-          <br/>
-          <h3>Another one Fine tuned for Prototyping</h3>
-          <br/>
-          <br/>
-          Before you start a project on any idea, try knowing more about its scope and feasibility through a discussion with our fine tuned AI models
       </div>
+      <br/><br/>
+      <br/><br/>
+      </div>
+
+    
     </div>
   );
 }
 
-export default YourPaths;
+export default Dashboard;

@@ -34,6 +34,7 @@ export const storage = getStorage(app);
 
 export const storageRef = ref(storage);
 
+// used with Promise.resolve()
 export const getAllDocuments = async (collec) => {
     return await getDocs(query(collection(db, collec)));
 }
@@ -44,12 +45,9 @@ export const getDocument = (collec, documentId) => {
 }
 
 export const updateOrCreateDocument = async (collec, documentId, newDataObjectToBeMerged) => {
-    // always pass author:email in the newDataObjectToBeMerged, used to the rule in sequirity rules for firestore
     const docRef = doc(db, collec, documentId);
     return setDoc(docRef, { ...newDataObjectToBeMerged}, { merge: true });
 }
 
 export const usersCollection = 'Users';
-export const disciplinesCollection = 'Disciplines';
-export const topicMRCollection = 'TopicMergeRequests';
 export const topicsCollection = 'Topics';

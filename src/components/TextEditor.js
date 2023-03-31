@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { primaryBlueColour, primaryRedColour, primarySilverColour, showPage } from "../App";
+import { showPage } from "../App";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../db";
 
@@ -104,17 +104,6 @@ function TextEditor(props) {
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px; borderRadius: 0px;}",
         }}
       />}
-      {
-        // disabled && <div style={{marginLeft: '-18px'}}><div align="center" style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-        //   <div style={{height: '0px',borderTop: '1px solid '+ primaryBlueColour, width: '13%'}}></div>
-          
-        //   <h3 style={{backgroundColor: 'white', color: primaryBlueColour, border: '1px solid '+primaryBlueColour, margin: '5px 0px'}}>You can add topics to this documentation block</h3>
-           
-        //   {/* <i className='fas fa-arrow-right' style={{color: 'silver', fontSize: '27px', marginLeft: '30px'}}></i> */}
-        // </div> 
-        // </div>
-      }
-   
     </div>
   );
 }
