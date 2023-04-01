@@ -10,6 +10,7 @@ import {
     usersCollection,
 } from "../db";
 import Typewriter from "typewriter-effect";
+import KanbanBoard from '../components/KanbanBoard';
 
 
 function Project(props) {
@@ -83,6 +84,7 @@ const renameProject = (title) => {
         }
     })
     updateOrCreateDocument(usersCollection, email, {
+        activities: [...user.activities, `Project ${projecttitle} renamed to ${title}`],
         projects: tempProjes,
         paths: tempPaths
     }).then(res=>{
@@ -259,12 +261,11 @@ const renameProject = (title) => {
 
 
 
-<div style={{
-        display: addNewPath ? 'block': 'none', 
-        
-        backgroundColor: "rgb(217, 217, 217)",
+<div style={{ 
+        backgroundColor: primarySilverColour,
         position: 'fixed',
-        bottom: '0px',
+        bottom: addNewPath ? '0px': '-30vh', 
+        transition: 'bottom 0.7s',
         width: '100%',
         width: '100vw',
         marginLeft: '-8px',
@@ -387,20 +388,8 @@ const renameProject = (title) => {
         </span>
       </div>}
 
-
-
-      <div style={{height: '20vh'}}>
-        1. <span>We will automatically generate a precise summmary for this project based on the documentation you build</span>
-        <br/>
-        <br/>
-          <h1>AI summary of the project documentation</h1>
-      </div> 
-      <div style={{height: '20vh'}}>
-      2. <span></span>
-        <br/>
-        <br/>
-          <h1>New features can be suggested for the particular project on the basis of documentation</h1>
-      </div>
+   {/* kanabn */}
+   <KanbanBoard />
         </div>
     );
 }

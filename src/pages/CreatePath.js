@@ -1,7 +1,8 @@
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { primaryBlueColour, primaryRedColour, primarySilverColour, primaryYellowColour } from "../App";
+import { useParams } from "react-router-dom";
+import { primaryBlueColour, primarySilverColour } from "../App";
+import { OpenaiIcon } from "../assets";
+import AIGeneral from "../components/AIGeneral";
 import TextEditor from "../components/TextEditor";
 import {
   getDocument,
@@ -24,11 +25,14 @@ function CreatePath(props) {
 
   const [ changesSaved, setChangesSaved ] = useState(true);
 
+  const [ showAiGeneral, setShowAiGeneral ] = useState(false);
+
   const onEditorChange = () => {
     setChangesSaved(false);
   }
 
   useEffect(() => { 
+    document.getElementById('linktoprofile').style.display = 'none';
     document.title = !changesSaved ? 'Unsaved changes' : pathtitle + ' | ' + projecttitle;
 
     if(cTopicId === null){
@@ -228,7 +232,7 @@ function CreatePath(props) {
         <div
         style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-around",
             padding: '0px 0px',
             background:`linear-gradient(${primarySilverColour}, white)`
         }}
@@ -236,7 +240,9 @@ function CreatePath(props) {
         
     <div> 
         <div
-            style={{ width: "20vw",
+            style={{ 
+            width: "20vw",
+            paddingLeft: '1vw',
             background: `linear-gradient(${primarySilverColour},white)`,
             marginTop: "0px", height: '83vh', overflowY: 'scroll', overflowX:'hidden', paddingTop: '7px', paddingRight: '10px' }}
             align="center"
@@ -245,7 +251,7 @@ function CreatePath(props) {
             
             <input
                 id="newTopic"
-                placeholder="New topic title..."
+                placeholder="New document title..."
                 style={{ display: "inline", padding: '6px 12px', width: '100%',
                 border: '0', borderBottom: '1px solid transparent', marginLeft: '2px'
               }}
@@ -317,12 +323,37 @@ function CreatePath(props) {
         </div>
         </div>
         {/* <div style={{width: '80vw', background:`linear-gradient(${primarySilverColour}, white)`}}> */}
-        <div style={{ width: "72vw", backgroundColor: 'white'}} align="center">
+        <div style={{ width: "75vw", marginRight: '1vw', backgroundColor: 'white'}} align="center">
             {<TextEditor disabled={cTopicId !== null ? false : true} setDataToBeSaved={setDataToBeSaved}  onChange={onEditorChange} onSave={saveTopic} initialContent={currentTopicData} />}
         </div>
         {/* </div> */}
 
         </div> 
+        <div style={{position: 'fixed', width: '100vw', margin: '0px', left: '0px', bottom: showAiGeneral ? '0px' : '-90vh', transition: 'bottom 0.8s', backgroundColor: primarySilverColour, zIndex: '9999'}}>
+          <AIGeneral />
+          <div><i className='far fa-times-circle' style={{ color:'grey', position:'absolute', top: '15px', right: '15px', fontSize: '23px', cursor: 'pointer'}}
+          onClick={()=>{
+            setShowAiGeneral(false);
+          }}
+          ></i></div>
+        </div>
+
+
+        <span style={{position: 'fixed', height: '40px', left: !showAiGeneral ? '10px' : '-20vw', bottom: '10px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', transition: 'left 1s',}}>
+         <span style={{ 
+          fontSize: '20px',
+          boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 10px", paddingTop:'5px', paddingLeft:'10px', paddingRight:'10px', cursor: 'pointer'}} onClick={()=>{
+          setShowAiGeneral(true);
+          document.getElementById('askanything').focus();
+         }}>
+           <img src={OpenaiIcon} style={{width: '35px', cursor: 'pointer'}} />
+          
+         </span>
+         &nbsp; 
+         &nbsp; 
+         <span style={{fontSize: '17px', color: 'grey'}}>AI Assist</span>
+        
+        </span> 
     </div>
   );
 }

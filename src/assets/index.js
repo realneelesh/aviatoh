@@ -17,6 +17,8 @@ import Demo3 from './demo_three.png';
 import Demo4 from './demo_four.png';
 import DemoView from './demo_view.png';
 import Openailogo from './openai.svg';
+import OpenaiIcon from './openaiicon.svg';
+import TextingGif from './textinggif.gif';
 
 export {
     Empty,
@@ -37,5 +39,7 @@ export {
     Demo3,
     Demo4,
     DemoView,
-    Openailogo
+    Openailogo,
+    TextingGif,
+    OpenaiIcon
 }

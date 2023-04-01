@@ -127,12 +127,12 @@ function DocumentationLandingPage(props) {
                     right: "0px",
                     width: '30vw',
                     color: 'grey',
-                    fontSize: '13px'
+                    fontSize: '14px'
                   }}
                   align="right"
                   >
                     <span style={{paddingRight: '20px', backgroud: `linear-gradient(to right, white,${primaryGreenColour(0.8)},${primaryGreenColour(0.8)},${primaryGreenColour(0.8)})`, display: 'block'}}>
-                     7 Days free trial &nbsp; ✨ &nbsp; No Credit Card required 
+                     {/* Any notices etc  */}
                     </span></div>
               </div>
             )}

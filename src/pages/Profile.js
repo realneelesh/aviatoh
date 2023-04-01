@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getDocument, updateOrCreateDocument, usersCollection } from '../db';
-import '../App.css';
+import '../App.scss';
 import { browserStorage, userInfoKey } from '../BrowserStorage';
 import { signOut } from 'firebase/auth';
 import { showPage } from '../App';
 import { Logo } from '../assets';
+import Footer from '../components/Footer';
 
 
 function Profile(props) {
@@ -75,7 +76,9 @@ function Profile(props) {
     }
 
     return (
+
         <div align="left">
+            <div style={{minHeight: '100vh'}}>
             <br/>
             <br/>
             <br/>
@@ -202,7 +205,10 @@ function Profile(props) {
 
            
             <Link to="/"><img src={Logo} style={{padding: '10px', width: '150px', position: 'absolute', top: '8px', left: '8px'}} /> </Link>
-
+</div>
+            <div style={{boxShadow: "rgba(0, 0, 0, 0.08) 0px 0px 70px", marginLeft: '-8px', zIndex: '9999', backgroundColor: 'white'}}>
+                <Footer/>
+            </div>
         </div>
     );
 }

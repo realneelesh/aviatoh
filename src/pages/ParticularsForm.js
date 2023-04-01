@@ -19,11 +19,10 @@ function ParticularsForm(props) {
     // a new field named "particulars" will created in the document 
     updateOrCreateDocument(usersCollection, email, { particulars : data })
       .then((res) => {
-        alert("Successfully added");
         navigate("/profile");
       })
-      .catch(() => {
-        alert("Something went wrong");
+      .catch((err) => {
+        alert(err);
       });
   };
 

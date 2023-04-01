@@ -14,12 +14,12 @@ function Testimonial(props) {
             alignItems: 'center',
             borderRadius: '13px',
             color: 'rgb(130, 130, 130)',
-            maxWidth:'45vw',
+            maxWidth:'60vw',
             fontSize: '17px',
             marginTop: '80px',
             fontWeight: '300'
         }}>
-            <div style={{width: '80%'}} align="right">
+            <div style={{width: '85%'}} align="right">
                 <div align="left"  style={{color: primaryGreenColour(1)}}>We are glad to know, thanks {name}!<hr style={{ border: '0px', borderBottom: '1px solid '+ 'silver', backgroundColor: 'transparent'}}/></div>
                 {text}
                 <br/>

@@ -174,7 +174,7 @@ function ViewDoc(props) {
               );
             })}
         </div>
-        <div style={{ width: "72vw", marginTop: '-70px', backgroundColor:'white', paddingRight: '14px' }} align="center">
+        <div style={{ width: "75vw", marginTop: '-70px', backgroundColor:'white', paddingRight: '14px' }} align="center">
           {currentTopicId && (
             <iframe
               style={{

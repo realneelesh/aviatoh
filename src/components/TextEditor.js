@@ -3,10 +3,13 @@ import { Editor } from "@tinymce/tinymce-react";
 import { showPage } from "../App";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../db";
+import { useParams } from "react-router-dom";
 
 function TextEditor(props) {
   const { initialContent, onSave, onChange, setDataToBeSaved, disabled, email } = props;
   const editorRef = useRef(null);
+
+  const { pathTitle } = useParams();
 
   const [ editorLoading, setEditorLoading ] = useState(true);
 
@@ -46,31 +49,42 @@ function TextEditor(props) {
              
           })
           .catch((error) => {
-            alert(error);
+            // alert(error);
           });
         });
         console.log(e.target.files[0])
       }}
       id="imgUpload" type="file"/>
-      {!disabled &&  <Editor
+      {!disabled &&  
+      <Editor
         disabled={disabled}
         apiKey="your-api-key"
         onInit={(evt, editor) => {
+          editor.on('paste cut', function() {
+            this.setDirty(true); // this updates the editor.undoManager
+         });
+         
           setEditorLoading(false);
-          const uploadImageElement = document.querySelector('[aria-label="Insert/edit image"]');
-          uploadImageElement.addEventListener('click', () => {
+          setTimeout(() => {
+            const uploadImageElement = document.querySelector('[aria-label="Insert/edit image"]');
+            uploadImageElement.addEventListener('click', () => {
             document.querySelector('#imgUpload').click();
           }); 
+          }, 300);
 
           return editorRef.current = editor}}
         initialValue={initialContent !== "" ? initialContent : '<p><i style="color: silver;">type here ...</i></p>'}
         onKeyUp={() => {
           onChange();
-          setDataToBeSaved(editorRef.current.getContent());
+          setDataToBeSaved(editorRef?.current?.getContent());
         }}
         onChange={()=>{
           onChange();
-          setDataToBeSaved(editorRef.current.getContent());
+          setDataToBeSaved(editorRef?.current?.getContent());
+        }}
+        onPaste={(e)=>{
+          onChange();
+          setDataToBeSaved(editorRef?.current?.getContent());
         }}
         init={{
           height: '88vh',
@@ -104,6 +118,10 @@ function TextEditor(props) {
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px; borderRadius: 0px;}",
         }}
       />}
+
+      {disabled && <div style={{height:'60vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      <h1 style={{border: '0px', color: 'grey'}}>Add a document to this block</h1>
+        </div>}
     </div>
   );
 }

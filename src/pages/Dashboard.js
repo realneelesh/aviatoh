@@ -7,6 +7,7 @@ import {
   primarySilverColour,
   showPage,
 } from "../App";
+import AIGeneral from "../components/AIGeneral";
 import { SearchLoader } from "../components/Loaders";
 import {
   getDocument,
@@ -55,7 +56,7 @@ function Dashboard(props) {
 
   const projectArchiveStringSeparator = "%arch%archived" + new Date().toDateString();
 
-  const archiveProject= (project) => {
+  const deleteProject= (project) => {
     const confirmation = window.prompt('Are you sure? This action will archive the project, if you are sure, please type in the title of the project you are trying to delete.');
     // alert(confirmation);
     if(confirmation.toUpperCase() == project.toUpperCase()){
@@ -69,6 +70,7 @@ function Dashboard(props) {
     }
 
     updateOrCreateDocument(usersCollection, email, {
+        activities: [...user.activities, 'Project deleted - ' + project],
         projects: tempProjects,
         paths: tempPaths
     }).then(res => {
@@ -220,7 +222,7 @@ function Dashboard(props) {
                 <i
                     style={{ color: "silver" }}
                     onClick={() => { 
-                        archiveProject(project.title);
+                        deleteProject(project.title);
                     }}
                     className="fa fa-trash"
                 >
@@ -276,11 +278,14 @@ function Dashboard(props) {
 
 
       {/* add project modal */}
+       
       <div
         style={{
-          display: addNewProject ? "flex" : "none",
+         display: true ? "flex" : "none",
+           right: addNewProject ? "0px" : "-101vw",
+          transition: 'right 0.7s',
           justifyContent: 'center',
-          backgroundColor: "rgb(240, 240, 240, 0.8)",
+          // backgroundColor: "rgb(240, 240, 240, 0.8)",
           position: "fixed",
           bottom: "0px",
           width: "100vw",
@@ -294,7 +299,7 @@ function Dashboard(props) {
       >
     
       
-      <div style={{backgroundColor: 'white', width: '50%', borderRadius: '0px', boxShadow: "rgba(0, 0, 0, 0.1) 10px 10px 10px", padding: '100px 0px', position: 'relative', height: ''}}>
+      <div style={{backgroundColor: 'white', width: '50%', borderRadius: '0px', boxShadow: "rgba(0, 0, 0, 0.1) 10px 10px 10px", padding: '70px 0px', position: 'relative', height: ''}}>
       <i
           onClick={() => {
             setAddNewProject(false);
@@ -304,12 +309,12 @@ function Dashboard(props) {
             right: "15px",
             cursor: "pointer",
             top: "15px",
-            fontSize: "20px",
+            fontSize: "18px",
           }}
           className="fas fa-times-circle"
         ></i>
 
-<div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', backgroundColor: primaryGreenColour(0.4)}}></div>
+<div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', backgroundColor: primarySilverColour}}></div>
 
 
   
@@ -325,8 +330,9 @@ function Dashboard(props) {
           style={{
             border: "0px",
             marginTop: '18px',
-            fontSize: "20px",
-            borderBottom: '1px solid silver'
+            fontSize: "18px",
+            borderBottom: '1px solid silver',
+            cursor: 'text'
           }}
           onChange={(e) => {
             console.log(user.paths, email);
@@ -340,7 +346,7 @@ function Dashboard(props) {
         <br/> 
         <br/>
 
-          <div style={{width: '100%', fontSize: '20px', color: 'grey'}} align="left">
+          <div style={{width: '100%', fontSize: '18px', color: 'grey'}} align="left">
            2. Choose a template  
           <br/>
         
@@ -389,7 +395,7 @@ function Dashboard(props) {
           style={{
             backgroundColor: primaryBlueColour,
             color: "white",
-            fontSize: "17px",
+            fontSize: "15px",
             margin: '0px'
           }}
           onClick={() => {
@@ -399,6 +405,7 @@ function Dashboard(props) {
                 if (projectToAdd.title && projectToAdd.title !== "") {
                     // var key = email + new Date().toString().replaceAll(" ", "");
                     updateOrCreateDocument(usersCollection, email, {
+                      activities: [...user.activities, 'Project added - ' + projectToAdd.title],
                       projects: [
                         ...user.projects,
                         {
@@ -433,6 +440,7 @@ function Dashboard(props) {
       <br/><br/>
       </div>
 
+ 
     
     </div>
   );

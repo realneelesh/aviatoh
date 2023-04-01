@@ -1,6 +1,7 @@
 import React from "react";
 import { primarySilverColour } from "../App";
 import { Logo } from "../assets";
+import AviatohLogo from "./AviatohLogo";
 
 function Footer(props) {
   return (
@@ -12,11 +13,18 @@ function Footer(props) {
         color: "rgb(150,150,150)",
         justifyContent: "space-between",
         alignItems: "center",
-        height: '45vh'
+        height: '40vh'
       }}
     >
-      <div style={{ paddingLeft: "20px", width: "35%" }}>
-        <img src={Logo} style={{ width: "50%" }} />
+      <div style={{ paddingLeft: "20px", width: "35%", display: 'flex', justifyContent: 'center' }}>
+         <img
+                src={Logo}
+                style={{
+                  width: "180px",
+                  marginTop: "20px",
+                  marginLeft: "16px",
+                }}
+              />  
       </div>
 
       <div
@@ -27,8 +35,8 @@ function Footer(props) {
         //   borderLeft: "1px solid rgb(230,230,230)",
         }}
       >
-        <div style={{ margin: "10px", fontSize: "15px" }} align="left">
-          <div style={{ fontSize: "25px" }}>Company</div>
+        <div style={{ margin: "10px", fontSize: "14px" }} align="left">
+          <div style={{ fontSize: "22px", marginBottom: '7px' }}>Company</div>
    
           <div>About Us</div>
           <div>Careers</div>
@@ -37,21 +45,21 @@ function Footer(props) {
           <div>Contact Us</div>
         </div>
 
-        <div style={{ margin: "10px", fontSize: "15px" }} align="left">
-          <div style={{ fontSize: "25px" }}>Customers</div>
+        <div style={{ margin: "10px", fontSize: "14px" }} align="left">
+          <div style={{ fontSize: "22px", marginBottom: '7px' }}>Customers</div>
        
-          <div>Customermupport</div>
+          <div>Customer support</div>
           <div>📧 {'customercare@aviatoh.com'.toLowerCase()}</div>
           <br />
-          <div style={{ fontSize: "25px" }}>Partners</div>
+          <div style={{ fontSize: "22px", marginBottom: '7px' }}>Partners</div>
     
           <div>All Partner Programs</div>
           <div>App Partner Program</div>
           <div>Affiliate Program</div>
         </div>
 
-        <div style={{ margin: "10px", fontSize: "15px" }} align="left">
-          <div style={{ fontSize: "25px" }}>Social Media</div>
+        <div style={{ margin: "10px", fontSize: "14px" }} align="left">
+          <div style={{ fontSize: "22px", marginBottom: '7px' }}>Social Media</div>
   
           <div>Instagram</div>
           <div>Facebook</div>

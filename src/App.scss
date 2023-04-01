@@ -350,3 +350,190 @@ button[aria-label="Help"]{
     -webkit-transform: scale(1);
     transform: scale(1);
 }
+
+
+
+
+
+
+/* aviatoh logo */
+#logoop{
+$blue-light: rgb(39, 198, 126);
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Quicksand', sans-serif; 
+  background-color: #002031;
+}
+
+#logo{
+  position: relative;
+  display: inline-block;
+  // border: 2px solid red;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-circle {
+  display: inline-block;
+  position: relative;
+  height: 43px;
+  width: 43px;
+  transform-origin: center;
+  animation: orbit 6s infinite linear;
+  animation-delay: 0.25s;
+  border: 5px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 15px lighten(grey, 10%);
+}
+
+.orbit-object {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px $blue-light, 0px 0px 20px $blue-light, 0px 0px 30px $blue-light, 0px 0px 50px $blue-light, 0px 0px 60px $blue-light ;
+  z-index: 1;
+  span.ripple{
+    position: relative;
+    top: -11px;
+    left: 0px;
+    width: 5px;
+    height: 5px;
+    padding: 5px;
+    font-size: 0px;
+    border-radius: 50%;
+    background-color: transparent;
+    animation: ripple 1s infinite linear;
+  }
+}
+
+.text{
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  color: white;
+  font-size: 40px;
+  text-shadow: 0 0 10px lighten(grey, 1%);
+}
+
+.trace{
+  position: relative;
+  height: 5px;
+  width: 150px;
+  top: 50px;
+  left: -25px;
+  transform-origin: center;
+  transform: rotate(-45deg);
+  background-color: white;
+  z-index: 2;
+}
+
+/*responsive*/
+@media screen and (max-width: 992px) {
+  .text{
+    font-size: 20px;
+    line-height: 1;
+  }
+  .orbit-circle {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border: 3px solid white;
+  }
+  .orbit-object{
+    width: 3px;
+    height: 3px;
+    box-shadow: 0px 0px 5px $blue-light, 0px 0px 10px $blue-light, 0px 0px 15px $blue-light, 0px 0px 25px $blue-light, 0px 0px 30px $blue-light ;
+    top: 7px;
+    span.ripple{
+      padding: 1px;
+      top: -12px;
+      left: 2px;
+      animation: rippleSmall 1s infinite linear;
+    }
+  }
+  .trace{
+    width: 75px;
+    height: 3px;
+    top: 27px;
+    left: -12px;
+    z-index: -1;
+  }
+}
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
+@include keyframes(orbit) {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@include keyframes(rippleSmall) {
+  0% {
+    box-shadow: 0 0 0 0 rgba($blue-light, 0.1),
+                0 0 0 4px rgba($blue-light, 0.1),
+                0 0 0 8px rgba($blue-light, 0.1),
+                0 0 0 12px rgba($blue-light, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba($blue-light, 0.1),
+                0 0 0 8px rgba($blue-light, 0.1),
+                0 0 0 12px rgba($blue-light, 0.1),
+                0 0 0 16px rgba($blue-light, 0);
+  }
+}
+@include keyframes(ripple) {
+  0% {
+    box-shadow: 0 0 0 0 rgba($blue-light, 0.1),
+                0 0 0 5px rgba($blue-light, 0.1),
+                0 0 0 10px rgba($blue-light, 0.1),
+                0 0 0 15px rgba($blue-light, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 5px rgba($blue-light, 0.1),
+                0 0 0 10px rgba($blue-light, 0.1),
+                0 0 0 15px rgba($blue-light, 0.1),
+                0 0 0 20px rgba($blue-light, 0);
+  }
+}
+.levitate{
+  animation: levitate 1s ease-in-out -.75s infinite alternate;
+}
+@keyframes levitate{
+  0%{
+    transform: translateY(-10px);
+  }
+  100%{
+    transform: translateY(5px)
+  }
+}
+a{
+  color: #fff;
+  text-align: left;
+  position: fixed;
+  left: 15px;
+  top: 15px;
+}
+}

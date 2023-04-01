@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -79,6 +79,7 @@ function App() {
           getDocument(usersCollection, user.email).then(res => {
             if(!res.data()){
               updateOrCreateDocument(usersCollection, user.email, {
+                activities: [],
                 projects: [
                   {
                     title: 'Sample Project',
@@ -185,11 +186,13 @@ function App() {
               
               </Routes>
 
-              <Link to="/profile" style={{color: 'grey'}}>
+              <Link
+              id="linktoprofile"
+              to="/profile" style={{color: 'grey'}}>
                 <i style={{
                 position: 'fixed',
-                bottom: '8px',
-                right: '8px',
+                bottom: '10px',
+                right: '10px',
                 cursor: 'pointer',
                 // boxShadow: '0px 0px 150px 30px '+ 'grey',
                 backgroundColor: 'transparent',
@@ -209,26 +212,6 @@ function App() {
         }
     </div>
       }
-
-      <div 
-      align="center"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        position: 'absolute',
-        justifyContent: 'center',
-        width: '130px',
-        height: '130px',
-        borderRadius: '50%', 
-        bottom: '8px',
-        left: '10px',
-      }}>
-        {/* <img 
-        src={PrismaticHead} 
-        style={{width: '60px'}} /> */}
-      </div>
- 
     </div>
   );
 }
