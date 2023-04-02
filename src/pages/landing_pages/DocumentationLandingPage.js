@@ -75,12 +75,12 @@ function DocumentationLandingPage(props) {
                 }}
               />
 
-              <div style={{ marginLeft: "14px", paddingBottom: "8px" }}>
+              <pre style={{ marginLeft: "14px", paddingBottom: "8px", fontSize: '20px', color: 'rgb(150, 150, 150)', marginTop: '-6px' }}>
                 <Typewriter
                   options={{
                     strings: [
                       "Ideation and Documentation System",
-                      "Document your side hustles",
+                      
                     ],
                     autoStart: true,
                     loop: true,
@@ -89,7 +89,7 @@ function DocumentationLandingPage(props) {
                     pauseFor: 1000,
                   }}
                 />
-              </div>
+              </pre>
             </div>
 
             {from !== "mobile" && (

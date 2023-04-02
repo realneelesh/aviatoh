@@ -4,9 +4,10 @@ import { showPage } from "../App";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../db";
 import { useParams } from "react-router-dom";
+import { SearchLoader } from "./Loaders";
 
 function TextEditor(props) {
-  const { initialContent, onSave, onChange, setDataToBeSaved, disabled, email } = props;
+  const { initialContent, onSave, onChange, setDataToBeSaved, disabled, email, isCollection } = props;
   const editorRef = useRef(null);
 
   const { pathTitle } = useParams();
@@ -119,9 +120,10 @@ function TextEditor(props) {
         }}
       />}
 
-      {disabled && <div style={{height:'60vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-      <h1 style={{border: '0px', color: 'grey'}}>Add a document to this block</h1>
+      {disabled && isCollection && <div style={{height:'60vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      <h1 style={{border: '0px', color: 'grey'}}>Add a document to this collection</h1>
         </div>}
+      {!isCollection && disabled && <SearchLoader />}
     </div>
   );
 }

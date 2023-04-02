@@ -24,17 +24,15 @@ function ViewDoc(props) {
     const res = {
       data: () => user,
     };
+    const currentPathObj = user?.paths?.find((x) => x.title === res.data()?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title && x.project === projecttitle);
     if (
-      res.data()?.paths &&
-      user?.paths?.find((x) => x.title === res.data()?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]
+       currentPathObj?.topics[0]
     ) {
 
-      //alert(user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id);
       setCurrentPath(
-        res.data()?.paths?.filter((x) => x.project === projecttitle)?.filter((x) => x.topics.length > 0)[0]?.title
+      currentPathObj?.title
       );
-      const currentTopicId = user?.paths?.filter((x) => x.project === projecttitle).find((x) => x.title === res.data()?.paths.filter((x) => x.project === projecttitle && x.topics.length >0)[0].title && x.topics.length > 0)?.topics[0]?.id;
-      setCurrentTopicId(currentTopicId);
+      setCurrentTopicId(currentPathObj?.topics[0]?.id);
     //   alert(currentTopicId);
 
 
@@ -42,7 +40,7 @@ function ViewDoc(props) {
     //   alert(user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id)
        if(currentTopicId) getDocument(
           topicsCollection,
-          currentTopicId
+          currentPathObj?.topics[0]?.id
         )
           .then((res) => {
             // alert(JSON.stringify(res.data()));

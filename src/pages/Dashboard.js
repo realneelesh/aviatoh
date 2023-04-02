@@ -299,7 +299,7 @@ function Dashboard(props) {
       >
     
       
-      <div style={{backgroundColor: 'white', width: '50%', borderRadius: '0px', boxShadow: "rgba(0, 0, 0, 0.1) 10px 10px 10px", padding: '70px 0px', position: 'relative', height: ''}}>
+      <div style={{backgroundColor: 'white', width: '50%', borderRadius: '0px', boxShadow: "rgba(0, 0, 0, 0.1) 10px 10px 10px", padding: '40px 0px', position: 'relative', height: ''}}>
       <i
           onClick={() => {
             setAddNewProject(false);
@@ -321,7 +321,7 @@ function Dashboard(props) {
  <div style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start'}}>
          
  
-          <div style={{width: '100%', fontSize: '20px', color: 'grey'}} align="left">
+          <div style={{width: '100%', fontSize: '18px', color: 'grey'}} align="left">
            1. Project Title  
            <br/> 
           </div>
@@ -415,7 +415,7 @@ function Dashboard(props) {
                       ],
                       paths: [
                         ...user.paths,
-                        ...templatePaths(template, projectToAdd.title)
+                        ...templatePaths(email, template, projectToAdd.title)
                       ]
                     })
                       .then((res) => {

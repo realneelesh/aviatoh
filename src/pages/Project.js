@@ -6,6 +6,7 @@ import {
 import { SearchLoader } from '../components/Loaders';
 import {
     getDocument,
+    topicsCollection,
     updateOrCreateDocument,
     usersCollection,
 } from "../db";
@@ -29,6 +30,8 @@ function Project(props) {
       const [user, setUser] = useState(null);
       const [addNewPath, setAddNewPath] = useState(false);
       const [ pathAdded, setPathAdded ] = useState(false);
+
+      const [ typeOfBlock, setTypeOfBlock ] = useState('single');
 
       useEffect(() => {
         showPage();
@@ -220,7 +223,7 @@ const renameProject = (title) => {
               > 
               <div 
               className='deleteblock'
-               style={{zIndex: '99999999', position: 'absolute', right: '4px', top: '6px', padding: '0px 5px',  display: 'flex', alignItems: 'center', fontSize: '13px'}}>
+               style={{zIndex: '99999999', position: 'absolute', right: '4px', top: '6px', padding: '0px 5px',  display: 'flex', alignItems: 'center', fontSize: '12px'}}>
                 <i
                 onClick={(e)=>{
                   e.preventDefault();
@@ -233,13 +236,18 @@ const renameProject = (title) => {
                 <div
                 align="left"
                   style={{ 
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    alignItems: 'center',
                   textAlign: 'center',
                     borderRadius: "4px", 
                     backgroundColor: 'inherit',
                   }}
                 >
                   
-                  {path.title}
+                  <div style={{
+                    marginRight: '10px'
+                }}>{path.type === 'collection' ? <i style={{color: primaryGreenColour(0.6), fontSize: '15px'}} className="fa fa-server"></i> : null}</div> {path.title}
                 </div>
               </Link>
         })
@@ -266,7 +274,6 @@ const renameProject = (title) => {
         position: 'fixed',
         bottom: addNewPath ? '0px': '-30vh', 
         transition: 'bottom 0.7s',
-        width: '100%',
         width: '100vw',
         marginLeft: '-8px',
         zIndex: '99999'
@@ -300,9 +307,34 @@ const renameProject = (title) => {
         }}
         placeholder="Block title"
       />
+
       &nbsp; 
-      &nbsp;
-      
+      &nbsp; 
+    <input type="radio"
+    value='single'
+    checked={typeOfBlock === 'single'}
+    onChange={(e)=>{
+      setTypeOfBlock(e.target.value);
+    }}
+    id="single" name="typeofblock"/>
+
+
+    <label for="single">Single Document</label>
+    &nbsp; 
+      &nbsp; 
+  
+    <input type="radio"
+    value='collection'
+    checked={typeOfBlock === 'collection'}
+    onChange={(e)=>{
+      setTypeOfBlock(e.target.value);
+    }}
+    id="collection" name="typeofblock"/>
+    <label for="collection">Collection of Documents</label>
+  
+
+    &nbsp; 
+      &nbsp; 
       
       <button
         style={{
@@ -311,6 +343,9 @@ const renameProject = (title) => {
           fontSize: "13px",
         }}
         onClick={() => {
+          if(user.paths.map(x=>x.title).map(x=>x.toLowerCase().trim()).indexOf(pathToAdd.title.toLowerCase().trim()) != -1){
+            alert('Title must be unique');
+          } else {
           if (pathToAdd.title && pathToAdd.title !== "") {
             var key = email + new Date().toString().replaceAll(" ", "");
             updateOrCreateDocument(usersCollection, email, {
@@ -319,8 +354,14 @@ const renameProject = (title) => {
                 {
                   ...pathToAdd,
                   project: projecttitle,
-                  topics: [],
-                  description: ""
+                  topics: typeOfBlock === 'single' ? [
+                    {
+                     id: key,
+                     title: pathToAdd.title 
+                    }
+                  ] : [],
+                  description: "",
+                  type: typeOfBlock
                 },
               ],
             })
@@ -328,13 +369,15 @@ const renameProject = (title) => {
                 setPathAdded(!pathAdded);
                  setAddNewPath(false);
                   document.getElementById("doctitle").value = "";
-                // updateOrCreateDocument(topicsCollection, key, {
-                //   data: '<p style="color: rgb(126, 140, 141);" align="center">Feature</p><h2 style="text-align: center;"><span style="color: rgb(126, 140, 141);">Sample Feature Title</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>',
-                // }).then((res) => {
-                //   setPathAdded(!pathAdded);
-                //   setAddNewPath(false);
-                //   document.getElementById("doctitle").value = "";
-                // });
+                  if(typeOfBlock === 'single'){
+                    updateOrCreateDocument(topicsCollection, key, {
+                      data: `<h2 style="text-align: left;"><span style="color: rgb(126, 140, 141);">${pathToAdd.title}</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>`,
+                    }).then((res) => {
+                      setPathAdded(!pathAdded);
+                      setAddNewPath(false);
+                      document.getElementById("doctitle").value = "";
+                    });
+                  }
               })
               .catch((e) => {
                 alert(e);
@@ -343,18 +386,13 @@ const renameProject = (title) => {
             alert("Title can not be empty");
           }
         }}
+
+      }
       >
         Add Block
       </button>
       <br/> 
-      &nbsp; &nbsp; 
-      &nbsp;  
-      &nbsp;  
-      &nbsp;  
-      &nbsp; &nbsp;  
-      e.g. Technical Documentation, Project Plan, Training Plan, API Docs etc. 
-      &nbsp;
-      &nbsp; 
+       
         <br/>
       <br/>
       <br/>

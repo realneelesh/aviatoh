@@ -27,11 +27,18 @@ function CreatePath(props) {
 
   const [ showAiGeneral, setShowAiGeneral ] = useState(false);
 
+  const [ isCollectionType, setIsCollectionType ] = useState(false);
+
   const onEditorChange = () => {
     setChangesSaved(false);
   }
 
   useEffect(() => { 
+    setTimeout(()=>{
+      setShowAiGeneral(true);
+    }, 3000);
+    setIsCollectionType(user?.paths
+            .find((x) => x.title === pathtitle && x.project === projecttitle).type === 'collection')
     document.getElementById('linktoprofile').style.display = 'none';
     document.title = !changesSaved ? 'Unsaved changes' : pathtitle + ' | ' + projecttitle;
 
@@ -168,32 +175,16 @@ function CreatePath(props) {
  
   &nbsp;
   <span style={{display: 'inline'}}>
-  {/* <Link to={'/project/'+projecttitle} style={{textDecoration: 'none', color: primaryBlueColour}}>
-  <i className='far fa-arrow-alt-circle-left' style={{fontSize: '19px', position: 'absolute', top: '12px'}} /> 
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
   
- </Link> */}
  &nbsp;
     </span>
        {projecttitle}
   &nbsp; 
-  &nbsp; 
-  {/* <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i> */}
+  &nbsp;  
   |
   &nbsp; 
 
-  {pathtitle}
-  {/* &nbsp;
-  &nbsp;
-  <i style={{color: 'grey', fontSize: '12px'}} className="fa">&#xf061;</i>
-  &nbsp;
-  &nbsp;
-
-  {cTopicTitle == null ? 'Editor' : cTopicTitle}
-  */}
+  {pathtitle} 
   </span>
     
   <span>
@@ -232,27 +223,27 @@ function CreatePath(props) {
         <div
         style={{
             display: "flex",
-            justifyContent: "space-around",
+            justifyContent: isCollectionType ? "space-around" : "center",
             padding: '0px 0px',
             background:`linear-gradient(${primarySilverColour}, white)`
         }}
         >
         
-    <div> 
-        <div
+    <div align="center"> 
+       { isCollectionType  &&
+             <div
             style={{ 
             width: "20vw",
             paddingLeft: '1vw',
             background: `linear-gradient(${primarySilverColour},white)`,
             marginTop: "0px", height: '83vh', overflowY: 'scroll', overflowX:'hidden', paddingTop: '7px', paddingRight: '10px' }}
-            align="center"
+            align="left"
         >  
-  <div style={{ display: "flex",height: '27px', justifyContent: 'space-between', width: '100%', marginBottom: '12px' }}>
-            
+  <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '7px', alignItems :'center', marginRight: '-2px'}}>
             <input
                 id="newTopic"
                 placeholder="New document title..."
-                style={{ display: "inline", padding: '6px 12px', width: '100%',
+                style={{ display: "inline", padding: '7px 12px', width: '60%',
                 border: '0', borderBottom: '1px solid transparent', marginLeft: '2px'
               }}
             /> 
@@ -264,8 +255,8 @@ function CreatePath(props) {
                 color: "white",
                 display: "inline",
                 color: 'white',
-
-                padding: '5px 15px'
+                width: '35%',
+                padding: '7px 15px'
                 }}
                 onClick={() => {
                 addTopic(document.getElementById("newTopic").value);
@@ -274,7 +265,7 @@ function CreatePath(props) {
                 Add
             </button>
             
-            </div>   
+            </div> 
              
             {user?.paths
             .find((x) => x.title === pathtitle && x.project === projecttitle)
@@ -320,11 +311,11 @@ function CreatePath(props) {
                 </button>
                 );
             })}
-        </div>
+        </div>}
         </div>
         {/* <div style={{width: '80vw', background:`linear-gradient(${primarySilverColour}, white)`}}> */}
-        <div style={{ width: "75vw", marginRight: '1vw', backgroundColor: 'white'}} align="center">
-            {<TextEditor disabled={cTopicId !== null ? false : true} setDataToBeSaved={setDataToBeSaved}  onChange={onEditorChange} onSave={saveTopic} initialContent={currentTopicData} />}
+        <div style={{ width: "75vw", marginRight: isCollectionType ? '1vw' : '0px', backgroundColor: 'white'}} align="center">
+            {<TextEditor isCollection={isCollectionType} disabled={cTopicId !== null ? false : true} setDataToBeSaved={setDataToBeSaved}  onChange={onEditorChange} onSave={saveTopic} initialContent={currentTopicData} />}
         </div>
         {/* </div> */}
 
