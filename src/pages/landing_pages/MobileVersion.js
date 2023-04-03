@@ -22,7 +22,7 @@ function MobileVersion(props) {
           }}
         >
           <div
-            align="center"
+            align="right"
             style={{
               fontSize: "20px",
               color: "rgb(150, 150, 150)",
@@ -30,16 +30,17 @@ function MobileVersion(props) {
               padding: "0px 14px",
               width: "100vw",
               zIndex: "99999",
-              height: "10vh"
+              height: "10vh",
+              marginLeft: '-8px'
             }}
-          >
-            <img src={Logo} style={{ width: "180px", marginTop: "15px" }} />
+          > 
+            <img src={Logo} style={{ width: "180px", marginTop: "15px", marginRight: '3px' }} />
 
             <Typewriter
               options={{
                 strings: [
-                  "Ideation and Documentation System",
-                  "Document your side hustles", 
+                  "Ideation and Documentation System ",
+                  "Document your side hustles ", 
                 ],
                 autoStart: true,
                 loop: true,
