@@ -42,7 +42,6 @@ function CreatePath(props) {
   
     setIsCollectionType(user?.paths
             .find((x) => x.title === pathtitle && x.project === projecttitle).type === 'collection')
-    document.getElementById('linktoprofile').style.display = 'none';
     document.title = !changesSaved ? 'Unsaved changes' : pathtitle + ' | ' + projecttitle;
 
     if(cTopicId === null){

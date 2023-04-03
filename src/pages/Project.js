@@ -126,34 +126,31 @@ const renameProject = (title) => {
     width: '100vw',
     marginLeft: '-8px',
     backgroundColor: primarySilverColour,
-    padding: '7px 0px'}}>
+    padding: '7px 0px',
+    zIndex: '999999999'
+    }}>
   
   <span>
   &nbsp; &nbsp;
     <Link to={'/'} style={{textDecoration: 'none', color: primaryBlueColour}}>
+    &nbsp; 
   <i className='far fa-arrow-alt-circle-left' style={{fontSize: '19px', position: 'absolute', top: '12px'}} /> 
+ 
    </Link> &nbsp; &nbsp;&nbsp;&nbsp;</span>
 
-  <button
-               onClick={()=>{
-                setAddNewPath(true);
-                setTimeout(()=>{
-                  document.getElementById('doctitle').focus();
-                }, 300)
-              }}
-                style={{
-                  backgroundColor: primaryBlueColour,
-                  color: 'white',
-                  margin: '0px',
-                  marginRight: '10px',
-                  fontSize: '13px',
-                  zIndex: '999999 !important'
-                }}
-                className="hoverbgdark"
-              >
-                + Add a Block
-              </button>
-
+   <button
+          style={{
+            margin: "0px",
+            marginRight: "10px",
+            backgroundColor: 'transparent',
+            fontSize: "13px",
+            opacity: "0",
+            color: 'transparent',
+            cursor: 'default'
+          }}
+        >
+          + Add Project
+        </button>
   </div>
        
   <div align="left" style={{marginTop: '30px', marginBottom: '20px'}}>
@@ -192,9 +189,12 @@ const renameProject = (title) => {
             paddingTop: '3px',
             paddingLeft: '9px',
             display: 'flex',
-            flexWrap: 'wrap',
-            width: '100%', 
+            width: '100vw',
+            overflowX: 'auto',
+            whiteSpace: 'nowrap'
+            // alignItems: 'center'
           }}>
+            
         
     {
         user?.paths?.filter(x=>x.project === projecttitle).map((path, i) => {
@@ -212,18 +212,19 @@ const renameProject = (title) => {
                     paddingTop: "15px",
                     paddingLeft: "25px",
                     paddingRight: "35px",
-                    boxShadow: "rgba(0, 0, 0, 0.16) 0px 0px 6px",
+                    boxShadow: "rgba(0, 0, 0, 0.18) 0px 0px 7px",
                     backgroundColor: "white", 
                     color: "grey",
                     fontSize: '18px',
                     textDecoration: 'none',
                     marginBottom: '1px',
-                    position: 'relative'
+                    position: 'relative',
                 }}
               > 
+
               <div 
               className='deleteblock'
-               style={{zIndex: '99999999', position: 'absolute', right: '4px', top: '6px', padding: '0px 5px',  display: 'flex', alignItems: 'center', fontSize: '12px'}}>
+               style={{zIndex: '99', position: 'absolute', right: '4px', top: '6px', padding: '0px 5px',  display: 'flex', alignItems: 'center', fontSize: '12px'}}>
                 <i
                 onClick={(e)=>{
                   e.preventDefault();
@@ -247,11 +248,48 @@ const renameProject = (title) => {
                   
                   <div style={{
                     marginRight: '10px'
-                }}>{path.type === 'collection' ? <i style={{color: primaryGreenColour(0.6), fontSize: '15px'}} className="fa fa-server"></i> : null}</div> {path.title}
+                }}>{path.type === 'collection' ? <i style={{color: primaryGreenColour(0.6), fontSize: '15px'}} className="fa fa-server"></i> : null}</div> 
+                {path.title}
                 </div>
               </Link>
         })
     }
+
+{
+              <Link
+              style={{
+                  cursor: 'pointer',
+                  paddingTop: "16px",
+                  paddingBottom: "11px",
+                  paddingLeft: "25px",
+                  paddingRight: "23px",
+                  boxShadow: `${primarySilverColour} -8px 0px 20px`,
+                  backgroundColor: "white", 
+                  color: "grey",
+                  fontSize: '18px',
+                  textDecoration: 'none',
+                  marginBottom: '1px',
+                  position: 'relative',
+                  backgroundColor: primaryBlueColour,
+                  color: 'white',
+                  marginLeft: '10px',
+                  position: 'sticky',
+                  right: '0px',
+                  borderRadius: '5px',
+                  zIndex: '999'
+              }}
+              onClick={()=>{
+                setAddNewPath(true);
+                setTimeout(()=>{
+                  document.getElementById('doctitle').focus();
+                }, 300)
+              }}
+            >  
+           <i className='fas fa-plus'></i>
+
+              
+            </Link>
+            }
    
 </div> 
 </div>
@@ -412,7 +450,7 @@ const renameProject = (title) => {
           options={{
             strings: [
                " ⚠️  No documentation blocks found", 
-               " Click on '+ Add a Block' to add"
+               " Click on '+' to add"
             ],
             autoStart: true,
             loop: true,
@@ -427,8 +465,8 @@ const renameProject = (title) => {
       </div>}
 
    {/* kanabn */}
-   <div style={{width: '100vw', marginLeft: '-8px', height: '60vh'}}>
-    <KanbanBoard />
+   <div style={{width: '100vw', marginLeft: '-8px', height: '60vh', background: `linear-gradient(${'white'}, white)`}}>
+    <KanbanBoard email={email} user={user} projecttitle={projecttitle}/>
    </div>
         </div>
     );

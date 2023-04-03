@@ -186,21 +186,7 @@ function App() {
               
               </Routes>
 
-              <Link
-              id="linktoprofile"
-              to="/profile" style={{color: 'grey'}}>
-                <i style={{
-                position: 'fixed',
-                bottom: '10px',
-                right: '10px',
-                cursor: 'pointer',
-                // boxShadow: '0px 0px 150px 30px '+ 'grey',
-                backgroundColor: 'transparent',
-                }} className="fa gear">
-              <img style={{width: '30px'}} src={IconAviatoh} />
-                  
-                  </i>
-              </Link>
+       
             </div>
     </BrowserRouter>}
 

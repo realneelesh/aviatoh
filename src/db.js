@@ -51,3 +51,4 @@ export const updateOrCreateDocument = async (collec, documentId, newDataObjectTo
 
 export const usersCollection = 'Users';
 export const topicsCollection = 'Topics';
+export const kanbanBoardsCollection = 'KanbanBoards';

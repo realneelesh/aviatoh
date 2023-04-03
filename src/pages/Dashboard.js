@@ -15,13 +15,15 @@ import {
   usersCollection,
 } from "../db";
 import { templatePaths } from "../projectTemplates";
+import { IconAviatoh } from "../assets";
 
 function Dashboard(props) {
   const { email } = props;
   const [user, setUser] = useState(null);
   const [projectToAdd, setprojectToAdd] = useState({
     title: "",
-    description: ""
+    description: "",
+    kanbanBoardId: ""
   });
 
   const [ template, setTemplate ] = useState('Project');
@@ -282,11 +284,11 @@ function Dashboard(props) {
        
       <div
         style={{
-         display: true ? "flex" : "none",
-           right: addNewProject ? "0px" : "-101vw",
+         display: addNewProject? "flex" : "none",
+           right: true ? "0px" : "-101vw",
           transition: 'right 0.7s',
           justifyContent: 'center',
-          // backgroundColor: "rgb(240, 240, 240, 0.8)",
+          backgroundColor: "rgb(240, 240, 240, 0.7)",
           position: "fixed",
           bottom: "0px",
           width: "100vw",
@@ -411,7 +413,8 @@ function Dashboard(props) {
                         ...user.projects,
                         {
                           ...projectToAdd,
-                          type: template
+                          type: template,
+                          kanbanBoardId: email + projectToAdd.title
                         },
                       ],
                       paths: [
@@ -440,6 +443,22 @@ function Dashboard(props) {
       <br/><br/>
       <br/><br/>
       </div>
+
+      <Link
+              id="linktoprofile"
+              to="/profile" style={{color: 'grey'}}>
+                <i style={{
+                position: 'fixed',
+                bottom: '10px',
+                right: '10px',
+                cursor: 'pointer',
+                // boxShadow: '0px 0px 150px 30px '+ 'grey',
+                backgroundColor: 'transparent',
+                }} className="fa gear">
+              <img style={{width: '30px'}} src={IconAviatoh} />
+                  
+                  </i>
+              </Link>
 
  
     

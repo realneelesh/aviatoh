@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { primaryGreenColour, primarySilverColour } from '../App';
 
 function StickyNote(props) {
-    const { description, priorityLevel, title } = props;
+    const { description, priorityLevel, title, updateTask , setBeingDropped} = props;
     // priorityLevel are -1,0,1
 
     const priorityColor = (pl) => {
@@ -16,24 +16,39 @@ function StickyNote(props) {
         }
     }
 
+    function allowDrop(e) {
+        e.preventDefault();
+      }
+
+    const drag = (e) => {
+       setBeingDropped(e.target.querySelector(`#${title.trim().replaceAll(' ', '')}`).innerHTML)
+    }
+
     return (
         <div style={{
-            // backgroundColor: 'lavender',
-            padding: '15px',
-            boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 7px",
+            backgroundColor: 'white',
+            padding: '10px 15px',
+            cursor: 'grab',
+            boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 10px",
             textAlign: 'left',
             color: 'grey',
             display: 'flex',
             alignItems: 'center',
             position: 'relative',
-            marginBottom: '22px'
-        }}>
-            <div style={{backgroundColor: priorityColor(priorityLevel), width: '10px', height: '22px', position: 'absolute', top: '0px', right: '15px'}}></div>
-            <div style={{backgroundColor: 'white', width: '7.07px', height: '7.07px', position: 'absolute', top: '19px', right: '17px', transform: 'rotate(45deg)'}}></div>
+            marginBottom: '22px',
+            
+        }}
+        draggable="true" onDragStart={drag} onDragOver={allowDrop}
+        >
+            <div style={{backgroundColor: priorityColor(priorityLevel), width: '10px', height: '22px', position: 'absolute', top: '0px', right: '15px',  
+            cursor: 'grab',
+             
+        }}></div>
+            <div style={{cursor: 'grab',  backgroundColor: 'white', width: '7.07px', height: '7.07px', position: 'absolute', top: '19px', right: '17px', transform: 'rotate(45deg)'}}></div>
             <div>
-                <div style={{fontSize: '18px'}}>{title}</div>
-                <br/>
-                <div>{description}</div>
+                <div id={title.trim().replaceAll(' ', '')} style={{ cursor: 'grab',fontSize: '18px'}}>{title}</div>
+                
+                {description !== '' && <div style={{cursor: 'grab'}}><br/>{description}</div>}
             </div>
         </div>
     );
