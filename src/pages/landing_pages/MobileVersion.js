@@ -82,6 +82,7 @@ function MobileVersion(props) {
             {
                 props.signedIn && <div style={{backgroundColor: primarySilverColour, width: '80%', borderRadius: '0px', color: 'black', padding: '0px 24px'}} align="left">
                    <br/>
+                   <br/>
                     Welcome! 
                     <br/> 
                     <br/> 
@@ -89,6 +90,7 @@ function MobileVersion(props) {
                     ⚠️ &nbsp; Screen size is too small, please sign in from a laptop or desktop
                     </span>
                     
+                   <br/>
                    <br/>
                    <br/>
 
