@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Demo1, Demo2, Demo3, Logo, OpenaiIcon, Openailogo, ProjectManagementSS } from '../../assets';
+import { Demo1, Demo2, Demo3, Logo, OpenaiIcon, Openailogo, ProjectManagementSS, Signinwithgoogleicon } from '../../assets';
 import Typewriter from "typewriter-effect";
 import Footer from '../../components/Footer';
 import { primaryGreenColour, primarySilverColour } from '../../App';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../../db';
+const provider = new GoogleAuthProvider();
+
 
 function MobileVersion(props) {
 
@@ -42,13 +46,13 @@ function MobileVersion(props) {
             }}
           > 
           <br/>
-            <img src={Logo} style={{ width: "200px", marginTop: "15px", marginRight: '9px' }} />
+            <img src={Logo} style={{ width: "230px", marginTop: "15px", marginRight: '9px' }} />
 
             <Typewriter
               options={{
                 strings: [
                   "Ideation and Documentation System ",
-                  "Document your side hustles"
+                  "Document your side hustles "
                 ],
                 autoStart: true,
                 loop: true,
@@ -62,6 +66,22 @@ function MobileVersion(props) {
 
           <br /><br /><br /><br />
           <br /><br /><br /><br />
+          <br /><br /><br /><br />
+          <br /><br /> 
+          <div align="center" style={{color: 'white', fontSize: '18px'}}>
+            <div style={{width:'40%', display: 'flex', alignItems: 'center', border: '0px solid white', justifyContent: 'center'}}
+            onClick={() => {
+                signInWithPopup(auth, provider);
+              }}
+            >
+            <img src={Signinwithgoogleicon} style={{width: '40px'}} />
+            <span>&nbsp;&nbsp;Sign In</span>
+            
+            </div>
+          </div>
+          <br /><br /><br /><br />
+          <br /><br /><br /><br /> 
+          <br /><br /><br /><br /> 
           <br/>
           <br/>
 
