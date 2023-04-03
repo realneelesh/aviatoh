@@ -4,9 +4,9 @@
   padding: 0px 8px;
   z-index: 999999;
 }
-
-*:not(#documentationLandingPageView) {
-  /* font-family: Sen; */
+ 
+*:not(#documentationLandingPageView #viewDocs) {
+ 
 }
 
 *{
@@ -96,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
 h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   font-weight: 250;
   display: inline;
-  border: 1px solid #254B62;
+  border: 1px solid grey;
   /* background-color: #254B62; */
   color: #254B62;
   padding: 6px 19px;

@@ -19,6 +19,7 @@ import DemoView from './demo_view.png';
 import Openailogo from './openai.svg';
 import OpenaiIcon from './openaiicon.svg';
 import TextingGif from './textinggif.gif';
+import ProjectManagementSS from './kanban.png';
 
 export {
     Empty,
@@ -41,5 +42,6 @@ export {
     DemoView,
     Openailogo,
     TextingGif,
-    OpenaiIcon
+    OpenaiIcon,
+    ProjectManagementSS
 }

@@ -212,7 +212,7 @@ const renameProject = (title) => {
                     paddingTop: "15px",
                     paddingLeft: "25px",
                     paddingRight: "35px",
-                    boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 6px",
+                    boxShadow: "rgba(0, 0, 0, 0.16) 0px 0px 6px",
                     backgroundColor: "white", 
                     color: "grey",
                     fontSize: '18px',
@@ -427,7 +427,9 @@ const renameProject = (title) => {
       </div>}
 
    {/* kanabn */}
-   <KanbanBoard />
+   <div style={{width: '100vw', marginLeft: '-8px', height: '60vh'}}>
+    <KanbanBoard />
+   </div>
         </div>
     );
 }

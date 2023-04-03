@@ -48,17 +48,20 @@ function AIGeneral(props) {
             }} 
             align="left"
             >
-              <span style={{fontSize: '30px', color: 'silver'}}>Ideation Assistant</span>
-              <br/>
-              <span style={{color: 'grey'}}>
+                   <span style={{fontSize: '30px', color: 'silver'}}>Ideation Assistant</span>
+                   <br/>
+                   <span style={{color: 'grey'}}>
               Powered By  &nbsp;
                 <img src={Openailogo} width="80" style={{
                     marginBottom: '-5px'
-                }} />
+                }} /> 
+
                 </span>
-                <br/> 
-               <br/> 
-               <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+             
                <input
                id="askanything"
                style={{
@@ -97,9 +100,8 @@ function AIGeneral(props) {
                     Clear
                 </button>
                 <br/>
-                <br/>
-                <br/>
-                <br/>
+                <br/> 
+            
                 
             </div>
 
@@ -107,13 +109,13 @@ function AIGeneral(props) {
                 width: '60vw',
                 height: '200px',
                 overflow: 'scroll',
-                backgroundColor: 'rgb(231, 231, 231)'
+                background: 'linear-gradient(white,'+ primarySilverColour+')'
             }}
             align="left"
             >  
             <div 
             style={{  padding: '15px'}}
-            dangerouslySetInnerHTML={{__html: loadingAiRes === null ? '<span style="color: grey;">AI output will be shown here :</span>' : loadingAiRes === true ? '<span>Loading...</span>' : aiRes}}
+            dangerouslySetInnerHTML={{__html: loadingAiRes === null ? '<span style="color: grey;">AI output will be shown here :<br/><br/>on-Clear should cancel the previous call(to be implemented)</span>' : loadingAiRes === true ? '<span>Loading...</span>' : aiRes}}
             > 
             </div> 
 

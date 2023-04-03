@@ -187,6 +187,7 @@ function Dashboard(props) {
 <div>
                   <Link
                 to={"/project" + "/view/" + email + "/" + project.title}
+                target={"/project" + "/view/" + email + "/" + project.title}
                 style={{
                   textDecoration: "none",
                   color: "gray",

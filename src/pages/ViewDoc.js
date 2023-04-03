@@ -69,10 +69,11 @@ function ViewDoc(props) {
   ) : (
     <div align="left">
       <div
+      id="viewDocs"
         style={{
           paddingTop: "15px",
           paddingBottom: "80px",
-          backgroundColor: primaryGreenColour(0.3),
+          backgroundColor: "rgb(230,230,250)",
           width: "100vw",
           marginLeft: "-8px",
         }}

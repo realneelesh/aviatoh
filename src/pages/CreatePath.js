@@ -32,11 +32,14 @@ function CreatePath(props) {
   const onEditorChange = () => {
     setChangesSaved(false);
   }
-
-  useEffect(() => { 
+  useEffect(()=>{
     setTimeout(()=>{
       setShowAiGeneral(true);
-    }, 3000);
+    }, 1500);
+  }, []);
+  
+  useEffect(() => { 
+  
     setIsCollectionType(user?.paths
             .find((x) => x.title === pathtitle && x.project === projecttitle).type === 'collection')
     document.getElementById('linktoprofile').style.display = 'none';
@@ -337,12 +340,9 @@ function CreatePath(props) {
           setShowAiGeneral(true);
           document.getElementById('askanything').focus();
          }}>
-           <img src={OpenaiIcon} style={{width: '35px', cursor: 'pointer'}} />
+           <img src={OpenaiIcon} style={{width: '27px', cursor: 'pointer'}} />
           
          </span>
-         &nbsp; 
-         &nbsp; 
-         <span style={{fontSize: '17px', color: 'grey'}}>AI Assist</span>
         
         </span> 
     </div>

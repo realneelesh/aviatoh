@@ -16,7 +16,7 @@ function Footer(props) {
         height: '40vh'
       }}
     >
-      <div style={{ paddingLeft: "20px", width: "35%", display: 'flex', justifyContent: 'center' }}>
+     { props.from != 'mobile' && <div style={{ paddingLeft: "20px", width: "35%", display: 'flex', justifyContent: 'center' }}>
          <img
                 src={Logo}
                 style={{
@@ -25,12 +25,12 @@ function Footer(props) {
                   marginLeft: "16px",
                 }}
               />  
-      </div>
+      </div>}
 
       <div
         style={{
           display: "flex",
-          width: "65%",
+          width: props.from == 'mobile' ? "100%" : "65%",
           justifyContent: "space-around",
         //   borderLeft: "1px solid rgb(230,230,230)",
         }}
@@ -49,7 +49,7 @@ function Footer(props) {
           <div style={{ fontSize: "22px", marginBottom: '7px' }}>Customers</div>
        
           <div>Customer support</div>
-          <div>📧 {'customercare@aviatoh.com'.toLowerCase()}</div>
+          <div>{'customercare@aviatoh.com'.toLowerCase()}</div>
           <br />
           <div style={{ fontSize: "22px", marginBottom: '7px' }}>Partners</div>
     
@@ -58,13 +58,13 @@ function Footer(props) {
           <div>Affiliate Program</div>
         </div>
 
-        <div style={{ margin: "10px", fontSize: "14px" }} align="left">
+        { props.from != 'mobile' && <div style={{ margin: "10px", fontSize: "14px" }} align="left">
           <div style={{ fontSize: "22px", marginBottom: '7px' }}>Social Media</div>
   
           <div>Instagram</div>
           <div>Facebook</div>
           <div>Twitter</div>
-        </div>
+        </div>}
       </div>
     </div>
   );
