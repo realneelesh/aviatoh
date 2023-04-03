@@ -1,10 +1,13 @@
-import React from 'react';
-import { Demo1, Demo2, Demo3, Logo, ProjectManagementSS } from '../../assets';
+import React, { useState } from 'react';
+import { Demo1, Demo2, Demo3, Logo, OpenaiIcon, Openailogo, ProjectManagementSS } from '../../assets';
 import Typewriter from "typewriter-effect";
 import Footer from '../../components/Footer';
-import { primaryBlueColour, primaryGreenColour, primaryRedColour, primarySilverColour } from '../../App';
+import { primaryGreenColour, primarySilverColour } from '../../App';
 
 function MobileVersion(props) {
+
+    const [ showKanbanModal, setShowKanbanModal ] = useState(false);
+
     return (
         <div
           style={{
@@ -18,9 +21,11 @@ function MobileVersion(props) {
             marginRight: "0px",
             backgroundColor: "black",
             zIndex: "999",
-            overflow: 'hidden'
+            overflowX: 'hidden',
           }}
         >
+
+            
           <div
             align="right"
             style={{
@@ -37,13 +42,13 @@ function MobileVersion(props) {
             }}
           > 
           <br/>
-            <img src={Logo} style={{ width: "180px", marginTop: "15px", marginRight: '9px' }} />
+            <img src={Logo} style={{ width: "200px", marginTop: "15px", marginRight: '9px' }} />
 
             <Typewriter
               options={{
                 strings: [
                   "Ideation and Documentation System ",
-                  "Document your side hustles ", 
+                  "Document your side hustles"
                 ],
                 autoStart: true,
                 loop: true,
@@ -55,14 +60,42 @@ function MobileVersion(props) {
           </div>
 
 
-          <br /><br /><br /><br /><br /><br /><br />
+          <br /><br /><br /><br />
+          <br /><br /><br /><br />
+          <br/>
+          <br/>
 
-          <div style={{color: 'silver', paddingLeft: '10px', borderLeft: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tool </div>
+            <div align="left" style={{position: 'sticky', top: '0', width: '100vw', paddingLeft: '10px',  borderLeft: '10px solid ' + primaryGreenColour(1), color: 'silver', fontSize: '17px'}}>
+            Retain, Refine, Document and Scale <br/>Your Ideas
+            </div>
+            <br/>
+
+            <div align="right" style={{color: 'grey', backgroundColor: primarySilverColour, display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+             <div style={{fontSize: '23px'}}>
+              with AI assistance
+             </div>
+             
+             <div>   <br/>
+                Powered by
+            <br/>
+            <img src={Openailogo} style={{width: '100px'}}/>
+            <br/>
+            <br/>
+            </div>
+            </div>
+            <br /><br /><br /><br />
+
+            <br/>
+          <br /><br /><br /> 
+
+          <div style={{color: 'silver', paddingLeft: '10px', borderLeft: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tools </div>
           <br/>
             <div align="left" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                 <img src={ProjectManagementSS} style={{width: '80%'}} />
                 <div style={{width: '20%'}} align="center">
-                    <i style={{color: primaryGreenColour(1), fontSize: '30px'}} className='fas fa-info-circle'></i>
+                    <i onClick={()=>{
+            setShowKanbanModal(true);
+                    }} style={{color: primaryGreenColour(1), fontSize: '30px'}} className='fas fa-info-circle'></i>
                 </div>
             </div>
 
@@ -133,6 +166,73 @@ function MobileVersion(props) {
           </div>
         <br/>
         <br/>
+        
+
+
+        {/* modal kanban */}
+        {showKanbanModal && <div align="left" style={{ borderLeft: '30px solid ' + primaryGreenColour(0.6), position: 'fixed', width: '100vw', height: '100vh', backgroundColor: 'white', padding: '20px 10px', top: '0px', zIndex: '99999'}}>
+            <div style={{position: 'absolute', top: '17px', right: '65px'}}>
+            <i style={{fontSize: '19px'}} className='far fa-times-circle'
+          onClick={()=>{
+            setShowKanbanModal(false);
+          }}
+          ></i>
+            </div>
+            <div style={{width: '69%', paddingLeft:'20px'}} align="left">
+            <br/>
+            <br/>
+
+            <h2 style={{border: '0px', padding: '0px'}}>What is Kanban</h2>
+            <br/>
+            <br/>
+            <br/>
+            Kanban is a visual method for managing work processes and workflows. It uses cards or other visual signals to represent work items and helps to ensure that the right work is done at the right time.
+        
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+          <h2 style={{border: '0px', padding: '0px'}}>What is a Kanban Board</h2>
+         <br/>
+         <br/>
+        <br/>
+        A Kanban board is a visual tool that helps you manage tasks and projects. 
+        <br/>
+        It is typically divided into three columns: 
+        <br/>
+        <br/>
+        <br/>
+        <div style={{display: 'flex', justifyContent: 'space-around', fontSize: '10px', color: 'grey'}}>
+          <div align="center" style={{width: '27vw', borderRight: '1px solid silver', height: '70px'}}>To Do
+          <br/>
+          <br/>
+          <div style={{backgroundColor: 'lavender', width: '80%', height: '20px'}}></div>
+          </div>
+          <div align="center" style={{width: '27vw', borderRight: '1px solid silver', height: '70px'}}>In Progress
+          <br/>
+          <br/>
+          <div style={{backgroundColor: primaryGreenColour(0.3), width: '80%', height: '20px'}}></div>
+          </div>
+          <div align="center" style={{width: '27vw', height: '70px'}}>Completed
+          <br/>
+          <br/>
+          <div style={{backgroundColor: primarySilverColour, width: '80%', height: '20px'}}></div>
+          <br/>
+          <div style={{backgroundColor: primarySilverColour, width: '80%', height: '20px'}}></div>
+          </div>
+    
+</div>
+        <br/>
+        <br/>
+        Each task is represented by a card that moves across the board as it progresses through different stages of completion.
+
+            </div>
+  
+
+
+            </div>}
         </div>
     );
 }
