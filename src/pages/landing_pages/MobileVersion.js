@@ -51,7 +51,6 @@ function MobileVersion(props) {
             <Typewriter
               options={{
                 strings: [
-                  "Ideation and Documentation System ",
                   "Document your side hustles "
                 ],
                 autoStart: true,
@@ -66,10 +65,10 @@ function MobileVersion(props) {
 
           <br /><br /><br /><br />
           <br /><br /><br /><br />
-          <br /><br /><br /><br />
-          <br /><br /> 
+          <br /><br /><br /><br /> 
           <div align="center" style={{color: 'white', fontSize: '18px'}}>
-            <div style={{width:'40%', display: 'flex', alignItems: 'center', border: '0px solid white', justifyContent: 'center'}}
+           {
+           !props.signedIn && <div style={{width:'40%', display: 'flex', alignItems: 'center', border: '0px solid white', justifyContent: 'center'}}
             onClick={() => {
                 signInWithPopup(auth, provider);
               }}
@@ -78,12 +77,27 @@ function MobileVersion(props) {
             <span>&nbsp;&nbsp;Sign In</span>
             
             </div>
+            }
+
+            {
+                props.signedIn && <div style={{backgroundColor: primarySilverColour, width: '75%', borderRadius: '5px', color: 'black', padding: '0px 24px'}} align="left">
+                   <br/>
+                    Welcome! 
+                    <br/> 
+                    <br/> 
+                    <span style={{fontSize: '15px'}}>
+                    ⚠️ &nbsp; Screen size is too small, please sign in from a laptop or desktop
+                    </span>
+                    
+                   <br/>
+                   <br/>
+
+                </div>
+            }
           </div>
           <br /><br /><br /><br />
           <br /><br /><br /><br /> 
-          <br /><br /><br /><br /> 
-          <br/>
-          <br/>
+          <br /><br /><br /><br />  
 
             <div align="left" style={{position: 'sticky', top: '0', width: '100vw', paddingLeft: '10px',  borderLeft: '10px solid ' + primaryGreenColour(1), color: 'silver', fontSize: '17px'}}>
             Retain, Refine, Document and Scale <br/>Your Ideas

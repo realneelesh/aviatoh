@@ -24,7 +24,7 @@ import MobileVersion from "./MobileVersion";
 const provider = new GoogleAuthProvider();
 
 function DocumentationLandingPage(props) {
-  const { from } = props;
+  const { from, signedIn } = props;
   return (
     <>
       {from != "mobile" && (
@@ -360,7 +360,7 @@ function DocumentationLandingPage(props) {
 
       {/* mobile */}
       {from === "mobile" ? (
-        <MobileVersion />
+        <MobileVersion signedIn={signedIn} />
       ) : null}
     </>
   );
