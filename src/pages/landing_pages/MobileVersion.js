@@ -24,6 +24,7 @@ function MobileVersion(props) {
           <div
             align="right"
             style={{
+               position: 'sticky', top: '0px',
               fontSize: "20px",
               color: "rgb(150, 150, 150)",
               fontWeight: "300",
@@ -31,9 +32,11 @@ function MobileVersion(props) {
               width: "100vw",
               zIndex: "99999",
               height: "10vh",
-              marginLeft: '-8px'
+              marginLeft: '-8px',
+              
             }}
           > 
+          <br/>
             <img src={Logo} style={{ width: "180px", marginTop: "15px", marginRight: '3px' }} />
 
             <Typewriter
@@ -61,7 +64,7 @@ function MobileVersion(props) {
 
          <br /><br /><br /><br /><br /><br /><br />
 
-          <div style={{color: 'silver',  paddingRight: '10px', borderRight: '11px solid green'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
+          <div style={{color: 'silver',  paddingRight: '10px', borderRight: '11px solid gold'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
         <br/>
           <div
             style={{ display: "flex", alignItems: "center", justifyContent: 'left' }}
