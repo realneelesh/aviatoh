@@ -70,12 +70,12 @@ function MobileVersion(props) {
             </div>
             <br/>
 
-            <div align="right" style={{color: 'grey', backgroundColor: primarySilverColour, display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-             <div style={{fontSize: '23px'}}>
-              with AI assistance
+            <div align="right" style={{color: 'grey', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+             <div style={{fontSize: '23px', backgroundColor: 'black', padding: '0px 15px'}}>
+              Integrated with Artificial Intelligence
              </div>
              
-             <div>   <br/>
+             <div style={{backgroundColor: 'white', padding: '0px 12px'}}>   <br/>
                 Powered by
             <br/>
             <img src={Openailogo} style={{width: '100px'}}/>
