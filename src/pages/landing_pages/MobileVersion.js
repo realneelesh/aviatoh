@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Demo1, Demo2, Demo3, Logo, OpenaiIcon, Openailogo, ProjectManagementSS, Signinwithgoogleicon } from '../../assets';
 import Typewriter from "typewriter-effect";
 import Footer from '../../components/Footer';
-import { primaryGreenColour, primarySilverColour } from '../../App';
+import { primaryBlueColour, primaryGreenColour, primarySilverColour } from '../../App';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../db';
 const provider = new GoogleAuthProvider();
@@ -23,7 +23,7 @@ function MobileVersion(props) {
             marginLeft: '-8px',
             minHeight: '100vh',
             marginRight: "0px",
-            backgroundColor: "black",
+            backgroundColor: 'white',
             zIndex: "999",
             overflowX: 'hidden',
           }}
@@ -66,7 +66,7 @@ function MobileVersion(props) {
           <br /><br /><br /><br />
           <br /><br /><br /><br />
           <br /><br /><br /><br /> 
-          <div align="center" style={{color: 'white', fontSize: '18px'}}>
+          <div align="center" style={{color: 'grey', fontSize: '18px'}}>
            {
            !props.signedIn && <div style={{width:'40%', display: 'flex', alignItems: 'center', border: '0px solid white', justifyContent: 'center'}}
             onClick={() => {
@@ -80,7 +80,7 @@ function MobileVersion(props) {
             }
 
             {
-                props.signedIn && <div style={{backgroundColor: primarySilverColour, width: '75%', borderRadius: '5px', color: 'black', padding: '0px 24px'}} align="left">
+                props.signedIn && <div style={{backgroundColor: primarySilverColour, width: '80%', borderRadius: '0px', color: 'black', padding: '0px 24px'}} align="left">
                    <br/>
                     Welcome! 
                     <br/> 
@@ -99,13 +99,13 @@ function MobileVersion(props) {
           <br /><br /><br /><br /> 
           <br /><br /><br /><br />  
 
-            <div align="left" style={{position: 'sticky', top: '0', width: '100vw', paddingLeft: '10px',  borderLeft: '10px solid ' + primaryGreenColour(1), color: 'silver', fontSize: '17px'}}>
+            <div align="left" style={{position: 'sticky', top: '0', width: '100vw', paddingLeft: '10px',  borderLeft: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}}>
             Retain, Refine, Document and Scale <br/>Your Ideas
             </div>
             <br/>
 
             <div align="right" style={{color: 'grey', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-             <div style={{fontSize: '23px', backgroundColor: 'black', padding: '0px 15px'}}>
+             <div style={{fontSize: '20px', padding: '0px 15px'}}>
               Integrated with Artificial Intelligence
              </div>
              
@@ -122,10 +122,10 @@ function MobileVersion(props) {
             <br/>
           <br /><br /><br /> 
 
-          <div style={{color: 'silver', paddingLeft: '10px', borderLeft: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tools </div>
+          <div style={{  paddingLeft: '10px', borderLeft: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tools </div>
           <br/>
             <div align="left" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <img src={ProjectManagementSS} style={{width: '80%'}} />
+                <img src={ProjectManagementSS} style={{width: '80%', boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",}} />
                 <div style={{width: '20%'}} align="center">
                     <i onClick={()=>{
             setShowKanbanModal(true);
@@ -135,7 +135,7 @@ function MobileVersion(props) {
 
          <br /><br /><br /><br /><br /><br /><br />
 
-          <div style={{color: 'silver',  paddingRight: '10px', borderRight: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
+          <div style={{  paddingRight: '10px', borderRight: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
         <br/>
           <div
             style={{ display: "flex", alignItems: "center", justifyContent: 'left' }}
@@ -194,9 +194,9 @@ function MobileVersion(props) {
           <div style={{
             display: 'flex', width: '35%', justifyContent: 'space-around', fontSize: '26px', marginLeft: '13px'
           }}>
-            <i style={{color: 'silver'}} className="fab fa-instagram"></i>
-            <i style={{color: 'silver'}} className="fab fa-twitter"></i>
-            <i style={{color: 'silver'}} className="fab fa-facebook"></i>
+            <i style={{color: 'grey'}} className="fab fa-instagram"></i>
+            <i style={{color: 'grey'}} className="fab fa-twitter"></i>
+            <i style={{color: 'grey'}} className="fab fa-facebook"></i>
           </div>
         <br/>
         <br/>
