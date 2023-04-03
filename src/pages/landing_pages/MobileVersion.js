@@ -37,7 +37,7 @@ function MobileVersion(props) {
             }}
           > 
           <br/>
-            <img src={Logo} style={{ width: "180px", marginTop: "15px", marginRight: '3px' }} />
+            <img src={Logo} style={{ width: "180px", marginTop: "15px", marginRight: '9px' }} />
 
             <Typewriter
               options={{
@@ -57,14 +57,18 @@ function MobileVersion(props) {
 
           <br /><br /><br /><br /><br /><br /><br />
 
-          <div style={{color: 'silver', paddingLeft: '10px', borderLeft: '11px solid gold'}} align="left">Kanban Inspired <br/>Project Management Tool </div>
+          <div style={{color: 'silver', paddingLeft: '10px', borderLeft: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tool </div>
           <br/>
-
-          <img src={ProjectManagementSS} style={{width: '100%'}} />
+            <div align="left" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <img src={ProjectManagementSS} style={{width: '80%'}} />
+                <div style={{width: '20%'}} align="center">
+                    <i style={{color: primaryGreenColour(1), fontSize: '30px'}} className='fas fa-info-circle'></i>
+                </div>
+            </div>
 
          <br /><br /><br /><br /><br /><br /><br />
 
-          <div style={{color: 'silver',  paddingRight: '10px', borderRight: '11px solid gold'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
+          <div style={{color: 'silver',  paddingRight: '10px', borderRight: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
         <br/>
           <div
             style={{ display: "flex", alignItems: "center", justifyContent: 'left' }}
