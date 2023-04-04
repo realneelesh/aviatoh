@@ -5,7 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { browserStorage, userInfoKey } from './BrowserStorage';
-import { firebaseConfig, getDocument, updateOrCreateDocument, usersCollection } from './db';
+import { firebaseConfig, getDocument, topicsCollection, updateOrCreateDocument, usersCollection } from './db';
 import ParticularsForm from './pages/ParticularsForm';
 import Profile from './pages/Profile';
 
@@ -78,21 +78,31 @@ function App() {
           browserStorage.setItem(userInfoKey, user);
           getDocument(usersCollection, user.email).then(res => {
             if(!res.data()){
+              var key = user.email + new Date().toString().replaceAll(" ", "");
+              updateOrCreateDocument(topicsCollection, key, {
+                data: `<h2 style="text-align: left;"><span style="color: rgb(126, 140, 141);">Sample Document</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>`,
+              }).then((res) => {
+              });
               updateOrCreateDocument(usersCollection, user.email, {
+                email: user.email,
                 activities: [],
                 projects: [
                   {
                     title: 'Sample Project',
                     description: '',
-                    type: 'Project'
+                    type: 'Project',
                   }
                 ],
                 paths: [
                   {
-                    title: 'Sample Block 1',
+                    title: 'Sample Single Doc.',
                     project: 'Sample Project',
                     description: '',
-                    topics: []  // sending topics array is important for the view
+                    topics: [{
+                      id: key,
+                      title: 'Sample Document'
+                    }],  // sending topics array is important for the view
+                    type: 'single'
                    },
                   // {
                   //   title: 'Product Design',
@@ -101,10 +111,11 @@ function App() {
                   //   topics: []
                   // },
                    {
-                     title: 'Sample Block 2',
+                     title: 'Sample Collection',
                      project: 'Sample Project',
                      description: '',
-                     topics: []
+                     topics: [],
+                    type: 'collection'
                    },
                   // {
                   //   title: 'QA',

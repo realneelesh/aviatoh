@@ -102,7 +102,8 @@ const renameProject = (title) => {
 
 
     return (
-        <div style={{
+        <div
+        style={{
             display: 'flex', 
             flexDirection: 'column',
             position: 'relative',
@@ -113,7 +114,7 @@ const renameProject = (title) => {
         zIndex: '-1',
         width: '100vw',
         marginLeft: '-8px',
-        backgroundColor: primaryGreenColour(0.38),
+        backgroundColor: primaryGreenColour(0.3),
         height: '170px'
       }}></div>
         {user === null && <SearchLoader /> }
@@ -127,7 +128,7 @@ const renameProject = (title) => {
     marginLeft: '-8px',
     backgroundColor: primarySilverColour,
     padding: '7px 0px',
-    zIndex: '999999999'
+    zIndex: '9999'
     }}>
   
   <span>
@@ -208,16 +209,18 @@ const renameProject = (title) => {
                 to={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 className="scopes"
                 style={{
-                    paddingBottom: "15px",
-                    paddingTop: "15px",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
                     paddingLeft: "25px",
                     paddingRight: "35px",
-                    boxShadow: "rgba(0, 0, 0, 0.18) 0px 0px 7px",
+                     boxShadow: "rgba(0, 0, 0, 0.19) 2px 2px 7px",
                     backgroundColor: "white", 
                     color: "grey",
                     fontSize: '18px',
                     textDecoration: 'none',
+                    // borderRight: '1px solid silver',
                     marginBottom: '1px',
+                    marginRight: '9px',
                     position: 'relative',
                 }}
               > 
@@ -259,8 +262,8 @@ const renameProject = (title) => {
               <Link
               style={{
                   cursor: 'pointer',
-                  paddingTop: "16px",
-                  paddingBottom: "11px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
                   paddingLeft: "25px",
                   paddingRight: "23px",
                   boxShadow: `${primarySilverColour} -8px 0px 20px`,
@@ -275,7 +278,6 @@ const renameProject = (title) => {
                   marginLeft: '10px',
                   position: 'sticky',
                   right: '0px',
-                  borderRadius: '5px',
                   zIndex: '999'
               }}
               onClick={()=>{
@@ -310,7 +312,11 @@ const renameProject = (title) => {
 <div style={{ 
         backgroundColor: primarySilverColour,
         position: 'fixed',
-        bottom: addNewPath ? '0px': '-30vh', 
+        display: addNewPath ? 'flex': 'none',
+        height: '100vh',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        // top: addNewPath ? '0px': '-30vh', 
         transition: 'bottom 0.7s',
         width: '100vw',
         marginLeft: '-8px',
@@ -318,6 +324,8 @@ const renameProject = (title) => {
     }}
     align="center"
     >
+
+      <div style={{ width: '15%', backgroundColor: primaryBlueColour, height: '100vh'}}></div>
         <i 
         onClick={()=>{
             setAddNewPath(false);
@@ -329,9 +337,8 @@ const renameProject = (title) => {
             top: '15px',
             fontSize: '20px',
         }} className='fas fa-times-circle'></i>
-        <br/> 
-      
-        <br/> 
+       
+        <div style={{width: '63%'}} align="left">
       <input
         id="doctitle"
         style={{
@@ -346,8 +353,8 @@ const renameProject = (title) => {
         placeholder="Block title"
       />
 
-      &nbsp; 
-      &nbsp; 
+    <br/>
+    <br/>
     <input type="radio"
     value='single'
     checked={typeOfBlock === 'single'}
@@ -371,14 +378,16 @@ const renameProject = (title) => {
     <label for="collection">Collection of Documents</label>
   
 
-    &nbsp; 
-      &nbsp; 
-      
+    <br/>
+    <br/>
+    <br/>
+
       <button
         style={{
           backgroundColor: primaryBlueColour,
           color: "white",
           fontSize: "13px",
+          margin: '0px'
         }}
         onClick={() => {
           if(user.paths.map(x=>x.title).map(x=>x.toLowerCase().trim()).indexOf(pathToAdd.title.toLowerCase().trim()) != -1){
@@ -429,12 +438,8 @@ const renameProject = (title) => {
       >
         Add Block
       </button>
-      <br/> 
-       
-        <br/>
-      <br/>
-      <br/>
-
+      </div>
+    
       </div>
 
       { user?.paths?.filter(x=>x.project === projecttitle)?.length === 0 && <div align="right" style={{position: 'absolute', top: '37px', right: '50px',

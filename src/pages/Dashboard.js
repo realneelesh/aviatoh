@@ -317,7 +317,7 @@ function Dashboard(props) {
           className="fas fa-times-circle"
         ></i>
 
-<div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', backgroundColor: primarySilverColour}}></div>
+<div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', backgroundColor: primaryBlueColour}}></div>
 
 
   

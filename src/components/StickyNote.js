@@ -21,7 +21,7 @@ function StickyNote(props) {
       }
 
     const drag = (e) => {
-       setBeingDropped(e.target.querySelector(`#${title.trim().replaceAll(' ', '')}`).innerHTML)
+       setBeingDropped(e.target.querySelector(`#${title.trim().replaceAll(' ', '').replaceAll('.', '')}`).innerHTML)
     }
 
     return (
@@ -38,7 +38,9 @@ function StickyNote(props) {
             marginBottom: '22px',
             
         }}
-        draggable="true" onDragStart={drag} onDragOver={allowDrop}
+        draggable="true" onDragStart={drag} onDragOver={allowDrop} onDragEnd={()=>{
+            setBeingDropped(null);
+        }}
         >
             <div style={{backgroundColor: priorityColor(priorityLevel), width: '10px', height: '22px', position: 'absolute', top: '0px', right: '15px',  
             cursor: 'grab',
@@ -46,7 +48,7 @@ function StickyNote(props) {
         }}></div>
             <div style={{cursor: 'grab',  backgroundColor: 'white', width: '7.07px', height: '7.07px', position: 'absolute', top: '19px', right: '17px', transform: 'rotate(45deg)'}}></div>
             <div>
-                <div id={title.trim().replaceAll(' ', '')} style={{ cursor: 'grab',fontSize: '18px'}}>{title}</div>
+                <div id={title.trim().replaceAll(' ', '').replaceAll('.', '')} style={{ cursor: 'grab',fontSize: '18px'}}>{title}</div>
                 
                 {description !== '' && <div style={{cursor: 'grab'}}><br/>{description}</div>}
             </div>
