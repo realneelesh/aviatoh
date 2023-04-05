@@ -11,6 +11,7 @@ import AIGeneral from "../components/AIGeneral";
 import { SearchLoader } from "../components/Loaders";
 import {
   getDocument,
+  kanbanBoardsCollection,
   updateOrCreateDocument,
   usersCollection,
 } from "../db";
@@ -71,14 +72,22 @@ function Dashboard(props) {
       tempProjects = tempProjects.filter(x=>x.title.toLowerCase()!==project.toLowerCase());
     }
 
-    updateOrCreateDocument(usersCollection, email, {
-        activities: [...user.activities, 'Project deleted - ' + project],
-        projects: tempProjects,
-        paths: tempPaths
-    }).then(res => {
-        setUpdateUserFlag(!updateUserFlag);
+    // delete related kanban board
+    // maybe do not delete, just update the title to /title+archived/
+    updateOrCreateDocument(kanbanBoardsCollection, email+project, {
+      data: []
+    }).then(()=>{
+        updateOrCreateDocument(usersCollection, email, {
+          activities: [...user.activities, 'Project deleted - ' + project],
+          projects: tempProjects,
+          paths: tempPaths
+        }).then(res => {
+          setUpdateUserFlag(!updateUserFlag);
+        }).catch(err=>{
+          alert('Something went wrong');
+        })
     }).catch(err=>{
-        alert('Something went wrong');
+      alert(err);
     })
     }
   }
@@ -113,22 +122,16 @@ function Dashboard(props) {
         <span>
             &nbsp; &nbsp; Dashboard</span>
 
-        <button
-          onClick={() => {
-            setAddNewProject(true);
-            setTimeout(()=>{
-              document.getElementById('booktitle').focus();
-            },300);
-          }}
+        <button 
           style={{
-            backgroundColor: primaryBlueColour,
-            color: "white",
+            backgroundColor: 'transparent',
+            color: "transparent",
             margin: "0px",
             marginRight: "10px",
             fontSize: "13px",
             zIndex: "99999",
+            visibility: 'none'
           }}
-          className="hoverbgdark"
         >
           + Add Project
         </button>
@@ -138,6 +141,31 @@ function Dashboard(props) {
         <h1 style={{border: '0px', paddingLeft: '11px'}}>
             Your Projects
         </h1>
+        <Link
+              style={{
+                  cursor: 'pointer',
+                  padding: '7px 10px',
+                  paddingTop: '8px',
+                  boxShadow: `${'silver'} 0px 0px 3px`,
+                  backgroundColor: "white", 
+                  color: primaryBlueColour,
+                  fontSize: '18px',
+                  textDecoration: 'none',
+                  zIndex: '999',
+                  borderRadius: '50%',
+                  transform: 'scale(0.4)'
+              }}
+              onClick={() => {
+                setAddNewProject(true);
+                setTimeout(()=>{
+                  document.getElementById('booktitle').focus();
+                },300);
+              }}
+            >  
+           <i className='fas fa-plus' style={{cursor: 'pointer'}}></i>
+
+              
+            </Link>
       </div>
 
       <div
@@ -414,7 +442,7 @@ function Dashboard(props) {
                         {
                           ...projectToAdd,
                           type: template,
-                          kanbanBoardId: email + projectToAdd.title
+                          kanbanBoardId: email + new Date().toString().replaceAll(" ", "")
                         },
                       ],
                       paths: [

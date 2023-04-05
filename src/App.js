@@ -91,6 +91,7 @@ function App() {
                     title: 'Sample Project',
                     description: '',
                     type: 'Project',
+                    kanbanBoardId: user.email + new Date().toString().replaceAll(" ", "")
                   }
                 ],
                 paths: [

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { primaryBlueColour, primaryGreenColour, primarySilverColour } from '../App';
 import StickyNote from './StickyNote';
 import { getDocument, kanbanBoardsCollection, updateOrCreateDocument, usersCollection } from '../db';
+import { Link } from 'react-router-dom';
 
 function KanbanBoard(props) {
 
     const headingStype = {border: '0px', marginTop: '6px', display: 'block', border: '0px solid silver', color: 'grey'};
     const [ addNewTask, setAddNewTask ] = useState(false);
     const [ updateUserFlag, setUpdateUserFlag ] = useState(false);
-    const [ user, setUser ] = useState(props.user);
     const [ updateTasks, setUpdateTasks ] = useState(false);
     const [ taskBeingDropped, setTitleBeingDropped ] = useState(null);
     const [ tasks, setTasks ] = useState(
@@ -16,13 +16,15 @@ function KanbanBoard(props) {
     );
 
     useEffect(()=>{
-        if(props.email && props.projecttitle){
-                getDocument(kanbanBoardsCollection, props.email+props.projecttitle).then(res => {
+        if(props.email && props.projecttitle && props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId !== undefined){
+            // alert(props.email+props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId);
+                getDocument(kanbanBoardsCollection, props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId).then(res => {
+                    // console.log(res.data());
                     setTasks(res.data()?.data?.sort((x,y) => y.priority-x.priority));
                     setUpdateTasks(false);
                 })
         }
-    }, [props.email, props.projecttitle, updateUserFlag]);
+    }, [props.email, props.projecttitle, updateUserFlag, props.user]);
 
       function allowDrop(e) {
             e.preventDefault();
@@ -74,7 +76,7 @@ function KanbanBoard(props) {
                 setTasks(tasks.filter(task => task.title !== taskBeingDropped));
                 break;
             default:
-                alert('');
+              
                 break;
         }
     }
@@ -87,9 +89,9 @@ function KanbanBoard(props) {
             if(tasks.map(x=>x.title).find(x=>x==task.title)){
                 alert('Task with this title already exists');
             } else {
-                if(props.email && props.projecttitle){
+                if(props.email && props.projecttitle && props.user?.projects?.find(x=>x.title===props.projecttitle) !== undefined){
                     // update of create the kanbanboard in kanbanboards collection
-                    updateOrCreateDocument(kanbanBoardsCollection, props.email + props.projecttitle, {
+                    updateOrCreateDocument(kanbanBoardsCollection, props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId, {
                         data: [...tasks, task]
                     }).then(res => {
                         setUpdateUserFlag(!updateUserFlag);
@@ -104,8 +106,8 @@ function KanbanBoard(props) {
     }
 
     useEffect(()=>{ 
-        if(updateTasks){
-            updateOrCreateDocument(kanbanBoardsCollection, props.email + props.projecttitle, {
+        if(updateTasks && props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId !== undefined){
+            updateOrCreateDocument(kanbanBoardsCollection, props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId, {
                 data: tasks
             }).then(res => {
                 setUpdateUserFlag(!updateUserFlag);
@@ -118,8 +120,8 @@ function KanbanBoard(props) {
 
     return (
         <>   
-        {/* <div align="left"> 
-        <span align="left" style={{display: 'inline-block', width: '100vw', border: '0px solid silver', display: 'flex', justifyContent: 'flex-start', position: 'sticky', top: '0px', borderRadius: '0px', marginBottom: '1px', alignItems: 'flex-end'}}>
+         <div align="left"> 
+        {/* <span align="left" style={{ paddingLeft: '20px', display: 'inline-block', width: '70%', border: '0px solid silver', display: 'flex', justifyContent: 'flex-start', position: 'sticky', top: '0px', borderRadius: '0px', marginBottom: '1px', alignItems: 'flex-end'}}>
         <span style={{width: '0%'}}>
             
         </span>
@@ -131,10 +133,10 @@ function KanbanBoard(props) {
 
    
             
-            </span> 
+            </span>  */}
  
  
- </div>    */}
+ </div>     
         <div style={{
             margin: '0px 19px',
             backgroundColor: 'transparent',
@@ -143,12 +145,12 @@ function KanbanBoard(props) {
             justifyContent: 'space-between',
             paddingTop: '0px',
             background: `linear-gradient(${'white'}, white)`,
-            borderTop: '2px solid ' + primarySilverColour
+            borderTop: '0px solid ' + primarySilverColour
         }}>
             <div style={{ position: 'relative', width: '10%', backgroundColor: '', borderRight: '0px solid ' + primarySilverColour, display: 'flex', paddingTop: '0px', justifyContent: 'flex-start', flexDirection: 'column'}} align="center">
                 <div>
-                <button
-                style={{ borderRadius: '0px', color: 'white', fontSize: '16px', backgroundColor: primaryBlueColour, margin: '0px', width: '100%'}}
+                {/* <button
+                style={{ borderRadius: '999px', color: 'white', fontSize: '13px', backgroundColor: primaryBlueColour, margin: '0px', width: '100%', paddingLeft: '0px', paddingRight: '0px'}}
                     onClick={()=>{
                         setAddNewTask(true);
                         setTimeout(()=>{
@@ -156,10 +158,11 @@ function KanbanBoard(props) {
                         }, 300);
                     }}
                     > 
-                    <i className='fas fa-plus'></i> 
+                    <i className='fas fa-plus' style={{cursor: 'pointer'}}></i> 
                     &nbsp;
-                        Add a task 
-                </button>
+                        Add task
+                </button> */}
+
                 </div>
 <br/>
 <br/>
@@ -172,7 +175,7 @@ function KanbanBoard(props) {
                 onDragOver={allowDrop}
                 onDrop={drop}
                     style={{ color: "silver", fontSize: '35px' }} 
-                    className="fa fa-trash"
+                    className="fa fa-trash j"
                     ><span style={{color: 'white'}}>.</span></i> 
             </div>
                     
@@ -188,12 +191,103 @@ function KanbanBoard(props) {
             onDrop={drop} onDragOver={allowDrop}
             align="center"
             > <br/> 
-               <h2 style={{...headingStype, position: 'relative', display: 'inline-block'}}> 📌  <span>To Do</span></h2>
+               <h2 style={{...headingStype, position: 'relative', display: 'inline-block', paddingRight: '13px'}}><span>To Do</span>
+                
+               </h2>
+
+               <Link
+              style={{
+                  cursor: 'pointer',
+                  padding: '7px 10px',
+                  paddingTop: '8px',
+                  boxShadow: `${'silver'} 0px 0px 3px`,
+                  backgroundColor: "white", 
+                  color: primaryBlueColour,
+                  fontSize: '15px',
+                  textDecoration: 'none',
+                  zIndex: '999',
+                  borderRadius: '50%',
+                  transform: 'scale(0.4)'
+              }}
+              onClick={()=>{
+                setAddNewTask(true);
+                setTimeout(()=>{
+                    
+                }, 300);
+            }}
+            >  
+           <i className='fas fa-plus' style={{cursor: 'pointer'}}></i>
+
+              
+            </Link>
+
                  <br/>
-                <br/>
-                {/* <div style={{width: '90%'}}>
-                <StickyNote title="Write " color="yellow" priorityLevel='0' text="this is test this is test this is test this is test this is test this is test this is test this is test "/>
-                </div> */}
+                <br/> 
+                {
+                    addNewTask ? <div style={{width: '85%', marginBottom: '80px'}}><div style={{
+                        // backgroundColor: primarySilverColour, 
+                        // boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 10px",
+                        textAlign: 'left',
+                        color: 'grey',
+                        display: 'flex',
+                        alignItems: 'center',
+                        position: 'relative',
+                        marginBottom: '22px',
+                        // border: '1px solid silver',
+                        
+                        
+                    }}
+                    align="center"
+                    >
+                    
+                        {/* <div style={{backgroundColor: 'white', width: '7.07px', height: '7.07px', position: 'absolute', top: '19px', right: '17px', transform: 'rotate(45deg)'}}></div> */}
+                        <div style={{width: '100%', padding: '0px'}}>
+                            <input id="tasktitle" type='text' style={{cursor: 'text', marginBottom:'10px', width: '95%', border: '1px solid silver', padding: '6px 6px' }} placeholder='Task name' />
+                           
+                            {<textarea id="taskdescription" style={{ cursor: 'text', marginBottom:'6px', width: '95%', border: '1px solid silver', fontFamily: 'sans-serif' }} placeholder='Description'></textarea>}
+                            <div style={{display: 'flex', justifyContent: 'space-between'}}> 
+                            <select id="prioritylevel">
+                                <option value="-1">Priority Level</option>
+                                <option value="1">High</option>
+                                <option value="0">Medium</option>
+                                <option value="-1">Low</option>
+                            </select>
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                            <span
+                            onClick={() => {
+                                setAddNewTask(false);
+                            }}
+                            style={{padding: '3px 10px', borderRadius: '999px', textAlign: 'center', cursor: 'pointer', color: primaryBlueColour}}>
+                                Cancel</span>
+
+
+                            <span
+                            onClick={() => {
+                                var task = {
+                                    title: document.getElementById('tasktitle').value,
+                                    status: "-1",
+                                    priority: document.getElementById('prioritylevel').value,
+                                    description: document.getElementById('taskdescription').value
+                                } 
+                                if(task.title.trim() == '' ){
+                                    alert('Task title can not be empty');
+                                } else {
+                                    updateKanbanBoardWithATask(task);
+                                }
+                            }}
+                            style={{padding: '3px 10px', borderRadius: '999px', textAlign: 'center', backgroundColor: primaryBlueColour, color: 'white', cursor: 'pointer'}}>
+                                Save</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    </div> : null
+                }
+                {
+                    !tasks || tasks?.length < 1 ? <div style={{width: '85%', visibility: taskBeingDropped && 'Add a task' !== taskBeingDropped ? 'hidden' : ''}}>
+                    <StickyNote setBeingDropped={setTitleBeingDropped} updateTask={updateKanbanBoardWithATask} title={'Add a task'} priorityLevel={'0'} description={"Click on the '+' button"}/>
+                </div> : null
+                }
                 {
                     tasks?.map(task => {
                         if(task.status == '-1'){
@@ -209,7 +303,7 @@ function KanbanBoard(props) {
                 width: '33%',
 
                 borderRight: '0px solid ' + primarySilverColour,
-                backgroundColor: primarySilverColour
+                backgroundColor: 'rgb(247,247,247)'
             }}
             align="center"
 
@@ -260,7 +354,7 @@ function KanbanBoard(props) {
             {/* add task modal */} 
             <div
                     style={{
-                    display: addNewTask ? "flex" : "none",
+                    display: false ? "flex" : "none",
                     right: true ? "0px" : "-101vw",
                     transition: 'right 0.7s',
                     justifyContent: 'center',
@@ -307,7 +401,6 @@ function KanbanBoard(props) {
                   
                     </div>
                     <input
-                    id="tasktitle"
                     style={{
                         border: "0px",
                         marginTop: '18px',
@@ -363,8 +456,7 @@ function KanbanBoard(props) {
                             status: "-1",
                             priority: document.getElementById('prioritylevel').value,
                             description: document.getElementById('taskdescription').value
-                        }
-
+                        } 
                         updateKanbanBoardWithATask(task);
                     }}
                     >

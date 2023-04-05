@@ -115,7 +115,7 @@ const renameProject = (title) => {
         width: '100vw',
         marginLeft: '-8px',
         backgroundColor: primaryGreenColour(0.3),
-        height: '170px'
+        height: '166px'
       }}></div>
         {user === null && <SearchLoader /> }
              <div style={{
@@ -262,23 +262,22 @@ const renameProject = (title) => {
               <Link
               style={{
                   cursor: 'pointer',
-                  paddingTop: "10px",
+                  paddingTop: "12px",
                   paddingBottom: "10px",
-                  paddingLeft: "25px",
-                  paddingRight: "23px",
-                  boxShadow: `${primarySilverColour} -8px 0px 20px`,
+                  paddingLeft: "14px",
+                  paddingRight: "14px",
+                  boxShadow: `${'silver'} 0px 0px 3px`,
                   backgroundColor: "white", 
-                  color: "grey",
+                  color: primaryBlueColour,
                   fontSize: '18px',
                   textDecoration: 'none',
                   marginBottom: '1px',
                   position: 'relative',
-                  backgroundColor: primaryBlueColour,
-                  color: 'white',
                   marginLeft: '10px',
                   position: 'sticky',
                   right: '0px',
-                  zIndex: '999'
+                  zIndex: '999',
+                  borderRadius: '50%'
               }}
               onClick={()=>{
                 setAddNewPath(true);
@@ -287,7 +286,7 @@ const renameProject = (title) => {
                 }, 300)
               }}
             >  
-           <i className='fas fa-plus'></i>
+           <i className='fas fa-plus' style={{cursor: 'pointer'}}></i>
 
               
             </Link>
@@ -310,12 +309,12 @@ const renameProject = (title) => {
 
 
 <div style={{ 
-        backgroundColor: primarySilverColour,
+        backgroundColor: "rgb(240, 240, 240, 0.8)",
         position: 'fixed',
         display: addNewPath ? 'flex': 'none',
         height: '100vh',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         // top: addNewPath ? '0px': '-30vh', 
         transition: 'bottom 0.7s',
         width: '100vw',
@@ -325,7 +324,9 @@ const renameProject = (title) => {
     align="center"
     >
 
-      <div style={{ width: '15%', backgroundColor: primaryBlueColour, height: '100vh'}}></div>
+        
+       
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center' ,position: 'relative', width: '50%', backgroundColor: 'white', padding: '40px 0px', paddingLeft: '80px'}} align="left">
         <i 
         onClick={()=>{
             setAddNewPath(false);
@@ -337,14 +338,18 @@ const renameProject = (title) => {
             top: '15px',
             fontSize: '20px',
         }} className='fas fa-times-circle'></i>
-       
-        <div style={{width: '63%'}} align="left">
+          <div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', left: '0px', backgroundColor: primaryBlueColour}}>
+
+{/*  */}
+</div>
+<div >
       <input
         id="doctitle"
         style={{
           border: "0px",
+          borderBottom: "1px solid silver",
           fontSize: "17px",
-          padding: '5px 10px'
+          padding: '5px 2px'
         }}
         onChange={(e) => {
           console.log(user.paths, email);
@@ -353,6 +358,7 @@ const renameProject = (title) => {
         placeholder="Block title"
       />
 
+    <br/>
     <br/>
     <br/>
     <input type="radio"
@@ -381,13 +387,15 @@ const renameProject = (title) => {
     <br/>
     <br/>
     <br/>
+    <br/>
+    <br/>
 
       <button
         style={{
           backgroundColor: primaryBlueColour,
           color: "white",
           fontSize: "13px",
-          margin: '0px'
+          margin: '2px'
         }}
         onClick={() => {
           if(user.paths.map(x=>x.title).map(x=>x.toLowerCase().trim()).indexOf(pathToAdd.title.toLowerCase().trim()) != -1){
@@ -438,6 +446,7 @@ const renameProject = (title) => {
       >
         Add Block
       </button>
+      </div>
       </div>
     
       </div>
