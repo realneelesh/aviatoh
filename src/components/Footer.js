@@ -48,8 +48,8 @@ function Footer(props) {
         <div style={{ margin: "10px", fontSize: "14px" }} align="left">
           <div style={{ fontSize: "22px", marginBottom: '7px' }}>Customers</div>
        
-          <div>Customer support</div>
-          <div>{'customercare@aviatoh.com'.toLowerCase()}</div>
+          <div>Customer support email:</div>
+          <div>{'neeleshsharma351@gmail.com'.toLowerCase()}</div>
           <br />
           <div style={{ fontSize: "22px", marginBottom: '7px' }}>Partners</div>
     

@@ -159,7 +159,7 @@ function DocumentationLandingPage(props) {
             <div></div>
           </div>
 
-          {from != "mobile" ? (
+          {/* {from != "mobile" ? (
             <div
               style={{
                 height: "50vh",
@@ -175,11 +175,9 @@ function DocumentationLandingPage(props) {
                 designation="Product Designer"
                 img="https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 text="This is a sample prototype testimonial, shall be replacedThis is a sample prototype testimonial, shall be replacedThis is a sample prototype testimonial, shall be replaced"
-                // text="This is going to be related to how she was able to focus on her side hustle ideas better after starting to use Aviatoh, earlier she couldn't work on an idea for more than a week and now Aviatoh provides her a path and a system to follow for refining her ideas"
               />
-              {/* <Testimonial name="Crsitkop" designation="C.E.O. Bitsjoy" img="https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490__340.jpg" text="Th , I was struck w and cater to  well, Iplatform that can serve so well and cater to my needs so well, I wish it was free to use, but its okay I guess" /> */}
             </div>
-          ) : null}
+          ) : null} */}
 
           {from == "mobile" ? (
             <div
