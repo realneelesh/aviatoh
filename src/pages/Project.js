@@ -188,6 +188,7 @@ const renameProject = (title) => {
       <div style={{ 
             marginLeft: "0px",
             paddingTop: '3px',
+            paddingBottom: '13px',
             paddingLeft: '9px',
             display: 'flex',
             width: '100vw',
@@ -213,7 +214,7 @@ const renameProject = (title) => {
                     paddingTop: "10px",
                     paddingLeft: "25px",
                     paddingRight: "35px",
-                     boxShadow: "rgba(0, 0, 0, 0.19) 2px 2px 7px",
+                     boxShadow: "rgba(0, 0, 0, 0.19) -1px 1px 7px",
                     backgroundColor: "white", 
                     color: "grey",
                     fontSize: '18px',
@@ -251,7 +252,7 @@ const renameProject = (title) => {
                   
                   <div style={{
                     marginRight: '10px'
-                }}>{path.type === 'collection' ? <i style={{color: primaryGreenColour(0.6), fontSize: '15px'}} className="fa fa-server"></i> : null}</div> 
+                }}>{path.type === 'collection' ? <i style={{color: 'grey', fontSize: '15px', transform: 'rotate(-90deg)'}} className="fa fa-server"></i> : null}</div> 
                 {path.title}
                 </div>
               </Link>
@@ -307,9 +308,9 @@ const renameProject = (title) => {
 
 
 
-
+{/* modal */}
 <div style={{ 
-        backgroundColor: "rgb(240, 240, 240, 0.8)",
+        backgroundColor: "white",
         position: 'fixed',
         display: addNewPath ? 'flex': 'none',
         height: '100vh',
@@ -326,7 +327,7 @@ const renameProject = (title) => {
 
         
        
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center' ,position: 'relative', width: '50%', backgroundColor: 'white', padding: '40px 0px', paddingLeft: '80px'}} align="left">
+        <div style={{position: 'relative', width: '50%', backgroundColor: 'white', padding: '40px 0px', paddingLeft: '80px'}}>
         <i 
         onClick={()=>{
             setAddNewPath(false);
@@ -338,11 +339,11 @@ const renameProject = (title) => {
             top: '15px',
             fontSize: '20px',
         }} className='fas fa-times-circle'></i>
-          <div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', left: '0px', backgroundColor: primaryBlueColour}}>
+          <div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', backgroundColor: primaryBlueColour}}>
 
 {/*  */}
 </div>
-<div >
+<div style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start'}}>
       <input
         id="doctitle"
         style={{

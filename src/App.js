@@ -1,4 +1,7 @@
+
+
 import React, { useEffect, useState } from 'react';
+
 import './App.scss';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 // Import the functions you need from the SDKs you need
@@ -9,14 +12,18 @@ import { firebaseConfig, getDocument, topicsCollection, updateOrCreateDocument, 
 import ParticularsForm from './pages/ParticularsForm';
 import Profile from './pages/Profile';
 
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+ 
+
+
 import { HashRouter as BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { IconAviatoh  } from './assets';
 import CreatePath from './pages/CreatePath';
 import TextEditor from './components/TextEditor';
 import Dashboard from './pages/Dashboard';
 import DocumentationLandingPage from './pages/landing_pages/DocumentationLandingPage';
 import Project from './pages/Project';
 import ViewDoc from './pages/ViewDoc';
+import PaymentsPopUp from './pages/payments';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -26,6 +33,15 @@ import ViewDoc from './pages/ViewDoc';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this
+// key is the counterpart to the secret key you set in the Firebase console.
+const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaV3Provider('6LcSrG0lAAAAAB8qWMI7cSQIf6ssnAAL6_HKAt-p'),
+
+  // Optional argument. If true, the SDK automatically refreshes App Check
+  // tokens as needed.
+  isTokenAutoRefreshEnabled: true
+});
 const analytics = getAnalytics(app);
  
 const auth = getAuth(app);
@@ -60,7 +76,7 @@ function App() {
 
   useEffect(()=>{
     showPage();
-  });
+  }, []);
 
   const [ email, setEmail ] = useState(null);
 
@@ -169,9 +185,13 @@ function App() {
 
             <Routes>
 
-              {/* study curriculums */}
+              {/* Pages */}
               <Route exact path="/" element={<>
                 <Dashboard email={email} /> 
+              </>}
+              />
+              <Route exact path="/p" element={<>
+                <PaymentsPopUp email={email} /> 
               </>}
               />
               <Route path="/texteditor" element={<>

@@ -21,6 +21,7 @@ import {
 import Testimonial from "../../components/Testimonial";
 import Footer from "../../components/Footer";
 import MobileVersion from "./MobileVersion";
+import PaymentsPopUp from "../payments";
 const provider = new GoogleAuthProvider();
 
 function DocumentationLandingPage(props) {
@@ -335,6 +336,7 @@ function DocumentationLandingPage(props) {
       <br/>
       <br/>
       <br/>
+      <PaymentsPopUp inline={true} />
       <br/>
       <br/>
       <br/>

@@ -21,7 +21,7 @@ function StickyNote(props) {
       }
 
     const drag = (e) => {
-       setBeingDropped(e.target.querySelector(`#${title.trim().replaceAll(' ', '').replaceAll('.', '')}`).innerHTML)
+       setBeingDropped(e.target.querySelector(`#id${title.trim().replaceAll(' ', '').replaceAll('.', '').replaceAll(',', '').replaceAll('/', '').replace(/[^a-zA-Z ]/g, "")}`).innerHTML)
     }
 
     return (
@@ -48,7 +48,7 @@ function StickyNote(props) {
         }}></div>
             <div style={{cursor: 'grab',  backgroundColor: 'white', width: '7.07px', height: '7.07px', position: 'absolute', top: '19px', right: '17px', transform: 'rotate(45deg)'}}></div>
             <div>
-                <div id={title.trim().replaceAll(' ', '').replaceAll('.', '')} style={{ cursor: 'grab',fontSize: '18px'}}>{title}</div>
+                <div  id={'id' + title.trim().replaceAll(' ', '').replaceAll('.', '').replaceAll(',', '').replaceAll('/', '').replace(/[^a-zA-Z ]/g, "")} style={{ cursor: 'grab',fontSize: '18px'}}>{title}</div>
                 
                 {description !== '' && <div style={{cursor: 'grab'}}><br/>{description}</div>}
             </div>

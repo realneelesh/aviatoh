@@ -316,7 +316,7 @@ function Dashboard(props) {
            right: true ? "0px" : "-101vw",
           transition: 'right 0.7s',
           justifyContent: 'center',
-          backgroundColor: "rgb(240, 240, 240, 0.7)",
+          backgroundColor: "white",
           position: "fixed",
           bottom: "0px",
           width: "100vw",
@@ -330,7 +330,7 @@ function Dashboard(props) {
       >
     
       
-      <div style={{backgroundColor: 'white', width: '50%', borderRadius: '0px', boxShadow: "rgba(0, 0, 0, 0.1) 10px 10px 10px", padding: '40px 0px', position: 'relative', height: ''}}>
+      <div style={{backgroundColor: 'white', width: '50%', borderRadius: '0px', padding: '40px 0px', position: 'relative', height: ''}}>
       <i
           onClick={() => {
             setAddNewProject(false);
@@ -351,17 +351,16 @@ function Dashboard(props) {
   
  <div style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start'}}>
          
- 
-          <div style={{width: '100%', fontSize: '18px', color: 'grey'}} align="left">
-           1. Project Title  
-           <br/> 
+ <span style={{color: 'grey'}}>1. Project Title</span>  
+          <div style={{width: '100%', fontSize: '17px', color: 'grey'}} align="left">
+        
           </div>
         <input
           id="booktitle"
           style={{
             border: "0px",
-            marginTop: '18px',
-            fontSize: "18px",
+            marginTop: '7px',
+            fontSize: "17px",
             borderBottom: '1px solid silver',
             cursor: 'text'
           }}
@@ -373,11 +372,8 @@ function Dashboard(props) {
         />
         
         <br/> 
-        <br/> 
-        <br/> 
-        <br/>
-
-          <div style={{width: '100%', fontSize: '18px', color: 'grey'}} align="left">
+        <br/>  
+          <div style={{width: '100%', color: 'grey'}} align="left">
            2. Choose a template  
           <br/>
         
@@ -421,12 +417,14 @@ function Dashboard(props) {
         </div>
 
 
+        <br/>  
+        <br/>  
 
         <button
           style={{
             backgroundColor: primaryBlueColour,
             color: "white",
-            fontSize: "15px",
+            fontSize: "13px",
             margin: '0px'
           }}
           onClick={() => {

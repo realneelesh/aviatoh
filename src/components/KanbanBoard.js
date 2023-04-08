@@ -137,15 +137,14 @@ function KanbanBoard(props) {
  
  
  </div>     
-        <div style={{
-            margin: '0px 19px',
+        <div style={{ 
             backgroundColor: 'transparent',
             minHeight: '70vh',
             display: 'flex',
             justifyContent: 'space-between',
             paddingTop: '0px',
             background: `linear-gradient(${'white'}, white)`,
-            borderTop: '0px solid ' + primarySilverColour
+            borderTop: '2px solid ' + primarySilverColour
         }}>
             <div style={{ position: 'relative', width: '10%', backgroundColor: '', borderRight: '0px solid ' + primarySilverColour, display: 'flex', paddingTop: '0px', justifyContent: 'flex-start', flexDirection: 'column'}} align="center">
                 <div>
@@ -174,7 +173,7 @@ function KanbanBoard(props) {
                 }}
                 onDragOver={allowDrop}
                 onDrop={drop}
-                    style={{ color: "silver", fontSize: '35px' }} 
+                    style={{ color: "silver", fontSize: '35px', marginLeft: '20px' }} 
                     className="fa fa-trash j"
                     ><span style={{color: 'white'}}>.</span></i> 
             </div>
