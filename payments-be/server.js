@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser'); 
 const Razorpay = require('razorpay');
 const { updateOrCreateDocument, PremiumAccountsCollection } = require('./db');
+require('dotenv').config();
 
 const app = express();
 app.use(cors('*'));
@@ -14,7 +15,7 @@ const port = 3001;
 
 app.get('/get_subscription', async (req, res) => {
 
-    var instance = new Razorpay({ key_id: 'rzp_test_EE2euGofuf2Jmh', key_secret: 'lAEyKSGZOPcleRySojKuIV2a' })
+    var instance = new Razorpay({ key_id: process.env.RAZORPAY_TEST_KEY_ID, key_secret: process.env.RAZORPAY_TEST_KEY_SECRET })
     res.send(await instance.subscriptions.all({}));
 });
 
@@ -23,14 +24,18 @@ app.post('/', (req, res) => {
 
     if(req.body.event === 'subscription.activated'){
         // add the user to premium subscribers list
+        console.log('writing');
         updateOrCreateDocument(PremiumAccountsCollection, req.body.payload.subscription.entity.notes.email, {
             premium: true,
             updatedAt: new Date()
-        })
+        });
+        res.send('ok');
     }
 
     if(req.body.event === 'subscription.pending'){
         // send the user an email mentioning the inability to charge and future discontinuity
+
+        res.send('ok');
     }
 
     if(req.body.event === 'subscription.haulted'){
@@ -38,8 +43,10 @@ app.post('/', (req, res) => {
        // remove the user from premium subscribers list in firestore
        updateOrCreateDocument(PremiumAccountsCollection, req.body.payload.subscription.entity.notes.email, {
         premium: false,
-        updatedAt: new Date()
-    })
+        updatedAt: new Date(),
+    });
+    res.send('ok');
+
     }
   });
 
