@@ -101,7 +101,7 @@ function MobileVersion(props) {
           <br /><br /><br /><br /> 
           <br /><br /><br /><br />  
 
-            <div align="left" style={{position: 'sticky', top: '0', width: '100vw', paddingLeft: '10px',  borderLeft: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}}>
+            <div align="left" style={{position: 'sticky', top: '0', width: '100vw', paddingLeft: '10px',  borderLeft: '50px solid ' + primaryGreenColour(1), fontSize: '17px'}}>
             Retain, Refine, Document and Scale <br/>Your Ideas
             </div>
             <br/>
@@ -124,7 +124,7 @@ function MobileVersion(props) {
             <br/>
           <br /><br /><br /> 
 
-          <div style={{  paddingLeft: '10px', borderLeft: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tools </div>
+          <div style={{  paddingLeft: '10px', borderLeft: '50px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tools </div>
           <br/>
             <div align="left" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                 <img src={ProjectManagementSS} style={{width: '80%', boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",}} />
@@ -137,7 +137,7 @@ function MobileVersion(props) {
 
          <br /><br /><br /><br /><br /><br /><br />
 
-          <div style={{  paddingRight: '10px', borderRight: '10px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
+          <div style={{  paddingRight: '10px', borderRight: '50px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
         <br/>
           <div
             style={{ display: "flex", alignItems: "center", justifyContent: 'left' }}
