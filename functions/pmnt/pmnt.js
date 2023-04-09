@@ -10,7 +10,7 @@ const handler = async (event) => {
   
       if(webhookPayload.event === 'subscription.activated'){
           // add the user to premium subscribers list
-          console.log('writing');
+          console.log('writing activation');
           updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
               premium: true,
               updatedAt: new Date()
@@ -27,10 +27,13 @@ const handler = async (event) => {
       if(webhookPayload.event === 'subscription.haulted'){
          // send an email mentioning the discontinuity
          // remove the user from premium subscribers list in firestore
-         updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
-          premium: false,
-          updatedAt: new Date(),
-      });
+         console.log('writing hault');
+          updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
+              premium: false,
+              updatedAt: new Date()
+          }).then(res =>{
+            console.log('written');
+          }).catch(err=>{console.log('..............', err)});
   
       }
     // const subject = event.queryStringParameters.name || 'World'

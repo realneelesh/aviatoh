@@ -2,6 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getStorage, ref } from 'firebase/storage';
 import { getAuth } from 'firebase/auth';
+
 import { doc, getFirestore, setDoc, getDoc, collection, getDocs, query } from "firebase/firestore";
 
 export const firebaseConfigf = {
