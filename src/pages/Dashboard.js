@@ -7,7 +7,6 @@ import {
   primarySilverColour,
   showPage,
 } from "../App";
-import AIGeneral from "../components/AIGeneral";
 import { SearchLoader } from "../components/Loaders";
 import {
   getDocument,
@@ -28,13 +27,21 @@ function Dashboard(props) {
     kanbanBoardId: ""
   });
 
+  const [ isPremium, setIsPremium ] = useState(false);
+
   const [ template, setTemplate ] = useState('Project');
 
   const [updateUserFlag, setUpdateUserFlag] = useState(false);
 
   const [addNewProject, setAddNewProject] = useState(false);
 
+  
+
   useEffect(() => {
+    getDocument('Checks', 'check').then((res)=>{
+      setIsPremium(true);
+    })
+
     showPage();
     console.log(email);
     if (email) {
@@ -85,7 +92,7 @@ function Dashboard(props) {
         }).then(res => {
           setUpdateUserFlag(!updateUserFlag);
         }).catch(err=>{
-          toaster(0, 'Something went wrong');
+          toaster(0, err.message);
         })
     }).catch(err=>{
       console.log(err.message);
@@ -474,7 +481,7 @@ function Dashboard(props) {
       <br/><br/>
       </div>
 
-      <Link
+      {isPremium && <Link
               id="linktoprofile"
               to="/profile" style={{color: 'grey'}}>
                 <i style={{
@@ -484,11 +491,12 @@ function Dashboard(props) {
                 cursor: 'pointer',
                 // boxShadow: '0px 0px 150px 30px '+ 'grey',
                 backgroundColor: 'transparent',
-                }} className="fa gear">
-              <img style={{width: '30px'}} src={IconAviatoh} />
+                }} >
+                 Premium &nbsp;
+              <img className="fa gear" style={{width: '30px'}} src={IconAviatoh} />
                   
                   </i>
-              </Link>
+              </Link>}
     
     </div>
   );

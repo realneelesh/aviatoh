@@ -436,8 +436,8 @@ const renameProject = (title) => {
                     });
                   }
               })
-              .catch((e) => {
-                toaster(0, e);
+              .catch((err) => {
+                toaster(0, err.message);
               });
           } else {
             toaster(0, "Title can not be empty");

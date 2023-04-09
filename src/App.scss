@@ -73,7 +73,7 @@ textarea {
 button {
   background-color: white;
   border: 0px;
-  margin: 10px;
+  // margin: 10px;
   padding: 7px 10px;
   border-radius: 0px;
 }
@@ -545,7 +545,8 @@ a{
 // list
 li {
   font-size: 14px;
-  padding: 5px 9px;
+  padding: 5px 0px;
+  list-style: none;
 }
 
 ul { 

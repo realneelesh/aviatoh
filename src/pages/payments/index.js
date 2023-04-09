@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { primaryGreenColour, primaryBlueColour as dblue, primarySilverColour } from '../../App';
 import { Logo } from '../../assets';
-import { useNavigate } from 'react-router-dom';
 import { SearchLoader } from '../../components/Loaders';
+import Footer from '../../components/Footer';
+import { Link } from 'react-router-dom';
 
 const primaryBlueColour = 'rgb(35,113,236)'
 
 function PaymentsPopUp(props) {
-
-    let navigate = useNavigate();
+ 
 
     const [hideLoader, setHideLoader] = useState(false);
 
@@ -24,14 +24,17 @@ function PaymentsPopUp(props) {
 
     return (<>
     {/* {!hideLoader ? <SearchLoader /> : null} */}
-    <div style={{width: '100vw', height: '211px', marginLeft: '-8px', backgroundColor: props.inline ? 'transparent' : primaryBlueColour, position: 'absolute'}}>
-        
-              </div>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-              <br/> 
+    <div align="left" style={{width: '100vw', padding: '15px', marginLeft: '-8px', backgroundColor: props.inline ? 'transparent' : '', color: dblue, position: 'absolute'}}>
+       <Link to="/" style={{textDecoration: 'none', cursor: 'pointer', color: dblue}}>Back to Dashboard</Link>
+    </div>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/> 
+   {/*} <div style={{width: '6vw', height: '100vh', marginLeft: '-8px', right: '0px', backgroundColor: props.inline ? 'transparent' : 'rgb(230, 230, 230)', position: 'absolute'}}></div>
+              <br/> */} 
         <div style={{ 
             top: '0px',
             left: '0px',
@@ -40,14 +43,16 @@ function PaymentsPopUp(props) {
             backgroundColor: 'white',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            minHeight: '50vh'
+            // border: '30px solid silver'
         }}>
             {/* Free Plan, Basic Plan, Premium Plan,  */}
            
            
             <div id="oplopl" style={{
                 display: 'flex',
-                justifyContent: 'center',
+                justifyContent: 'space-around',
             }}>
                
 
@@ -59,7 +64,7 @@ function PaymentsPopUp(props) {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        backgroundColor: primaryBlueColour,
+                        backgroundColor: primaryGreenColour(1),
                         color: 'white',
                         width: '100%',
                         padding: '20px 0px',
@@ -72,7 +77,7 @@ function PaymentsPopUp(props) {
                             alignItems: 'center',
                             width: '100%',
                             }}>
-                            <span style={{fontSize: '20px', marginLeft: '20px'}}>Premium Subscription</span> 
+                            <span style={{fontSize: '20px', marginLeft: '20px'}}>Buy Premium Subscription</span> 
                             <span style={{marginRight: '20px', fontSize: '20px',}}></span> 
                         </div>
                        
@@ -80,16 +85,28 @@ function PaymentsPopUp(props) {
                     <br/>
                     <br/>
                     <div style={{padding: '0px 20px'}}>                    
-                        <div align="left">Features</div>
-                        <ul align="left">
-                            <li>Upto 25 Projects &nbsp; <span style={{color: '#4BB543 '}}>&#10004;</span></li>
-                            <li>Documentation Editor&nbsp; <span style={{color: '#4BB543 '}}>&#10004;</span></li>
-                            <li>Project Management Tools &nbsp; <span style={{color: '#4BB543 '}}>&#10004;</span></li>
-                            <li>AI Ideation Assistant &nbsp; <span style={{color: '#4BB543 '}}>&#10004;</span></li>
-                            <li>Share Documentats &nbsp; <span style={{color: '#4BB543 '}}>&#10004;</span></li>
-                            <li><strike style={{color: 'grey'}}>Marketing Tools</strike></li>
-                            <li><strike style={{color: 'grey'}}>Collaboration Tools</strike></li>
-                        </ul>
+                        {/* <div align="left">Features</div> */}
+                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end'}}>
+                            <div>
+                                <ul align="left">
+                                    <li><span style={{color: '#4BB543 '}}>&#10004;</span> &nbsp; Create Multiple Projects &nbsp;✨  </li>
+                                    <li><span style={{color: '#4BB543 '}}>&#10004;</span> &nbsp; Documentation Editor&nbsp;✨ </li>
+                                    <li><span style={{color: '#4BB543 '}}>&#10004;</span> &nbsp; Project Management Tools &nbsp;✨ </li>
+                                    <li><span style={{color: '#4BB543 '}}>&#10004;</span> &nbsp; AI Ideation Assistant &nbsp;✨ </li>
+                                    <li><span style={{color: '#4BB543 '}}>&#10004;</span> &nbsp; Progress Tracking &nbsp;✨ </li>
+                                    <li><span style={{color: '#4BB543 '}}>&#10004;</span> &nbsp; Email Reminders &nbsp;✨ </li>
+                                    <li><span style={{color: '#4BB543 '}}>&#10004;</span> &nbsp; Share Documentats &nbsp;✨ </li>
+                                    {/* <li><strike style={{color: 'grey'}}>Marketing Tools</strike></li>
+                                    <li><strike style={{color: 'grey'}}>Collaboration Tools</strike></li> */}
+                                </ul>
+                        </div>
+                        <div style={{width: '33%'}}>
+                        <img style={{width: '80%'}} src={Logo} /> 
+                        <div style={{height: '13px'}}></div>
+                        </div>
+
+                        </div>
+                        
                         <br/>
           
                 </div>
@@ -102,7 +119,16 @@ function PaymentsPopUp(props) {
  
                 
             </div>
-        </div>
+        </div> 
+        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/> 
+         <Footer/> 
         </>
     );
 }
