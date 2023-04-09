@@ -3,7 +3,6 @@ import { primaryGreenColour, primaryBlueColour as dblue, primarySilverColour } f
 import { Logo } from '../../assets';
 import { SearchLoader } from '../../components/Loaders';
 import Footer from '../../components/Footer';
-import { Link } from 'react-router-dom';
 
 const primaryBlueColour = 'rgb(35,113,236)'
 
