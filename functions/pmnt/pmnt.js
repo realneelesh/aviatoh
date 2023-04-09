@@ -3,27 +3,31 @@ const { updateOrCreateDocument, PremiumAccountsCollection } = require('./db');
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const handler = async (event) => {
   try {
-    console.log(event.body);
+    // console.log(JSON.parse(event.body).event);
+    // console.log(JSON.parse(event.body));
+    const webhookPayload = JSON.parse(event.body);
       // email -> event.body.payload.subscription.entity.notes.email
   
-      if(event.body.event === 'subscription.activated'){
+      if(webhookPayload.event === 'subscription.activated'){
           // add the user to premium subscribers list
           console.log('writing');
-          updateOrCreateDocument(PremiumAccountsCollection, event.body.payload.subscription.entity.notes.email, {
+          updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
               premium: true,
               updatedAt: new Date()
-          }); 
+          }).then(res =>{
+            console.log('written');
+          }).catch(err=>{console.log('..............', err)}); 
       }
   
-      if(event.body.event === 'subscription.pending'){
+      if(webhookPayload.event === 'subscription.pending'){
           // send the user an email mentioning the inability to charge and future discontinuity
    
       }
   
-      if(event.body.event === 'subscription.haulted'){
+      if(webhookPayload.event === 'subscription.haulted'){
          // send an email mentioning the discontinuity
          // remove the user from premium subscribers list in firestore
-         updateOrCreateDocument(PremiumAccountsCollection, event.body.payload.subscription.entity.notes.email, {
+         updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
           premium: false,
           updatedAt: new Date(),
       });
@@ -31,13 +35,13 @@ const handler = async (event) => {
       }
     // const subject = event.queryStringParameters.name || 'World'
     return {
-      statusCode: 200,
-      // body: JSON.stringify({ message: `Hello ${subject}` }),
+      statusCode: 200
       // // more keys you can return:
       // headers: { "headerName": "headerValue", ... },
       // isBase64Encoded: true,
     }
   } catch (error) {
+    console.log(".............", error.toString());
     return { statusCode: 500, body: error.toString() }
   }
 }
