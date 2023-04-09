@@ -4,6 +4,7 @@ import { primaryBlueColour, primaryGreenColour, primarySilverColour } from "../A
 import { Loader } from "../assets";
 import { SearchLoader } from "../components/Loaders";
 import { getDocument, topicsCollection, usersCollection } from "../db";
+import toaster from "../components/toaster";
 
 function ViewDoc(props) {
   const { email, projecttitle } = useParams();

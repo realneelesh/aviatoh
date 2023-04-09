@@ -7,7 +7,7 @@ import { signOut } from 'firebase/auth';
 import { showPage } from '../App';
 import { Logo } from '../assets';
 import Footer from '../components/Footer';
-
+import toaster from '../components/toaster';
 
 function Profile(props) {
 
