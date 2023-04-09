@@ -3,6 +3,7 @@ const { updateOrCreateDocument, PremiumAccountsCollection } = require('./db');
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const handler = async (event) => {
   try {
+    console.log(event.body);
       // email -> event.body.payload.subscription.entity.notes.email
   
       if(event.body.event === 'subscription.activated'){
@@ -11,14 +12,12 @@ const handler = async (event) => {
           updateOrCreateDocument(PremiumAccountsCollection, event.body.payload.subscription.entity.notes.email, {
               premium: true,
               updatedAt: new Date()
-          });
-          res.send('ok');
+          }); 
       }
   
       if(event.body.event === 'subscription.pending'){
           // send the user an email mentioning the inability to charge and future discontinuity
-  
-          res.send('ok');
+   
       }
   
       if(event.body.event === 'subscription.haulted'){
@@ -28,7 +27,6 @@ const handler = async (event) => {
           premium: false,
           updatedAt: new Date(),
       });
-      res.send('ok');
   
       }
     // const subject = event.queryStringParameters.name || 'World'
