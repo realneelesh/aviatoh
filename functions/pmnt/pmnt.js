@@ -10,7 +10,7 @@ const handler = async (event) => {
   
       if(webhookPayload.event === 'subscription.activated'){
           // add the user to premium subscribers list
-          console.log('writing activation');
+          console.log(`writing SUBSCRIPTION ACTIVATION for user ${webhookPayload.payload.subscription.entity.notes.email}`);
           updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
               premium: true,
               updatedAt: new Date()
@@ -27,7 +27,7 @@ const handler = async (event) => {
       if(webhookPayload.event === 'subscription.haulted'){
          // send an email mentioning the discontinuity
          // remove the user from premium subscribers list in firestore
-         console.log('writing hault');
+         console.log(`writing SUBSCRIPTION HAULT for user ${webhookPayload.payload.subscription.entity.notes.email}`);
           updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
               premium: false,
               updatedAt: new Date()
