@@ -3,11 +3,13 @@ import { primaryBlueColour, primaryGreenColour, primarySilverColour } from '../A
 import StickyNote from './StickyNote';
 import { getDocument, kanbanBoardsCollection, updateOrCreateDocument, usersCollection } from '../db';
 import { Link } from 'react-router-dom';
-import toaster from './toaster';
+import toaster from './toaster'; 
 
 function KanbanBoard(props) {
 
-    const headingStype = {border: '0px', marginTop: '6px', display: 'block', border: '0px solid silver', color: 'grey'};
+  
+
+    const headingStype = {border: '0px', marginTop: '6px', display: 'block', border: '0px solid silver', color: 'grey', paddingLeft: '0px', fontSize: '18px'};
     const [ addNewTask, setAddNewTask ] = useState(false);
     const [ updateUserFlag, setUpdateUserFlag ] = useState(false);
     const [ updateTasks, setUpdateTasks ] = useState(false);
@@ -142,58 +144,34 @@ function KanbanBoard(props) {
  </div>     
         <div style={{ 
             backgroundColor: 'transparent',
-            minHeight: '70vh',
             display: 'flex',
-            justifyContent: 'space-between',
-            paddingTop: '0px',
+            flexDirection: 'column',
+            alignItems: 'center', 
+            
             background: `linear-gradient(${'white'}, white)`,
-            borderTop: '2px solid ' + primarySilverColour
         }}>
-            <div style={{ position: 'relative', width: '10%', backgroundColor: '', borderRight: '0px solid ' + primarySilverColour, display: 'flex', paddingTop: '0px', justifyContent: 'flex-start', flexDirection: 'column'}} align="center">
-                <div>
-                {/* <button
-                style={{ borderRadius: '999px', color: 'white', fontSize: '13px', backgroundColor: primaryBlueColour, margin: '0px', width: '100%', paddingLeft: '0px', paddingRight: '0px'}}
-                    onClick={()=>{
-                        setAddNewTask(true);
-                        setTimeout(()=>{
-                            
-                        }, 300);
-                    }}
-                    > 
-                    <i className='fas fa-plus' style={{cursor: 'pointer'}}></i> 
-                    &nbsp;
-                        Add task
-                </button> */}
+     {/* <div style={{width: '81vw', marginBottom: '4px'}} align="left">
+     <span style={{fontSize: '17px'}}>📎</span> Task Management Board (Kanban)
+     </div> */}
+            <div style={{width: '81vw', display: 'flex', border: '0px solid black',
+            borderTop: '0px solid ' + primarySilverColour, boxShadow: `rgba(0, 0, 0, 0.15) 0px 0px 13px`,
 
-                </div>
-<br/>
-<br/>
-<div title="Drop a card here to delete" style={{ position: 'fixed', bottom: '0px', zIndex: '999', width: '10%', padding: '15px 1px'}} align="left">
-                <i
-                onClick={(e)=>{
-                  e.preventDefault();
-                  //deleteDocumentationBlock(path.title);
-                }}
-                onDragOver={allowDrop}
-                onDrop={drop}
-                    style={{ color: "silver", fontSize: '35px', marginLeft: '20px' }} 
-                    className="fa fa-trash j"
-                    ><span style={{color: 'white'}}>.</span></i> 
-            </div>
-                    
-                
-            </div>
-            <div style={{width: '89%', display: 'flex', border: '0px solid black',
-            justifyContent: 'space-between',}}>
+            justifyContent: 'flex-start',}}>
             <div style={{
-                width: '33%',
+                width: '27vw',
+                height: '55vh',
+                overflowY: 'auto',
                 zIndex: taskBeingDropped ? '9999' : '999',
                 borderRight: '0px solid ' + primarySilverColour,
+                paddingBottom: '15px', paddingTop: '11px'
+
             }}
             onDrop={drop} onDragOver={allowDrop}
             align="center"
-            > <br/> 
-               <h2 style={{...headingStype, position: 'relative', display: 'inline-block', paddingRight: '13px'}}><span>To Do</span>
+            >   
+            <div align="left" style={{width: '85%', marginBottom: '3px'}}>
+               <h2 style={{...headingStype, position: 'relative', display: 'inline-block', paddingRight: '13px'}}>
+                <span>To Do</span>
                 
                </h2>
 
@@ -222,9 +200,9 @@ function KanbanBoard(props) {
 
               
             </Link>
+            </div>
 
-                 <br/>
-                <br/> 
+                 <br/> 
                 {
                     addNewTask ? <div style={{width: '85%', marginBottom: '80px'}}><div style={{
                         // backgroundColor: primarySilverColour, 
@@ -302,20 +280,23 @@ function KanbanBoard(props) {
             </div>
 
             <div style={{
-                width: '33%',
-
+                width: '27vw',
+                height: '55vh',
+                overflowY: 'auto',
                 borderRight: '0px solid ' + primarySilverColour,
-                backgroundColor: 'rgb(247,247,247)'
+                backgroundColor: 'rgb(247,247,247)',
+                paddingBottom: '15px', paddingTop: '11px'
+
             }}
             align="center"
 
             onDrop={drop} onDragOver={allowDrop}
  
-            >
-                <br/>
-                <h2 style={{...headingStype, display: 'inline-block'}}> <span>In Progress</span></h2>
-                <br/>
-                <br/>
+            >  
+            <div align="left" style={{width: '85%'}}>
+               <h2 style={{...headingStype, position: 'relative', display: 'inline-block', paddingRight: '13px'}}> <span>In Progress</span></h2>
+                </div>
+                <br/>  
                 {
                     tasks?.map(task => {
                         if(task.status == '0'){
@@ -328,16 +309,18 @@ function KanbanBoard(props) {
             </div>
 
             <div style={{
-                width: '33%',
-
+                width: '27vw',
+                height: '55vh',
+                overflowY: 'auto',
+                paddingBottom: '15px', paddingTop: '11px'
             }}
             onDrop={drop} onDragOver={allowDrop}
             align="center"
-            >
-                <br/>
-                <h2 style={{...headingStype, display: 'inline-block'}}> <span>Completed</span></h2>
-                <br/>
-                <br/>
+            >  
+                <div align="left" style={{width: '85%'}}>
+               <h2 style={{...headingStype, position: 'relative', display: 'inline-block', paddingRight: '13px'}}> <span>Completed</span></h2>
+                </div>
+                 <br/> 
                 {
                     tasks?.map(task => {
                         if(task.status == '1'){
@@ -470,6 +453,22 @@ function KanbanBoard(props) {
                 <br/><br/>
                 </div>
                 </div>
+
+          
+  {/* UNCOMMENT IF DELETE-A-TASK IS REQUIRED */}
+   <div title="Drop a card here to delete" style={{ position: 'fixed', bottom: '1px', zIndex: '999',  padding: '25px 20px', backgroundColor: '', right: '2px'}} align="left">
+                  <i
+                  onClick={(e)=>{
+                    e.preventDefault();
+                    //deleteDocumentationBlock(path.title);
+                  }}
+                  onDragOver={allowDrop}
+                  onDrop={drop}
+                      style={{ color: "silver", fontSize: '35px'}} 
+                      className="fa fa-trash j"
+                      ><span style={{color: 'white'}}>.</span></i> 
+              </div>  
+              
         </div> 
         </>
 

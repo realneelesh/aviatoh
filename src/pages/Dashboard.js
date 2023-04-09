@@ -105,14 +105,14 @@ function Dashboard(props) {
     <div style={{ position: "relative", minHeight: "100vh" }}>
       {user === null && <SearchLoader />}
 
-      <div style={{
+      {/* <div style={{
         position: 'absolute',
         zIndex: '-1',
         width: '100vw',
         marginLeft: '-8px',
         backgroundColor: primaryGreenColour(0.4),
         height: '230px'
-      }}></div>
+      }}></div> */}
 
       <div
         style={{
@@ -197,7 +197,8 @@ function Dashboard(props) {
                     paddingTop: "17px",
                     paddingLeft: "25px",
                     paddingRight: "25px",
-                    boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
+                    boxShadow: "rgba(0, 0, 0, 0.14) 0px 0px 20px",
+                    // border: '1px solid rgb(200, 200, 200)',
                     backgroundColor: "white",
                     margin: "10px 15px",
                     color: "grey",
@@ -226,7 +227,6 @@ function Dashboard(props) {
 <div>
                   <Link
                 to={"/project" + "/view/" + email + "/" + project.title}
-                target={"/project" + "/view/" + email + "/" + project.title}
                 style={{
                   textDecoration: "none",
                   color: "gray",
@@ -240,6 +240,7 @@ function Dashboard(props) {
                 &nbsp; 
                 <Link
                 to={"/project" + "/" + project.title}
+                target={"/project" + "/" + project.title}
                 style={{
                   textDecoration: "none",
                   color: "gray",
@@ -298,7 +299,7 @@ function Dashboard(props) {
               options={{
                 strings: [
                   " ⚠️  No projects found",
-                  " Click on '+ Add Project' to add",
+                  " Click on '+' to add",
                 ],
                 autoStart: true,
                 loop: true,
@@ -481,19 +482,19 @@ function Dashboard(props) {
       <br/><br/>
       </div>
 
-      {isPremium && <Link
+      {<Link
               id="linktoprofile"
-              to="/profile" style={{color: 'grey'}}>
+              to="/profile" style={{color: 'grey', backgroundColor: 'white', cursor: 'pointer'}}>
                 <i style={{
                 position: 'fixed',
-                bottom: '10px',
-                right: '10px',
+                bottom: '5px',
+                left: '10px',
                 cursor: 'pointer',
                 // boxShadow: '0px 0px 150px 30px '+ 'grey',
                 backgroundColor: 'transparent',
                 }} >
-                 Premium &nbsp;
-              <img className="fa gear" style={{width: '30px'}} src={IconAviatoh} />
+              <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh} />
+                {isPremium && <span style={{color: 'black', fontSize: '14px'}}>&nbsp; Premium </span>}
                   
                   </i>
               </Link>}

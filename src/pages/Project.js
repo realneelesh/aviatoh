@@ -35,6 +35,7 @@ function Project(props) {
       const [ typeOfBlock, setTypeOfBlock ] = useState('single');
 
       useEffect(() => {
+        window.document.title = projecttitle;
         showPage();
         console.log(email);
         if (email) {
@@ -110,51 +111,7 @@ const renameProject = (title) => {
             position: 'relative',
             minHeight: '100vh'
         }}>  
-         <div style={{
-        position: 'absolute',
-        zIndex: '-1',
-        width: '100vw',
-        marginLeft: '-8px',
-        backgroundColor: primaryGreenColour(0.3),
-        height: '166px'
-      }}></div>
-        {user === null && <SearchLoader /> }
-             <div style={{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    position: 'sticky',
-    top: '0px',
-    width: '100vw',
-    marginLeft: '-8px',
-    backgroundColor: primarySilverColour,
-    padding: '7px 0px',
-    zIndex: '9999'
-    }}>
   
-  <span>
-  &nbsp; &nbsp;
-    <Link to={'/'} style={{textDecoration: 'none', color: primaryBlueColour}}>
-    &nbsp; 
-  <i className='far fa-arrow-alt-circle-left' style={{fontSize: '19px', position: 'absolute', top: '12px'}} /> 
- 
-   </Link> &nbsp; &nbsp;&nbsp;&nbsp;</span>
-
-   <button
-          style={{
-            margin: "0px",
-            marginRight: "10px",
-            backgroundColor: 'transparent',
-            fontSize: "13px",
-            opacity: "0",
-            color: 'transparent',
-            cursor: 'default'
-          }}
-        >
-          + Add Project
-        </button>
-  </div>
-       
   <div align="left" style={{marginTop: '30px', marginBottom: '20px'}}>
       <h1 id="projectTitle" style={{border: '0px', paddingLeft: '11px', paddingRight: '3px'}}>
       { projecttitle.toUpperCase() }
@@ -182,7 +139,7 @@ const renameProject = (title) => {
         }}
         >Save</button>
       </div>
-      <div align="left" style={{paddingLeft: '10px'}}>Documentation Blocks  </div>  
+      <div align="left" style={{paddingLeft: '10px'}}>Documentation Blocks </div>  
         <div style={{
             display: 'flex'
         }}>
@@ -210,19 +167,18 @@ const renameProject = (title) => {
                 target={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 to={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 className="scopes"
-                style={{
-                    paddingBottom: "10px",
-                    paddingTop: "10px",
+                style={{ display: 'flex',
+                alignItems: 'center',
                     paddingLeft: "25px",
-                    paddingRight: "35px",
-                     boxShadow: "rgba(0, 0, 0, 0.19) -1px 1px 7px",
+                    paddingRight: "40px",
+                     boxShadow: "rgba(0, 0, 0, 0.14) -1px 1px 7px",
                     backgroundColor: "white", 
                     color: "grey",
-                    fontSize: '18px',
+                    fontSize: '17px',
                     textDecoration: 'none',
                     // borderRight: '1px solid silver',
                     marginBottom: '1px',
-                    marginRight: '7px',
+                    marginRight: '0px',
                     position: 'relative',
                 }}
               > 
@@ -297,7 +253,6 @@ const renameProject = (title) => {
 </div> 
 </div>
 
-<br/>
 <br/>
 <br/>
 
@@ -481,7 +436,8 @@ const renameProject = (title) => {
       </div>}
 
    {/* kanabn */}
-   <div style={{width: '100vw', marginLeft: '-8px', height: '60vh', background: `linear-gradient(${'white'}, white)`}}>
+   <div style={{width: '100vw', marginLeft: '-8px', background: `linear-gradient(${'white'}, white)`}}>
+    <br/>
     <KanbanBoard email={email} user={user} projecttitle={projecttitle}/>
    </div>
         </div>

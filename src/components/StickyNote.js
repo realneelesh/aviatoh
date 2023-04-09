@@ -27,7 +27,7 @@ function StickyNote(props) {
     return (
         <div style={{
             backgroundColor: 'white',
-            padding: '10px 15px',
+            padding: '7px 10px',
             cursor: 'grab',
             boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 10px",
             textAlign: 'left',
@@ -35,7 +35,7 @@ function StickyNote(props) {
             display: 'flex',
             alignItems: 'center',
             position: 'relative',
-            marginBottom: '22px',
+            marginBottom: '20px',
             
         }}
         draggable="true" onDragStart={drag} onDragOver={allowDrop} onDragEnd={()=>{
@@ -48,9 +48,9 @@ function StickyNote(props) {
         }}></div>
             <div style={{cursor: 'grab',  backgroundColor: 'white', width: '7.07px', height: '7.07px', position: 'absolute', top: '19px', right: '17px', transform: 'rotate(45deg)'}}></div>
             <div>
-                <div  id={'id' + title.trim().replaceAll(' ', '').replaceAll('.', '').replaceAll(',', '').replaceAll('/', '').replace(/[^a-zA-Z ]/g, "")} style={{ cursor: 'grab',fontSize: '18px'}}>{title}</div>
+                <div  id={'id' + title.trim().replaceAll(' ', '').replaceAll('.', '').replaceAll(',', '').replaceAll('/', '').replace(/[^a-zA-Z ]/g, "")} style={{ cursor: 'grab',fontSize: '15px', marginBottom: '4px'}}>{title}</div>
                 
-                {description !== '' && <div style={{cursor: 'grab'}}><br/>{description}</div>}
+                {description !== '' && <div style={{cursor: 'grab', color: 'silver'}}>{description}</div>}
             </div>
         </div>
     );

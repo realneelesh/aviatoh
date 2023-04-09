@@ -9,11 +9,11 @@ function toaster(level, message) {
 
     if(message == 'Missing or insufficient permissions.'){
 
-        toast['info'](<div align="center">Buy a subscription to continue 
+        toast['info'](<div align="center">Buy a subscription to add more projects
         <br/>
-        <br/> 
+        <br/> <br/>
         <Link onClick={()=>{
-        }} to="/p" target="payment" style={{textDecoration: 'none', curs: 'pointer'}}><span>Buy</span><br/><img src={'https://razorpay.com/docs/build/browser/static/razorpay-docs-dark.6f09b030.svg'} style={{width: '70px'}} />
+        }} to="/p" target="payment" style={{textDecoration: 'none', cursor: 'pointer'}}><h4 style={{cursor: 'pointer'}}>Buy</h4><br/><br/><img src={'https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg'} style={{width: '70px'}} />
         </Link>
         </div>);
         
