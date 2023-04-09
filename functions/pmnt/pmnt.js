@@ -15,6 +15,7 @@ const handler = async (event) => {
               premium: true,
               updatedAt: new Date()
           });
+          console.log('update try done');
       }
   
       if(webhookPayload.event === 'subscription.pending'){
