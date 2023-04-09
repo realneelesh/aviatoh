@@ -11,12 +11,10 @@ const handler = async (event) => {
       if(webhookPayload.event === 'subscription.activated'){
           // add the user to premium subscribers list
           console.log(`writing SUBSCRIPTION ACTIVATION for user ${webhookPayload.payload.subscription.entity.notes.email}`);
-          updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
+          await updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
               premium: true,
               updatedAt: new Date()
-          }).then(res =>{
-            console.log('written');
-          }).catch(err=>{console.log('..............', err)}); 
+          });
       }
   
       if(webhookPayload.event === 'subscription.pending'){
@@ -28,23 +26,20 @@ const handler = async (event) => {
          // send an email mentioning the discontinuity
          // remove the user from premium subscribers list in firestore
          console.log(`writing SUBSCRIPTION HAULT for user ${webhookPayload.payload.subscription.entity.notes.email}`);
-          updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
+          await updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
               premium: false,
               updatedAt: new Date()
-          }).then(res =>{
-            console.log('written');
-          }).catch(err=>{console.log('..............', err)});
+          })
   
       }
     // const subject = event.queryStringParameters.name || 'World'
-    setTimeout(()=>{
+    
       return {
         statusCode: 200
         // // more keys you can return:
         // headers: { "headerName": "headerValue", ... },
         // isBase64Encoded: true,
       }
-    }, 30000);
   } catch (error) {
     console.log(".............", error.toString());
     return { statusCode: 500, body: error.toString() }
