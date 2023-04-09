@@ -49,7 +49,7 @@ function Footer(props) {
           <div style={{ fontSize: "22px", marginBottom: '7px' }}>Customers</div>
        
           <div>Customer support email:</div>
-          <div>{'neeleshsharma351@gmail.com'.toLowerCase()}</div>
+          <div>{'contact@aviatoh.com'.toLowerCase()}</div>
           <br />
           <div style={{ fontSize: "22px", marginBottom: '7px' }}>Partners</div>
     
