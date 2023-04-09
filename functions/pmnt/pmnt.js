@@ -37,12 +37,14 @@ const handler = async (event) => {
   
       }
     // const subject = event.queryStringParameters.name || 'World'
-    return {
-      statusCode: 200
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
-    }
+    setTimeout(()=>{
+      return {
+        statusCode: 200
+        // // more keys you can return:
+        // headers: { "headerName": "headerValue", ... },
+        // isBase64Encoded: true,
+      }
+    }, 30000);
   } catch (error) {
     console.log(".............", error.toString());
     return { statusCode: 500, body: error.toString() }

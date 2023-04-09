@@ -50,7 +50,7 @@ function TextEditor(props) {
              
           })
           .catch((error) => {
-            // alert(error);
+            // toaster(0, error);
           });
         });
         console.log(e.target.files[0])

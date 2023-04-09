@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { showPage } from "../App";
 import { auth, updateOrCreateDocument, usersCollection } from "../db";
+import toaster from "../components/toaster";
 
 function ParticularsForm(props) {
   useEffect(()=>{
@@ -22,7 +23,7 @@ function ParticularsForm(props) {
         navigate("/profile");
       })
       .catch((err) => {
-        alert(err);
+        toaster(-1, err);
       });
   };
 

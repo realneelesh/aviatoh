@@ -1,7 +1,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-
+ 
 import './App.scss';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 // Import the functions you need from the SDKs you need
@@ -13,6 +13,8 @@ import ParticularsForm from './pages/ParticularsForm';
 import Profile from './pages/Profile';
 
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+
+import { toast, ToastContainer } from 'react-toastify';
  
 
 
@@ -24,6 +26,9 @@ import DocumentationLandingPage from './pages/landing_pages/DocumentationLanding
 import Project from './pages/Project';
 import ViewDoc from './pages/ViewDoc';
 import PaymentsPopUp from './pages/payments';
+
+import 'react-toastify/dist/ReactToastify.css';
+import toaster from './components/toaster';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -102,57 +107,58 @@ function App() {
               updateOrCreateDocument(usersCollection, user.email, {
                 email: user.email,
                 activities: [],
-                projects: [
-                  {
-                    title: 'Sample Project',
-                    description: '',
-                    type: 'Project',
-                    kanbanBoardId: user.email + new Date().toString().replaceAll(" ", "")
-                  }
-                ],
-                paths: [
-                  {
-                    title: 'Sample Single Doc.',
-                    project: 'Sample Project',
-                    description: '',
-                    topics: [{
-                      id: key,
-                      title: 'Sample Document'
-                    }],  // sending topics array is important for the view
-                    type: 'single'
-                   },
-                  // {
-                  //   title: 'Product Design',
-                  //   project: 'Sample Project',
-                  //   description: '',
-                  //   topics: []
-                  // },
-                   {
-                     title: 'Sample Collection',
-                     project: 'Sample Project',
-                     description: '',
-                     topics: [],
-                    type: 'collection'
-                   },
-                  // {
-                  //   title: 'QA',
-                  //   project: 'Sample Project',
-                  //   description: '',
-                  //   topics: []
-                  // },
-                  // {
-                  //   title: 'FAQs',
-                  //   project: 'Sample Project',
-                  //   description: '',
-                  //   topics: []
-                  // }
-                ]
+                projects: []
+                // projects: [
+                //   {
+                //     title: 'Sample Project',
+                //     description: '',
+                //     type: 'Project',
+                //     kanbanBoardId: user.email + new Date().toString().replaceAll(" ", "")
+                //   }
+                // ],
+                // paths: [
+                //   {
+                //     title: 'Sample Single Doc.',
+                //     project: 'Sample Project',
+                //     description: '',
+                //     topics: [{
+                //       id: key,
+                //       title: 'Sample Document'
+                //     }],  // sending topics array is important for the view
+                //     type: 'single'
+                //    },
+                //   // {
+                //   //   title: 'Product Design',
+                //   //   project: 'Sample Project',
+                //   //   description: '',
+                //   //   topics: []
+                //   // },
+                //    {
+                //      title: 'Sample Collection',
+                //      project: 'Sample Project',
+                //      description: '',
+                //      topics: [],
+                //     type: 'collection'
+                //    },
+                //   // {
+                //   //   title: 'QA',
+                //   //   project: 'Sample Project',
+                //   //   description: '',
+                //   //   topics: []
+                //   // },
+                //   // {
+                //   //   title: 'FAQs',
+                //   //   project: 'Sample Project',
+                //   //   description: '',
+                //   //   topics: []
+                //   // }
+                // ]
               })
             .then((res) => { 
               window.location.reload();
             })
             .catch((err) => {
-              alert(err);
+              toaster(-1, err);
             });
             }
           })
@@ -178,6 +184,9 @@ function App() {
   :
 <div>
     { browserStorage.getItem(userInfoKey) && <BrowserRouter >
+      <div style={{position: 'absolute', zIndex: '999999999999'}}><ToastContainer
+      position="top-right" />
+      </div>
     <div style={{
       minHeight: '100vh'
     }}>

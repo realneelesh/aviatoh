@@ -127,11 +127,11 @@ function Profile(props) {
                                 if(flag) {
                                 updateOrCreateDocument(usersCollection, email, { [edu.degree.replaceAll(' ', '').trim()]: {type: null} })
                                     .then((res) => {
-                                        alert("Successfully deleted");
+                                        toaster(0, "Successfully deleted");
                                         window.location.reload();
                                     })
                                     .catch(() => {
-                                        alert("Something went wrong");
+                                        toaster(0, "Something went wrong");
                                     });
                                 }
                                 }}><i className='far fa-times-circle' style={{color: 'grey'}}></i></td>
@@ -186,11 +186,11 @@ function Profile(props) {
                                 if(flag) {
                                     updateOrCreateDocument(usersCollection, email, { [exp.jobTitle.replaceAll(' ', '') + exp.company.replaceAll(' ', '')]: {type: null} })
                                     .then((res) => {
-                                        alert("Successfully deleted");
+                                        toaster(0, "Successfully deleted");
                                         window.location.reload();
                                     })
                                     .catch(() => {
-                                        alert("Something went wrong");
+                                        toaster(0, "Something went wrong");
                                     });}
                                 }}><i className='far fa-times-circle' style={{ color:'grey'}}></i></td>
                                     </tr>

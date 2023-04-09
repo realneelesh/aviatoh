@@ -1,23 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { primaryGreenColour, primaryBlueColour as dblue, primarySilverColour } from '../../App';
 import { Logo } from '../../assets';
+import { useNavigate } from 'react-router-dom';
+import { SearchLoader } from '../../components/Loaders';
 
 const primaryBlueColour = 'rgb(35,113,236)'
 
 function PaymentsPopUp(props) {
 
-    useEffect(()=>{
-        const ele = document.getElementById('razorpaybtn');
-        ele.style.display = 'inline';
-        document.getElementById('oplopl').appendChild(ele);
+    let navigate = useNavigate();
+
+    const [hideLoader, setHideLoader] = useState(false);
+
+    useEffect(()=>{ 
+            const ele = document.getElementById('razorpaybtn');
+            ele.style.display = 'inline';
+            document.getElementById('oplopl').appendChild(ele);
+              
     }, [])
 
     const planCSS = {    borderRadius: '4px',
-        boxShadow: '0 4px 10px rgba(0,0,0,.15)', position: 'relative', zIndex: '99999', padding: '30px', backgroundColor: 'white'};
+        boxShadow: '0 4px 10px rgba(0,0,0,.15)', position: 'relative', zIndex: '99999', padding: '30px', width: '45vw', backgroundColor: 'white'};
 
     return (<>
-    
-    <div style={{width: '100vw', height: '211px', marginLeft: '-8px', backgroundColor: props.inline ? 'transparent' : primaryGreenColour(0.4), position: 'absolute'}}>
+    {/* {!hideLoader ? <SearchLoader /> : null} */}
+    <div style={{width: '100vw', height: '211px', marginLeft: '-8px', backgroundColor: props.inline ? 'transparent' : primaryBlueColour, position: 'absolute'}}>
         
               </div>
               <br/>

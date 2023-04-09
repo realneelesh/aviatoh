@@ -30,7 +30,7 @@ function AutoMedium(props) {
 
     const publish = () => {
         if(titles.length === 0 || loginLink === null){
-            alert("Invalid data");
+            toaster(0, "Invalid data");
         } else {
             setLoading(true);
             axios.post(apiBaseUrl+'/settitles', {

@@ -3,6 +3,7 @@ import { primaryBlueColour, primaryGreenColour, primarySilverColour } from '../A
 import StickyNote from './StickyNote';
 import { getDocument, kanbanBoardsCollection, updateOrCreateDocument, usersCollection } from '../db';
 import { Link } from 'react-router-dom';
+import toaster from './toaster';
 
 function KanbanBoard(props) {
 
@@ -17,7 +18,7 @@ function KanbanBoard(props) {
 
     useEffect(()=>{
         if(props.email && props.projecttitle && props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId !== undefined){
-            // alert(props.email+props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId);
+            // toaster(0, props.email+props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId);
                 getDocument(kanbanBoardsCollection, props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId).then(res => {
                     // console.log(res.data());
                     setTasks(res.data()?.data?.sort((x,y) => y.priority-x.priority));
@@ -84,10 +85,10 @@ function KanbanBoard(props) {
 
     const updateKanbanBoardWithATask = (task)=>{
         if(task.title.trim === ''){
-            alert('Task title can not be empty');
+            toaster(0, 'Task title can not be empty');
         } else {
             if(tasks.map(x=>x.title).find(x=>x==task.title)){
-                alert('Task with this title already exists');
+                toaster(0, 'Task with this title already exists');
             } else {
                 if(props.email && props.projecttitle && props.user?.projects?.find(x=>x.title===props.projecttitle) !== undefined){
                     // update of create the kanbanboard in kanbanboards collection
@@ -99,6 +100,8 @@ function KanbanBoard(props) {
                          document.getElementById('tasktitle').value = '';
                          document.getElementById('prioritylevel').value = '-1';
                          document.getElementById('taskdescription').value = '';
+                    }).catch(err => {
+                        toaster(-1, err.message);
                     })
                 }
             }
@@ -112,7 +115,7 @@ function KanbanBoard(props) {
             }).then(res => {
                 setUpdateUserFlag(!updateUserFlag);
             }).catch(err=>{
-                alert(err);
+                toaster(-1, err);
                 window.location.reload();
             })
         }
@@ -269,7 +272,7 @@ function KanbanBoard(props) {
                                     description: document.getElementById('taskdescription').value
                                 } 
                                 if(task.title.trim() == '' ){
-                                    alert('Task title can not be empty');
+                                    toaster(0, 'Task title can not be empty');
                                 } else {
                                     updateKanbanBoardWithATask(task);
                                 }

@@ -10,6 +10,7 @@ import {
   updateOrCreateDocument,
   usersCollection,
 } from "../db";
+import toaster from "../components/toaster";
 
 function CreatePath(props) {
   const [user, setUser] = useState(null);
@@ -52,7 +53,7 @@ function CreatePath(props) {
           getDocument(topicsCollection, user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0].id).then((res) => {
             setCurrentTopicData(res.data().data);
           }).catch(()=>{
-           // alert('something went wrong');
+           // toaster(0, 'something went wrong');
           });
         }
        
@@ -62,7 +63,7 @@ function CreatePath(props) {
       getDocument(topicsCollection, cTopicId).then((res) => {
         setCurrentTopicData(res.data().data);
       }).catch(()=>{
-        // alert('something went wrong');
+        // toaster(0, 'something went wrong');
       });
     }
   }, [cTopicId, user, changesSaved]);
@@ -92,8 +93,8 @@ function CreatePath(props) {
             setTopicEdited(!topicEdited);
             setChangesSaved(true);
         })
-        .catch((e) => {
-          alert(e);
+        .catch((err) => {
+          toaster(-1, err.message);
         });
     }
   }
@@ -105,7 +106,7 @@ function CreatePath(props) {
         ?.find((x) => x.title === pathtitle && x.project === projecttitle)
         .topics.find((x) => x.title === topic) || topic === ""
     ) {
-      alert("Title must be unique and non-empty");
+      toaster(-1, 'Title must be unique and non-empty');
     } else {
       var key = email + new Date().toString().replaceAll(" ", "");
       updateOrCreateDocument(topicsCollection, key, {data: `<div style="background-color: ${'white'};">
@@ -130,12 +131,12 @@ function CreatePath(props) {
               // setCTopicTitle(topic);
               document.getElementById('newTopic').value = '';
             })
-            .catch((e) => {
-              alert(e);
+            .catch((err) => {
+              toaster(0, err.message);
             });
         })
-        .catch((e) => {
-          alert(e);
+        .catch((err) => {
+          toaster(-1, err.message);
         });
     }
   };
@@ -158,7 +159,7 @@ function CreatePath(props) {
         // setCTopicTitle(null);
       })
       .catch((e) => {
-        alert(e);
+        toaster(0, e);
       });
   };
 

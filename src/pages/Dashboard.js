@@ -17,6 +17,7 @@ import {
 } from "../db";
 import { templatePaths } from "../projectTemplates";
 import { IconAviatoh } from "../assets";
+import toaster from "../components/toaster";
 
 function Dashboard(props) {
   const { email } = props;
@@ -61,7 +62,7 @@ function Dashboard(props) {
 
   const deleteProject= (project) => {
     const confirmation = window.prompt('Are you sure? This action will archive the project, if you are sure, please type in the title of the project you are trying to delete.');
-    // alert(confirmation);
+    // toaster(0, confirmation);
     if(confirmation.toUpperCase() == project.toUpperCase()){
     // we delete the project from 'user.projects' array along with all the related paths(documentation-scopes)
     let tempProjects = user?.projects;
@@ -84,10 +85,11 @@ function Dashboard(props) {
         }).then(res => {
           setUpdateUserFlag(!updateUserFlag);
         }).catch(err=>{
-          alert('Something went wrong');
+          toaster(0, 'Something went wrong');
         })
     }).catch(err=>{
-      alert(err);
+      console.log(err.message);
+      toaster(-1, err.message);
     })
     }
   }
@@ -137,8 +139,8 @@ function Dashboard(props) {
         </button>
       </div>
  
-      <div align="left" style={{marginTop: '30px', marginBottom: '20px'}}>
-        <h1 style={{border: '0px', paddingLeft: '11px'}}>
+      <div align="left" style={{marginTop: '30px', marginBottom: '20px'}} >
+        <h1  style={{border: '0px', paddingLeft: '11px'}}>
             Your Projects
         </h1>
         <Link
@@ -299,6 +301,8 @@ function Dashboard(props) {
               }}
             />
           </span>
+
+       
         </div>
       )}
 
@@ -429,7 +433,7 @@ function Dashboard(props) {
           }}
           onClick={() => {
             if(user?.projects?.find(x => x.title.toLowerCase() === projectToAdd.title.toLowerCase()+projectArchiveStringSeparator ||  x.title.toLowerCase() === projectToAdd.title.toLowerCase())){
-                alert("Project with this title already exists");
+                toaster(-1, "Project with this title already exists");
             } else {
                 if (projectToAdd.title && projectToAdd.title !== "") {
                     // var key = email + new Date().toString().replaceAll(" ", "");
@@ -453,11 +457,11 @@ function Dashboard(props) {
                         setAddNewProject(false);
                         document.getElementById("booktitle").value = "";
                       })
-                      .catch((e) => {
-                        alert(e);
+                      .catch((err) => {
+                        toaster(0, err.message);
                       });
                   } else {
-                    alert("Title can not be empty");
+                    toaster(-1, "Title can not be empty");
                   }
             }
           }}
@@ -485,8 +489,6 @@ function Dashboard(props) {
                   
                   </i>
               </Link>
-
- 
     
     </div>
   );

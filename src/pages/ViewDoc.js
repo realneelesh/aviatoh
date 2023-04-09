@@ -33,21 +33,21 @@ function ViewDoc(props) {
       currentPathObj?.title
       );
       setCurrentTopicId(currentPathObj?.topics[0]?.id);
-    //   alert(currentTopicId);
+    //   toaster(0, currentTopicId);
 
 
 
-    //   alert(user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id)
+    //   toaster(0, user?.paths?.find((x) => x.title === user?.paths?.filter((x) => x.project === projecttitle && x.topics.length > 0)[0]?.title)?.topics[0]?.id)
        if(currentTopicId) getDocument(
           topicsCollection,
           currentPathObj?.topics[0]?.id
         )
           .then((res) => {
-            // alert(JSON.stringify(res.data()));
+            // toaster(0, JSON.stringify(res.data()));
             setCurrentTopicData(res.data()?.data?.replaceAll('<a', '<a target="_blank"'));
           })
           .catch((err) => {
-            alert(err);
+            toaster(-1, err);
           });
     }
   }, [user]);
@@ -59,7 +59,7 @@ function ViewDoc(props) {
           setCurrentTopicData(res.data()?.data?.replaceAll('<a', '<a target="_blank"'));
         })
         .catch((err) => {
-          alert(err);
+          toaster(-1, err);
         });
     }
   }, [currentTopicId]);

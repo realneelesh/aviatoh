@@ -12,6 +12,7 @@ import {
 } from "../db";
 import Typewriter from "typewriter-effect";
 import KanbanBoard from '../components/KanbanBoard';
+import toaster from '../components/toaster';
 
 
 function Project(props) {
@@ -63,7 +64,7 @@ function Project(props) {
           //just to retrigger useEffect
           setPathAdded(!pathAdded);
         }).catch((err)=>{
-          alert(err);
+          toaster(-1, err);
         })
         }
       }
@@ -95,7 +96,7 @@ const renameProject = (title) => {
         navigate("/project/" + title);
         window.location.reload();
     }).catch((e)=>{
-        alert(e);
+        toaster(0, e);
         window.location.reload();
     })
 }
@@ -221,7 +222,7 @@ const renameProject = (title) => {
                     textDecoration: 'none',
                     // borderRight: '1px solid silver',
                     marginBottom: '1px',
-                    marginRight: '9px',
+                    marginRight: '7px',
                     position: 'relative',
                 }}
               > 
@@ -400,7 +401,7 @@ const renameProject = (title) => {
         }}
         onClick={() => {
           if(user.paths.map(x=>x.title).map(x=>x.toLowerCase().trim()).indexOf(pathToAdd.title.toLowerCase().trim()) != -1){
-            alert('Title must be unique');
+            toaster(0, 'Title must be unique');
           } else {
           if (pathToAdd.title && pathToAdd.title !== "") {
             var key = email + new Date().toString().replaceAll(" ", "");
@@ -436,10 +437,10 @@ const renameProject = (title) => {
                   }
               })
               .catch((e) => {
-                alert(e);
+                toaster(0, e);
               });
           } else {
-            alert("Title can not be empty");
+            toaster(0, "Title can not be empty");
           }
         }}
 
