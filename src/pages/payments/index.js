@@ -24,9 +24,9 @@ function PaymentsPopUp(props) {
 
     return (<>
     {/* {!hideLoader ? <SearchLoader /> : null} */}
-    <div align="left" style={{width: '100vw', padding: '15px', marginLeft: '-8px', backgroundColor: props.inline ? 'transparent' : '', color: dblue, position: 'absolute'}}>
-       <Link to="/" style={{textDecoration: 'none', cursor: 'pointer', color: dblue}}>Back to Dashboard</Link>
-    </div>
+   { !props.inline && <div align="left" style={{width: '100vw', padding: '15px', marginLeft: '-8px', backgroundColor: props.inline ? 'transparent' : '', color: dblue, position: 'absolute'}}>
+       <a href="https://aviatoh.com" style={{textDecoration: 'none', cursor: 'pointer', color: dblue}}>Back to Dashboard</a>
+    </div>}
    <br/>
    <br/>
    <br/>
@@ -128,7 +128,7 @@ function PaymentsPopUp(props) {
         <br/>
         <br/>
         <br/> 
-         <Footer/> 
+         { !props.inline && <Footer/> }
         </>
     );
 }

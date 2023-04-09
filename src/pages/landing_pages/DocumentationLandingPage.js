@@ -1,10 +1,7 @@
 import React from "react";
 import {
-  primaryBlueColour,
   primaryGreenColour,
   primaryRedColour,
-  primarySilverColour,
-  primaryYellowColour,
 } from "../../App";
 import Typewriter from "typewriter-effect";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -16,9 +13,7 @@ import {
   DemoView,
   Logo,
   Openailogo,
-  Signinwithgoogleicon,
 } from "../../assets";
-import Testimonial from "../../components/Testimonial";
 import Footer from "../../components/Footer";
 import MobileVersion from "./MobileVersion";
 import PaymentsPopUp from "../payments";
