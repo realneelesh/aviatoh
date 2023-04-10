@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { primaryBlueColour } from '../App';
 
 
 function toaster(level, message) {
@@ -9,11 +10,11 @@ function toaster(level, message) {
 
     if(message == 'Missing or insufficient permissions.'){
 
-        toast['info'](<div align="center">Buy a subscription to add more projects
-        <br/>
-        <br/> <br/>
+        toast['info'](<div align="left"><div style={{marginBottom: '4px'}}>Buy a subscription to add more projects</div>
+        
+        <br/>  
         <Link onClick={()=>{
-        }} to="/p" target="payment" style={{textDecoration: 'none', cursor: 'pointer'}}><h4 style={{cursor: 'pointer'}}>Buy</h4><br/><br/><img src={'https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg'} style={{width: '70px'}} />
+        }} to="/p" target="payment" style={{ textDecoration: 'none', cursor: 'pointer'}}><h4 style={{cursor: 'pointer', background: primaryBlueColour, color: 'white', border: '0px'}}>Click here</h4><br/><br/><img src={'https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg'} style={{width: '70px'}} />
         </Link>
         </div>);
         

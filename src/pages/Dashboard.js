@@ -494,10 +494,15 @@ function Dashboard(props) {
                 backgroundColor: 'transparent',
                 }} >
               <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh} />
-                {isPremium && <span style={{color: 'black', fontSize: '14px'}}>&nbsp; Premium </span>}
-                  
-                  </i>
+                {isPremium ? <span style={{color: 'black', fontSize: '14px'}}>&nbsp; Premium </span> : 
+               null
+                }  </i>
               </Link>}
+
+                {/* SUBSCRIBE BUTTON */}
+              {/* {
+  !isPremium &&  <Link to="/p" target={'paymentfafa'} style={{textDecoration: 'none', color: 'black', fontSize: '20px', position: 'fixed', bottom: '-25px', cursor: 'pointer', left: '35px'}}>&nbsp;&nbsp;<img src="https://t4.ftcdn.net/jpg/00/21/08/95/240_F_21089512_WOyLlOQG9huHMnsEClGiH8RkKzl3JTcf.jpg" style={{width: '90px', cursor: 'pointer'}} /></Link>
+} */}
     
     </div>
   );

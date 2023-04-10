@@ -147,19 +147,21 @@ function KanbanBoard(props) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center', 
+            justifyContent: 'center',
+            height: '65vh',
             
             background: `linear-gradient(${'white'}, white)`,
         }}>
      {/* <div style={{width: '81vw', marginBottom: '4px'}} align="left">
      <span style={{fontSize: '17px'}}>📎</span> Task Management Board (Kanban)
      </div> */}
-            <div style={{width: '81vw', display: 'flex', border: '0px solid black',
+            <div style={{width: '81vw', display: 'flex', border: '0px solid black', position: 'absolute', bottom: '0px',
             borderTop: '0px solid ' + primarySilverColour, boxShadow: `rgba(0, 0, 0, 0.15) 0px 0px 13px`,
 
             justifyContent: 'flex-start',}}>
             <div style={{
                 width: '27vw',
-                height: '55vh',
+                height: '65vh',
                 overflowY: 'auto',
                 zIndex: taskBeingDropped ? '9999' : '999',
                 borderRight: '0px solid ' + primarySilverColour,
@@ -169,7 +171,7 @@ function KanbanBoard(props) {
             onDrop={drop} onDragOver={allowDrop}
             align="center"
             >   
-            <div align="left" style={{width: '85%', marginBottom: '3px'}}>
+            <div align="right" style={{width: '85%', marginBottom: '3px'}}>
                <h2 style={{...headingStype, position: 'relative', display: 'inline-block', paddingRight: '13px'}}>
                 <span>To Do</span>
                 
@@ -180,6 +182,7 @@ function KanbanBoard(props) {
                   cursor: 'pointer',
                   padding: '7px 10px',
                   paddingTop: '8px',
+                  position: 'absolute',
                   boxShadow: `${'silver'} 0px 0px 3px`,
                   backgroundColor: "white", 
                   color: primaryBlueColour,
@@ -187,7 +190,8 @@ function KanbanBoard(props) {
                   textDecoration: 'none',
                   zIndex: '999',
                   borderRadius: '50%',
-                  transform: 'scale(0.4)'
+                  left: '18px',
+                  top: '18px'
               }}
               onClick={()=>{
                 setAddNewTask(true);
@@ -281,10 +285,10 @@ function KanbanBoard(props) {
 
             <div style={{
                 width: '27vw',
-                height: '55vh',
+                height: '65vh',
                 overflowY: 'auto',
                 borderRight: '0px solid ' + primarySilverColour,
-                backgroundColor: 'rgb(247,247,247)',
+                background: 'linear-gradient(rgb(247, 247, 247), white)',
                 paddingBottom: '15px', paddingTop: '11px'
 
             }}
@@ -293,7 +297,7 @@ function KanbanBoard(props) {
             onDrop={drop} onDragOver={allowDrop}
  
             >  
-            <div align="left" style={{width: '85%'}}>
+            <div align="right" style={{width: '85%'}}>
                <h2 style={{...headingStype, position: 'relative', display: 'inline-block', paddingRight: '13px'}}> <span>In Progress</span></h2>
                 </div>
                 <br/>  
@@ -310,14 +314,14 @@ function KanbanBoard(props) {
 
             <div style={{
                 width: '27vw',
-                height: '55vh',
+                height: '65vh',
                 overflowY: 'auto',
                 paddingBottom: '15px', paddingTop: '11px'
             }}
             onDrop={drop} onDragOver={allowDrop}
             align="center"
             >  
-                <div align="left" style={{width: '85%'}}>
+                <div align="right" style={{width: '85%'}}>
                <h2 style={{...headingStype, position: 'relative', display: 'inline-block', paddingRight: '13px'}}> <span>Completed</span></h2>
                 </div>
                  <br/> 

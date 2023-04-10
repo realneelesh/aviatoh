@@ -32,9 +32,12 @@ function Project(props) {
       const [addNewPath, setAddNewPath] = useState(false);
       const [ pathAdded, setPathAdded ] = useState(false);
 
+      const [ loading, setLoading ] = useState(false);
+
       const [ typeOfBlock, setTypeOfBlock ] = useState('single');
 
       useEffect(() => {
+        setLoading(true);
         window.document.title = projecttitle;
         showPage();
         console.log(email);
@@ -49,6 +52,8 @@ function Project(props) {
             } else {
               setUser(res.data());
             }
+        setLoading(false);
+
           });
         }
       }, [email, pathAdded]);
@@ -104,6 +109,7 @@ const renameProject = (title) => {
 
 
     return (
+      
         <div
         style={{
             display: 'flex', 
@@ -111,6 +117,7 @@ const renameProject = (title) => {
             position: 'relative',
             minHeight: '100vh'
         }}>  
+        {loading && <SearchLoader /> }
   
   <div align="left" style={{marginTop: '30px', marginBottom: '20px'}}>
       <h1 id="projectTitle" style={{border: '0px', paddingLeft: '11px', paddingRight: '3px'}}>
