@@ -6,12 +6,12 @@ const handler = async (event) => {
     // console.log(JSON.parse(event.body).event);
     // console.log(JSON.parse(event.body));
     const webhookPayload = JSON.parse(event.body);
-      // email -> event.body.payload.subscription.entity.notes.email
+      // email -> event.body.payload.subscription.entity.notes.Email_registered_with_Aviatoh
   
       if(webhookPayload.event === 'subscription.activated'){
           // add the user to premium subscribers list
-          console.log(`writing SUBSCRIPTION ACTIVATION for user ${webhookPayload.payload.subscription.entity.notes.email}`);
-          await updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
+          console.log(`writing SUBSCRIPTION ACTIVATION for user ${webhookPayload.payload.subscription.entity.notes.email_registered_with_aviatoh}`);
+          await updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email_registered_with_aviatoh, {
               premium: true,
               updatedAt: new Date()
           });
@@ -26,8 +26,8 @@ const handler = async (event) => {
       if(webhookPayload.event === 'subscription.haulted'){
          // send an email mentioning the discontinuity
          // remove the user from premium subscribers list in firestore
-         console.log(`writing SUBSCRIPTION HAULT for user ${webhookPayload.payload.subscription.entity.notes.email}`);
-          await updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email, {
+         console.log(`writing SUBSCRIPTION HAULT for user ${webhookPayload.payload.subscription.entity.notes.email_registered_with_aviatoh}`);
+          await updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email_registered_with_aviatoh, {
               premium: false,
               updatedAt: new Date()
           })
