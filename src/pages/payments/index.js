@@ -126,8 +126,7 @@ function PaymentsPopUp(props) {
         <br/>
         <br/>
         <br/>
-        <br/> 
-         { !props.inline && <Footer/> }
+        <br/>  
         </div>
     );
 }
