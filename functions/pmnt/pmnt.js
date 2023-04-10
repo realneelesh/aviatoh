@@ -9,6 +9,7 @@ const handler = async (event) => {
       // email -> event.body.payload.subscription.entity.notes.Email_registered_with_Aviatoh
   
       if(webhookPayload.event === 'subscription.activated'){
+        console.log(webhookPayload.payload.subscription.entity.notes);
           // add the user to premium subscribers list
           console.log(`writing SUBSCRIPTION ACTIVATION for user ${webhookPayload.payload.subscription.entity.notes.email_registered_with_aviatoh}`);
           await updateOrCreateDocument(PremiumAccountsCollection, webhookPayload.payload.subscription.entity.notes.email_registered_with_aviatoh, {
