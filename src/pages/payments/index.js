@@ -14,7 +14,8 @@ function PaymentsPopUp(props) {
     useEffect(()=>{ 
             const ele = document.getElementById('razorpaybtn');
             ele.style.display = 'inline';
-            document.getElementById('oplopl').appendChild(ele);
+            ele.style.marginRight = '30px';
+            document.getElementById('oplopl').prepend(ele);
               
     }, [])
 
@@ -26,13 +27,9 @@ function PaymentsPopUp(props) {
 
     }}>
     {/* {!hideLoader ? <SearchLoader /> : null} */}
-   { !props.inline && <div align="left" style={{width: '100vw', padding: '15px', marginLeft: '-8px', backgroundColor: props.inline ? 'transparent' : '', color: dblue, position: 'absolute'}}>
+   { !props.inline && <div align="left" style={{width: '100vw', padding: '15px', marginLeft: '-8px', backgroundColor: props.inline ? 'transparent' : '', color: dblue, position: 'relative'}}>
        <a href="https://aviatoh.com" style={{textDecoration: 'none', cursor: 'pointer', color: dblue}}>Back to Dashboard</a>
     </div>}
-   <br/>
-   <br/>
-   <br/>
-   <br/>
    <br/>
    <br/> 
    {/*} <div style={{width: '6vw', height: '100vh', marginLeft: '-8px', right: '0px', backgroundColor: props.inline ? 'transparent' : 'rgb(230, 230, 230)', position: 'absolute'}}></div>
@@ -54,13 +51,13 @@ function PaymentsPopUp(props) {
            
             <div id="oplopl" style={{
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'flex-start'
             }}>
                
 
 
 
-                <div style={{...planCSS, marginRight: '30px', marginTop: '7px',     border: '1px solid #e3e9eb'
+                <div style={{...planCSS,  marginTop: '7px',     border: '1px solid #e3e9eb'
                 }}>
                     <div style={{
                         display: 'flex',
@@ -121,12 +118,11 @@ function PaymentsPopUp(props) {
         </div> 
         
         <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>  
+        <br/> 
+        <br/> 
+        <div>
+            <Footer />
+        </div>
         </div>
     );
 }

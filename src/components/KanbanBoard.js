@@ -156,7 +156,9 @@ function KanbanBoard(props) {
      <span style={{fontSize: '17px'}}>📎</span> Task Management Board (Kanban)
      </div> */}
             <div style={{width: '81vw', display: 'flex', border: '0px solid black', position: 'absolute', bottom: '0px',
-            borderTop: '0px solid ' + primarySilverColour, boxShadow: `rgba(0, 0, 0, 0.15) 0px 0px 13px`,
+            borderTop: '0px solid ' + primarySilverColour, 
+            
+            boxShadow: `rgba(0, 0, 0, 0.08) 0px 0px 13px`,
 
             justifyContent: 'flex-start',}}>
             <div style={{
@@ -165,7 +167,7 @@ function KanbanBoard(props) {
                 overflowY: 'auto',
                 zIndex: taskBeingDropped ? '9999' : '999',
                 borderRight: '0px solid ' + primarySilverColour,
-                paddingBottom: '15px', paddingTop: '11px'
+                paddingBottom: '15px', paddingTop: '0px', borderTop: '10px solid lavender' 
 
             }}
             onDrop={drop} onDragOver={allowDrop}
@@ -190,8 +192,8 @@ function KanbanBoard(props) {
                   textDecoration: 'none',
                   zIndex: '999',
                   borderRadius: '50%',
-                  left: '18px',
-                  top: '18px'
+                  left: '10px',
+                  top: '20px'
               }}
               onClick={()=>{
                 setAddNewTask(true);
@@ -289,7 +291,7 @@ function KanbanBoard(props) {
                 overflowY: 'auto',
                 borderRight: '0px solid ' + primarySilverColour,
                 background: 'linear-gradient(rgb(247, 247, 247), white)',
-                paddingBottom: '15px', paddingTop: '11px'
+                paddingBottom: '15px', paddingTop: '0px', borderTop: '10px solid silver'
 
             }}
             align="center"
@@ -316,7 +318,7 @@ function KanbanBoard(props) {
                 width: '27vw',
                 height: '65vh',
                 overflowY: 'auto',
-                paddingBottom: '15px', paddingTop: '11px'
+                paddingBottom: '15px', paddingTop: '0px', borderTop: '10px solid '+primaryGreenColour(0.4)
             }}
             onDrop={drop} onDragOver={allowDrop}
             align="center"
