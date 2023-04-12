@@ -204,11 +204,9 @@ function Profile(props) {
             
 
            
-            <Link to="/"><img src={Logo} style={{padding: '10px', width: '150px', position: 'absolute', top: '8px', left: '8px'}} /> </Link>
+            {/* <Link to="/"><img src={Logo} style={{ width: '150px', position: 'absolute', top: '50px', left: '50px'}} /> </Link> */}
 </div>
-            <div style={{zIndex: '9999', backgroundColor: 'white', width: '100vw', marginLeft: '-8px'}}>
-                <Footer/>
-            </div>
+          
         </div>
     );
 }

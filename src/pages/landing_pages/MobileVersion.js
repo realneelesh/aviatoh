@@ -14,7 +14,7 @@ import Typewriter from "typewriter-effect";
 import Footer from "../../components/Footer";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../db";
-import { primaryBlueColour, primaryGreenColour } from "../../App";
+import { primaryBlueColour, primaryGreenColour, primarySilverColour } from "../../App";
 const provider = new GoogleAuthProvider();
 
 function MobileVersion(props) {
@@ -51,9 +51,9 @@ function MobileVersion(props) {
           justifyContent: 'center',
           // backgroundColor: primaryGreenColour(0.5),
           background:
-            'url("https://images.pexels.com/photos/5594262/pexels-photo-5594262.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")',
+            'url("https://images.pexels.com/photos/5594259/pexels-photo-5594259.jpeg?auto=compress&cs=tinysrgb&w=800")',
           backgroundRepeat: "no-repeat",
-          backgroundSize: 'cover'
+          backgroundSize: 'cover', 
         }}
       >
         <h1 align="left"  style={{fontSize: '30px', width: '90%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>Retain, Refine, Document and Scale your ideas</h1>
@@ -64,14 +64,19 @@ function MobileVersion(props) {
  <div align="center" style={{ width: '100%', marginLeft: '-8px'}}>
  <div   style={{display: 'flex', alignItems: 'center', marginLeft: '17px', justifyContent: 'center', width: '100%', marginLeft: '-8px'}}>
 
- <i onClick={()=>{
+ 
+                   
+<h1 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0.8)'}}>Powered by AI 
+
+                 </h1>
+                 &nbsp; 
+                    &nbsp;
+
+                 <i onClick={()=>{
                   document.getElementById('aiAss').scrollIntoView({
                     behavior: 'smooth'
                   });
-                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '30px'}} className='fas fa-info-circle'></i>
-<h1 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500'}}>Powered by AI 
-                   
-                 </h1>
+                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '40px'}} className='fas fa-info-circle'></i>
                 
       </div>
       </div>
@@ -106,7 +111,7 @@ function MobileVersion(props) {
         </div>
       </div>
 
-      <hr/>
+      
 
 
 
@@ -115,7 +120,8 @@ function MobileVersion(props) {
           minHeight: "50vh",
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          background: `linear-gradient(to right, lavender, white)`
         }}
       >
                   <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
@@ -143,7 +149,7 @@ function MobileVersion(props) {
       </div>
 
 
-      <hr/>
+      
 
 
 
@@ -173,8 +179,7 @@ function MobileVersion(props) {
         </div>
       </div>
 
-      <hr/>
-
+       
 
       <div
       id="aiAss"
@@ -182,7 +187,8 @@ function MobileVersion(props) {
           minHeight: "50vh",
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          background: `linear-gradient(to right, lavender, white)`
         }}
       >
    <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>

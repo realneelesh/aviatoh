@@ -30,7 +30,7 @@ import PaymentsPopUp from './pages/payments';
 
 import 'react-toastify/dist/ReactToastify.css';
 import toaster from './components/toaster';
-import { IconAviatoh } from './assets';
+import { IconAviatoh, Logo } from './assets';
 import Footer from './components/Footer';
 import AviatohLogo from './components/AviatohLogo';
 import axios from 'axios';
@@ -261,7 +261,7 @@ function App() {
                   {/* {isPremium ? <span style={{color: 'black', fontSize: '14px', display: 'inline-block', position: 'absolute', top: '-1px', right: '40px'}}>&nbsp;&nbsp; Premium </span> : 
                null 
                 }  */}
-              <img className="fa gear" style={{width: '30px', cursor: 'pointer', borderRadius: '50%'}} src={photoURL}/>
+              <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh}/>
                  </i>
               </Link>}
             </div> 
