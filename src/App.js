@@ -31,6 +31,7 @@ import PaymentsPopUp from './pages/payments';
 import 'react-toastify/dist/ReactToastify.css';
 import toaster from './components/toaster';
 import { IconAviatoh } from './assets';
+import Footer from './components/Footer';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -258,7 +259,8 @@ function App() {
               <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh} />
                  </i>
               </Link>}
-            </div>
+            </div> 
+
     </BrowserRouter>}
 
 

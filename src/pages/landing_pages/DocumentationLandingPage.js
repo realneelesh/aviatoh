@@ -54,11 +54,21 @@ function DocumentationLandingPage(props) {
           backgroundSize: 'cover'
         }}
       >
-        <h1 style={{fontSize: '50px', width: '100%',color: 'wheat', backgroundColor: 'rgb(0, 0, 0, 0.2)', padding: '25px 0px',fontWeight: '500'}}>Retain, Refine, Document and <br/> Scale your ideas</h1>
+        <h1 style={{fontSize: '50px', width: '100%',color: 'wheat', backgroundColor: 'rgb(0, 0, 0, 0.1)', padding: '39px 0px',fontWeight: '500'}}>Retain, Refine, Document and <br/> Scale your ideas</h1>
  <br/>
  <br/>
  <br/>
-<h1 style={{margin: '0px', backgroundColor: 'rgb(0, 0, 0, 0.2)', color: 'silver'}}>Powered by AI</h1>
+ <div style={{display: 'flex', alignItems: 'center'}}>
+ <i onClick={()=>{
+                  document.getElementById('aiAss').scrollIntoView({
+                    behavior: 'smooth'
+                  });
+                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '40px'}} className='fas fa-info-circle'></i>
+<h1 style={{margin: '0px', color: 'silver', marginLeft: '-7px'}}>Powered by AI 
+                   
+                 </h1>
+                
+      </div>
       </div>
 
       <div
@@ -145,6 +155,7 @@ function DocumentationLandingPage(props) {
 
 
       <div
+      id="aiAss"
         style={{
           minHeight: "100vh",
           display: 'flex',

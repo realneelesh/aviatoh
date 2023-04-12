@@ -128,7 +128,7 @@ function Dashboard(props) {
           position: "sticky",
           top: "0px",
           width: "100vw",
-          background: `linear-gradient( to right, ${primarySilverColour},${'transparent'}`,
+          background: `linear-gradient( to right, ${primarySilverColour},${'transparent'},${'transparent'}`,
           padding: "7px 0px",
         }}
       >
@@ -152,7 +152,7 @@ function Dashboard(props) {
       </div>
  
       <div align="left" style={{marginTop: '30px', marginBottom: '20px'}} >
-        <h1  style={{border: '0px', paddingLeft: '14px'}}>
+        <h1  style={{border: '0px', paddingLeft: '11px'}}>
             Your Projects
         </h1>
         <Link
@@ -187,7 +187,7 @@ function Dashboard(props) {
           display: "flex",
           flexWrap: "wrap",
           width: "100vw",
-          marginLeft: "5px", 
+          marginLeft: "2px", 
           paddingBottom: '50px',
         }}
       >
