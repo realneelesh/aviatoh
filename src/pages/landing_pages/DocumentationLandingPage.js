@@ -54,7 +54,7 @@ function DocumentationLandingPage(props) {
           backgroundSize: 'cover'
         }}
       >
-        <h1 style={{fontSize: '50px', width: '100%',color: 'wheat', backgroundColor: 'rgb(0, 0, 0, 0.1)', padding: '39px 0px',fontWeight: '500'}}>Retain, Refine, Document and <br/> Scale your ideas</h1>
+        <h1 style={{fontSize: '40px', width: '100%',color: 'wheat', backgroundColor: 'rgb(0, 0, 0, 0.1)', padding: '39px 0px',fontWeight: '500'}}>Retain, Refine, Document and <br/> Scale your ideas</h1>
  <br/>
  <br/>
  <br/>
