@@ -194,15 +194,7 @@ function MobileVersion(props) {
           <div style={{}}>
           <Footer from={'mobile'} />
           </div>
-          <div style={{
-            display: 'flex', width: '35%', justifyContent: 'space-around', fontSize: '26px', marginLeft: '13px'
-          }}>
-            <i style={{color: 'grey'}} className="fab fa-instagram"></i>
-            <i style={{color: 'grey'}} className="fab fa-twitter"></i>
-            <i style={{color: 'grey'}} className="fab fa-facebook"></i>
-          </div>
-        <br/>
-        <br/>
+    
         
 
 

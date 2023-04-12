@@ -78,7 +78,7 @@ function Profile(props) {
     return (
 
         <div align="left">
-            <div style={{minHeight: '100vh'}}>
+            <div style={{minHeight: '60vh'}}>
             <br/>
             <br/>
             <br/>
@@ -86,7 +86,7 @@ function Profile(props) {
             <br/>
             <br/>
             <br/>
-           <div style={{textAlign: 'center', fontSize: '17px'}}>
+           <div style={{textAlign: 'center', fontSize: '17px', }}>
            
 
            { !particulars && <><><span></span><span><Link style={{color: 'black', textDecoration: 'none'}} to="/editprofile">+ Add Particulars &nbsp;  <div style={{ display: 'inline-block', transform: 'rotate(90deg)'}}>✏️</div> </Link></span></></> }
@@ -206,7 +206,7 @@ function Profile(props) {
            
             <Link to="/"><img src={Logo} style={{padding: '10px', width: '150px', position: 'absolute', top: '8px', left: '8px'}} /> </Link>
 </div>
-            <div style={{boxShadow: "rgba(0, 0, 0, 0.08) 0px 0px 70px", marginLeft: '-8px', zIndex: '9999', backgroundColor: 'white'}}>
+            <div style={{zIndex: '9999', backgroundColor: 'white', width: '100vw', marginLeft: '-8px'}}>
                 <Footer/>
             </div>
         </div>

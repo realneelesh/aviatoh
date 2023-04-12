@@ -97,6 +97,7 @@ function App() {
   }, []);
 
   const [ email, setEmail ] = useState(null);
+  const [ photoURL, setPhotoURL ] = useState(null);
 
 
   useEffect( ()=>{
@@ -106,7 +107,8 @@ function App() {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         setEmail(user.email);
-        console.log(user.email);
+        console.log(user.photoURL);
+        setPhotoURL(user.photoURL);
         if(!browserStorage.getItem(userInfoKey)){
           browserStorage.setItem(userInfoKey, user);
           getDocument(usersCollection, user.email).then(res => {
@@ -253,10 +255,10 @@ function App() {
                 // boxShadow: '0px 0px 150px 30px '+ 'grey',
                 backgroundColor: 'transparent',
                 }} >
-                  {isPremium ? <span style={{color: 'black', fontSize: '14px', display: 'inline-block', position: 'absolute', top: '-1px', right: '40px'}}>&nbsp;&nbsp; Premium </span> : 
+                  {/* {isPremium ? <span style={{color: 'black', fontSize: '14px', display: 'inline-block', position: 'absolute', top: '-1px', right: '40px'}}>&nbsp;&nbsp; Premium </span> : 
                null 
-                } 
-              <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh} />
+                }  */}
+              <img className="fa gear" style={{width: '30px', cursor: 'pointer', borderRadius: '50%'}} src={photoURL} />
                  </i>
               </Link>}
             </div> 

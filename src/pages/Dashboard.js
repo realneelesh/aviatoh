@@ -104,11 +104,11 @@ function Dashboard(props) {
   return (
     <div style={{ position: "relative", width: '100vw', marginLeft: '-8px', minHeight: "100vh", 
     justifyContent: 'center',
-    alignItems: 'center', 
-    background: 'url("")',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover', }}>
+    background:
+            'url("")',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: 'cover',
+    alignItems: 'center', backgroundAttachment: 'fixed' }}>
       {user === null && <SearchLoader />}
 
       {/* <div style={{
@@ -127,7 +127,7 @@ function Dashboard(props) {
           alignItems: "center",
           position: "sticky",
           top: "0px",
-          width: "100vw",
+          width: "70%",
           background: `linear-gradient( to right, ${primarySilverColour},${'transparent'},${'transparent'}`,
           padding: "7px 0px",
         }}
@@ -186,9 +186,10 @@ function Dashboard(props) {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          width: "100vw",
-          marginLeft: "2px", 
+          width: "98vw",
+          marginLeft: '-8px', 
           paddingBottom: '50px',
+          paddingLeft: '13px',
         }}
       >
         {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
@@ -240,7 +241,7 @@ function Dashboard(props) {
                 }}
               >
                   <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
-                  Share
+                  Share 
                 </h3>  
                 </Link>
                 &nbsp;
@@ -370,7 +371,7 @@ function Dashboard(props) {
  <div style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start'}}>
          
           <div style={{width: '100%', color: 'grey'}} align="left">
- <span style={{color: 'grey'}}>1. Project Title</span>  
+ <span style={{color: 'grey'}}>1. Project Title</span> <br/> 
          
           <input
           id="booktitle"

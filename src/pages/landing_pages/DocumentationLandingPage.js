@@ -41,24 +41,29 @@ function DocumentationLandingPage(props) {
       
 
       <div
+      align="left"
         style={{
           minHeight: "100vh",
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          alignItems: 'flex-start',
+          paddingLeft: '30px',
           justifyContent: 'center',
           // backgroundColor: primaryGreenColour(0.5),
           background:
-            'url("")',
+            'url("https://images.pexels.com/photos/5594262/pexels-photo-5594262.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")',
           backgroundRepeat: "no-repeat",
           backgroundSize: 'cover'
         }}
       >
-        <h1 className="floating" style={{fontSize: '40px', width: '100%',color: 'rgb(160, 160, 160)', padding: '39px 0px',fontWeight: '500'}}>Retain, Refine, Document and <br/> Scale your ideas</h1>
+        <h1 align="left"  style={{fontSize: '40px', width: '50%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>Retain, Refine, Document and Scale your ideas</h1>
  <br/>
  <br/>
- <br/>
- <div style={{display: 'flex', alignItems: 'center'}}>
+ <br/> <br/>
+ <br/> 
+ <div align="center" style={{ width: '100%', marginLeft: '-8px'}}>
+ <div   style={{display: 'flex', alignItems: 'center', marginLeft: '17px', justifyContent: 'center', width: '100%', marginLeft: '-8px'}}>
+
  <i onClick={()=>{
                   document.getElementById('aiAss').scrollIntoView({
                     behavior: 'smooth'
@@ -68,6 +73,7 @@ function DocumentationLandingPage(props) {
                    
                  </h1>
                 
+      </div>
       </div>
       </div>
 
@@ -175,6 +181,7 @@ function DocumentationLandingPage(props) {
         }}
       >
    <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+   <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} />
 
          <div style={{width: '40%'}} align="left">
             <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assistant</h1>
@@ -188,7 +195,6 @@ function DocumentationLandingPage(props) {
             <br/>
             Sign up today and start enhancing your ideas with the power of AI technology!</div>
           </div>
-          <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} />
         
         </div>
       </div>
