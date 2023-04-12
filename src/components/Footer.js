@@ -13,7 +13,7 @@ function Footer(props) {
         justifyContent: "flex-end",
         alignItems: "center", 
         marginTop: '50px',
-        backgroundColor: 'white',
+        backgroundColor: 'rgb(240, 240, 240)',
         // position: 'fixed',
         bottom: '0px',
         zIndex:'9999999',

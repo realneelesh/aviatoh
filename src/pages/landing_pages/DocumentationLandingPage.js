@@ -56,7 +56,7 @@ function DocumentationLandingPage(props) {
           backgroundSize: 'cover'
         }}
       >
-        <h1 align="left"  style={{fontSize: '40px', width: '55%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
+        <h1 align="left"  style={{fontSize: '40px', width: '55%',color: 'rgb(140, 140, 140)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
         Idea are worthless unless you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them</h1>
  <br/>
  <br/>
@@ -96,8 +96,9 @@ function DocumentationLandingPage(props) {
             {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
             <br/>
             <br/> */}
-            Once you have created a project, you can add <b>documentation blocks</b> to it, track progress, and share it with anyone if needed. 
-            
+            Nurturing a thought into an idea in itself is a project.
+
+            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
             <br/>
             <br/>
             To start with, we provide project templates of following types<br/>
@@ -105,7 +106,6 @@ function DocumentationLandingPage(props) {
               <li className="list">Business/Startup Idea</li>
               <li className="list">Book Writing</li>
             </ul>
-            Our intuitive user interface makes it easy to manage multiple projects at once, so you can focus on bringing your ideas to life.
             </div>
           </div> 
           <img  src={Demo1} className="floating h" style={{ width: '35%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
@@ -122,7 +122,8 @@ function DocumentationLandingPage(props) {
           minHeight: "60vh",
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          background: `linear-gradient(to right, lavender, white)`
         }}
       >
         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
@@ -134,10 +135,10 @@ function DocumentationLandingPage(props) {
             <br/>
             <br/>
             <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            Your one-stop-shop for all your project documentation needs! Here, you can create rich-text documents with images and hierarchies, making it easy to organize your ideas.
+            Document your ideas with upto 3 levels of documents hierarchy
             <br/> 
             <br/> 
-            Perfect for anyone who needs to keep track of the ideation process, from entrepreneurs to creative professionals and writers.
+            Perfect for anyone who needs to keep track of the ideation process, from entrepreneurs to creative professionals and writers
  
             </div>
           </div>
@@ -165,14 +166,11 @@ function DocumentationLandingPage(props) {
           Refine Ideas<hr/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assist</h1>
             <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
-            Available with the documentation editor, is your personal AI-powered assistant for all your ideation assists! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
+            A personal AI assistant, powered by OpenAI's Davinci-text-003 model
             <br/>
-            <br/>
-            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help, just ask away!
-            
-            <br/>
-            <br/>
-            Sign up today!</div>
+<br/>
+            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help!
+             </div>
           </div>
 
    <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} />
@@ -192,7 +190,8 @@ function DocumentationLandingPage(props) {
           minHeight: "60vh",
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          background: `linear-gradient(to right, lavender, white)`
         }}
       >
         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
@@ -209,10 +208,7 @@ function DocumentationLandingPage(props) {
             
             <br/>
             <br/>
-            {/* Our platform is designed to help you stay organized and focused in the most simplest and minimalistic way possible.
-            <br/>
-            <br/> */}
-            For every project, you get a seperate <b>kanban-style</b> board to track the tasks in three categories i.e.
+            Break down the idea execution into smaller tasks and executing them one by one. For every project, you get a seperate <b>kanban-style</b> board to track the tasks in three categories i.e.
             <ul>
               <li className="list">To Do</li>
               <li className="list">In Progress</li>
@@ -225,6 +221,38 @@ function DocumentationLandingPage(props) {
 
 
 
+
+
+      <div
+        style={{
+          minHeight: "60vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center', 
+        }}
+      >
+        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+       
+          <div style={{width: '40%'}} align="left">
+            Share Ideas <hr/>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Share with the World</h1>
+            <br/>
+            <br/>
+
+            <div align="left" style={{  color: 'grey', fontSize: '16px'}}>
+            You can share the link to your documentation to interested parties i.e.
+            <ul>
+              <li className="list">Potential Investers</li>
+              <li className="list">Potential Contributors</li>
+              <li className="list">Fund raising websites</li>
+            </ul>
+           
+             </div>
+          </div>
+          <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
+
+        </div>
+      </div>
 
 
 
