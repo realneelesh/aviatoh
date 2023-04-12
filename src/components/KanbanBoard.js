@@ -468,7 +468,7 @@ function KanbanBoard(props) {
 
           
   {/* UNCOMMENT IF DELETE-A-TASK IS REQUIRED */}
-   <div title="Drop a card here to delete" style={{ position: 'fixed', bottom: '1px', zIndex: '999',  padding: '25px 20px', backgroundColor: '', right: '2px'}} align="left">
+   <div title="Drop a card here to delete" style={{ position: 'fixed', bottom: '1px', zIndex: '999',  padding: '10px 20px', backgroundColor: '', right: '2px'}} align="left">
                   <i
                   onClick={(e)=>{
                     e.preventDefault();
