@@ -56,7 +56,8 @@ function DocumentationLandingPage(props) {
           backgroundSize: 'cover'
         }}
       >
-        <h1 align="left"  style={{fontSize: '40px', width: '50%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>Retain, Refine, Document and Scale your ideas</h1>
+        <h1 align="left"  style={{fontSize: '40px', width: '55%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
+        Idea are worthless unless you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them</h1>
  <br/>
  <br/>
  <br/> <br/>
@@ -87,6 +88,7 @@ function DocumentationLandingPage(props) {
       >
          <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
           <div style={{width: '40%'}} align="left">
+            Retain Ideas<hr/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
             <br/>
             <br/>
@@ -123,10 +125,81 @@ function DocumentationLandingPage(props) {
           justifyContent: 'center'
         }}
       >
-                  <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+        <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
+
+          <div style={{width: '40%'}} align="left">
+            Document Ideas<hr/>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Rich Text Editor</h1>
+            <br/>
+            <br/>
+            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
+            Your one-stop-shop for all your project documentation needs! Here, you can create rich-text documents with images and hierarchies, making it easy to organize your ideas.
+            <br/> 
+            <br/> 
+            Perfect for anyone who needs to keep track of the ideation process, from entrepreneurs to creative professionals and writers.
+ 
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+      <div
+      id="aiAss"
+        style={{
+          minHeight: "60vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+   <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+
+         <div style={{width: '40%'}} align="left">
+          Refine Ideas<hr/>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assist</h1>
+            <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
+            Available with the documentation editor, is your personal AI-powered assistant for all your ideation assists! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
+            <br/>
+            <br/>
+            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help, just ask away!
+            
+            <br/>
+            <br/>
+            Sign up today!</div>
+          </div>
+
+   <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} />
+
+        
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <div
+        style={{
+          minHeight: "60vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
        
           <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
           <div style={{width: '40%'}} align="left">
+            Scale Ideas <hr/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Tasks Management</h1>
             <br/>
             <br/>
@@ -154,61 +227,10 @@ function DocumentationLandingPage(props) {
 
 
 
-      <div
-        style={{
-          minHeight: "60vh",
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-
-          <div style={{width: '40%'}} align="left">
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>Rich Text Documentation</h1>
-            <br/>
-            <br/>
-            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            Your one-stop-shop for all your project documentation needs! Here, you can create rich-text documents with images and hierarchies, making it easy to organize your ideas.
-            <br/> 
-            <br/> 
-            Perfect for anyone who needs to keep track of the ideation process, from entrepreneurs to creative professionals and writers.
- 
-            </div>
-          </div>
-          <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
-
-        </div>
-      </div>
 
 
-      <div
-      id="aiAss"
-        style={{
-          minHeight: "60vh",
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-   <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-   <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} />
 
-         <div style={{width: '40%'}} align="left">
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assistant</h1>
-            <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
-            Available with the documentation editor, is your personal AI-powered assistant for all your ideation assists! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
-            <br/>
-            <br/>
-            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help, just ask away!
-            
-            <br/>
-            <br/>
-            Sign up today!</div>
-          </div>
-        
-        </div>
-      </div>
+     
 
 
 
