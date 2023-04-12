@@ -17,6 +17,15 @@
 #documentationLandingPageView{
   font-family: Poppins !important;
   font-weight: 300;
+
+  img.h {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+  }
+
+  h1{
+    font-weight: 700;
+  }
 }
 
 .App-logo {
@@ -553,4 +562,20 @@ li {
 
 ul { 
   padding-left: 20px;
+}
+
+
+
+.floating { 
+  animation-name: floating;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; 
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 25px); }
+  100%   { transform: translate(0, -0px); }   
 }
