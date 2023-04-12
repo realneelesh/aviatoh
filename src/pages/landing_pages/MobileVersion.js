@@ -211,7 +211,7 @@ function MobileVersion(props) {
             Scale Ideas<hr/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Tasks Management</h1>
             <br/>
-            Use the infamous Divide and Conquer technique to break down the idea execution into smaller tasks and executing them one by one,
+            Break down the idea execution into smaller tasks and executing them one by one,
              
              We provide a kanban-style board to track the tasks in three categories i.e.
            
