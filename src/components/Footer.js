@@ -9,11 +9,11 @@ function Footer(props) {
       style={{
         width: "100%",
         display: "flex",
-        color: "rgb(150,150,150)",
+        color: "white",
         justifyContent: "flex-end",
         alignItems: "center", 
         marginTop: '50px',
-        backgroundColor: 'black',
+        backgroundColor: 'gray',
         position: 'fixed',
         bottom: '0px',
         zIndex:'9999999',
@@ -35,9 +35,9 @@ function Footer(props) {
 
         <div style={{fontSize: '16px', marginLeft: '4px', display: 'flex', alignItems: 'center'}}>
         <span>contact@aviatoh.com</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <i style={{color: 'grey'}} className="fab fa-instagram">&nbsp;&nbsp;&nbsp;</i>
-            <i style={{color: 'grey'}} className="fab fa-twitter">&nbsp;&nbsp;&nbsp;</i>
-            <i style={{color: 'grey'}} className="fab fa-facebook"></i> &nbsp;&nbsp;&nbsp;
+        <i style={{color: 'white'}} className="fab fa-instagram">&nbsp;&nbsp;&nbsp;</i>
+            <i style={{color: 'white'}} className="fab fa-twitter">&nbsp;&nbsp;&nbsp;</i>
+            <i style={{color: 'white'}} className="fab fa-facebook"></i> &nbsp;&nbsp;&nbsp;
             
           </div>
  
