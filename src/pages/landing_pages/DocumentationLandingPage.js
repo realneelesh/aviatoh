@@ -35,7 +35,7 @@ function DocumentationLandingPage(props) {
       <img
         src={Logo}
         width={190}
-        style={{ position: "absolute", left: "20px", top: "10px" }}
+        style={{ position: "absolute", left: "23px", top: "10px" }}
       />
       </div>
       
@@ -47,7 +47,7 @@ function DocumentationLandingPage(props) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          paddingLeft: '30px',
+          paddingLeft: '20px',
           justifyContent: 'center',
           // backgroundColor: primaryGreenColour(0.5),
           background:
@@ -79,7 +79,7 @@ function DocumentationLandingPage(props) {
 
       <div
         style={{
-          minHeight: "100vh",
+          minHeight: "60vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -87,17 +87,22 @@ function DocumentationLandingPage(props) {
       >
          <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
           <div style={{width: '40%'}} align="left">
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>CREATE PROJECTS</h1>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
             <br/>
             <br/>
             <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
+            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
             <br/>
-            <br/>
-            Once you have created a project, you can easily add new ideas to it, track progress, and share it with anyone if needed. 
+            <br/> */}
+            Once you have created a project, you can add <b>documentation blocks</b> to it, track progress, and share it with anyone if needed. 
             
             <br/>
             <br/>
+            To start with, we provide project templates of following types<br/>
+            <ul>
+              <li className="list">Business/Startup Idea</li>
+              <li className="list">Book Writing</li>
+            </ul>
             Our intuitive user interface makes it easy to manage multiple projects at once, so you can focus on bringing your ideas to life.
             </div>
           </div> 
@@ -112,7 +117,7 @@ function DocumentationLandingPage(props) {
 
       <div
         style={{
-          minHeight: "100vh",
+          minHeight: "60vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
@@ -122,7 +127,7 @@ function DocumentationLandingPage(props) {
        
           <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
           <div style={{width: '40%'}} align="left">
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>Manage Tasks</h1>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Tasks Management</h1>
             <br/>
             <br/>
 
@@ -131,10 +136,15 @@ function DocumentationLandingPage(props) {
             
             <br/>
             <br/>
-            Our platform is designed to help you stay organized and focused in the most simplest and the best minimalistic way possible.
+            {/* Our platform is designed to help you stay organized and focused in the most simplest and minimalistic way possible.
             <br/>
-            <br/>
-            Our <b>Kanban-style</b> task board lets you track the progress of your tasks in real-time, so you always know where your project stands.
+            <br/> */}
+            For every project, you get a seperate <b>kanban-style</b> board to track the tasks in three categories i.e.
+            <ul>
+              <li className="list">To Do</li>
+              <li className="list">In Progress</li>
+              <li className="list">Completed</li>
+            </ul> 
              </div>
           </div>
         </div>
@@ -146,7 +156,7 @@ function DocumentationLandingPage(props) {
 
       <div
         style={{
-          minHeight: "100vh",
+          minHeight: "60vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
@@ -162,7 +172,8 @@ function DocumentationLandingPage(props) {
             Your one-stop-shop for all your project documentation needs! Here, you can create rich-text documents with images and hierarchies, making it easy to organize your ideas.
             <br/> 
             <br/> 
-            Perfect for anyone who needs to keep track of project documentation, from entrepreneurs and startups to creative professionals and writers.
+            Perfect for anyone who needs to keep track of the ideation process, from entrepreneurs to creative professionals and writers.
+ 
             </div>
           </div>
           <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
@@ -174,7 +185,7 @@ function DocumentationLandingPage(props) {
       <div
       id="aiAss"
         style={{
-          minHeight: "100vh",
+          minHeight: "60vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
@@ -186,14 +197,14 @@ function DocumentationLandingPage(props) {
          <div style={{width: '40%'}} align="left">
             <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assistant</h1>
             <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
-            Available with the documentation editor, is your personal AI-powered assistant for all your ideation needs! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
+            Available with the documentation editor, is your personal AI-powered assistant for all your ideation assists! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
             <br/>
             <br/>
-            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help.
+            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help, just ask away!
             
             <br/>
             <br/>
-            Sign up today and start enhancing your ideas with the power of AI technology!</div>
+            Sign up today!</div>
           </div>
         
         </div>

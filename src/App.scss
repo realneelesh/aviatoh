@@ -554,7 +554,7 @@ a{
 
 
 // list
-li {
+li:not(.list) {
   font-size: 14px;
   padding: 5px 0px;
   list-style: none;
@@ -568,7 +568,7 @@ ul {
 
 .floating { 
   animation-name: floating;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out; 
   margin-top: 5px;
@@ -576,6 +576,6 @@ ul {
 
 @keyframes floating {
   0% { transform: translate(0,  0px); }
-  50%  { transform: translate(0, 25px); }
+  50%  { transform: translate(0, 15px); }
   100%   { transform: translate(0, -0px); }   
 }

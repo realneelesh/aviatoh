@@ -91,7 +91,7 @@ function MobileVersion(props) {
       >
          <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
           <div style={{width: '90%'}} align="left">
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>CREATE PROJECTS</h1>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
             <br/>
             <br/>
             {/* <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
