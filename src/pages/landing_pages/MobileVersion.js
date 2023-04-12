@@ -1,269 +1,211 @@
-import React, { useState } from 'react';
-import { Demo1, Demo2, Demo3, Logo, OpenaiIcon, Openailogo, ProjectManagementSS, ProjectView, Signinwithgoogleicon } from '../../assets';
+import React, { useState } from "react";
+import {
+  Demo1,
+  Demo2,
+  Demo3,
+  IdeationAssistantView,
+  Logo,
+  OpenaiIcon,
+  Openailogo,
+  ProjectView,
+  Signinwithgoogleicon
+} from "../../assets";
 import Typewriter from "typewriter-effect";
-import Footer from '../../components/Footer';
-import { primaryBlueColour, primaryGreenColour, primarySilverColour } from '../../App';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../../db';
+import Footer from "../../components/Footer";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../db";
+import { primaryBlueColour, primaryGreenColour } from "../../App";
 const provider = new GoogleAuthProvider();
 
-
 function MobileVersion(props) {
+  const [showKanbanModal, setShowKanbanModal] = useState(false);
 
-    const [ showKanbanModal, setShowKanbanModal ] = useState(false);
-
-    return (
-        <div
-          style={{
-            // background: `url(https://images.pexels.com/photos/2078126/pexels-photo-2078126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)`,
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "right top",
-            width: "100vw",
-            marginLeft: '-8px',
-            minHeight: '100vh',
-            marginRight: "0px",
-            backgroundColor: 'white',
-            zIndex: "999",
-            overflowX: 'hidden',
-          }}
-        >
-
-            
-          <div
-            align="right"
-            style={{
-               position: 'sticky', top: '0px',
-              fontSize: "20px",
-              color: "rgb(150, 150, 150)",
-              fontWeight: "300",
-              padding: "0px 14px",
-              width: "100vw",
-              zIndex: "99999",
-              height: "10vh",
-              marginLeft: '-8px',
-              
-            }}
-          > 
-          <br/>
-            <img src={Logo} style={{ width: "230px", marginTop: "15px", marginRight: '9px' }} />
-
-            <Typewriter
-              options={{
-                strings: [
-                  "Ideation and Documentation",
-                  "Document your hustles"
-                ],
-                autoStart: true,
-                loop: true,
-                deleteSpeed: 20,
-                delay: 42,
-                pauseFor: 1000,
-              }}
-            />
-          </div>
-
-
-          <br /><br /><br /><br />
-          <br /><br /><br /><br />
-          <br /><br /><br /><br /> 
-          <div align="center" style={{color: 'grey', fontSize: '18px'}}>
-           {
-           !props.signedIn && <div style={{width:'40%', display: 'flex', alignItems: 'center', border: '0px solid white', justifyContent: 'center'}}
+  return (
+    <div id="documentationLandingPageView" style={{position: 'relative', width: '100vw', marginLeft: '-8px', backgroundColor: ' '}}>
+      <div style={{position: 'absolute', top: '9px', right: '25px', display: 'flex', alignItems: 'center'}}
             onClick={() => {
                 signInWithPopup(auth, provider);
               }}
             >
-            <img src={Signinwithgoogleicon} style={{width: '40px'}} />
-            <span>&nbsp;&nbsp;Sign In</span>
+            <img src={Signinwithgoogleicon} style={{width: '35px'}} />
+            <span style={{ color: 'grey', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Sign In</span>
             
             </div>
-            }
+      <div align="left" style={{position: 'absolute', top: '5px', marginLeft: '-4px'}}>
+      <img
+        src={Logo}
+        width={190}
+        style={{ position: "absolute", left: "20px", top: "10px" }}
+      />
+      </div>
+      
 
-            {
-                props.signedIn && <div style={{backgroundColor: primarySilverColour, width: '80%', borderRadius: '0px', color: 'black', padding: '0px 24px'}} align="left">
-                   <br/>
-                   <br/>
-                    Welcome! 
-                    <br/> 
-                    <br/> 
-                    <span style={{fontSize: '15px'}}>
-                    ⚠️ &nbsp; Screen size is too small, please sign in from a laptop or desktop
-                    </span>
-                    
-                   <br/>
-                   <br/>
-                   <br/>
+      <div
+      align="left"
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          paddingLeft: '30px',
+          justifyContent: 'center',
+          // backgroundColor: primaryGreenColour(0.5),
+          background:
+            'url("https://images.pexels.com/photos/5594262/pexels-photo-5594262.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: 'cover'
+        }}
+      >
+        <h1 align="left"  style={{fontSize: '40px', width: '50%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>Retain, Refine, Document and Scale your ideas</h1>
+ <br/>
+ <br/>
+ <br/> <br/>
+ <br/> 
+ <div align="center" style={{ width: '100%', marginLeft: '-8px'}}>
+ <div   style={{display: 'flex', alignItems: 'center', marginLeft: '17px', justifyContent: 'center', width: '100%', marginLeft: '-8px'}}>
 
-                </div>
-            }
-          </div>
-          <br /><br /><br /><br />
-          <br /><br /><br /><br /> 
-          <br /><br /><br /><br />  
+ <i onClick={()=>{
+                  document.getElementById('aiAss').scrollIntoView({
+                    behavior: 'smooth'
+                  });
+                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '30px'}} className='fas fa-info-circle'></i>
+<h1 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500'}}>Powered by AI 
+                   
+                 </h1>
+                
+      </div>
+      </div>
+      </div>
 
-            <div align="left" style={{position: 'sticky', top: '0', width: '100vw', paddingLeft: '10px',  borderLeft: '50px solid ' + primaryGreenColour(1), fontSize: '17px'}}>
-            Retain, Refine, Document and Scale <br/>Your Ideas
+      <div
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+          <div style={{width: '40%'}} align="left">
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>CREATE PROJECTS</h1>
+            <br/>
+            <br/>
+            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
+            With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
+            <br/>
+            <br/>
+            Once you have created a project, you can easily add new ideas to it, track progress, and share it with anyone if needed. 
+            
+            <br/>
+            <br/>
+            Our intuitive user interface makes it easy to manage multiple projects at once, so you can focus on bringing your ideas to life.
             </div>
-            <br/>
+          </div> 
+          <img  src={Demo1} className="floating h" style={{ width: '35%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
+ 
 
-            <div align="right" style={{color: 'grey', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-             <div style={{fontSize: '20px', padding: '0px 15px'}}>
-              Integrated with Artificial Intelligence
-             </div>
-             
-             <div style={{backgroundColor: 'white', padding: '0px 12px'}}>   <br/>
-                Powered by
-            <br/>
-            <img src={Openailogo} style={{width: '100px'}}/>
-            <br/>
-            <br/>
-            </div>
-            </div>
-            <br /><br /><br /><br />
-
-            <br/>
-          <br /><br /><br /> 
-
-          <div style={{  paddingLeft: '10px', borderLeft: '50px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tools </div>
-          <br/>
-            <div align="left" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <img src={ProjectView} style={{width: '80%', boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",}} />
-                <div style={{width: '20%'}} align="center">
-                    <i onClick={()=>{
-            setShowKanbanModal(true);
-                    }} style={{color: primaryGreenColour(1), fontSize: '30px'}} className='fas fa-info-circle'></i>
-                </div>
-            </div>
-
-         <br /><br /><br /><br /><br /><br /><br />
-
-          <div style={{  paddingRight: '10px', borderRight: '50px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="right">Effiecient and Eligant <br/> Documentation Workflow</div>
-        <br/>
-          <div
-            style={{ display: "flex", alignItems: "center", justifyContent: 'left' }}
-          >
-            <div
-              align="center"
-              style={{
-                position: "relative",
-                width: "82%",
-                marginRight: "0",
-                transform: "scale(1.1)",
-              }}
-            >
-              <img
-                src={Demo1}
-                style={{
-                  width: "60%",
-                  position: "absolute",
-                  left: "1.3%",
-                  top: "110px",
-                  zIndex: "9",
-                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
-                }}
-              />
-              <img
-                src={Demo2}
-                style={{
-                  width: "80%",
-                  position: "absolute",
-                  left: "12%",
-                  top: "55px",
-                  zIndex: "99",
-                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 5px",
-                }}
-              />
-              <img
-                src={Demo3}
-                style={{
-                  width: "100%",
-                  position: "absolute",
-                  left: "23.8%",
-                  zIndex: "999",
-                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 20px"
-                }}
-              />
-            </div>
-          </div>
-          
-
-          <br /><br /><br /><br /><br /><br /><br /><br /><br />
-          <br /><br /><br /><br /><br /><br /><br /><br /><br />
-          <br /><br /><br />
-          <div style={{}}>
-          <Footer from={'mobile'} />
-          </div>
-    
-        
-
-
-        {/* modal kanban */}
-        {showKanbanModal && <div align="left" style={{ borderLeft: '30px solid ' + primaryGreenColour(0.6), position: 'fixed', width: '100vw', height: '100vh', backgroundColor: 'white', padding: '20px 10px', top: '0px', zIndex: '99999'}}>
-            <div style={{position: 'absolute', top: '17px', right: '65px'}}>
-            <i style={{fontSize: '19px'}} className='far fa-times-circle'
-          onClick={()=>{
-            setShowKanbanModal(false);
-          }}
-          ></i>
-            </div>
-            <div style={{width: '69%', paddingLeft:'20px'}} align="left">
-            <br/>
-            <br/>
-
-            <h2 style={{border: '0px', padding: '0px'}}>What is Kanban</h2>
-            <br/>
-            <br/>
-            <br/>
-            Kanban is a visual method for managing work processes and workflows. It uses cards or other visual signals to represent work items and helps to ensure that the right work is done at the right time.
-        
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-
-          <h2 style={{border: '0px', padding: '0px'}}>What is a Kanban Board</h2>
-         <br/>
-         <br/>
-        <br/>
-        A Kanban board is a visual tool that helps you manage tasks and projects. 
-        <br/>
-        It is typically divided into three columns: 
-        <br/>
-        <br/>
-        <br/>
-        <div style={{display: 'flex', justifyContent: 'space-around', fontSize: '10px', color: 'grey'}}>
-          <div align="center" style={{width: '27vw', borderRight: '1px solid silver', height: '70px'}}>To Do
-          <br/>
-          <br/>
-          <div style={{backgroundColor: 'lavender', width: '80%', height: '20px'}}></div>
-          </div>
-          <div align="center" style={{width: '27vw', borderRight: '1px solid silver', height: '70px'}}>In Progress
-          <br/>
-          <br/>
-          <div style={{backgroundColor: primaryGreenColour(0.3), width: '80%', height: '20px'}}></div>
-          </div>
-          <div align="center" style={{width: '27vw', height: '70px'}}>Completed
-          <br/>
-          <br/>
-          <div style={{backgroundColor: primarySilverColour, width: '80%', height: '20px'}}></div>
-          <br/>
-          <div style={{backgroundColor: primarySilverColour, width: '80%', height: '20px'}}></div>
-          </div>
-    
-</div>
-        <br/>
-        <br/>
-        Each task is represented by a card that moves across the board as it progresses through different stages of completion.
-
-            </div>
-  
-
-
-            </div>}
         </div>
-    );
+      </div>
+
+
+
+
+      <div
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+                  <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+       
+          <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
+          <div style={{width: '40%'}} align="left">
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Manage Tasks</h1>
+            <br/>
+            <br/>
+
+            <div align="left" style={{  color: 'grey', fontSize: '16px'}}>
+            The hub of your project documentation and task management!
+            
+            <br/>
+            <br/>
+            Our platform is designed to help you stay organized and focused in the most simplest and the best minimalistic way possible.
+            <br/>
+            <br/>
+            Our <b>Kanban-style</b> task board lets you track the progress of your tasks in real-time, so you always know where your project stands.
+             </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+
+          <div style={{width: '40%'}} align="left">
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Rich Text Documentation</h1>
+            <br/>
+            <br/>
+            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
+            Your one-stop-shop for all your project documentation needs! Here, you can create rich-text documents with images and hierarchies, making it easy to organize your ideas.
+            <br/> 
+            <br/> 
+            Perfect for anyone who needs to keep track of project documentation, from entrepreneurs and startups to creative professionals and writers.
+            </div>
+          </div>
+          <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
+
+        </div>
+      </div>
+
+
+      <div
+      id="aiAss"
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+   <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+   <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} />
+
+         <div style={{width: '40%'}} align="left">
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assistant</h1>
+            <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
+            Available with the documentation editor, is your personal AI-powered assistant for all your ideation needs! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
+            <br/>
+            <br/>
+            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help.
+            
+            <br/>
+            <br/>
+            Sign up today and start enhancing your ideas with the power of AI technology!</div>
+          </div>
+        
+        </div>
+      </div>
+
+
+
+
+
+      <Footer from={"mobile"} />
+    </div>
+  );
 }
 
 export default MobileVersion;
