@@ -22,7 +22,7 @@ function MobileVersion(props) {
 
   return (
     <div id="documentationLandingPageView" style={{position: 'relative', width: '100vw', marginLeft: '-8px', backgroundColor: ' '}}>
-      <div style={{position: 'absolute', top: '9px', right: '25px', display: 'flex', alignItems: 'center'}}
+      <div style={{position: 'absolute', top: '15px', right: '22px', display: 'flex', alignItems: 'center'}}
             onClick={() => {
                 signInWithPopup(auth, provider);
               }}
@@ -47,7 +47,7 @@ function MobileVersion(props) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          paddingLeft: '30px',
+          paddingLeft: '18px',
           justifyContent: 'center',
           // backgroundColor: primaryGreenColour(0.5),
           background:
@@ -56,7 +56,7 @@ function MobileVersion(props) {
           backgroundSize: 'cover'
         }}
       >
-        <h1 align="left"  style={{fontSize: '40px', width: '50%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>Retain, Refine, Document and Scale your ideas</h1>
+        <h1 align="left"  style={{fontSize: '30px', width: '90%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>Retain, Refine, Document and Scale your ideas</h1>
  <br/>
  <br/>
  <br/> <br/>
@@ -76,21 +76,20 @@ function MobileVersion(props) {
       </div>
       </div>
       </div>
-
       <div
         style={{
-          minHeight: "100vh",
+          minHeight: "50vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-          <div style={{width: '40%'}} align="left">
+         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
+          <div style={{width: '90%'}} align="left">
             <h1 style={{padding: '0px', color: primaryBlueColour}}>CREATE PROJECTS</h1>
             <br/>
             <br/>
-            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
+            {/* <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
             With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
             <br/>
             <br/>
@@ -99,34 +98,35 @@ function MobileVersion(props) {
             <br/>
             <br/>
             Our intuitive user interface makes it easy to manage multiple projects at once, so you can focus on bringing your ideas to life.
-            </div>
+            </div> */}
           </div> 
-          <img  src={Demo1} className="floating h" style={{ width: '35%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
+          <img  src={Demo1} className=" h" style={{ width: '94%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
  
 
         </div>
       </div>
 
+      <hr/>
 
 
 
       <div
         style={{
-          minHeight: "100vh",
+          minHeight: "50vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
         }}
       >
-                  <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+                  <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
        
-          <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
-          <div style={{width: '40%'}} align="left">
+          <div style={{width: '90%'}} align="left">
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Manage Tasks</h1>
             <br/>
             <br/>
+            <br/>
 
-            <div align="left" style={{  color: 'grey', fontSize: '16px'}}>
+            {/* <div align="left" style={{  color: 'grey', fontSize: '16px'}}>
             The hub of your project documentation and task management!
             
             <br/>
@@ -135,57 +135,63 @@ function MobileVersion(props) {
             <br/>
             <br/>
             Our <b>Kanban-style</b> task board lets you track the progress of your tasks in real-time, so you always know where your project stands.
-             </div>
+             </div> */}
           </div>
+          <img className="" src={ProjectView} style={{ width: '90%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
+
         </div>
       </div>
 
 
+      <hr/>
 
 
 
       <div
         style={{
-          minHeight: "100vh",
+          minHeight: "50vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
         }}
       >
-        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
+        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
 
-          <div style={{width: '40%'}} align="left">
+          <div align="left" style={{width: '90%'}}>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Rich Text Documentation</h1>
             <br/>
             <br/>
-            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
+            {/* <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
             Your one-stop-shop for all your project documentation needs! Here, you can create rich-text documents with images and hierarchies, making it easy to organize your ideas.
             <br/> 
             <br/> 
             Perfect for anyone who needs to keep track of project documentation, from entrepreneurs and startups to creative professionals and writers.
-            </div>
+            </div> */}
           </div>
-          <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
+          <img className="" src={Demo3} style={{ width: '90%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
 
         </div>
       </div>
+
+      <hr/>
 
 
       <div
       id="aiAss"
         style={{
-          minHeight: "100vh",
+          minHeight: "50vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
         }}
       >
-   <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-   <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} />
+   <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
 
-         <div style={{width: '40%'}} align="left">
+         <div style={{width: '90%'}} align="left">
             <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assistant</h1>
-            <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
+            <br/>
+            <br/>
+            {/* <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
             Available with the documentation editor, is your personal AI-powered assistant for all your ideation needs! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
             <br/>
             <br/>
@@ -193,8 +199,10 @@ function MobileVersion(props) {
             
             <br/>
             <br/>
-            Sign up today and start enhancing your ideas with the power of AI technology!</div>
+            Sign up today and start enhancing your ideas with the power of AI technology!</div> */}
           </div>
+   <img className="" src={IdeationAssistantView} style={{ width: '90%', cursor: 'not-allowed'}} />
+
         
         </div>
       </div>
