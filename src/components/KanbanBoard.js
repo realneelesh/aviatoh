@@ -477,7 +477,7 @@ function KanbanBoard(props) {
                   onDragOver={allowDrop}
                   onDrop={drop}
                       style={{ color: "silver", fontSize: '35px'}} 
-                      className="fa fa-trash j"
+                      className="fa fa-trash j ddtrash"
                       ><span style={{color: 'white'}}>.</span></i> 
               </div>  
               

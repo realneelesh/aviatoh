@@ -44,9 +44,13 @@ function Project(props) {
         if (email) {
           document.getElementById("doctitle").focus();
           getDocument(usersCollection, email).then((res) => {
+            if(!res.data().projects.map(x=>x.title).includes(projecttitle)){ 
+                navigate('/');
+            }
             console.log(res.data());
             if (!res.data().paths) {
-              const usr = res.data();
+              const usr = res.data(); 
+              
               usr.paths = [];
               setUser(usr);
             } else {

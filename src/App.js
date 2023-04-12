@@ -90,7 +90,7 @@ function App() {
     getDocument('Checks', 'check').then((res)=>{
       setIsPremium(true);
     })
-  });
+  }, []);
 
   useEffect(()=>{
     showPage();
@@ -254,7 +254,7 @@ function App() {
                 backgroundColor: 'transparent',
                 }} >
                   {isPremium ? <span style={{color: 'black', fontSize: '14px', display: 'inline-block', position: 'absolute', top: '-1px', right: '40px'}}>&nbsp;&nbsp; Premium </span> : 
-               null
+               null 
                 } 
               <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh} />
                  </i>

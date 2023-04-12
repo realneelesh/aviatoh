@@ -63,7 +63,7 @@ function DocumentationLandingPage(props) {
                   document.getElementById('aiAss').scrollIntoView({
                     behavior: 'smooth'
                   });
-                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '35px'}} className='fas fa-info-circle'></i>
+                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '30px'}} className='fas fa-info-circle'></i>
 <h1 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500'}}>Powered by AI 
                    
                  </h1>

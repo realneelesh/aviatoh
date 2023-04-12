@@ -16,6 +16,8 @@ function ViewDoc(props) {
   const [currentTopicData, setCurrentTopicData] = useState(null);
 
   useEffect(() => {
+    document.getElementById('linktoprofile').style.display = 'none';
+
     getDocument(usersCollection, email).then((res) => {
       setUser(res.data());
     });
@@ -174,6 +176,7 @@ function ViewDoc(props) {
               );
             })}
         </div>
+        
         <div style={{ width: "75vw", marginTop: '-70px', backgroundColor:'white', paddingRight: '14px' }} align="center">
           {currentTopicId && (
             <iframe
@@ -187,6 +190,17 @@ function ViewDoc(props) {
             ></iframe>
           )}
         </div>
+      </div>
+
+      <div style={{position: 'fixed', bottom: '10px', right: '10px'}}>
+        Get in touch: {email}
+      </div>
+
+      <div style={{position: 'fixed', top: '15px', right: '15px'}} align="left">
+      <i onClick={()=>{
+        navigator.clipboard.writeText(window.location.href);
+        toaster(0, 'Link copied!');
+      }} className="fa fa-share-alt" style={{fontSize: '25px', color: 'grey', cursor: 'pointer'}}> </i>
       </div>
     </div>
   );

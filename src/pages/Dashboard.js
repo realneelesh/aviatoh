@@ -240,7 +240,7 @@ function Dashboard(props) {
                 }}
               >
                   <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
-                  View
+                  Share
                 </h3>  
                 </Link>
                 &nbsp;
