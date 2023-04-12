@@ -32,6 +32,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import toaster from './components/toaster';
 import { IconAviatoh } from './assets';
 import Footer from './components/Footer';
+import AviatohLogo from './components/AviatohLogo';
+import axios from 'axios';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -108,7 +110,8 @@ function App() {
         const uid = user.uid;
         setEmail(user.email);
         console.log(user.photoURL);
-        setPhotoURL(user.photoURL);
+         
+        
         if(!browserStorage.getItem(userInfoKey)){
           browserStorage.setItem(userInfoKey, user);
           getDocument(usersCollection, user.email).then(res => {
@@ -258,7 +261,7 @@ function App() {
                   {/* {isPremium ? <span style={{color: 'black', fontSize: '14px', display: 'inline-block', position: 'absolute', top: '-1px', right: '40px'}}>&nbsp;&nbsp; Premium </span> : 
                null 
                 }  */}
-              <img className="fa gear" style={{width: '30px', cursor: 'pointer', borderRadius: '50%'}} src={photoURL} />
+              <img className="fa gear" style={{width: '30px', cursor: 'pointer', borderRadius: '50%'}} src={photoURL}/>
                  </i>
               </Link>}
             </div> 
