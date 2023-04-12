@@ -78,7 +78,7 @@ function MobileVersion(props) {
                   document.getElementById('aiAss').scrollIntoView({
                     behavior: 'smooth'
                   });
-                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '40px'}} className='fas fa-info-circle'></i>
+                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '40px', backgroundColor: 'white', borderRadius: '50%'}} className='fas fa-info-circle'></i>
                 
       </div>
       </div>
