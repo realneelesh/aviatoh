@@ -172,7 +172,7 @@ function MobileVersion(props) {
           Refine Ideas<hr/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Ideation Assist</h1>
             <br/>
-            Discuss with integrated AI chat to unlock the potential of AI to refine your ideas, AI is more capable then ever!
+            Discuss with integrated AI chat to unlock the potential of AI to refine your ideas, AI is more capable than ever!
             {/* <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
             Available with the documentation editor, is your personal AI-powered assistant for all your ideation needs! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
             <br/>
