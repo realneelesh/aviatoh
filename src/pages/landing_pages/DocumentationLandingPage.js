@@ -80,7 +80,7 @@ function DocumentationLandingPage(props) {
         }}
       >
          <div style={{display: 'flex'}}>
-          <img src={Demo1} style={{ width: '60%'}} />
+          <img src={Demo1} style={{ width: '60%', cursor: 'not-allowed', borderRadius: '0px 20px 20px 0px'}} />
           <div style={{width: '40%'}} align="left">
             <h1 style={{padding: '30px', color: 'wheat'}}>Create Projects</h1>
             <div align="left" style={{padding: '30px', color: 'silver', fontSize: '17px'}}>
@@ -122,7 +122,10 @@ function DocumentationLandingPage(props) {
             Our <b>Kanban-style</b> task board lets you track the progress of your tasks in real-time, so you always know where your project stands.
              </div>
           </div>
-          <img src={ProjectView} style={{ width: '60%'}} />
+          <span style={{width: '60%'}}>
+          <img src={ProjectView} style={{ cursor: 'not-allowed', width: '0%'}} />
+
+          </span>
         
         </div>
       </div>
@@ -140,7 +143,7 @@ function DocumentationLandingPage(props) {
         }}
       >
          <div style={{display: 'flex'}}>
-          <img src={Demo3} style={{ width: '60%'}} />
+          <img src={Demo3} style={{ width: '60%', cursor: 'not-allowed', borderRadius: '0px 20px 20px 0px'}} />
           <div style={{width: '40%'}} align="left">
             <h1 style={{padding: '30px', color: 'wheat'}}>Rich Text Documentation</h1>
             <div align="left" style={{padding: '30px', color: 'silver', fontSize: '17px'}}>
@@ -176,7 +179,7 @@ function DocumentationLandingPage(props) {
             <br/>
             Sign up today and start enhancing your ideas with the power of AI technology!</div>
           </div>
-          <img src={IdeationAssistantView} style={{ width: '60%'}} />
+          <img src={IdeationAssistantView} style={{ width: '60%', cursor: 'not-allowed', borderRadius: '20px 0px 0px 20px'}} />
         
         </div>
       </div>
