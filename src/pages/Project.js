@@ -115,11 +115,14 @@ const renameProject = (title) => {
             display: 'flex', 
             flexDirection: 'column',
             position: 'relative',
-            minHeight: '100vh'
+            minHeight: '100vh',
+            width: '100vw',
+            marginLeft: '-8px',
+           
         }}>  
         {loading && <SearchLoader /> }
   
-  <div align="left" style={{marginTop: '30px', marginBottom: '20px'}}>
+  <div align="left" style={{marginTop: '20px', marginBottom: '20px'}}>
       <h1 id="projectTitle" style={{border: '0px', paddingLeft: '11px', paddingRight: '3px'}}>
       { projecttitle.toUpperCase() }
         </h1>
@@ -130,7 +133,7 @@ const renameProject = (title) => {
             </input></h1>
             &nbsp; 
             &nbsp; 
-        <i
+        {'move it to dshboard for evry project card' === '' && <i
         onClick={(e)=>{
             document.getElementById('projectTitle').style.display = 'none';
             document.getElementById('projectTitleEdit').style.display = 'inline';
@@ -138,7 +141,7 @@ const renameProject = (title) => {
             document.getElementById('projectTitleEditInput').focus();
             e.target.style.display = 'none';
         }}
-        title="Rename" style={{color: 'grey', cursor: 'pointer'}} className="fa fa-edit"></i>
+        title="Rename" style={{color: 'grey', cursor: 'pointer'}} className="fa fa-edit"></i>}
 
         <button id="titileSave" style={{display: 'none', margin: '0px', padding: '5px 10px'}}
         onClick={()=>{
@@ -146,8 +149,12 @@ const renameProject = (title) => {
         }}
         >Save</button>
       </div>
-      <div align="left" style={{paddingLeft: '10px'}}>Documentation Blocks </div>  
-        <div style={{
+      <div style={{ height: '15vh', display: 'flex', alignItems: 'center'}}>
+
+<div>
+<div align="left" style={{paddingLeft: '10px'}}>Documentation Blocks </div>  
+
+      <div style={{
             display: 'flex'
         }}>
       <div style={{ 
@@ -178,7 +185,8 @@ const renameProject = (title) => {
                 alignItems: 'center',
                     paddingLeft: "25px",
                     paddingRight: "40px",
-                     boxShadow: "rgba(0, 0, 0, 0.14) -1px 1px 7px",
+                    boxShadow: `${'silver'} 0px 0px 3px`,
+
                     backgroundColor: "white", 
                     color: "grey",
                     fontSize: '17px',
@@ -227,8 +235,8 @@ const renameProject = (title) => {
               <Link
               style={{
                   cursor: 'pointer',
-                  paddingTop: "12px",
-                  paddingBottom: "10px",
+                  paddingTop: "10px",
+                  paddingBottom: "8px",
                   paddingLeft: "14px",
                   paddingRight: "14px",
                   boxShadow: `${'silver'} 0px 0px 3px`,
@@ -242,7 +250,7 @@ const renameProject = (title) => {
                   position: 'sticky',
                   right: '0px',
                   zIndex: '999',
-                  borderRadius: '50%'
+                  // borderRadius: '50% 0px 0px 50%',
               }}
               onClick={()=>{
                 setAddNewPath(true);
@@ -259,6 +267,8 @@ const renameProject = (title) => {
    
 </div> 
 </div>
+</div>
+      </div>
 
 <br/>
 <br/>
@@ -306,7 +316,8 @@ const renameProject = (title) => {
 
 {/*  */}
 </div>
-<div style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start'}}>
+<div align="left" style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start', justifyContent: 'flex-start'}}>
+      <div align="left">
       <input
         id="doctitle"
         style={{
@@ -321,6 +332,7 @@ const renameProject = (title) => {
         }}
         placeholder="Block title"
       />
+      </div>
 
     <br/>
     <br/>
@@ -353,7 +365,7 @@ const renameProject = (title) => {
     <br/>
     <br/>
     <br/>
-
+<div align="left">
       <button
         style={{
           backgroundColor: primaryBlueColour,
@@ -412,11 +424,12 @@ const renameProject = (title) => {
       </button>
       </div>
       </div>
+      </div>
     
       </div>
 
       { user?.paths?.filter(x=>x.project === projecttitle)?.length === 0 && <div align="right" style={{position: 'absolute', top: '37px', right: '50px',
-    borderRight: '1px solid '+ 'grey', height: '120px', display: 'flex', alignItems: 'flex-end', padding: '0px',
+    borderRight: '0px solid '+ 'grey', height: '120px', display: 'flex', alignItems: 'flex-end', padding: '0px',
     zIndex: '9'
     
     }}>
@@ -427,7 +440,7 @@ const renameProject = (title) => {
             <Typewriter
           options={{
             strings: [
-               " ⚠️  No documentation blocks found", 
+               " ! No documentation blocks found", 
                " Click on '+' to add"
             ],
             autoStart: true,
@@ -443,9 +456,14 @@ const renameProject = (title) => {
       </div>}
 
    {/* kanabn */}
-   <div style={{width: '100vw', marginLeft: '-8px', background: `linear-gradient(${'white'}, white)`}}>
+   <div style={{width: '100vw', background: `linear-gradient(${'transparent'})`, position: 'absolute', bottom: '0px'}}>
     <br/>
+    <br/>
+    <br/>
+    <br/> 
     <KanbanBoard email={email} user={user} projecttitle={projecttitle}/>
+   
+
    </div>
         </div>
     );

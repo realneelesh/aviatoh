@@ -40,6 +40,7 @@ function CreatePath(props) {
   }, []);
   
   useEffect(() => { 
+    document.getElementById('linktoprofile').style.display = 'none';
   
     setIsCollectionType(user?.paths
             .find((x) => x.title === pathtitle && x.project === projecttitle).type === 'collection')
@@ -171,6 +172,7 @@ function CreatePath(props) {
     justifyContent: 'space-between',
     alignItems: 'center',
     marginRight: '-2px', 
+    zIndex: '999999',
     background: changesSaved ? `linear-gradient( to right, ${'rgb(225, 225, 225)'},${primarySilverColour},${primarySilverColour})`:`linear-gradient( to right,${primarySilverColour},${primarySilverColour},${primaryBlueColour})`, 
     padding: '8px 9px'}}>
   
@@ -200,7 +202,8 @@ function CreatePath(props) {
                 color: !changesSaved ? primaryBlueColour : 'transparent',
                 fontWeight: 400,
                 display: "inline",
-                padding: '5px 15px'
+                padding: '5px 15px',
+                
                 }}
                 onClick={() => {
                   saveTopic(dataToBeSaved);

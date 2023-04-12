@@ -115,13 +115,9 @@ function PaymentsPopUp(props) {
  
                 
             </div>
-        </div> 
-        
-        <br/>
-        <br/> 
-        <br/> 
+        </div>  
         <div>
-            <Footer />
+          
         </div>
         </div>
     );

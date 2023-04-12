@@ -11,10 +11,11 @@
 
 *{
   cursor: default; 
+  // border: 1px solid silver;
 }
 
 #documentationLandingPageView{
-  font-family: 'Poppins' !important;
+  font-family: Poppins !important;
   font-weight: 700;
 }
 
@@ -86,17 +87,18 @@ button:hover {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 250;
   display: inline;
-  border: 1px solid #bbbbbb;
   /* background-color: #254B62; */
   color: #254B62;
   padding: 6px 19px;
   border-radius: 4px;
 }
+.hbtn:hover {
+  border: 1px solid grey !important;
+}
 
 h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   font-weight: 250;
   display: inline;
-  border: 1px solid grey;
   /* background-color: #254B62; */
   color: #254B62;
   padding: 6px 19px;

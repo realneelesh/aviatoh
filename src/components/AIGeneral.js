@@ -115,7 +115,7 @@ function AIGeneral(props) {
             >  
             <div 
             style={{  padding: '15px'}}
-            dangerouslySetInnerHTML={{__html: loadingAiRes === null ? '<span style="color: grey;">AI output will be shown here :<br/><br/>on-Clear should cancel the previous call(to be implemented)</span>' : loadingAiRes === true ? '<span>Loading...</span>' : aiRes}}
+            dangerouslySetInnerHTML={{__html: loadingAiRes === null ? '<span style="color: grey;">AI output will be shown here :<br/><br/></span>' : loadingAiRes === true ? '<span>Loading...</span>' : aiRes}}
             > 
             </div> 
 

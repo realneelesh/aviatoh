@@ -23,12 +23,14 @@ import CreatePath from './pages/CreatePath';
 import TextEditor from './components/TextEditor';
 import Dashboard from './pages/Dashboard';
 import DocumentationLandingPage from './pages/landing_pages/DocumentationLandingPage';
+import MobileVersion from './pages/landing_pages/MobileVersion';
 import Project from './pages/Project';
 import ViewDoc from './pages/ViewDoc';
 import PaymentsPopUp from './pages/payments';
 
 import 'react-toastify/dist/ReactToastify.css';
 import toaster from './components/toaster';
+import { IconAviatoh } from './assets';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -67,6 +69,8 @@ window.mobileCheck = function() {
   return check;
 };
 
+
+
 export const showPage = () => {
   setTimeout(()=>{
   const elements = document.querySelectorAll('*'); 
@@ -78,6 +82,14 @@ export const showPage = () => {
 }
 
 function App() {
+
+  const [ isPremium, setIsPremium ] = useState(false);
+
+  useEffect(() => {
+    getDocument('Checks', 'check').then((res)=>{
+      setIsPremium(true);
+    })
+  });
 
   useEffect(()=>{
     showPage();
@@ -179,7 +191,7 @@ function App() {
       {
         window.mobileCheck() ? 
         
-         <DocumentationLandingPage from={'mobile'} signedIn={browserStorage.getItem(userInfoKey)}/>
+         <MobileVersion />
   :
 <div>
     { browserStorage.getItem(userInfoKey) && <BrowserRouter >
@@ -223,19 +235,51 @@ function App() {
               <Route path="/editprofile" element={<>
                 <ParticularsForm email={email} />
               </>} />
+              <Route path="/aboutus" element={<>
+                {/* <Aboutus /> */}
+              </>} />
               
               </Routes>
 
-       
+              {<Link
+              id="linktoprofile"
+              to="/profile" style={{color: 'grey', backgroundColor: 'white', cursor: 'pointer'}}>
+                <i style={{
+                position: 'fixed', 
+                top: '6px',
+                right: '6px',
+                cursor: 'pointer',
+                // boxShadow: '0px 0px 150px 30px '+ 'grey',
+                backgroundColor: 'transparent',
+                }} >
+                  {isPremium ? <span style={{color: 'black', fontSize: '14px', display: 'inline-block', position: 'absolute', top: '-1px', right: '40px'}}>&nbsp;&nbsp; Premium </span> : 
+               null
+                } 
+              <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh} />
+                 </i>
+              </Link>}
             </div>
     </BrowserRouter>}
 
 
     { !browserStorage.getItem(userInfoKey) && 
     <>
-             <DocumentationLandingPage />
+    <BrowserRouter>
+      <Routes>
+      <Route exact path="/" element={<>
+        <DocumentationLandingPage />
+              </>} />
+
+      <Route path="/aboutus" element={<>
+        {/* <Aboutus /> */}
+      </>} />
+      </Routes>
+    </BrowserRouter>
                  </> 
         }
+
+
+
     </div>
       }
     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Demo1, Demo2, Demo3, Logo, OpenaiIcon, Openailogo, ProjectManagementSS, Signinwithgoogleicon } from '../../assets';
+import { Demo1, Demo2, Demo3, Logo, OpenaiIcon, Openailogo, ProjectManagementSS, ProjectView, Signinwithgoogleicon } from '../../assets';
 import Typewriter from "typewriter-effect";
 import Footer from '../../components/Footer';
 import { primaryBlueColour, primaryGreenColour, primarySilverColour } from '../../App';
@@ -51,7 +51,8 @@ function MobileVersion(props) {
             <Typewriter
               options={{
                 strings: [
-                  "Document your side hustles "
+                  "Ideation and Documentation",
+                  "Document your hustles"
                 ],
                 autoStart: true,
                 loop: true,
@@ -127,7 +128,7 @@ function MobileVersion(props) {
           <div style={{  paddingLeft: '10px', borderLeft: '50px solid ' + primaryGreenColour(1), fontSize: '17px'}} align="left">Kanban Inspired <br/>Project Management Tools </div>
           <br/>
             <div align="left" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <img src={ProjectManagementSS} style={{width: '80%', boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",}} />
+                <img src={ProjectView} style={{width: '80%', boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",}} />
                 <div style={{width: '20%'}} align="center">
                     <i onClick={()=>{
             setShowKanbanModal(true);

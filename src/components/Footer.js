@@ -7,16 +7,20 @@ function Footer(props) {
   return (
     <div
       style={{
-        lineHeight: 1.5,
-        width: "100vw",
+        width: "100%",
         display: "flex",
         color: "rgb(150,150,150)",
-        justifyContent: "space-between",
-        alignItems: "center",
-        height: '40vh'
+        justifyContent: "flex-end",
+        alignItems: "center", 
+        marginTop: '50px',
+        backgroundColor: 'black',
+        position: 'fixed',
+        bottom: '0px',
+        zIndex:'9999999',
+        padding: '2px 0px'
       }}
     >
-     { props.from != 'mobile' && <div style={{ paddingLeft: "20px", width: "35%", display: 'flex', justifyContent: 'center' }}>
+     {/* { props.from != 'mobile' && <div style={{ paddingLeft: "20px", width: "35%", display: 'flex', justifyContent: 'center' }}>
          <img
                 src={Logo}
                 style={{
@@ -25,47 +29,19 @@ function Footer(props) {
                   marginLeft: "16px",
                 }}
               />  
-      </div>}
+      </div>} */}
+ 
+        
 
-      <div
-        style={{
-          display: "flex",
-          width: props.from == 'mobile' ? "100%" : "65%",
-          justifyContent: "space-around",
-        //   borderLeft: "1px solid rgb(230,230,230)",
-        }}
-      >
-        <div style={{ margin: "10px", fontSize: "14px" }} align="left">
-          <div style={{ fontSize: "22px", marginBottom: '7px' }}>Company</div>
-   
-          <div>About Us</div>
-          <div>Careers</div>
-          <div>Management Team</div>
-          <div>Blog</div>
-          <div>Contact Us</div>
-        </div>
-
-        <div style={{ margin: "10px", fontSize: "14px" }} align="left">
-          <div style={{ fontSize: "22px", marginBottom: '7px' }}>Customers</div>
-       
-          <div>Customer support email:</div>
-          <div>{'contact@aviatoh.com'.toLowerCase()}</div>
-          <br />
-          <div style={{ fontSize: "22px", marginBottom: '7px' }}>Partners</div>
-    
-          <div>All Partner Programs</div>
-          <div>App Partner Program</div>
-          <div>Affiliate Program</div>
-        </div>
-
-        { props.from != 'mobile' && <div style={{ margin: "10px", fontSize: "14px" }} align="left">
-          <div style={{ fontSize: "22px", marginBottom: '7px' }}>Social Media</div>
-  
-          <div>Instagram</div>
-          <div>Facebook</div>
-          <div>Twitter</div>
-        </div>}
-      </div>
+        <div style={{fontSize: '16px', marginLeft: '4px', display: 'flex', alignItems: 'center'}}>
+        <span>contact@aviatoh.com</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <i style={{color: 'grey'}} className="fab fa-instagram">&nbsp;&nbsp;&nbsp;</i>
+            <i style={{color: 'grey'}} className="fab fa-twitter">&nbsp;&nbsp;&nbsp;</i>
+            <i style={{color: 'grey'}} className="fab fa-facebook"></i> &nbsp;&nbsp;&nbsp;
+            
+          </div>
+ 
+      
     </div>
   );
 }

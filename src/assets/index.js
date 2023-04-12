@@ -20,6 +20,8 @@ import Openailogo from './openai.svg';
 import OpenaiIcon from './openaiicon.svg';
 import TextingGif from './textinggif.gif';
 import ProjectManagementSS from './kanban.png';
+import ProjectView from './ProjectView.png';
+import IdeationAssistantView from './IdeationAss.png';
 
 export {
     Empty,
@@ -43,5 +45,7 @@ export {
     Openailogo,
     TextingGif,
     OpenaiIcon,
-    ProjectManagementSS
+    ProjectManagementSS,
+    ProjectView,
+    IdeationAssistantView
 }

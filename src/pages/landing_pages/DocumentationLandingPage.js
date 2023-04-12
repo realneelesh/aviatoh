@@ -1,363 +1,181 @@
-import React from "react";
-import {
-  primaryGreenColour,
-  primaryRedColour,
-} from "../../App";
-import Typewriter from "typewriter-effect";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../db";
+import React, { useState } from "react";
 import {
   Demo1,
   Demo2,
   Demo3,
-  DemoView,
+  IdeationAssistantView,
   Logo,
+  OpenaiIcon,
   Openailogo,
+  ProjectView,
+  Signinwithgoogleicon
 } from "../../assets";
+import Typewriter from "typewriter-effect";
 import Footer from "../../components/Footer";
-import MobileVersion from "./MobileVersion";
-import PaymentsPopUp from "../payments";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../db";
+import { primaryBlueColour, primaryGreenColour } from "../../App";
 const provider = new GoogleAuthProvider();
 
 function DocumentationLandingPage(props) {
-  const { from, signedIn } = props;
+  const [showKanbanModal, setShowKanbanModal] = useState(false);
+
   return (
-    <>
-      {from != "mobile" && (
-        <div
-          id="documentationLandingPageView"
-          style={{ fontColor: "rgb(150, 150, 150)" }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100vh",
-              backgroundColor: "",
-              zIndex: "-1",
-              marginLeft: "-8px",
-            }}
-          ></div>
-          <div
-            style={{
-              // background: `url(https://images.pexels.com/photos/2078126/pexels-photo-2078126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "right top",
-              width: "100%",
-              marginLeft: "-8px",
-              marginRight: "0px",
-              backgroundColor: "transparent",
-              zIndex: "999",
-            }}
-          >
-            <div
-              align="left"
-              style={{
-                backgroundColor: "white",
-                fontSize: "25px",
-                color: "rgb(150, 150,150)",
-                fontWeight: "300",
-                width: "100vw",
-                zIndex: "99999",
-                height: from == "mobile" ? "10vh" : "auto",
+    <div id="documentationLandingPageView" style={{position: 'relative', width: '100vw', marginLeft: '-8px', backgroundColor: '#1e3138'}}>
+      <div style={{position: 'absolute', top: '9px', right: '25px', display: 'flex', alignItems: 'center'}}
+            onClick={() => {
+                signInWithPopup(auth, provider);
               }}
             >
-              <img
-                src={Logo}
-                style={{
-                  width: "180px",
-                  marginTop: "15px",
-                  marginLeft: "14px",
-                }}
-              />
-
-              <pre style={{ marginLeft: "14px", paddingBottom: "8px", fontSize: '20px', color: 'rgb(150, 150, 150)', marginTop: '-6px' }}>
-                <Typewriter
-                  options={{
-                    strings: [
-                      "Ideation and Documentation System",
-                      
-                    ],
-                    autoStart: true,
-                    loop: true,
-                    deleteSpeed: 20,
-                    delay: 42,
-                    pauseFor: 1000,
-                  }}
-                />
-              </pre>
-            </div>
-
-            {from !== "mobile" && (
-              <div
-                style={{
-                  position: "absolute",
-                  fontSize: "16px",
-                  color: "grey",
-                  bottom: "100px",
-                  top: "23px",
-                  right: "0px",
-                  cursor: "auto"
-                }}
-                
-              >
-                <div
-                onClick={() => {
-                  signInWithPopup(auth, provider);
-                }}
-                 style={{ cursor: "pointer", marginRight: "23px" }}>
-                  Sign In
-                  
-                  {/* <img
-      style={{
-        width: "50px",
-      }}
-      src={Signinwithgoogleicon}
-    /> 
-     <br/>
-    Sign In */}
-                </div>
-                <br/> 
-                  <div style={{
-                    position: "absolute", 
-                    right: "0px",
-                    width: '30vw',
-                    color: 'grey',
-                    fontSize: '14px'
-                  }}
-                  align="right"
-                  >
-                    <span style={{paddingRight: '20px', backgroud: `linear-gradient(to right, white,${primaryGreenColour(0.8)},${primaryGreenColour(0.8)},${primaryGreenColour(0.8)})`, display: 'block'}}>
-                     {/* Any notices etc  */}
-                    </span></div>
-              </div>
-            )}
-
-            {from === "mobile" && (
-              <div align="center">
-                <br />
-                <br />
-                <br />
-                <h3
-                  style={{
-                    position: "fixed",
-                    bottom: "90px",
-                    width: "100vw",
-                    left: "0px",
-                  }}
-                >
-                  Only available for desktop screens
-                </h3>
-              </div>
-            )}
-
-            <div></div>
-          </div>
-
-          {/* {from != "mobile" ? (
-            <div
-              style={{
-                height: "50vh",
-                display: "flex",
-                width: "100vw",
-                marginLeft: "-8px",
-                justifyContent: "space-around",
-                alignItems: "center",
-              }}
-            >
-              <Testimonial
-                name="Namila"
-                designation="Product Designer"
-                img="https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                text="This is a sample prototype testimonial, shall be replacedThis is a sample prototype testimonial, shall be replacedThis is a sample prototype testimonial, shall be replaced"
-              />
-            </div>
-          ) : null} */}
-
-          {from == "mobile" ? (
-            <div
-              style={{
-                height: "10vh",
-                display: "flex",
-                width: "100vw",
-                marginLeft: "-8px",
-                justifyContent: "space-around",
-                alignItems: "center",
-              }}
-            ></div>
-          ) : null}
-
-<div
-              style={{
-                color: "rgb(150, 150, 150)",
-                height: "50vh",
-                display: "flex",
-                width: "100vw",
-                marginLeft: "-8px",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "40px",
-              }}
-              align='left'
-            >
-              <span style={{ fontWeight: "300" }}> 
-                Retain, Refine, Document and Scale Your Ideas
-                <br />
-                <br />
-              </span>
-            </div> 
-
-
-<div style={{  marginBottom: '190px', backgroundColor: 'rgb(245, 250, 245)', display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '100vw', marginLeft: '-8px'}}>
-            <div
-              style={{
-                color: "rgb(150, 150, 150)",
-                display: "flex",
-                width: "100vw",
-                marginLeft: "-8px",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "28px",
-              }}
-              align="left"
-            >
-              <span style={{ fontWeight: "300" }}>
-              <br /> 
+            <img src={Signinwithgoogleicon} style={{width: '35px'}} />
+            <span style={{ color: 'silver', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Sign In</span>
             
-                Powered by cutting edge AI
-                <br />
-                <br />
-
-              </span>
             </div>
-          
+      <div align="left" style={{position: 'absolute', top: '5px', marginLeft: '-4px'}}>
+      <img
+        src={Logo}
+        width={190}
+        style={{ position: "absolute", left: "20px", top: "10px" }}
+      />
+      </div>
+      
 
-          <div
-            align="center"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              width: "100vw",
-              justifyContent: "center",
-            }}
-          >
-            <div align="left">
-              <h2 style={{marginBottom: '15px', padding:'4px 10px', fontSize: '18px', display: 'inline-block',  color: primaryRedColour, fontWeight: '900', border: '0px'}}>Fine Tuned</h2>
-             <br/>
-              <img src={Openailogo} style={{ width: "70%" }} />
-            </div> 
-             <h1 style={{border: '0px'}}>Your Ideation Assistant </h1>
-          </div>
-          <br />
-          <br />
-          <br /> 
-
-          </div>
-
- 
-     
-
-          <div>
-          <span style={{ fontWeight: "300", fontSize: '28px', color: 'rgb(150, 150, 150)' }}>
-
-          <br /> 
-             
-            Effiecient and Eligant Documentation Workflow
-            <br />
-            <br />
-
-          </span>
-
-          <div
-            style={{ display: "flex", alignItems: "center", height: "80vh", maringBottom: '30px' }}
-          >
-            <div
-              align="center"
-              style={{
-                position: "relative",
-                width: "80%",
-                marginRight: "0",
-                height: "80vh",
-                transform: "scale(0.88)",
-                maringBottom: '30px'
-              }}
-            > 
-              <img
-                src={Demo1}
-                style={{
-                  width: "60%",
-                  position: "absolute",
-                  left: "1.3%",
-                  top: "110px",
-                  zIndex: "9",
-                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 7px",
-                }}
-              />
-              <img
-                src={Demo2}
-                style={{
-                  width: "80%",
-                  position: "absolute",
-                  left: "12%",
-                  top: "55px",
-                  zIndex: "99",
-                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 5px",
-                }}
-              />
-              <img
-                src={Demo3}
-                style={{
-                  width: "100%",
-                  position: "absolute",
-                  left: "23.8%",
-                  zIndex: "999",
-                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 20px",
-                }}
-              />
-            </div>
-            
-          </div>
-          </div>
-
-          
-
-          {/* this section will be about AI powered feature */}
-   
-          
-          <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <PaymentsPopUp inline={true} />
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <div style={{marginLeft: '-8px', width: '100vw',  
-      boxShadow: "rgba(0, 0, 0, 0.08) 0px 0px 70px",
-    }}> 
-      <Footer />
-
+      <div
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          // backgroundColor: primaryGreenColour(0.5),
+          background:
+            'url("")',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: 'cover'
+        }}
+      >
+        <h1 style={{fontSize: '50px', width: '100%',color: 'wheat', backgroundColor: 'rgb(0, 0, 0, 0.2)', padding: '25px 0px',fontWeight: '500'}}>Retain, Refine, Document and <br/> Scale your ideas</h1>
+ <br/>
+ <br/>
+ <br/>
+<h1 style={{margin: '0px', backgroundColor: 'rgb(0, 0, 0, 0.2)', color: 'silver'}}>Powered by AI</h1>
       </div>
 
+      <div
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+         <div style={{display: 'flex'}}>
+          <img src={Demo1} style={{ width: '60%'}} />
+          <div style={{width: '40%'}} align="left">
+            <h1 style={{padding: '30px', color: 'wheat'}}>Create Projects</h1>
+            <div align="left" style={{padding: '30px', color: 'silver', fontSize: '17px'}}>
+            With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
+            <br/>
+            <br/>
+            Once you have created a project, you can easily add new ideas to it, track progress, and share it with anyone if needed. 
+            
+            <br/>
+            <br/>
+            Our intuitive user interface makes it easy to manage multiple projects at once, so you can focus on bringing your ideas to life.
+            </div>
+          </div>
         </div>
+      </div>
+
+
+
+
+      <div
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+         <div style={{display: 'flex'}}>
+         <div style={{width: '40%'}} align="left">
+            <h1 style={{padding: '20px', color: 'wheat'}}>Manage Tasks</h1>
+            <div align="left" style={{paddingLeft: '20px', paddingRight: '30px', paddingTop: '30px', color: 'silver', fontSize: '17px'}}>
+            The hub of your project documentation and task management!
+            
+            <br/>
+            <br/>
+            Our platform is designed to help you stay organized and focused in the most simplest and the best minimalistic way possible.
+            <br/>
+            <br/>
+            Our <b>Kanban-style</b> task board lets you track the progress of your tasks in real-time, so you always know where your project stands.
+             </div>
+          </div>
+          <img src={ProjectView} style={{ width: '60%'}} />
         
-      )}
+        </div>
+      </div>
 
-   
 
 
-      {/* mobile */}
-      {from === "mobile" ? (
-        <MobileVersion signedIn={signedIn} />
-      ) : null}
-    </>
+
+
+      <div
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+         <div style={{display: 'flex'}}>
+          <img src={Demo3} style={{ width: '60%'}} />
+          <div style={{width: '40%'}} align="left">
+            <h1 style={{padding: '30px', color: 'wheat'}}>Rich Text Documentation</h1>
+            <div align="left" style={{padding: '30px', color: 'silver', fontSize: '17px'}}>
+            Your one-stop-shop for all your project documentation needs! Here, you can create rich-text documents with images and hierarchies, making it easy to organize your ideas.
+            <br/> 
+            <br/> 
+            Perfect for anyone who needs to keep track of project documentation, from entrepreneurs and startups to creative professionals and writers.
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div
+        style={{
+          minHeight: "100vh",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+         <div style={{display: 'flex'}}>
+         <div style={{width: '40%'}} align="left">
+            <h1 style={{padding: '20px', color: 'wheat'}}>AI Powered Ideation Assistant</h1>
+            <div align="left" style={{paddingLeft: '20px', paddingRight: '30px', paddingTop: '30px', color: 'silver', fontSize: '17px'}}>
+            Available with the documentation editor, is your personal AI-powered assistant for all your ideation needs! Our platform is designed to help you take your ideas to the next level by providing quick and easy access to smart AI technology. 
+            <br/>
+            <br/>
+            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help.
+            
+            <br/>
+            <br/>
+            Sign up today and start enhancing your ideas with the power of AI technology!</div>
+          </div>
+          <img src={IdeationAssistantView} style={{ width: '60%'}} />
+        
+        </div>
+      </div>
+
+
+
+
+
+      <Footer from={"mobile"} />
+    </div>
   );
 }
 

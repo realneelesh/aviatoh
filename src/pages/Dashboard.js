@@ -27,7 +27,6 @@ function Dashboard(props) {
     kanbanBoardId: ""
   });
 
-  const [ isPremium, setIsPremium ] = useState(false);
 
   const [ template, setTemplate ] = useState('Project');
 
@@ -36,6 +35,7 @@ function Dashboard(props) {
   const [addNewProject, setAddNewProject] = useState(false);
 
   
+  const [ isPremium, setIsPremium ] = useState(false);
 
   useEffect(() => {
     getDocument('Checks', 'check').then((res)=>{
@@ -102,7 +102,13 @@ function Dashboard(props) {
   }
 
   return (
-    <div style={{ position: "relative", minHeight: "100vh" }}>
+    <div style={{ position: "relative", width: '100vw', marginLeft: '-8px', minHeight: "100vh", 
+    justifyContent: 'center',
+    alignItems: 'center', 
+    background: 'url("")',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover', }}>
       {user === null && <SearchLoader />}
 
       {/* <div style={{
@@ -122,8 +128,7 @@ function Dashboard(props) {
           position: "sticky",
           top: "0px",
           width: "100vw",
-          marginLeft: "-8px",
-          background: `linear-gradient( to right, ${primarySilverColour},${primarySilverColour}`,
+          background: `linear-gradient( to right, ${primarySilverColour},${'transparent'}`,
           padding: "7px 0px",
         }}
       >
@@ -147,7 +152,7 @@ function Dashboard(props) {
       </div>
  
       <div align="left" style={{marginTop: '30px', marginBottom: '20px'}} >
-        <h1  style={{border: '0px', paddingLeft: '11px'}}>
+        <h1  style={{border: '0px', paddingLeft: '14px'}}>
             Your Projects
         </h1>
         <Link
@@ -182,7 +187,8 @@ function Dashboard(props) {
           display: "flex",
           flexWrap: "wrap",
           width: "100vw",
-          marginLeft: "-8px",
+          marginLeft: "5px", 
+          paddingBottom: '50px',
         }}
       >
         {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
@@ -200,7 +206,7 @@ function Dashboard(props) {
                     boxShadow: "rgba(0, 0, 0, 0.14) 0px 0px 20px",
                     // border: '1px solid rgb(200, 200, 200)',
                     backgroundColor: "white",
-                    margin: "10px 15px",
+                    margin: "8px 8px",
                     color: "grey",
                   }}
                 > 
@@ -209,12 +215,13 @@ function Dashboard(props) {
                   </span>
 
                   <div align="left" style={{ 
-                  overflow: 'scroll',
+                  overflow: 'hidden',
                   fontSize: "20px",
                 }}>
                 
                     {project.title.toUpperCase()}
                   </div>
+                  <br /> 
                   <br /> 
                   <div
                   style={{
@@ -232,7 +239,7 @@ function Dashboard(props) {
                   color: "gray",
                 }}
               >
-                  <h3 style={{ fontSize: "12px"}}>
+                  <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
                   View
                 </h3>  
                 </Link>
@@ -240,13 +247,12 @@ function Dashboard(props) {
                 &nbsp; 
                 <Link
                 to={"/project" + "/" + project.title}
-                target={"/project" + "/" + project.title}
                 style={{
                   textDecoration: "none",
                   color: "gray",
                 }}
               >
-                <h3 style={{ fontSize: "12px"}}>
+                <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
                   Edit
                 </h3>  
                 </Link>
@@ -282,7 +288,7 @@ function Dashboard(props) {
             position: "absolute",
             top: "37px",
             right: "50px",
-            borderRight: "1px solid " + "grey",
+            borderRight: "0px solid " + "grey",
             height: "120px",
             display: "flex",
             alignItems: "flex-end",
@@ -298,7 +304,7 @@ function Dashboard(props) {
             <Typewriter
               options={{
                 strings: [
-                  " ⚠️  No projects found",
+                  " No projects found",
                   " Click on '+' to add",
                 ],
                 autoStart: true,
@@ -363,11 +369,10 @@ function Dashboard(props) {
   
  <div style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start'}}>
          
+          <div style={{width: '100%', color: 'grey'}} align="left">
  <span style={{color: 'grey'}}>1. Project Title</span>  
-          <div style={{width: '100%', fontSize: '17px', color: 'grey'}} align="left">
-        
-          </div>
-        <input
+         
+          <input
           id="booktitle"
           style={{
             border: "0px",
@@ -382,6 +387,8 @@ function Dashboard(props) {
           }}
           placeholder="Type here ..."
         />
+          </div>
+        
         
         <br/> 
         <br/>  
@@ -482,22 +489,7 @@ function Dashboard(props) {
       <br/><br/>
       </div>
 
-      {<Link
-              id="linktoprofile"
-              to="/profile" style={{color: 'grey', backgroundColor: 'white', cursor: 'pointer'}}>
-                <i style={{
-                position: 'fixed',
-                bottom: '5px',
-                left: '10px',
-                cursor: 'pointer',
-                // boxShadow: '0px 0px 150px 30px '+ 'grey',
-                backgroundColor: 'transparent',
-                }} >
-              <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh} />
-                {isPremium ? <span style={{color: 'black', fontSize: '14px'}}>&nbsp; Premium </span> : 
-               null
-                }  </i>
-              </Link>}
+      
 
                 {/* SUBSCRIBE BUTTON */}
               {/* {

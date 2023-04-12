@@ -142,23 +142,23 @@ function KanbanBoard(props) {
  
  
  </div>     
-        <div style={{ 
-            backgroundColor: 'transparent',
+        <div style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center', 
             justifyContent: 'center',
             height: '65vh',
-            
-            background: `linear-gradient(${'white'}, white)`,
+            backgroundColor: 'transparent',
         }}>
      {/* <div style={{width: '81vw', marginBottom: '4px'}} align="left">
      <span style={{fontSize: '17px'}}>📎</span> Task Management Board (Kanban)
      </div> */}
             <div style={{width: '81vw', display: 'flex', border: '0px solid black', position: 'absolute', bottom: '0px',
             borderTop: '0px solid ' + primarySilverColour, 
-            
-            boxShadow: `rgba(0, 0, 0, 0.08) 0px 0px 13px`,
+            backgroundColor: 'white',
+            borderRadius: '0px 0px 0px 0px',
+            // boxShadow: `rgba(0, 0, 0, 0.08) 0px 0px 13px`,
+
 
             justifyContent: 'flex-start',}}>
             <div style={{
@@ -168,8 +168,9 @@ function KanbanBoard(props) {
                 zIndex: taskBeingDropped ? '9999' : '999',
                 borderRight: '0px solid ' + primarySilverColour,
                 paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid lavender',
+                borderRadius: '0px 0px 0px 0px',
 
-                background: 'linear-gradient(lavender, white)',
+                background: 'linear-gradient(rgb(230, 230, 250, 0.4), white)',
 
             }}
             onDrop={drop} onDragOver={allowDrop}
@@ -195,7 +196,7 @@ function KanbanBoard(props) {
                   zIndex: '999',
                   borderRadius: '50%',
                   left: '18px',
-                  top: '18px'
+                  top: '16px'
               }}
               onClick={()=>{
                 setAddNewTask(true);
@@ -292,8 +293,9 @@ function KanbanBoard(props) {
                 height: '65vh',
                 overflowY: 'auto',
                 borderRight: '0px solid ' + primarySilverColour,
-                background: 'linear-gradient(#fff7e3, white)',
-                paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid silver'
+                background: 'linear-gradient(rgb(255, 247, 227, 0.5), white)',
+                paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid silver',
+              
 
             }}
             align="center"
@@ -320,7 +322,9 @@ function KanbanBoard(props) {
                 width: '27vw',
                 height: '65vh',
                 overflowY: 'auto',
-                paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid '+primaryGreenColour(0.4), background: `linear-gradient(${primaryGreenColour(0.29)}, white)`,
+                borderRadius: '0px 0px 0px 0px',
+
+                paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid '+primaryGreenColour(0.2), background: `linear-gradient(${primaryGreenColour(0.1)}, white)`,
             }}
             onDrop={drop} onDragOver={allowDrop}
             align="center"
