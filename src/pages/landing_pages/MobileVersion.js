@@ -121,7 +121,7 @@ function MobileVersion(props) {
 
       <div
         style={{
-          minHeight: "50vh",
+          minHeight: "60vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -160,7 +160,7 @@ function MobileVersion(props) {
       <div
       id="aiAss"
         style={{
-          minHeight: "50vh",
+          minHeight: "70vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -198,7 +198,7 @@ function MobileVersion(props) {
 
       <div
         style={{
-          minHeight: "50vh",
+          minHeight: "70vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
