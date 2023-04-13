@@ -68,9 +68,8 @@ function MobileVersion(props) {
 
  
                    
-<h1 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0.8)'}}>Powered by AI 
-
-                 </h1>
+<h3 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '700', backgroundColor: 'rgb(255, 255, 255, 0.5)'}}>Powered by AI 
+                 </h3>
                  &nbsp; 
                     &nbsp;
 
@@ -78,7 +77,7 @@ function MobileVersion(props) {
                   document.getElementById('aiAss').scrollIntoView({
                     behavior: 'smooth'
                   });
-                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '40px', backgroundColor: 'white', borderRadius: '50%'}} className='fas fa-info-circle'></i>
+                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '27px', backgroundColor: 'white', borderRadius: '50%'}} className='fas fa-info-circle'></i>
                 
       </div>
       </div>
