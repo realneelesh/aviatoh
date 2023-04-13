@@ -85,7 +85,7 @@ function MobileVersion(props) {
       </div>
       <div
         style={{
-          minHeight: "50vh",
+          minHeight: "60vh",
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -93,7 +93,7 @@ function MobileVersion(props) {
       >
          <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
           <div style={{width: '90%'}} align="left">
-          Retain Ideas<hr/>
+          Retain Ideas<br/><br/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
             <br/> 
             First step in the process is to initiate a project, nurturing an idea in itself is a project!
@@ -132,7 +132,7 @@ function MobileVersion(props) {
         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
 
           <div align="left" style={{width: '90%'}}>
-            Document Ideas <hr/>
+            Document Ideas <br/><br/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Rich Text Documentation</h1>
             <br/>
             Document your ideas with upto 3 levels of documents hierarchy
@@ -169,7 +169,7 @@ function MobileVersion(props) {
    <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
 
          <div style={{width: '90%'}} align="left">
-          Refine Ideas<hr/>
+          Refine Ideas<br/><br/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Ideation Assist</h1>
             <br/>
             Discuss with integrated AI chat to unlock the potential of AI to refine your ideas, AI is more capable than ever!
@@ -208,7 +208,7 @@ function MobileVersion(props) {
                   <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around', flexDirection: 'column'}}>
        
           <div style={{width: '90%'}} align="left">
-            Scale Ideas<hr/>
+            Scale Ideas<br/><br/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Tasks Management</h1>
             <br/>
             Break down the idea execution into smaller tasks and executing them one by one,

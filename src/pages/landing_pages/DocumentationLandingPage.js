@@ -88,7 +88,10 @@ function DocumentationLandingPage(props) {
       >
          <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
           <div style={{width: '40%'}} align="left">
-            Retain Ideas<hr/>
+            Retain Ideas 
+            <br/>
+            <br/>
+
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
             <br/>
             <br/>
@@ -130,7 +133,7 @@ function DocumentationLandingPage(props) {
         <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
 
           <div style={{width: '40%'}} align="left">
-            Document Ideas<hr/>
+            Document Ideas<br/><br/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Rich Text Editor</h1>
             <br/>
             <br/>
@@ -163,7 +166,7 @@ function DocumentationLandingPage(props) {
    <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
 
          <div style={{width: '40%'}} align="left">
-          Refine Ideas<hr/>
+          Refine Ideas<br/><br/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assist</h1>
             <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
             A personal AI assistant, powered by OpenAI's Davinci-text-003 model
@@ -198,7 +201,7 @@ function DocumentationLandingPage(props) {
        
           <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
           <div style={{width: '40%'}} align="left">
-            Scale Ideas <hr/>
+            Scale Ideas <br/><br/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Tasks Management</h1>
             <br/>
             <br/>
@@ -234,7 +237,7 @@ function DocumentationLandingPage(props) {
         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
        
           <div style={{width: '40%'}} align="left">
-            Share Ideas <hr/>
+            Share Ideas <br/><br/>
             <h1 style={{padding: '0px', color: primaryBlueColour}}>Share with the World</h1>
             <br/>
             <br/>
