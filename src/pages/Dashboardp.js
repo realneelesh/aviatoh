@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Typewriter from "typewriter-effect";  
+import Typewriter from "typewriter-effect";
 import {
   primaryBlueColour,
   primaryGreenColour,
@@ -11,15 +11,12 @@ import { SearchLoader } from "../components/Loaders";
 import {
   getDocument,
   kanbanBoardsCollection,
-  projectsCollection,
   updateOrCreateDocument,
   usersCollection,
 } from "../db";
 import { templatePaths } from "../projectTemplates";
-import { IconAviatoh, Loader, Logo, LogoInside } from "../assets";
+import { IconAviatoh } from "../assets";
 import toaster from "../components/toaster";
-import AviatohLogo from "../components/AviatohLogo";
-import Feed from "../components/Feed";
 
 function Dashboard(props) {
   const { email } = props;
@@ -45,12 +42,10 @@ function Dashboard(props) {
       setIsPremium(true);
     })
 
-    window.name = 'dashboard';
-
     showPage();
     console.log(email);
     if (email) {
-    //   document.getElementById("booktitle").focus();
+      document.getElementById("booktitle").focus();
       getDocument(usersCollection, email).then((res) => {
         console.log(res.data());
         if (!res.data().paths || !res.data().projects) {
@@ -80,7 +75,7 @@ function Dashboard(props) {
     let tempProjects = user?.projects;
     const index = tempProjects?.map(x=>x.title.toLowerCase()).indexOf(project.toLowerCase());
  
-    let tempPaths = user.paths?.filter(x => x.project.toLowerCase().trim() !== project.toLowerCase().trim())
+    let tempPaths = user.paths.filter(x => x.project.toLowerCase() !== project.toLowerCase())
     if(index != -1) {
       tempProjects = tempProjects.filter(x=>x.title.toLowerCase()!==project.toLowerCase());
     }
@@ -91,19 +86,11 @@ function Dashboard(props) {
       data: []
     }).then(()=>{
         updateOrCreateDocument(usersCollection, email, {
-        //   activities: [...user.activities, 'Project deleted - ' + project],
+          activities: [...user.activities, 'Project deleted - ' + project],
           projects: tempProjects,
           paths: tempPaths
         }).then(res => {
           setUpdateUserFlag(!updateUserFlag);
-          updateOrCreateDocument(projectsCollection, email+'emailproject'+project, {
-            deleted: true
-           }).then((res)=>{
-
-           }).catch((err)=>{
-               console.log(err);
-               toaster(0, err.message);
-           });
         }).catch(err=>{
           toaster(0, err.message);
         })
@@ -114,25 +101,73 @@ function Dashboard(props) {
     }
   }
 
+  return (
+    <div style={{ position: "relative", width: '100vw', marginLeft: '-8px', minHeight: "100vh", 
+    justifyContent: 'center',
+    background:
+            'url("")',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: 'cover',
+    alignItems: 'center', backgroundAttachment: 'fixed' }}>
+      {user === null && <SearchLoader />}
 
-    return (
-        <div style={{display: 'flex', width: '100vw', marginLeft: '-8px', overflow: 'hidden', height: '100vh'}}>
-            <div style={{width: '18%', height: '100vh', backgroundColor: primaryBlueColour}}>
-          
-                <div align="left" style={{marginTop: '0px', color: 'white', height: '85vh', overflowY: 'scroll', paddingTop: '17px'}}>
-                    <div align="left">
-                    <span style={{color: 'silver', paddingLeft: '15px'}}> YOUR PROJECTS </span>
-                    &nbsp; 
-                    &nbsp; 
-                    <Link
+      {/* <div style={{
+        position: 'absolute',
+        zIndex: '-1',
+        width: '100vw',
+        marginLeft: '-8px',
+        backgroundColor: primaryGreenColour(0.4),
+        height: '230px'
+      }}></div> */}
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          position: "sticky",
+          top: "0px",
+          width: "70%",
+          background: `linear-gradient( to right, ${primarySilverColour},${'transparent'},${'transparent'}`,
+          padding: "7px 0px",
+        }}
+      >
+         
+        <span>
+            &nbsp; &nbsp; Dashboard</span>
+
+        <button 
+          style={{
+            backgroundColor: 'transparent',
+            color: "transparent",
+            margin: "0px",
+            marginRight: "10px",
+            fontSize: "13px",
+            zIndex: "99999",
+            visibility: 'none'
+          }}
+        >
+          + Add Project
+        </button>
+      </div>
+ 
+      <div align="left" style={{marginTop: '30px', marginBottom: '20px'}} >
+        <h1  style={{border: '0px', paddingLeft: '11px'}}>
+            Your Projects
+        </h1>
+        <Link
               style={{
                   cursor: 'pointer',
-                //   boxShadow: `${'silver'} 0px 0px 3px`, 
-                  color: "white",
-                  fontSize: '14px',
+                  padding: '7px 10px',
+                  paddingTop: '8px',
+                  boxShadow: `${'silver'} 0px 0px 3px`,
+                  backgroundColor: "white", 
+                  color: primaryBlueColour,
+                  fontSize: '18px',
                   textDecoration: 'none',
                   zIndex: '999',
                   borderRadius: '50%',
+                  transform: 'scale(0.4)'
               }}
               onClick={() => {
                 setAddNewProject(true);
@@ -144,30 +179,60 @@ function Dashboard(props) {
            <i className='fas fa-plus' style={{cursor: 'pointer'}}></i>
 
               
-            </Link> 
-            </div>
-         {/* <hr style={{marginLeft: '15px'}}/>    */}
-         <br/>
-            
-                    {
-                        user?.projects?.filter(x=>!x.title.includes('%arch'))?.length == 0 ? <div align="center" style={{padding: '15px', color: 'rgb(155, 155, 155)'}}><br/>No Projects Found</div> : null
-                    }
-                    {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
-                        return (
-                            <Link target={"/project" + "/" + project.title} to={"/project" + "/" + project.title} className="proj-list-item" style={{display: 'flex', padding: '12px 15px', justifyContent: 'space-between', alignItems: 'flex-end', cursor: 'pointer',
-                  textDecoration: 'none'
-                }}> 
-                                <span style={{ fontSize: "12px", color: 'silver', cursor: 'pointer' }}>
-                                    {project.type}
-                                    <br/>
-                                    <span style={{color: 'white', fontSize: '15px', width: '13vw', border: '0px solid silver', display: 'inline-block', overflow: 'overlay', scrollbar: 'hidden', whiteSpace:'no-wrap', cursor: 'pointer'}}>{project.title.toUpperCase()}</span>
-                                </span>
-                
-                
-                    
-                  
+            </Link>
+      </div>
 
-{/* <div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          width: "98vw",
+          marginLeft: '-8px', 
+          paddingBottom: '50px',
+          paddingLeft: '13px',
+        }}
+      >
+        {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
+          return (
+            <div style={{
+                maxWidth: '98vw',
+            }}> 
+                <div
+                  align="left"
+                  style={{
+                    paddingBottom: "23px",
+                    paddingTop: "17px",
+                    paddingLeft: "25px",
+                    paddingRight: "25px",
+                    boxShadow: "rgba(0, 0, 0, 0.14) 0px 0px 20px",
+                    // border: '1px solid rgb(200, 200, 200)',
+                    backgroundColor: "white",
+                    margin: "8px 8px",
+                    color: "grey",
+                  }}
+                > 
+                  <span style={{ fontSize: "12px", color: "grey" }}>
+                    {project.type}
+                  </span>
+
+                  <div align="left" style={{ 
+                  overflow: 'hidden',
+                  fontSize: "20px",
+                }}>
+                
+                    {project.title.toUpperCase()}
+                  </div>
+                  <br /> 
+                  <br /> 
+                  <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}
+                  >
+
+<div>
                   <Link
                 to={"/project" + "/view/" + email + "/" + project.title}
                 style={{
@@ -192,76 +257,69 @@ function Dashboard(props) {
                   Edit
                 </h3>  
                 </Link>
-                </div> */}
+                </div>
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
  
- {/* <Link
-                to={"/project" + "/view/" + email + "/" + project.title}
-                style={{
-                  textDecoration: "none",
-                  color: "gray",
-                }}
-              >
-                  <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
-                  Share 
-                </h3>  
-                </Link>
-                 */}
                 <i
-                    style={{ color: "silver", paddingBottom: '6px', fontSize: '12px', visibility: 'hidden'}}
-                    onClick={(e) => { 
-                        e.preventDefault();
+                    style={{ color: "silver" }}
+                    onClick={() => { 
                         deleteProject(project.title);
                     }}
                     className="fa fa-trash"
-                > 
-                </i>  
-            </Link>
+                >
+                </i>
+                </div>
+                </div>
+            </div>
           );
         })}
-                </div>
-            
-            </div>
+      </div>
 
+      {user?.projects?.filter(x=>!x.title.includes(projectArchiveStringSeparator)).length === 0 && (
+        <div
+          align="right"
+          style={{
+            position: "absolute",
+            top: "37px",
+            right: "50px",
+            borderRight: "0px solid " + "grey",
+            height: "120px",
+            display: "flex",
+            alignItems: "flex-end",
+            padding: "0px"
+          }}
+        >
+          <span
+            style={{
+              padding: "5px",
+              fontSize: "25px",
+            }}
+          >
+            <Typewriter
+              options={{
+                strings: [
+                  " No projects found",
+                  " Click on '+' to add",
+                ],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: 20,
+                delay: 40,
+                pauseFor: 900,
+              }}
+            />
+          </span>
 
-          
-
- 
-
-
-
-
-            <div align="left" style={{width: '82%', minHeight: '100vh', backgroundColor: 'rgb(246, 246, 246)'}}>
-                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 15px', boxShadow: `${'silver'} 0px 0px 3px`,}}>
-               
-                <img src={Logo} style={{width: '120px', borderRadius: '4px'}}  />
        
-                <Link to="/profile"><i className='fas fa-user-circle' style={{fontSize: '25px', color: 'white', cursor: 'pointer', backgroundColor: 'silver', borderRadius: '50%', padding: '3px'}}></i></Link>
-                </div> 
-                <br/>
-                {/* <div align="left" style={{width: '100%', padding: '15px', backgroundColor: primaryBlueColour}}>
-                            <span style={{marginLeft: '0px'}}>Recommended Feed</span>
-                            <span style={{marginLeft: '0px'}}>Filters</span>
-                        </div>
-                        <br/> */}
-                <div style={{ display: 'flex'}}>
-                    
-                    <div align="center" style={{width: '65%', height: '100vh', overflow: 'scroll'}}>
-                    
-                     <Feed email={email}/>
-                        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    </div>
-
-                    <div align="left" style={{width: '40%'}}>
-                        <div style={{width: '96%', border: '1px solid rgb(210, 210, 210)', height: '50vh', borderRadius: '5px'}}>
-                         
-                        </div>
-                   
-                    </div>
-                </div>
-      
-            </div>
-
-         
+        </div>
+      )}
 
 
 
@@ -269,25 +327,7 @@ function Dashboard(props) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            {/* add project modal */}
+      {/* add project modal */}
        
       <div
         style={{
@@ -368,7 +408,7 @@ function Dashboard(props) {
       }
     }}
     id="test1" name="template"/>
-    <label for="test1">Default (Customizable Docs)</label>
+    <label for="test1">Default</label>
   </p>
 
   <p>
@@ -413,7 +453,6 @@ function Dashboard(props) {
             } else {
                 if (projectToAdd.title && projectToAdd.title !== "") {
                     // var key = email + new Date().toString().replaceAll(" ", "");
-                    let templatePathsArray = [...templatePaths(email, template, projectToAdd.title)];
                     updateOrCreateDocument(usersCollection, email, {
                       activities: [...user.activities, 'Project added - ' + projectToAdd.title],
                       projects: [
@@ -426,23 +465,13 @@ function Dashboard(props) {
                       ],
                       paths: [
                         ...user.paths,
-                        ...templatePathsArray
+                        ...templatePaths(email, template, projectToAdd.title)
                       ]
                     })
                       .then((res) => {
                         setUpdateUserFlag(!updateUserFlag);
                         setAddNewProject(false);
                         document.getElementById("booktitle").value = "";
-                        updateOrCreateDocument(projectsCollection, email+'emailproject'+projectToAdd.title, {
-                         preview: templatePathsArray.find(x=>x.title === 'Introduction').topics[0].id,
-                         type: template,
-                         deleted: false
-                        }).then((res)=>{
-
-                        }).catch((err)=>{
-                            console.log(err);
-                            toaster(0, err.message);
-                        });
                       })
                       .catch((err) => {
                         toaster(0, err.message);
@@ -460,8 +489,16 @@ function Dashboard(props) {
       <br/><br/>
       <br/><br/>
       </div>
-        </div>
-    );
+
+      
+
+                {/* SUBSCRIBE BUTTON */}
+              {/* {
+  !isPremium &&  <Link to="/p" target={'paymentfafa'} style={{textDecoration: 'none', color: 'black', fontSize: '20px', position: 'fixed', bottom: '-25px', cursor: 'pointer', left: '35px'}}>&nbsp;&nbsp;<img src="https://t4.ftcdn.net/jpg/00/21/08/95/240_F_21089512_WOyLlOQG9huHMnsEClGiH8RkKzl3JTcf.jpg" style={{width: '90px', cursor: 'pointer'}} /></Link>
+} */}
+    
+    </div>
+  );
 }
 
 export default Dashboard;

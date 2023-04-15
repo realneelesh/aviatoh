@@ -44,7 +44,7 @@ function Project(props) {
         if (email) {
           document.getElementById("doctitle").focus();
           getDocument(usersCollection, email).then((res) => {
-            if(!res.data().projects.map(x=>x.title).includes(projecttitle)){ 
+            if(!res.data().projects.map(x=>x.title).includes(projecttitle)){
                 navigate('/');
             }
             console.log(res.data());
@@ -122,21 +122,29 @@ const renameProject = (title) => {
             minHeight: '100vh',
             width: '100vw',
             marginLeft: '-8px',
+            overflowX: 'hidden'
            
         }}>  
+        <Link to={`/project/view/${email}/${projecttitle}`} target={`/project/view/${email}/${projecttitle}`} className='fas fa-external-link-alt' style={{color: primaryBlueColour, fontSize: '13px', cursor: 'pointer', textDecoration: 'none', position: 'absolute', right: '11px', top: '29px'}}>&nbsp;  Docs View</Link>
         {loading && <SearchLoader /> }
   
-  <div align="left" style={{marginTop: '20px', marginBottom: '20px'}}>
+  <div align="left" style={{marginTop: '0px', marginBottom: '10px', display: 'flex'}}>
       <h1 id="projectTitle" style={{border: '0px', paddingLeft: '11px', paddingRight: '3px'}}>
-      { projecttitle.toUpperCase() }
+       <Link to={'/'} target={'dashboard'} style={{color: 'grey', textDecoration: 'none', cursor: 'pointer'}} className='far fa-arrow-alt-circle-left'></Link>
+ &nbsp;
+ &nbsp;
+        { projecttitle.toUpperCase() }
+        
+       
         </h1>
         <h1 id="projectTitleEdit" style={{padding:'0px', display: 'none', margin: '0px', border: '0px', paddingLeft: '5px'}}>
+          
             <input
             id={'projectTitleEditInput'}
             placeholder={projecttitle.toUpperCase()} style={{all: 'inherit'}} type="text">
-            </input></h1>
-            &nbsp; 
-            &nbsp; 
+            </input>
+            </h1> 
+            
         {'move it to dshboard for evry project card' === '' && <i
         onClick={(e)=>{
             document.getElementById('projectTitle').style.display = 'none';
@@ -153,7 +161,7 @@ const renameProject = (title) => {
         }}
         >Save</button>
       </div>
-      <div style={{ height: '15vh', display: 'flex', alignItems: 'center'}}>
+      <div style={{ display: 'flex', alignItems: 'center'}}>
 
 <div>
 <div align="left" style={{paddingLeft: '10px'}}>Documentation Blocks </div>  
@@ -182,13 +190,15 @@ const renameProject = (title) => {
             }); 
             asciiValueSumOfTitle=(asciiValueSumOfTitle*i)%90; 
             return <Link 
-                target={"/edit/" + email + "/" + projecttitle + "/" + path.title}
+                // target={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 to={"/edit/" + email + "/" + projecttitle + "/" + path.title}
                 className="scopes"
                 style={{ display: 'flex',
                 alignItems: 'center',
+                paddingTop: "10px", 
+                paddingBottom: "10px",
                     paddingLeft: "25px",
-                    paddingRight: "40px",
+                    paddingRight: "25px",
                     boxShadow: `${'silver'} 0px 0px 3px`,
 
                     backgroundColor: "white", 
@@ -204,7 +214,7 @@ const renameProject = (title) => {
 
               <div 
               className='deleteblock'
-               style={{zIndex: '99', position: 'absolute', right: '4px', top: '6px', padding: '0px 5px',  display: 'flex', alignItems: 'center', fontSize: '12px'}}>
+               style={{zIndex: '99', position: 'absolute', right: '4px', top: '6px', padding: '0px 5px',  display: 'flex', alignItems: 'center', fontSize: '12px', visibility: user?.projects?.find(x => x.title === projecttitle).type == 'Project' ? 'visible' : 'hidden'}}>
                 <i
                 onClick={(e)=>{
                   e.preventDefault();
@@ -228,45 +238,45 @@ const renameProject = (title) => {
                   
                   <div style={{
                     marginRight: '10px'
-                }}>{path.type === 'collection' ? <i style={{color: 'grey', fontSize: '15px', transform: 'rotate(-90deg)'}} className="fa fa-server"></i> : null}</div> 
+                }}>{path.type === 'collection' ? <i style={{color: primaryBlueColour, fontSize: '15px'}} className="fas fa-layer-group"></i> : <i style={{color: primaryBlueColour, fontSize: '15px'}} className="far fa-file-alt"></i>}</div> 
                 {path.title}
                 </div>
               </Link>
         })
     }
 
-{
-              <Link
-              style={{
-                  cursor: 'pointer',
-                  paddingTop: "10px",
-                  paddingBottom: "8px",
-                  paddingLeft: "14px",
-                  paddingRight: "14px",
-                  boxShadow: `${'silver'} 0px 0px 3px`,
-                  backgroundColor: "white", 
-                  color: primaryBlueColour,
-                  fontSize: '18px',
-                  textDecoration: 'none',
-                  marginBottom: '1px',
-                  position: 'relative',
-                  marginLeft: '10px',
-                  position: 'sticky',
-                  right: '0px',
-                  zIndex: '999',
-                  // borderRadius: '50% 0px 0px 50%',
-              }}
-              onClick={()=>{
-                setAddNewPath(true);
-                setTimeout(()=>{
-                  document.getElementById('doctitle').focus();
-                }, 300)
-              }}
-            >  
-           <i className='fas fa-plus' style={{cursor: 'pointer'}}></i>
+{ user?.projects?.find(x => x.title === projecttitle).type == 'Project' &&
+               <Link
+               style={{
+                   cursor: 'pointer',
+                   paddingTop: "10px",
+                   paddingBottom: "8px",
+                   paddingLeft: "14px",
+                   paddingRight: "14px",
+                   boxShadow: `${'silver'} 0px 0px 3px`,
+                   backgroundColor: "white", 
+                   color: primaryBlueColour,
+                   fontSize: '18px',
+                   textDecoration: 'none',
+                   marginBottom: '1px',
+                   position: 'relative',
+                   marginLeft: '10px',
+                   position: 'sticky',
+                   right: '0px',
+                   zIndex: '999',
+                   // borderRadius: '50% 0px 0px 50%',
+               }}
+               onClick={()=>{
+                 setAddNewPath(true);
+                 setTimeout(()=>{
+                   document.getElementById('doctitle').focus();
+                 }, 300)
+               }}
+             >  
+            <i className='fas fa-plus' style={{cursor: 'pointer'}}></i>
 
               
-            </Link>
+             </Link>
             }
    
 </div> 
@@ -378,7 +388,7 @@ const renameProject = (title) => {
           margin: '2px'
         }}
         onClick={() => {
-          if(user.paths.map(x=>x.title).map(x=>x.toLowerCase().trim()).indexOf(pathToAdd.title.toLowerCase().trim()) != -1){
+          if(user.paths.filter(x => x.title === projecttitle).map(x=>x.title).map(x=>x.toLowerCase().trim()).indexOf(pathToAdd.title.toLowerCase().trim()) != -1){
             toaster(0, 'Title must be unique');
           } else {
           if (pathToAdd.title && pathToAdd.title !== "") {
@@ -406,7 +416,7 @@ const renameProject = (title) => {
                   document.getElementById("doctitle").value = "";
                   if(typeOfBlock === 'single'){
                     updateOrCreateDocument(topicsCollection, key, {
-                      data: `<h2 style="text-align: left;"><span style="color: rgb(126, 140, 141);">${pathToAdd.title}</span></h2> <p><span style="color: rgb(126, 140, 141);">You can delete this text and start writing the documentation...</span> <p>&nbsp;</p> <p>&nbsp;</p>`,
+                      data: `<h3 style="text-align: left;">${pathToAdd.title}</span></h3> <p><span style="color: rgb(126, 140, 141);">...</span> <p>&nbsp;</p>`,
                     }).then((res) => {
                       setPathAdded(!pathAdded);
                       setAddNewPath(false);

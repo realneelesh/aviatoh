@@ -4,17 +4,10 @@ const defaultTemplate = [
     {
       title: 'Introduction',
       project: '',
-      description: '',
+      description: 'Short summary of the project',
       topics: [],
       type: 'single',
-    },
-    {
-      title: 'Objectives',
-      project: '',
-      description: '',
-      topics: [],
-      type: 'single'
-    },
+    }
   ];
 
 
@@ -23,38 +16,31 @@ const startupbusinessideaTemplate = [
     {
       title: 'Introduction',
       project: '',
-      description: '',
+      description: 'Short summary of what problem does the idea solve and how?',
       topics: [],
       type: 'single'
     },
      {
-       title: 'Proof of Concept',
+       title: 'Idea in detail',
        project: '',
-       description: '',
+       description: 'Detailed explanation about how does the solution work.',
        topics: [],
        type: 'single'
      },
      {
-      title: 'Technical Documentation',
+      title: 'Technical Docs',
       project: '',
-      description: '',
+      description: 'Prototype, MVP or other technical implementation details.',
       topics: [],
       type: 'collection'
     },
     {
-      title: 'Marketing',
+      title: 'Marketing and Sales Docs',
       project: '',
-      description: '',
+      description: 'Marketing and Sales Strategy',
       topics: [],
-      type: 'single'
-   },
-     {
-       title: 'Customer Feedback',
-       project: '',
-       description: '',
-       topics: [],
-       type: 'single'
-    }
+      type: 'collection'
+   }
   ];
 
 
@@ -62,38 +48,31 @@ const writeabookTemplate = [
     {
         title: 'Introduction',
         project: '',
-        description: '',
+        description: 'Short summary of the book',
         topics: [],
         type: 'single'
     },
     {
-        title: 'Preface',
+        title: 'Front Matter',
         project: '',
-        description: '',
-        topics: [],
-        type: 'single'
-    },
-    {
-        title: 'Chapters',
-        project: '',
-        description: '',
+        description: 'Pages like Table of Contents, Dedication page, Preface etc.',
         topics: [],
         type: 'collection'
     },
     {
-        title: 'Glossary',
+        title: 'Body',
         project: '',
-        description: '',
+        description: 'Pages like Prologue, Chapters, Epilogue, Conclusion etc.',
         topics: [],
-        type: 'single'
+        type: 'collection'
     },
     {
-        title: 'References',
+        title: 'Back Matter',
         project: '',
-        description: '',
+        description: 'Pages like Acknowledgements, About the author, Glossary etc.',
         topics: [],
-        type: 'single'
-    }
+        type: 'collection'
+    },
   ];
 
 
@@ -106,7 +85,7 @@ export const templatePaths = (email, template, projectTitle) => {
           if(path.type === 'single'){
             const key = email + new Date().toString().replaceAll(" ", "") + i;
             updateOrCreateDocument(topicsCollection, key, {
-              data: `<h2 style="text-align: left;"><span style="color: rgb(126, 140, 141);">${path.title}</span></h2> `
+              data: `<h3 style="text-align: left;">${path.title}</h3>`
             });
             path.topics = [{
               id: key,
@@ -120,7 +99,7 @@ export const templatePaths = (email, template, projectTitle) => {
           if(path.type === 'single'){
             const key = email + new Date().toString().replaceAll(" ", "") + i;
             updateOrCreateDocument(topicsCollection, key, {
-              data: `<h2 style="text-align: left;"><span style="color: rgb(126, 140, 141);">${path.title}</span></h2> `
+              data: `<h3 style="text-align: left;">${path.title}</h3>`
             });
             path.topics = [{
               id: key,
@@ -134,7 +113,7 @@ export const templatePaths = (email, template, projectTitle) => {
           if(path.type === 'single'){
             const key = email + new Date().toString().replaceAll(" ", "") + i;
             updateOrCreateDocument(topicsCollection, key, {
-              data: `<h2 style="text-align: left;"><span style="color: rgb(126, 140, 141);">${path.title}</span></h2> `
+              data: `<h3 style="text-align: left;">${path.title}</h3>`
             });
             path.topics = [{
               id: key,

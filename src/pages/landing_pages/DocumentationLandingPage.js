@@ -14,7 +14,7 @@ import Typewriter from "typewriter-effect";
 import Footer from "../../components/Footer";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../db";
-import { primaryBlueColour, primaryGreenColour } from "../../App";
+import { primaryBlueColour, primaryGreenColour, primarySilverColour } from "../../App";
 const provider = new GoogleAuthProvider();
 
 function DocumentationLandingPage(props) {
@@ -22,21 +22,40 @@ function DocumentationLandingPage(props) {
 
   return (
     <div id="documentationLandingPageView" style={{position: 'relative', width: '100vw', marginLeft: '-8px', backgroundColor: ' '}}>
-      <div style={{position: 'absolute', top: '9px', right: '25px', display: 'flex', alignItems: 'center'}}
+{/* signIn */}
+      <div style={{position: 'absolute', top: '9px', right: '182px', display: 'flex', alignItems: 'center', cursor: 'pointer', zIndex: '99999'}}
             onClick={() => {
                 signInWithPopup(auth, provider);
               }}
             >
-            <img src={Signinwithgoogleicon} style={{width: '35px'}} />
+            <img src={Signinwithgoogleicon} style={{width: '35px', cursor: 'pointer'}} />
             <span style={{ color: 'grey', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Sign In</span>
             
             </div>
-      <div align="left" style={{position: 'absolute', top: '5px', marginLeft: '-4px'}}>
+
+{/* blogs */}
+            <div style={{  position: 'absolute', top: '9px', right: '25px', display: 'flex', alignItems: 'center', borderRight: '0px solid silver'}}
+           
+            > 
+            <img src={Signinwithgoogleicon} style={{width: '35px', visibility: 'hidden'}} />
+            <a href="https://aviatoh.com/#/insights" style={{textDecoration: 'none', color: 'grey', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Blogs</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://aviatoh.com/#/aboutus" style={{textDecoration: 'none', color: 'grey', fontSize: '16px', cursor: 'pointer'}}>About Us</a>
+            
+            </div>
+
+      <div align="left" style={{position: 'absolute', top: '15px', marginLeft: '20px'}}>
       <img
         src={Logo}
         width={190}
-        style={{ position: "absolute", left: "23px", top: "10px" }}
+        style={{   }}
       />
+      <br/>
+      <h3 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500', padding: '0px 7px'}}>
+  Ideation and Documentation Platform
+
+</h3>
+
       </div>
       
 
@@ -48,6 +67,7 @@ function DocumentationLandingPage(props) {
           flexDirection: 'column',
           alignItems: 'flex-start',
           paddingLeft: '20px',
+          paddingTop: '60px',
           justifyContent: 'center',
           // backgroundColor: primaryGreenColour(0.5),
           background:
@@ -56,8 +76,13 @@ function DocumentationLandingPage(props) {
           backgroundSize: 'cover'
         }}
       >
-        <h1 align="left"  style={{fontSize: '40px', width: '55%',color: 'rgb(140, 140, 140)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
-        Idea are worthless unless you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them</h1>
+        <span align="left"  style={{fontSize: '38px', width: '50%',color: 'rgb(166, 166, 166)', padding: '10px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
+ 
+
+        Ideas hold no value unless you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them
+        </span>
+ 
+ <br/>
  <br/>
  <br/>
  <br/> <br/>
@@ -65,14 +90,15 @@ function DocumentationLandingPage(props) {
  <div align="center" style={{ width: '100%', marginLeft: '-8px'}}>
  <div   style={{display: 'flex', alignItems: 'center', marginLeft: '17px', justifyContent: 'center', width: '100%', marginLeft: '-8px'}}>
 
+
+
+
  <i onClick={()=>{
                   document.getElementById('aiAss').scrollIntoView({
                     behavior: 'smooth'
                   });
-                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '30px'}} className='fas fa-info-circle'></i>
-<h1 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500'}}>Powered by AI 
-                   
-                 </h1>
+                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '25px'}} className='fas fa-info-circle'></i>
+<h1 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500'}}>Powered by AI  </h1>
                 
       </div>
       </div>
@@ -87,7 +113,7 @@ function DocumentationLandingPage(props) {
         }}
       >
          <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-          <div style={{width: '40%'}} align="left">
+          <div style={{width: '50%'}} align="left">
             Retain Ideas 
             <br/>
             <br/>
@@ -111,7 +137,7 @@ function DocumentationLandingPage(props) {
             </ul>
             </div>
           </div> 
-          <img  src={Demo1} className="floating h" style={{ width: '35%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
+          {/* <img  src={Demo1} className="floating h" style={{ width: '35%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} /> */}
  
 
         </div>
@@ -130,19 +156,27 @@ function DocumentationLandingPage(props) {
         }}
       >
         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-        <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} />
+        {/* <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} /> */}
 
-          <div style={{width: '40%'}} align="left">
+          <div style={{width: '50%'}} align="left">
             Document Ideas<br/><br/>
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>Rich Text Editor</h1>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
             <br/>
             <br/>
             <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            Document your ideas with upto 3 levels of documents hierarchy
-            <br/> 
-            <br/> 
-            Perfect for anyone who needs to keep track of the ideation process, from entrepreneurs to creative professionals and writers
- 
+            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
+            <br/>
+            <br/> */}
+            Nurturing a thought into an idea in itself is a project.
+
+            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
+            <br/>
+            <br/>
+            To start with, we provide project templates of following types<br/>
+            <ul>
+              <li className="list">Business/Startup Idea</li>
+              <li className="list">Book Writing</li>
+            </ul>
             </div>
           </div>
 
@@ -165,18 +199,29 @@ function DocumentationLandingPage(props) {
       >
    <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
 
-         <div style={{width: '40%'}} align="left">
+         <div style={{width: '50%'}} align="left">
           Refine Ideas<br/><br/>
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>AI Powered Ideation Assist</h1>
-            <div align="left" style={{paddingRight: '30px', paddingTop: '30px', color: 'grey', fontSize: '16px'}}>
-            A personal AI assistant, powered by OpenAI's Davinci-text-003 model
+          <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
             <br/>
-<br/>
-            Whether you need help with fact-checking or want to enhance your idea with innovative insights, our AI assistant is here to help!
-             </div>
+            <br/>
+            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
+            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
+            <br/>
+            <br/> */}
+            Nurturing a thought into an idea in itself is a project.
+
+            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
+            <br/>
+            <br/>
+            To start with, we provide project templates of following types<br/>
+            <ul>
+              <li className="list">Business/Startup Idea</li>
+              <li className="list">Book Writing</li>
+            </ul>
+            </div>
           </div>
 
-   <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} />
+   {/* <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} /> */}
 
         
         </div>
@@ -199,24 +244,26 @@ function DocumentationLandingPage(props) {
       >
         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
        
-          <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
-          <div style={{width: '40%'}} align="left">
+          {/* <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} /> */}
+          <div style={{width: '50%'}} align="left">
             Scale Ideas <br/><br/>
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>Tasks Management</h1>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
             <br/>
             <br/>
+            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
+            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
+            <br/>
+            <br/> */}
+            Nurturing a thought into an idea in itself is a project.
 
-            <div align="left" style={{  color: 'grey', fontSize: '16px'}}>
-            The hub of your project documentation and task management!
-            
+            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
             <br/>
             <br/>
-            Break down the idea execution into smaller tasks and executing them one by one. For every project, you get a seperate <b>kanban-style</b> board to track the tasks in three categories i.e.
+            To start with, we provide project templates of following types<br/>
             <ul>
-              <li className="list">To Do</li>
-              <li className="list">In Progress</li>
-              <li className="list">Completed</li>
-            </ul> 
+              <li className="list">Business/Startup Idea</li>
+              <li className="list">Book Writing</li>
+            </ul>
              </div>
           </div>
         </div>
@@ -236,23 +283,28 @@ function DocumentationLandingPage(props) {
       >
         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
        
-          <div style={{width: '40%'}} align="left">
+          <div style={{width: '50%'}} align="left">
             Share Ideas <br/><br/>
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>Share with the World</h1>
+            <h1 style={{padding: '0px', color: primaryBlueColour}}>The Social Media</h1>
             <br/>
             <br/>
+            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
+            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
+            <br/>
+            <br/> */}
+            Nurturing a thought into an idea in itself is a project.
 
-            <div align="left" style={{  color: 'grey', fontSize: '16px'}}>
-            You can share the link to your documentation to interested parties i.e.
+            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
+            <br/>
+            <br/>
+            To start with, we provide project templates of following types<br/>
             <ul>
-              <li className="list">Potential Investers</li>
-              <li className="list">Potential Contributors</li>
-              <li className="list">Fund raising websites</li>
+              <li className="list">Business/Startup Idea</li>
+              <li className="list">Book Writing</li>
             </ul>
-           
              </div>
           </div>
-          <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} />
+          {/* <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} /> */}
 
         </div>
       </div>

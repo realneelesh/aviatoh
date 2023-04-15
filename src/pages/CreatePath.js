@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { primaryBlueColour, primarySilverColour } from "../App";
+import { Link, useParams } from "react-router-dom";
+import { primaryBlueColour, primaryGreenColour, primarySilverColour } from "../App";
 import { OpenaiIcon } from "../assets";
 import AIGeneral from "../components/AIGeneral";
 import TextEditor from "../components/TextEditor";
@@ -24,6 +24,8 @@ function CreatePath(props) {
 
   const [ dataToBeSaved, setDataToBeSaved ] = useState(null);
 
+  const [ showToolTip, setShowToolTip ] = useState(false);
+
   const [ changesSaved, setChangesSaved ] = useState(true);
 
   const [ showAiGeneral, setShowAiGeneral ] = useState(false);
@@ -43,11 +45,11 @@ function CreatePath(props) {
     document.getElementById('linktoprofile').style.display = 'none';
   
     setIsCollectionType(user?.paths
-            .find((x) => x.title === pathtitle && x.project === projecttitle).type === 'collection')
+            .find((x) => x.title === pathtitle && x.project === projecttitle)?.type === 'collection')
     document.title = !changesSaved ? 'Unsaved changes' : pathtitle + ' | ' + projecttitle;
 
     if(cTopicId === null){
-        setCTopicId(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics?.length > 0 ?
+        setCTopicId(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle)?.topics?.length > 0 ?
         user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0]?.id:
         null );
         if(user?.paths.find((x) => x.title === pathtitle && x.project === projecttitle).topics[0]?.id){
@@ -110,9 +112,9 @@ function CreatePath(props) {
       toaster(-1, 'Title must be unique and non-empty');
     } else {
       var key = email + new Date().toString().replaceAll(" ", "");
-      updateOrCreateDocument(topicsCollection, key, {data: `<div style="background-color: ${'white'};">
-      <h1 style="margin: 0px;color:grey;">${topic}</h1>
-      <div style="color:grey;">A short description of the topic</div>
+      updateOrCreateDocument(topicsCollection, key, {data: `<div>
+      <h3 style="margin: 0px;color:black;">${topic}</h3>
+      <div style="color:black;">...</div>
       </div>
       <p></p>`,
       })
@@ -173,24 +175,34 @@ function CreatePath(props) {
     alignItems: 'center',
     marginRight: '-2px', 
     zIndex: '999999',
-    background: changesSaved ? `linear-gradient( to right, ${'rgb(225, 225, 225)'},${primarySilverColour},${primarySilverColour})`:`linear-gradient( to right,${primarySilverColour},${primarySilverColour},${primaryBlueColour})`, 
+    // background: changesSaved ? `linear-gradient( to right, ${'rgb(225, 225, 225)'},${primarySilverColour},${primarySilverColour})`:`linear-gradient( to right,${primarySilverColour},${primarySilverColour},${primaryBlueColour})`, 
     padding: '8px 9px'}}>
   
-  <span> 
+  <h2 style={{display: 'flex', alignItems: 'center', margin: '0px', paddingLeft: '0px'}}> 
  
   &nbsp;
+  <Link  to={'/project/'+projecttitle} style={{color: 'grey', textDecoration: 'none', cursor: 'pointer'}} className='far fa-arrow-alt-circle-left'></Link>
+  
+  &nbsp;
+ 
   <span style={{display: 'inline'}}>
   
  &nbsp;
     </span>
-       {projecttitle}
-  &nbsp; 
+       {projecttitle.toUpperCase()}
   &nbsp;  
   |
   &nbsp; 
 
-  {pathtitle} 
-  </span>
+  {pathtitle}   &nbsp;<i onClick={()=>{
+                 setShowToolTip(!showToolTip); 
+                 setTimeout(()=>{
+                 setShowToolTip(false); 
+                 }, 5000);
+                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '19px', backgroundColor: 'white', borderRadius: '50%'}} className='fas fa-info-circle'></i>
+                    
+               { showToolTip && <span style={{color: 'black', padding: '3px', backgroundColor: 'white', fontSize: '17px'}}>{user?.paths?.find(x=>x.title==pathtitle && x.project == projecttitle)?.description}</span>}
+  </h2>
     
   <span>
   { <button
@@ -234,6 +246,7 @@ function CreatePath(props) {
             background:`linear-gradient(${primarySilverColour}, white)`
         }}
         >
+          
         
     <div align="center"> 
        { isCollectionType  &&
@@ -245,6 +258,8 @@ function CreatePath(props) {
             marginTop: "0px", height: '83vh', overflowY: 'scroll', overflowX:'hidden', paddingTop: '7px', paddingRight: '10px' }}
             align="left"
         >  
+  <br/>
+
   <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '7px', alignItems :'center', marginRight: '-2px'}}>
             <input
                 id="newTopic"

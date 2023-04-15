@@ -30,10 +30,7 @@ import PaymentsPopUp from './pages/payments';
 
 import 'react-toastify/dist/ReactToastify.css';
 import toaster from './components/toaster';
-import { IconAviatoh, Logo } from './assets';
-import Footer from './components/Footer';
-import AviatohLogo from './components/AviatohLogo';
-import axios from 'axios';
+import { IconAviatoh, Logo } from './assets'; 
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -56,7 +53,7 @@ const analytics = getAnalytics(app);
  
 const auth = getAuth(app);
 
-export const primaryBlueColour = '#2e4c57';
+export const primaryBlueColour = '#35465d';
 export const primaryRedColour = '#a21028';
 export const primaryYellowColour = '#ffb43b';
 
@@ -64,7 +61,7 @@ export const primaryGreenColour = (alpha) => {
   return `rgb(61, 153, 112, ${alpha})`
 }
 
-export const primarySilverColour = 'rgb(240,240,240)';
+export const primarySilverColour = 'rgb(238,238,238)';
 
 window.mobileCheck = function() {
   let check = false;
@@ -247,9 +244,10 @@ function App() {
               
               </Routes>
 
-              {<Link
+              {
+                <Link
               id="linktoprofile"
-              to="/profile" style={{color: 'grey', backgroundColor: 'white', cursor: 'pointer'}}>
+              to="/profile" style={{visibility: 'hidden',color: 'grey', backgroundColor: 'white', cursor: 'pointer'}}>
                 <i style={{
                 position: 'fixed', 
                 top: '6px',
@@ -263,7 +261,8 @@ function App() {
                 }  */}
               <img className="fa gear" style={{width: '30px', cursor: 'pointer'}} src={IconAviatoh}/>
                  </i>
-              </Link>}
+              </Link>
+              }
             </div> 
 
     </BrowserRouter>}
