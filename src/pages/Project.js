@@ -125,7 +125,7 @@ const renameProject = (title) => {
             overflowX: 'hidden'
            
         }}>  
-        <Link to={`/project/view/${email}/${projecttitle}`} target={`/project/view/${email}/${projecttitle}`} className='fas fa-external-link-alt' style={{color: primaryBlueColour, fontSize: '13px', cursor: 'pointer', textDecoration: 'none', position: 'absolute', right: '11px', top: '29px'}}>&nbsp;  Docs View</Link>
+        <Link to={`/project/view/${email}/${projecttitle}`} className='fas fa-external-link-alt' style={{color: primaryBlueColour, fontSize: '13px', cursor: 'pointer', textDecoration: 'none', position: 'absolute', right: '11px', top: '29px'}}>&nbsp;  Docs View</Link>
         {loading && <SearchLoader /> }
   
   <div align="left" style={{marginTop: '0px', marginBottom: '10px', display: 'flex'}}>
