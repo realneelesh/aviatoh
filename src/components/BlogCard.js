@@ -5,7 +5,7 @@ import { Openailogo } from '../assets';
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-apiKey: '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',
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
