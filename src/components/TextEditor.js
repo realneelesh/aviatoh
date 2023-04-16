@@ -27,7 +27,7 @@ function TextEditor(props) {
     }, 0);
   });
 
-  return (
+  return ( 
     <div align="right" style={{ marginTop: "0px", position: 'relative' }}>
       <input style={{position: 'absolute', display: 'none'}}
       onChange={(e)=>{
@@ -57,6 +57,8 @@ function TextEditor(props) {
       }}
       id="imgUpload" type="file"/>
       {!disabled &&  
+
+<grammarly-editor-plugin>
       <Editor
         disabled={disabled}
         apiKey="your-api-key"
@@ -107,8 +109,7 @@ function TextEditor(props) {
             "media",
             "table",
             "code",
-            "help",
-            "wordcount"
+            "help", 
           ],
           toolbar:
             "blocks | " +
@@ -118,13 +119,14 @@ function TextEditor(props) {
           content_style:
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px; borderRadius: 0px;}",
         }}
-      />}
+      />
+       </grammarly-editor-plugin>}
 
       {disabled && isCollection && <div style={{height:'60vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
       <h1 style={{border: '0px', color: 'grey'}}>Add a document to this collection</h1>
         </div>}
       {!isCollection && disabled && <SearchLoader />}
-    </div>
+    </div> 
   );
 }
 

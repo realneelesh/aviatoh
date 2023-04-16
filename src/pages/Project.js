@@ -195,11 +195,11 @@ const renameProject = (title) => {
                 className="scopes"
                 style={{ display: 'flex',
                 alignItems: 'center',
-                paddingTop: "10px", 
-                paddingBottom: "10px",
+                paddingTop: "8px", 
+                paddingBottom: "8px",
                     paddingLeft: "25px",
                     paddingRight: "25px",
-                    boxShadow: `${'silver'} 0px 0px 3px`,
+                    boxShadow: `${'rgb(210, 210, 210)'} 0px 0px 2px`,
 
                     backgroundColor: "white", 
                     color: "grey",

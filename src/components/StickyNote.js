@@ -27,7 +27,7 @@ function StickyNote(props) {
     return (
         <div style={{
             backgroundColor: 'white',
-            padding: '7px 10px',
+            padding: '13px 13px',
             cursor: 'grab',
             boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 10px",
             textAlign: 'left',
@@ -36,6 +36,7 @@ function StickyNote(props) {
             alignItems: 'center',
             position: 'relative',
             marginBottom: '20px',
+            borderRadius: '7px'
             
         }}
         draggable="true" onDragStart={drag} onDragOver={allowDrop} onDragEnd={()=>{

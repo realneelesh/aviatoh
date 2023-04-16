@@ -20,6 +20,8 @@ import { IconAviatoh, Loader, Logo, LogoInside } from "../assets";
 import toaster from "../components/toaster";
 import AviatohLogo from "../components/AviatohLogo";
 import Feed from "../components/Feed";
+import BlogCard from "../components/BlogCard";
+import ProfileCard from "../components/ProfileCard";
 
 function Dashboard(props) {
   const { email } = props;
@@ -121,9 +123,8 @@ function Dashboard(props) {
           
                 <div align="left" style={{marginTop: '0px', color: 'white', height: '85vh', overflowY: 'scroll', paddingTop: '17px'}}>
                     <div align="left">
-                    <span style={{color: 'silver', paddingLeft: '15px'}}> YOUR PROJECTS </span>
-                    &nbsp; 
-                    &nbsp; 
+                    <span style={{color: 'silver', paddingLeft: '15px', margin: '0px'}}> YOUR PROJECTS </span>
+                     &nbsp;
                     <Link
               style={{
                   cursor: 'pointer',
@@ -154,7 +155,9 @@ function Dashboard(props) {
                     }
                     {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
                         return (
-                            <Link target={"/project" + "/" + project.title} to={"/project" + "/" + project.title} className="proj-list-item" style={{display: 'flex', padding: '12px 15px', justifyContent: 'space-between', alignItems: 'flex-end', cursor: 'pointer',
+                            <Link
+                            target={"/project" + "/" + project.title}
+                            to={"/project" + "/" + project.title} className="proj-list-item" style={{display: 'flex', padding: '12px 15px', justifyContent: 'space-between', alignItems: 'flex-end', cursor: 'pointer',
                   textDecoration: 'none'
                 }}> 
                                 <span style={{ fontSize: "12px", color: 'silver', cursor: 'pointer' }}>
@@ -230,7 +233,7 @@ function Dashboard(props) {
 
 
 
-            <div align="left" style={{width: '82%', minHeight: '100vh', backgroundColor: 'rgb(246, 246, 246)'}}>
+            <div align="left" style={{width: '82%', minHeight: '100vh', backgroundColor: ' '}}>
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 15px', boxShadow: `${'silver'} 0px 0px 3px`,}}>
                
                 <img src={Logo} style={{width: '120px', borderRadius: '4px'}}  />
@@ -243,20 +246,23 @@ function Dashboard(props) {
                             <span style={{marginLeft: '0px'}}>Filters</span>
                         </div>
                         <br/> */}
-                <div style={{ display: 'flex'}}>
-                    
-                    <div align="center" style={{width: '65%', height: '100vh', overflow: 'scroll'}}>
-                    
-                     <Feed email={email}/>
-                        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <div align="center" style={{}}>
+                <div align="center" style={{width: '80%'}}>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                      <BlogCard /> 
                     </div>
+                  {/* <div align="center" style={{width: '37%', height: '100vh', overflow: 'scroll', background: 'linear-gradient(white, rgb(241, 241, 241))'}}>
+                    
+                    <Feed email={email}/>
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/>  
 
-                    <div align="left" style={{width: '40%'}}>
-                        <div style={{width: '96%', border: '1px solid rgb(210, 210, 210)', height: '50vh', borderRadius: '5px'}}>
-                         
-                        </div>
-                   
-                    </div>
+                        <ProfileCard email={email} />
+                    </div>   */}
+
+                    
                 </div>
       
             </div>

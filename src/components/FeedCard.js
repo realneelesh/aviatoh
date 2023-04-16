@@ -35,9 +35,9 @@ function FeedCard(props) {
     }, [email, userEmail, refresh]);
 
     return (
-        <div style={{color: 'rgb(100, 100 ,100)', width: '90%', border: '1px solid ' + 'rgb(210, 210, 210)', padding: '15px 15px', borderRadius: '5px', marginBottom: '30px'}}>
+        <div style={{color: 'rgb(100, 100 ,100)', width: '90%', border: '0px solid ' + 'rgb(210, 210, 210)', padding: '15px 15px', borderRadius: '5px', marginBottom: '30px'}}>
             <div style={{borderBottom: '0px solid ' + 'rgb(210, 210, 210)', display: 'flex', justifyContent: 'space-between', paddingBottom: '0px', alignItems: 'center'}}>
-                <div style={{display: 'flex', alignItems: 'center'}}><i className='fas fa-user-circle' style={{fontSize: '18px', color: 'white', cursor: 'pointer', backgroundColor: 'silver', borderRadius: '50%', padding: '3px'}}></i> &nbsp; {email}</div>
+                <div style={{display: 'flex', alignItems: 'center'}}><i className='fas fa-user-circle' style={{fontSize: '18px', color: 'white', cursor: 'pointer', backgroundColor: 'silver', borderRadius: '50%', padding: '3px'}}></i> &nbsp; {email.split('@')[0]}</div>
                 { !isFollower && <div style={{cursor: 'pointer'}}
                 onClick={()=>{
                     getDocument(usersCollection, userEmail).then((res) => {
@@ -63,9 +63,9 @@ function FeedCard(props) {
                 }
             </div>
             <br/>
-            <div style={{backgroundColor: 'rgb(235, 235, 235)', padding: '10px', display: 'flex', justifyContent: 'space-between'}} align="left">
+            <div style={{backgroundColor: ' ', padding: '0px', display: 'flex', justifyContent: 'space-between', width: '100%'}} align="left">
                 <div>{type} : {projectTitle.toUpperCase()}</div>
-                <div>Project status : <i className='far fa-check-circle' style={{color: primaryGreenColour(1)}}></i> Completed</div>
+                <div>Status : <i className='far fa-check-circle' style={{color: primaryGreenColour(1)}}></i> Completed</div>
             </div>
             <br/>
             {prev ? <div align="left" className='ProjPrevDiv' dangerouslySetInnerHTML={{__html: prev}} style={{maxHeight: '70vh', overflow: 'scroll', all: 'revert', textAlign: 'left'}}>
@@ -73,8 +73,8 @@ function FeedCard(props) {
             </div> : <SearchLoader />}
             <div style={{borderTop: '1px solid ' + 'rgb(210, 210, 210)', display: 'flex', justifyContent: 'space-between', paddingTop: '15px'}}>
               
-                <div align="center" style={{width: '33%'}}><b><i className='far fa-comments' style={{color: primaryBlueColour, fontSize: '16px'}}></i></b> Comment</div>
-                <Link target={`/project/view/${email}/${projectTitle}`} to={`/project/view/${email}/${projectTitle}`} align="center" style={{width: '33%', textDecoration: 'none', cursor:'pointer', color: 'rgb(100, 100 ,100)'}}>
+                <div align="left" style={{width: '33%'}}><b><i className='far fa-comments' style={{color: primaryBlueColour, fontSize: '16px'}}></i></b> Comment</div>
+                <Link target={`/project/view/${email}/${projectTitle}`} to={`/project/view/${email}/${projectTitle}`} align="right" style={{width: '65%', textDecoration: 'none', cursor:'pointer', color: 'rgb(100, 100 ,100)'}}>
                     <i className='fas fa-external-link-alt' style={{color: primaryBlueColour}}></i>
                     &nbsp;
                 Visit Documentation</Link>

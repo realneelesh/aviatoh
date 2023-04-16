@@ -233,7 +233,7 @@ function KanbanBoard(props) {
                         <div style={{width: '100%', padding: '0px'}}>
                             <input id="tasktitle" type='text' style={{cursor: 'text', marginBottom:'10px', width: '95%', border: '1px solid silver', padding: '6px 6px' }} placeholder='Task name' />
                            
-                            {<textarea id="taskdescription" style={{ cursor: 'text', marginBottom:'6px', width: '95%', border: '1px solid silver', fontFamily: 'sans-serif' }} placeholder='Description'></textarea>}
+                            {<textarea id="taskdescription" style={{ cursor: 'text', marginBottom:'6px', width: '95%', border: '1px solid silver', fontFamily: 'sans-serif' }} placeholder='Short description'></textarea>}
                             <div style={{display: 'flex', justifyContent: 'space-between'}}> 
                             <select id="prioritylevel">
                                 <option value="-1">Priority Level</option>

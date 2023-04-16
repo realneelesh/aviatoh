@@ -33,10 +33,12 @@ function Feed(props) {
 
     
     return (
-        <div>
+        <div align="center">
             {
                 projects ? projects.length < 1 ? null : projects.map(project => {
-                    return <FeedCard userEmail={props.email} projectTitle={project.projectTitle} email={project.email} preview={project.preview} type={project.type} />
+                    return <><FeedCard userEmail={props.email} projectTitle={project.projectTitle} email={project.email} preview={project.preview} type={project.type} />
+                    <hr/>
+                    </>
                 }) : <SearchLoader />
             }
         </div>
