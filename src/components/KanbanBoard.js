@@ -169,8 +169,8 @@ function KanbanBoard(props) {
                 borderRight: '0px solid ' + primarySilverColour,
                 paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid lavender',
                 borderRadius: '0px 0px 0px 0px',
+                background: `linear-gradient(to right, rgb(246, 246, 246), white)`,
 
-                background: 'linear-gradient(rgb(230, 230, 250, 0.4), white)',
 
             }}
             onDrop={drop} onDragOver={allowDrop}
@@ -293,7 +293,7 @@ function KanbanBoard(props) {
                 height: '65vh',
                 overflowY: 'auto',
                 borderRight: '0px solid ' + primarySilverColour,
-                background: 'linear-gradient(rgb(255, 247, 227, 0.5), white)',
+                background: `linear-gradient(to right, rgb(246, 246, 246), white)`,
                 paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid silver',
               
 
@@ -324,7 +324,9 @@ function KanbanBoard(props) {
                 overflowY: 'auto',
                 borderRadius: '0px 0px 0px 0px',
 
-                paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid '+primaryGreenColour(0.2), background: `linear-gradient(${primaryGreenColour(0.1)}, white)`,
+                paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid '+primaryGreenColour(0.2), 
+                background: `linear-gradient(to right, rgb(246, 246, 246), white)`,
+
             }}
             onDrop={drop} onDragOver={allowDrop}
             align="center"
@@ -468,7 +470,7 @@ function KanbanBoard(props) {
 
           
   {/* UNCOMMENT IF DELETE-A-TASK IS REQUIRED */}
-   <div title="Drop a card here to delete" style={{ position: 'fixed', bottom: '1px', zIndex: '999',  padding: '10px 20px', backgroundColor: '', right: '2px'}} align="left">
+   <div title="Drop a card here to delete" style={{ position: 'fixed', bottom: '1px', zIndex: '999',  padding: '30px 20px', backgroundColor: '', right: '2px'}} align="left">
                   <i
                   onClick={(e)=>{
                     e.preventDefault();

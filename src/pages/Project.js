@@ -198,7 +198,7 @@ const renameProject = (title) => {
                 paddingTop: "8px", 
                 paddingBottom: "8px",
                     paddingLeft: "25px",
-                    paddingRight: "25px",
+                    paddingRight: user?.projects?.find(x => x.title === projecttitle).type == 'Project' ? "35px" : "25px",
                     boxShadow: `${'rgb(210, 210, 210)'} 0px 0px 2px`,
 
                     backgroundColor: "white", 
