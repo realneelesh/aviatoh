@@ -92,7 +92,7 @@ function BlogCard(props) {
                 }}
                 id="textareaRefine"
                 rows={3}
-                placeholder='Ask anything... (Explain ideas/queries in short detail to get response)'></textarea> 
+                placeholder='Ask anything... (Explain ideas/queries in detail to get better response)'></textarea> 
               </grammarly-editor-plugin>
               
                 
