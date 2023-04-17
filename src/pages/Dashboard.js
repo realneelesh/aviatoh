@@ -115,13 +115,57 @@ function Dashboard(props) {
     }
   }
 
+  const [currentTab, setCurrentTab] = useState('home');
+
 
     return (
         <div style={{display: 'flex', width: '100vw', marginLeft: '-8px', overflow: 'hidden', height: '100vh'}}>
-            <div style={{width: '21%', height: '100vh', backgroundColor: primarySilverColour}}>
+            <div style={{width: '13%', height: '100vh', background: 'linear-gradient(rgb(235,235,235), white)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', paddingTop: '80px'}}>
           
+ 
+               <div 
+               onClick={()=>{
+                setCurrentTab('home');
+               }}
+               style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white', cursor: 'pointer',margin: '15px', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+               <i className='fas fa-home' style={{fontSize: '19px', color: currentTab == 'home' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
+                </div>  
                 
-            
+
+                <div 
+               onClick={()=>{
+                setCurrentTab('analytics');
+               }}
+               style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white', margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+               <i className='fas fa-chart-pie' style={{fontSize: '19px', color: currentTab == 'analytics' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
+                </div> 
+
+                <div 
+               onClick={()=>{
+                setCurrentTab('notifications');
+               }}
+               style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white' , margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+               <i className='far fa-bell' style={{fontSize: '19px', color: currentTab == 'notifications' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
+                </div> 
+
+{/* log out */}
+                <div 
+               onClick={()=>{
+                var flag = window.confirm('You will be logged out! Do you wish to continue?');
+                  if(flag){
+                    signOut(auth).then(() => {
+                      // Sign-out successful.
+                      browserStorage.removeItem(userInfoKey);
+                      window.location.reload();
+                    }).catch((error) => {
+                      // An error happened.
+                    });
+                  }
+               }}
+               style={{ 
+                width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white',margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+               <i className='fas fa-power-off' style={{fontSize: '19px', color: 'red', cursor: 'pointer'}}></i>
+                </div> 
             </div>
 
 
@@ -132,8 +176,8 @@ function Dashboard(props) {
 
 
 
-            <div align="left" style={{width: '79%', minHeight: '100vh'}}>
-                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 15px', boxShadow: `${'silver'} 1px 0px 3px`,}}>
+            <div align="left" style={{width: '87%', minHeight: '100vh'}}>
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 15px', boxShadow: `${'rgb(200, 200, 200)'} 0px 0px 0px`,}}>
                
                 <img src={Logo} style={{width: '140px', borderRadius: '4px'}}  />
        <div style={{display: 'flex', alignItems: 'center'}}>
@@ -144,20 +188,7 @@ function Dashboard(props) {
           toaster(0, <div>Email: <b>contact@aviatoh.com</b></div>);
         }}>Help! </span>
         &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp; 
-                <i onClick={()=>{
-                  var flag = window.confirm('You will be logged out! Do you wish to continue?');
-                  if(flag){
-                    signOut(auth).then(() => {
-                      // Sign-out successful.
-                      browserStorage.removeItem(userInfoKey);
-                      window.location.reload();
-                    }).catch((error) => {
-                      // An error happened.
-                    });
-                  }
-                  
-                }} className="fas fa-power-off" style={{fontSize: '17px', color: 'red', cursor: 'pointer'}} />
+        &nbsp;
                 </div>
                 {/* <Link to="/profile"><i className='fas fa-user-circle' style={{fontSize: '25px', color: 'white', cursor: 'pointer', backgroundColor: 'silver', borderRadius: '50%', padding: '3px'}}></i></Link> */}
                 </div>  
@@ -167,8 +198,9 @@ function Dashboard(props) {
                         </div>
                         <br/> */}
                 <div align="center" style={{}}>
-                <div align="center" style={{width: '95%', marginLeft: '10px'}}>
-                    <Dashboardp email={email}/>
+                <div align="center" style={{width: '90%', marginLeft: '30px'}}>
+                  <br/>
+                    { currentTab == 'home' && <Dashboardp email={email}/>}
                     </div>
                  
                 </div>

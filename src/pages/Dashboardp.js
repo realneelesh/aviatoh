@@ -109,7 +109,7 @@ function Dashboardp(props) {
           backgroundRepeat: "no-repeat",
           backgroundSize: 'cover',
     alignItems: 'center', backgroundAttachment: 'fixed' }}>
-      {user === null && <SearchLoader />}
+       
 
       {/* <div style={{
         position: 'absolute',
@@ -122,7 +122,7 @@ function Dashboardp(props) {
 
      
  
-      <div align="left" style={{marginTop: '30px', marginBottom: '20px'}} >
+      <div  align={'left'} style={{marginTop: '30px', marginBottom: '20px'}} >
         <h1  style={{border: '0px', paddingLeft: '11px'}}>
             Your Projects
         </h1>
@@ -178,7 +178,8 @@ function Dashboardp(props) {
                     boxShadow: "rgba(0, 0, 0, 0.14) 0px 0px 20px",
                     // border: '1px solid rgb(200, 200, 200)',
                     backgroundColor: "white",
-                    margin: "10px",
+                    marginRight: "20px",
+                    marginBottom: "20px",
                     color: "grey",
                   }}
                 > 
