@@ -44,6 +44,7 @@ function ParticularsForm(props) {
         <br />
         <input
           type="text"
+          style={{cursor: 'text'}}
           placeholder="Full Name"
           name="fullname"
           required="true"
@@ -53,6 +54,7 @@ function ParticularsForm(props) {
         <br />
         <input
           type="text"
+          style={{cursor: 'text'}}
           placeholder="Country of Residence"
           name="country"
           required="true"
@@ -62,6 +64,7 @@ function ParticularsForm(props) {
         <br />
         <input
           name="year"
+          style={{cursor: 'text'}}
           type="number"
           placeholder="Phone number (optional)"
           {...register("phoneNumber", { required: false })}
@@ -69,6 +72,7 @@ function ParticularsForm(props) {
         <br />
         <br />
         <input
+          style={{cursor: 'pointer'}}
           onClick={() => {
             console.log(auth.email);
           }}

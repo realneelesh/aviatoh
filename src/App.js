@@ -199,7 +199,7 @@ function App() {
 <div>
     { browserStorage.getItem(userInfoKey) && <BrowserRouter >
       <div style={{position: 'absolute', zIndex: '999999999999'}}><ToastContainer
-      position="top-right" />
+      position="top-center" />
       </div>
     <div style={{
       minHeight: '100vh'
@@ -210,7 +210,7 @@ function App() {
 
               {/* Pages */}
               <Route exact path="/" element={<>
-                <Dashboard email={email} /> 
+                <Dashboard email={email} auth={auth}/> 
               </>}
               />
               <Route exact path="/p" element={<>

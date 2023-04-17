@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";  
 import {
   primaryBlueColour,
-  primaryGreenColour,
   primarySilverColour,
   showPage,
 } from "../App";
@@ -18,13 +17,13 @@ import {
 import { templatePaths } from "../projectTemplates";
 import { IconAviatoh, Loader, Logo, LogoInside } from "../assets";
 import toaster from "../components/toaster";
-import AviatohLogo from "../components/AviatohLogo";
-import Feed from "../components/Feed";
 import BlogCard from "../components/BlogCard";
-import ProfileCard from "../components/ProfileCard";
+import { signOut } from "firebase/auth";
+import { browserStorage, userInfoKey } from "../BrowserStorage";
+import Dashboardp from "./Dashboardp";
 
 function Dashboard(props) {
-  const { email } = props;
+  const { email, auth } = props;
   const [user, setUser] = useState(null);
   const [projectToAdd, setprojectToAdd] = useState({
     title: "",
@@ -119,109 +118,9 @@ function Dashboard(props) {
 
     return (
         <div style={{display: 'flex', width: '100vw', marginLeft: '-8px', overflow: 'hidden', height: '100vh'}}>
-            <div style={{width: '18%', height: '100vh', backgroundColor: primaryBlueColour}}>
+            <div style={{width: '21%', height: '100vh', backgroundColor: primarySilverColour}}>
           
-                <div align="left" style={{marginTop: '0px', color: 'white', height: '85vh', overflowY: 'scroll', paddingTop: '17px'}}>
-                    <div align="left">
-                    <span style={{color: 'silver', paddingLeft: '15px', margin: '0px'}}> YOUR PROJECTS </span>
-                     &nbsp;
-                    <Link
-              style={{
-                  cursor: 'pointer',
-                //   boxShadow: `${'silver'} 0px 0px 3px`, 
-                  color: "white",
-                  fontSize: '14px',
-                  textDecoration: 'none',
-                  zIndex: '999',
-                  borderRadius: '50%',
-              }}
-              onClick={() => {
-                setAddNewProject(true);
-                setTimeout(()=>{
-                  document.getElementById('booktitle').focus();
-                },300);
-              }}
-            >  
-           <i className='fas fa-plus' style={{cursor: 'pointer'}}></i>
-
-              
-            </Link> 
-            </div>
-         {/* <hr style={{marginLeft: '15px'}}/>    */}
-         <br/>
-            
-                    {
-                        user?.projects?.filter(x=>!x.title.includes('%arch'))?.length == 0 ? <div align="center" style={{padding: '15px', color: 'rgb(155, 155, 155)'}}><br/>No Projects Found</div> : null
-                    }
-                    {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
-                        return (
-                            <Link
-                            target={"/project" + "/" + project.title}
-                            to={"/project" + "/" + project.title} className="proj-list-item" style={{display: 'flex', padding: '12px 15px', justifyContent: 'space-between', alignItems: 'flex-end', cursor: 'pointer',
-                  textDecoration: 'none'
-                }}> 
-                                <span style={{ fontSize: "12px", color: 'silver', cursor: 'pointer' }}>
-                                    {project.type}
-                                    <br/>
-                                    <span style={{color: 'white', fontSize: '15px', width: '13vw', border: '0px solid silver', display: 'inline-block', overflow: 'overlay', scrollbar: 'hidden', whiteSpace:'no-wrap', cursor: 'pointer'}}>{project.title.toUpperCase()}</span>
-                                </span>
                 
-                
-                    
-                  
-
-{/* <div>
-                  <Link
-                to={"/project" + "/view/" + email + "/" + project.title}
-                style={{
-                  textDecoration: "none",
-                  color: "gray",
-                }}
-              >
-                  <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
-                  Share 
-                </h3>  
-                </Link>
-                &nbsp;
-                &nbsp; 
-                <Link
-                to={"/project" + "/" + project.title}
-                style={{
-                  textDecoration: "none",
-                  color: "gray",
-                }}
-              >
-                <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
-                  Edit
-                </h3>  
-                </Link>
-                </div> */}
- 
- {/* <Link
-                to={"/project" + "/view/" + email + "/" + project.title}
-                style={{
-                  textDecoration: "none",
-                  color: "gray",
-                }}
-              >
-                  <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
-                  Share 
-                </h3>  
-                </Link>
-                 */}
-                <i
-                    style={{ color: "silver", paddingBottom: '6px', fontSize: '12px', visibility: 'hidden'}}
-                    onClick={(e) => { 
-                        e.preventDefault();
-                        deleteProject(project.title);
-                    }}
-                    className="fa fa-trash"
-                > 
-                </i>  
-            </Link>
-          );
-        })}
-                </div>
             
             </div>
 
@@ -233,36 +132,45 @@ function Dashboard(props) {
 
 
 
-            <div align="left" style={{width: '82%', minHeight: '100vh', backgroundColor: ' '}}>
-                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 15px', boxShadow: `${'silver'} 0px 0px 3px`,}}>
+            <div align="left" style={{width: '79%', minHeight: '100vh'}}>
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 15px', boxShadow: `${'silver'} 1px 0px 3px`,}}>
                
-                <img src={Logo} style={{width: '120px', borderRadius: '4px'}}  />
-       
-                <Link to="/profile"><i className='fas fa-user-circle' style={{fontSize: '25px', color: 'white', cursor: 'pointer', backgroundColor: 'silver', borderRadius: '50%', padding: '3px'}}></i></Link>
-                </div> 
-                <br/>
+                <img src={Logo} style={{width: '140px', borderRadius: '4px'}}  />
+       <div style={{display: 'flex', alignItems: 'center'}}>
+       <span style={{cursor: 'pointer', fontSize: '15px'}}>About </span>
+        &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;
+        <span style={{cursor:'pointer', fontSize: '15px'}} onClick={()=>{
+          toaster(0, <div>Email: <b>contact@aviatoh.com</b></div>);
+        }}>Help! </span>
+        &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp; 
+                <i onClick={()=>{
+                  var flag = window.confirm('You will be logged out! Do you wish to continue?');
+                  if(flag){
+                    signOut(auth).then(() => {
+                      // Sign-out successful.
+                      browserStorage.removeItem(userInfoKey);
+                      window.location.reload();
+                    }).catch((error) => {
+                      // An error happened.
+                    });
+                  }
+                  
+                }} className="fas fa-power-off" style={{fontSize: '17px', color: 'red', cursor: 'pointer'}} />
+                </div>
+                {/* <Link to="/profile"><i className='fas fa-user-circle' style={{fontSize: '25px', color: 'white', cursor: 'pointer', backgroundColor: 'silver', borderRadius: '50%', padding: '3px'}}></i></Link> */}
+                </div>  
                 {/* <div align="left" style={{width: '100%', padding: '15px', backgroundColor: primaryBlueColour}}>
                             <span style={{marginLeft: '0px'}}>Recommended Feed</span>
                             <span style={{marginLeft: '0px'}}>Filters</span>
                         </div>
                         <br/> */}
                 <div align="center" style={{}}>
-                <div align="center" style={{width: '80%'}}>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                      <BlogCard /> 
+                <div align="center" style={{width: '95%', marginLeft: '10px'}}>
+                    <Dashboardp email={email}/>
                     </div>
-                  {/* <div align="center" style={{width: '37%', height: '100vh', overflow: 'scroll', background: 'linear-gradient(white, rgb(241, 241, 241))'}}>
-                    
-                    <Feed email={email}/>
-                        <br/><br/><br/><br/><br/><br/><br/><br/><br/>  
-
-                        <ProfileCard email={email} />
-                    </div>   */}
-
-                    
+                 
                 </div>
       
             </div>

@@ -147,29 +147,28 @@ function KanbanBoard(props) {
             flexDirection: 'column',
             alignItems: 'center', 
             justifyContent: 'center',
-            height: '65vh',
+            height: '50vh',
             backgroundColor: 'transparent',
         }}>
      {/* <div style={{width: '81vw', marginBottom: '4px'}} align="left">
      <span style={{fontSize: '17px'}}>📎</span> Task Management Board (Kanban)
      </div> */}
-            <div style={{width: '81vw', display: 'flex', border: '0px solid black', position: 'absolute', bottom: '0px',
+            <div style={{width: '100vw', display: 'flex', border: '0px solid black', position: 'absolute', bottom: '0px',
             borderTop: '0px solid ' + primarySilverColour, 
-            backgroundColor: 'white',
-            borderRadius: '0px 0px 0px 0px',
+            backgroundColor: 'white', 
             // boxShadow: `rgba(0, 0, 0, 0.08) 0px 0px 13px`,
 
 
-            justifyContent: 'flex-start',}}>
+            justifyContent: 'space-between',}}>
             <div style={{
-                width: '27vw',
+                width: '33vw',
                 height: '65vh',
                 overflowY: 'auto',
                 zIndex: taskBeingDropped ? '9999' : '999',
                 borderRight: '0px solid ' + primarySilverColour,
                 paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid lavender',
                 borderRadius: '0px 0px 0px 0px',
-                background: `linear-gradient(to right, rgb(246, 246, 246), white)`,
+                background: `linear-gradient(to left, rgb(248, 248, 248), white)`,
 
 
             }}
@@ -195,8 +194,8 @@ function KanbanBoard(props) {
                   textDecoration: 'none',
                   zIndex: '999',
                   borderRadius: '50%',
-                  left: '18px',
-                  top: '16px'
+                  left: '34px',
+                  top: '19px'
               }}
               onClick={()=>{
                 setAddNewTask(true);
@@ -289,11 +288,11 @@ function KanbanBoard(props) {
             </div>
 
             <div style={{
-                width: '27vw',
+                width: '33vw',
                 height: '65vh',
                 overflowY: 'auto',
                 borderRight: '0px solid ' + primarySilverColour,
-                background: `linear-gradient(to right, rgb(246, 246, 246), white)`,
+                background: `linear-gradient(to left, rgb(248, 248, 248), white)`,
                 paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid silver',
               
 
@@ -319,13 +318,13 @@ function KanbanBoard(props) {
             </div>
 
             <div style={{
-                width: '27vw',
+                width: '33vw',
                 height: '65vh',
                 overflowY: 'auto',
                 borderRadius: '0px 0px 0px 0px',
 
                 paddingBottom: '15px', paddingTop: '10px', borderTop: '0px solid '+primaryGreenColour(0.2), 
-                background: `linear-gradient(to right, rgb(246, 246, 246), white)`,
+                background: `linear-gradient(to left, rgb(248, 248, 248), white)`,
 
             }}
             onDrop={drop} onDragOver={allowDrop}
@@ -476,9 +475,15 @@ function KanbanBoard(props) {
                     e.preventDefault();
                     //deleteDocumentationBlock(path.title);
                   }}
-                  onDragOver={allowDrop}
+                  onDragOver={(e)=>{
+                    allowDrop(e);
+                    // e.target.style.fontSize = '105px';
+                  }}
+                  onDragLeave={(e)=>{
+                    // e.target.style.fontSize = '35px';
+                  }}
                   onDrop={drop}
-                      style={{ color: "silver", fontSize: '35px'}} 
+                      style={{ color: "silver", fontSize: '35px', transition: 'font-size 1s'}} 
                       className="fa fa-trash j ddtrash"
                       ><span style={{color: 'white'}}>.</span></i> 
               </div>  

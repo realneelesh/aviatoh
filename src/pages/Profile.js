@@ -91,7 +91,7 @@ function Profile(props) {
 
            { !particulars && <><><span></span><span><Link style={{color: 'black', textDecoration: 'none'}} to="/editprofile">+ Add Particulars &nbsp;  <div style={{ display: 'inline-block', transform: 'rotate(90deg)'}}>✏️</div> </Link></span></></> }
 
-           { particulars && <><><span></span><span>{particulars?.fullname.toUpperCase()}, {particulars?.country.toUpperCase()} &nbsp; <Link style={{color: 'black', textDecoration: 'none'}} to="/editprofile"> <div style={{ display: 'inline-block', transform: 'rotate(90deg)'}}>✏️</div> </Link></span></></> }
+           { particulars && <><><span></span><span>{particulars?.fullname.toUpperCase()}, {particulars?.country.toUpperCase()} &nbsp; <Link style={{color: 'black', textDecoration: 'none'}} to="/editprofile"> <div style={{ display: 'inline-block', transform: 'rotate(90deg)', cursor: 'pointer'}}>✏️</div> </Link></span></></> }
 </div> 
            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '20vh'}}>
 

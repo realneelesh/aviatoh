@@ -28,7 +28,7 @@ function CreatePath(props) {
 
   const [ changesSaved, setChangesSaved ] = useState(true);
 
-  const [ showAiGeneral, setShowAiGeneral ] = useState(false);
+  const [ showAiGeneral, setShowAiGeneral ] = useState(true);
 
   const [ isCollectionType, setIsCollectionType ] = useState(false);
 
@@ -201,7 +201,7 @@ function CreatePath(props) {
                  }, 5000);
                     }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '19px', backgroundColor: 'white', borderRadius: '50%'}} className='fas fa-info-circle'></i>
                     
-               { showToolTip && <span style={{color: 'black', padding: '3px', backgroundColor: 'white', fontSize: '17px'}}>{user?.paths?.find(x=>x.title==pathtitle && x.project == projecttitle)?.description}</span>}
+               { showToolTip && <span style={{color: 'black', padding: '3px', backgroundColor: 'white', fontSize: '14px'}}>{user?.paths?.find(x=>x.title==pathtitle && x.project == projecttitle)?.description}</span>}
   </h2>
     
   <span>
@@ -341,14 +341,16 @@ function CreatePath(props) {
         {/* </div> */}
 
         </div> 
-        <div style={{position: 'fixed', width: '100vw', margin: '0px', left: '0px', bottom: showAiGeneral ? '0px' : '-90vh', transition: 'bottom 0.8s', backgroundColor: primarySilverColour, zIndex: '9999'}}>
+
+        {/* AI GENERAL */}
+        {/* <div style={{position: 'fixed', width: '100vw', margin: '0px', left: '0px', bottom: showAiGeneral ? '0px' : '-90vh', transition: 'bottom 0.8s', backgroundColor: primarySilverColour, zIndex: '9999'}}>
           <AIGeneral />
           <div><i className='far fa-times-circle' style={{ color:'grey', position:'absolute', top: '15px', right: '15px', fontSize: '23px', cursor: 'pointer'}}
           onClick={()=>{
             setShowAiGeneral(false);
           }}
           ></i></div>
-        </div>
+        </div> */}
 
 
         <span style={{position: 'fixed', height: '40px', left: !showAiGeneral ? '10px' : '-20vw', bottom: '10px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', transition: 'left 1s',}}>

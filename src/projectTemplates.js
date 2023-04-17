@@ -28,19 +28,19 @@ const startupbusinessideaTemplate = [
        type: 'single'
      },
      {
+      title: 'Market Research',
+      project: '',
+      description: 'Marketing and Sales Strategy',
+      topics: [],
+      type: 'collection'
+   },
+     {
       title: 'Technical Docs',
       project: '',
       description: 'Prototype, MVP or other technical implementation details.',
       topics: [],
       type: 'collection'
     },
-    {
-      title: 'Marketing and Sales Docs',
-      project: '',
-      description: 'Marketing and Sales Strategy',
-      topics: [],
-      type: 'collection'
-   }
   ];
 
 

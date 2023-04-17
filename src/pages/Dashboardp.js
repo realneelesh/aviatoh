@@ -18,7 +18,7 @@ import { templatePaths } from "../projectTemplates";
 import { IconAviatoh } from "../assets";
 import toaster from "../components/toaster";
 
-function Dashboard(props) {
+function Dashboardp(props) {
   const { email } = props;
   const [user, setUser] = useState(null);
   const [projectToAdd, setprojectToAdd] = useState({
@@ -102,7 +102,7 @@ function Dashboard(props) {
   }
 
   return (
-    <div style={{ position: "relative", width: '100vw', marginLeft: '-8px', minHeight: "100vh", 
+    <div style={{ position: "relative", width: '100%', marginLeft: '-8px', minHeight: "100vh", 
     justifyContent: 'center',
     background:
             'url("")',
@@ -120,36 +120,7 @@ function Dashboard(props) {
         height: '230px'
       }}></div> */}
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          position: "sticky",
-          top: "0px",
-          width: "70%",
-          background: `linear-gradient( to right, ${primarySilverColour},${'transparent'},${'transparent'}`,
-          padding: "7px 0px",
-        }}
-      >
-         
-        <span>
-            &nbsp; &nbsp; Dashboard</span>
-
-        <button 
-          style={{
-            backgroundColor: 'transparent',
-            color: "transparent",
-            margin: "0px",
-            marginRight: "10px",
-            fontSize: "13px",
-            zIndex: "99999",
-            visibility: 'none'
-          }}
-        >
-          + Add Project
-        </button>
-      </div>
+     
  
       <div align="left" style={{marginTop: '30px', marginBottom: '20px'}} >
         <h1  style={{border: '0px', paddingLeft: '11px'}}>
@@ -186,7 +157,7 @@ function Dashboard(props) {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          width: "98vw",
+          width: "100%",
           marginLeft: '-8px', 
           paddingBottom: '50px',
           paddingLeft: '13px',
@@ -195,7 +166,7 @@ function Dashboard(props) {
         {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
           return (
             <div style={{
-                maxWidth: '98vw',
+                width: '33%',
             }}> 
                 <div
                   align="left"
@@ -207,7 +178,7 @@ function Dashboard(props) {
                     boxShadow: "rgba(0, 0, 0, 0.14) 0px 0px 20px",
                     // border: '1px solid rgb(200, 200, 200)',
                     backgroundColor: "white",
-                    margin: "8px 8px",
+                    margin: "10px",
                     color: "grey",
                   }}
                 > 
@@ -216,19 +187,19 @@ function Dashboard(props) {
                   </span>
 
                   <div align="left" style={{ 
-                  overflow: 'hidden',
+                  overflowX: 'scroll',
                   fontSize: "20px",
+                  whiteSpace: 'nowrap'
                 }}>
                 
                     {project.title.toUpperCase()}
                   </div>
-                  <br /> 
-                  <br /> 
+                  <br />  
                   <div
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center'
+                    alignItems: 'flex-end'
                   }}
                   >
 
@@ -240,9 +211,9 @@ function Dashboard(props) {
                   color: "gray",
                 }}
               >
-                  <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
+                  <h4 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb', padding: '5px 10px'}}>
                   Share 
-                </h3>  
+                </h4>  
                 </Link>
                 &nbsp;
                 &nbsp; 
@@ -253,21 +224,17 @@ function Dashboard(props) {
                   color: "gray",
                 }}
               >
-                <h3 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb'}}>
+                <h4 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb', padding: '5px 10px'}}>
                   Edit
-                </h3>  
+                </h4>  
                 </Link>
                 </div>
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
  
-                <i
+ <span>
+        <Link to={`/project/view/${email}/${project.title}`} className='fas fa-external-link-alt' style={{color: 'rgb(170,170,170)', fontSize: '14px', cursor: 'pointer', textDecoration: 'none',}}></Link>
+        &nbsp;&nbsp;&nbsp;
+        <i
                     style={{ color: "silver" }}
                     onClick={() => { 
                         deleteProject(project.title);
@@ -275,6 +242,7 @@ function Dashboard(props) {
                     className="fa fa-trash"
                 >
                 </i>
+                </span>
                 </div>
                 </div>
             </div>
@@ -299,7 +267,7 @@ function Dashboard(props) {
           <span
             style={{
               padding: "5px",
-              fontSize: "25px",
+              fontSize: "20px",
             }}
           >
             <Typewriter
@@ -501,4 +469,4 @@ function Dashboard(props) {
   );
 }
 
-export default Dashboard;
+export default Dashboardp;
