@@ -21,20 +21,19 @@ function DocumentationLandingPage(props) {
   const [showKanbanModal, setShowKanbanModal] = useState(false);
 
   return (
-    <div id="documentationLandingPageView" style={{position: 'relative', width: '100vw', marginLeft: '-8px', backgroundColor: ' '}}>
+    <div id="documentationLandingPageView" style={{position: 'relative', width: '100vw', marginLeft: '-8px', backgroundColor: ''}}>
+
 {/* signIn */}
-      <div style={{position: 'absolute', top: '9px', right: '182px', display: 'flex', alignItems: 'center', cursor: 'pointer', zIndex: '99999'}}
+      <div style={{position: 'absolute', top: '21px', right: '182px', display: 'flex', alignItems: 'center', cursor: 'pointer', zIndex: '99999'}}
             onClick={() => {
                 signInWithPopup(auth, provider);
               }}
             >
             <img src={Signinwithgoogleicon} style={{width: '35px', cursor: 'pointer'}} />
             <span style={{ color: 'grey', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Sign In</span>
-            
-            </div>
-
+      </div>
 {/* blogs */}
-            <div style={{  position: 'absolute', top: '9px', right: '25px', display: 'flex', alignItems: 'center', borderRight: '0px solid silver'}}
+            <div style={{ position: 'absolute', top: '21px', right: '25px', display: 'flex', alignItems: 'center', borderRight: '0px solid silver'}}
            
             > 
             <img src={Signinwithgoogleicon} style={{width: '35px', visibility: 'hidden'}} />
@@ -44,7 +43,7 @@ function DocumentationLandingPage(props) {
             
             </div>
 
-      <div align="left" style={{position: 'absolute', top: '15px', marginLeft: '20px'}}>
+      <div align="left" style={{position: 'absolute', top: '25px', marginLeft: '20px'}}>
       <img
         src={Logo}
         width={190}
@@ -53,7 +52,6 @@ function DocumentationLandingPage(props) {
       <br/>
       <h3 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500', padding: '0px 7px'}}>
   Ideation and Documentation Platform
-
 </h3>
 
       </div>

@@ -125,7 +125,6 @@ function Dashboard(props) {
             <div style={{width: '10%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', paddingTop: '6px', zIndex: '0'}}></div>
             <div style={{width: '10%',background: 'linear-gradient(rgb(239,239,239), rgb(239,239,239))', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', paddingTop: '6px', minHeight:'100vh', position: 'fixed'}}>
 
-
                <div
                onClick={()=>{
                 setCurrentTab('home');
@@ -133,7 +132,6 @@ function Dashboard(props) {
                style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white', cursor: 'pointer',margin: '15px', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
                <i className='fas fa-home' style={{fontSize: '19px', color: currentTab == 'home' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
                 </div>
-
 
                 <div
                   onClick={()=>{
@@ -194,7 +192,7 @@ function Dashboard(props) {
 
 <img src={Logo} style={{width: '150px'}}  />
 <div style={{display: 'flex', alignItems: 'center'}}>
-<span style={{cursor: 'pointer', fontSize: '15px'}}>About </span>
+<span style={{cursor: 'pointer', fontSize: '15px'}}>About</span>
 &nbsp;&nbsp;
 &nbsp;&nbsp; &nbsp;
 <span style={{cursor:'pointer', fontSize: '15px'}} onClick={()=>{
@@ -203,7 +201,9 @@ Whatsapp: <b>+91 8126153920&nbsp;&nbsp;&nbsp;&nbsp;</b>
 </div>);
 }}>Contact Us </span>
 &nbsp;&nbsp;
-&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+ 
 </div>
 </div>
                     </div>
@@ -226,34 +226,8 @@ Whatsapp: <b>+91 8126153920&nbsp;&nbsp;&nbsp;&nbsp;</b>
                 </div>
 
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            {/* add project modal */}
+            
+      {/* add project modal */}
 
       <div
         style={{
