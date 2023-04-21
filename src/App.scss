@@ -121,29 +121,8 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   padding: 6px 19px;
 }
 
-th {
-  font-weight: 700;
-  padding-bottom: 10px;
-  padding-right: 30px;
-  max-width: 200px;
-  text-align: left;
-
-  font-weight: 400;
-  background-color: #254B62;
-  color: white;
-  padding: 6px 19px;
-}
-
-td {
-  padding-right: 30px;
-  text-align: left;
-  overflow-x: scroll;
-  max-width: 130px;
-}
-
-table {
-  display: inline;
-}
+ 
+ 
 
 .a:hover {
   background-color: #254B62;
@@ -631,7 +610,23 @@ ul {
     padding: 0px !important;
   }
 }
-
-
  
+
+td {
+  padding-right: 50px;
+}
+
+.projecttile{
+  transition: all 0.3s;
+}
  
+.projecttile:hover {  
+   background: conic-gradient(from -60deg, white, rgb(244,244,244)) !important;
+  transform: scale(1.07) !important;
+  cursor: pointer !important;
+  color: red;
+}
+
+.fa-external-link-alt:hover {
+  color: grey !important;
+}

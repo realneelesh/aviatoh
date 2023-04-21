@@ -4,6 +4,7 @@ import Typewriter from "typewriter-effect";
 import {
   primaryBlueColour,
   primaryGreenColour,
+  primaryRedColour,
   primarySilverColour,
   showPage,
 } from "../App";
@@ -37,10 +38,27 @@ function Dashboardp(props) {
   
   const [ isPremium, setIsPremium ] = useState(false);
 
+  const activeTasks = {};
+
+  const [ activeTasksStore, setActiveTasksStore ] = useState(null);
+
+  const getActiveProjectDots = (n) => {
+    let dots = '';
+    for(let i=0; i<n; i++){
+      if(i >= 5) {
+        dots += ''; 
+      } else {
+        dots += '⚪ ';
+      }
+      
+    }
+    return dots;    
+  }
+  
   useEffect(() => {
     getDocument('Checks', 'check').then((res)=>{
       setIsPremium(true);
-    })
+    });
 
     showPage();
     console.log(email);
@@ -120,9 +138,9 @@ function Dashboardp(props) {
         height: '230px'
       }}></div> */}
 
-     
+     {(!user || Object.keys(activeTasksStore || {})?.length != user?.projects.length) && <SearchLoader/>} 
  
-      <div  align={'left'} style={{marginTop: '30px', marginBottom: '20px'}} >
+      <div  align={'left'} style={{marginBottom: '20px'}} >
         <h1  style={{border: '0px', paddingLeft: '11px'}}>
             Your Projects
         </h1>
@@ -152,60 +170,85 @@ function Dashboardp(props) {
               
             </Link>
       </div>
-
+<br/>
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
           width: "100%",
-          marginLeft: '-8px', 
-          paddingBottom: '50px',
+          marginLeft: '-8px',  
           paddingLeft: '13px',
         }}
       >
-        {user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
+        { user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
+          
+          if(!activeTasksStore || Object.keys(activeTasksStore).length != user.projects.length) { getDocument(kanbanBoardsCollection, project.kanbanBoardId).then(res => {
+            let activeT = 0;
+            res.data().data.map(task => {
+              if(task.status == 0){
+                activeT++;
+              }
+            });
+
+            activeTasks[project.title] = activeT;
+            if(Object.keys(activeTasks).length == user.projects.length){
+              setActiveTasksStore(activeTasks);
+            }
+          }).catch(()=>{ 
+            activeTasks[project.title] = 0;
+            if(Object.keys(activeTasks).length == user.projects.length){
+              setActiveTasksStore(activeTasks);
+            }
+          });
+          
+        }
           return (
-            <div style={{
-                width: '33%',
+            <Link to={"/project" + "/" + project.title} style={{
+                width: '29%',
+                textDecoration: 'none'
+                
             }}> 
                 <div
+                className="projecttile"
                   align="left"
                   style={{
+                    cursor: 'pointer',
                     paddingBottom: "23px",
                     paddingTop: "17px",
                     paddingLeft: "25px",
                     paddingRight: "25px",
-                    boxShadow: "rgba(0, 0, 0, 0.14) 0px 0px 20px",
-                    // border: '1px solid rgb(200, 200, 200)',
-                    backgroundColor: "white",
-                    marginRight: "20px",
-                    marginBottom: "20px",
+                    //boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 10px",
+                     border: '1px solid rgb(225, 225, 225)',
+                    // background: 'linear-gradient( 95.2deg, rgba(249, 249, 249) 26.8%, rgba(249, 249, 249) 64% )',
+                    marginRight: "22px",
+                    marginBottom: "22px",
                     color: "grey",
                   }}
                 > 
-                  <span style={{ fontSize: "12px", color: "grey" }}>
+                  <span style={{ fontSize: "12px", color: "grey", cursor: 'pointer', }}>
                     {project.type}
                   </span>
 
-                  <div align="left" style={{ 
-                  overflowX: 'scroll',
+                  <div align="left" style={{  
                   fontSize: "20px",
-                  whiteSpace: 'nowrap'
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  overflow: 'scroll',
                 }}>
                 
                     {project.title.toUpperCase()}
-                  </div>
-                  <br />  
+                  </div>  
                   <div
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'flex-end'
+                    alignItems: 'center',
+                    cursor: 'pointer'
                   }}
                   >
 
-<div>
-                  <Link
+<div style={{cursor: 'pointer'}}>
+                  {/* <Link
                 to={"/project" + "/view/" + email + "/" + project.title}
                 style={{
                   textDecoration: "none",
@@ -217,7 +260,7 @@ function Dashboardp(props) {
                 </h4>  
                 </Link>
                 &nbsp;
-                &nbsp; 
+                &nbsp;  */}
                 <Link
                 to={"/project" + "/" + project.title}
                 style={{
@@ -225,19 +268,30 @@ function Dashboardp(props) {
                   color: "gray",
                 }}
               >
-                <h4 className="hbtn" style={{ fontSize: "12px", border: '1px solid #bbbbbb', padding: '5px 10px'}}>
-                  Edit
+                <h4 style={{ fontSize: "12px", border: '0px solid #bbbbbb', padding: '0px', cursor:'pointer'}}>
+                 {activeTasksStore!=null && activeTasksStore[project.title]!=null && activeTasksStore[project.title] != 0 ?  <h3 style={{color: 'orange', fontWeight: '700', display: 'inline-block', margin: '0px', padding: '0px', color: 'transparent', textShadow: '0 0 0 ' + primaryGreenColour(0.6)}} title="Active Tasks"> {getActiveProjectDots(activeTasksStore[project.title])}</h3>
+                 :
+                 activeTasksStore!=null && activeTasksStore[project.title]!=null && activeTasksStore[project.title] == 0 ? <span style={{display: 'inline-flex', alignItems: 'center', color: 'grey'}}><h3 style={{color: 'orange', fontWeight: '700', display: 'inline-block', margin: '0px', padding: '0px', color: 'transparent', textShadow: '0 0 0 ' + primarySilverColour}} title="Active Tasks"> {getActiveProjectDots(1)}</h3> &nbsp; No active tasks</span>
+                 :
+                 <h4 style={{
+                  width: '125px',
+                  padding: '0px',
+                  background: 'conic-gradient(from 90deg, rgb(248, 248, 248), rgb(234,234,234))',
+                  height: '20px',
+                  display: 'block',
+                  margin: '0px'
+                 }}></h4> } 
                 </h4>  
                 </Link>
                 </div>
-
  
  <span>
-        <Link to={`/project/view/${email}/${project.title}`} className='fas fa-external-link-alt' style={{color: 'rgb(170,170,170)', fontSize: '14px', cursor: 'pointer', textDecoration: 'none',}}></Link>
+        <Link to={`/project/view/${email}/${project.title}`} className='fas fa-external-link-alt' style={{color: 'rgb(170,170,170)', fontSize: '14px', textDecoration: 'none',}}></Link>
         &nbsp;&nbsp;&nbsp;
         <i
                     style={{ color: "silver" }}
-                    onClick={() => { 
+                    onClick={(e) => { 
+                      e.preventDefault();
                         deleteProject(project.title);
                     }}
                     className="fa fa-trash"
@@ -246,11 +300,10 @@ function Dashboardp(props) {
                 </span>
                 </div>
                 </div>
-            </div>
+            </Link>
           );
-        })}
+        })} 
       </div>
-
       {user?.projects?.filter(x=>!x.title.includes(projectArchiveStringSeparator)).length === 0 && (
         <div
           align="right"
@@ -459,13 +512,17 @@ function Dashboardp(props) {
       <br/><br/>
       </div>
 
+
+
+
+   
       
 
                 {/* SUBSCRIBE BUTTON */}
               {/* {
   !isPremium &&  <Link to="/p" target={'paymentfafa'} style={{textDecoration: 'none', color: 'black', fontSize: '20px', position: 'fixed', bottom: '-25px', cursor: 'pointer', left: '35px'}}>&nbsp;&nbsp;<img src="https://t4.ftcdn.net/jpg/00/21/08/95/240_F_21089512_WOyLlOQG9huHMnsEClGiH8RkKzl3JTcf.jpg" style={{width: '90px', cursor: 'pointer'}} /></Link>
 } */}
-    
+ 
     </div>
   );
 }

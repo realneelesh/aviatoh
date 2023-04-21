@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Typewriter from "typewriter-effect";  
+import Typewriter from "typewriter-effect";
 import {
   primaryBlueColour,
   primarySilverColour,
@@ -21,6 +21,7 @@ import BlogCard from "../components/BlogCard";
 import { signOut } from "firebase/auth";
 import { browserStorage, userInfoKey } from "../BrowserStorage";
 import Dashboardp from "./Dashboardp";
+import AviatohAnalytics from "../components/AviatohAnalytics";
 
 function Dashboard(props) {
   const { email, auth } = props;
@@ -38,7 +39,7 @@ function Dashboard(props) {
 
   const [addNewProject, setAddNewProject] = useState(false);
 
-  
+
   const [ isPremium, setIsPremium ] = useState(false);
 
   useEffect(() => {
@@ -80,7 +81,7 @@ function Dashboard(props) {
     // we delete the project from 'user.projects' array along with all the related paths(documentation-scopes)
     let tempProjects = user?.projects;
     const index = tempProjects?.map(x=>x.title.toLowerCase()).indexOf(project.toLowerCase());
- 
+
     let tempPaths = user.paths?.filter(x => x.project.toLowerCase().trim() !== project.toLowerCase().trim())
     if(index != -1) {
       tempProjects = tempProjects.filter(x=>x.title.toLowerCase()!==project.toLowerCase());
@@ -119,37 +120,37 @@ function Dashboard(props) {
 
 
     return (
-        <div style={{display: 'flex', width: '100vw', marginLeft: '-8px', overflow: 'hidden', height: '100vh'}}>
+        <div style={{display: 'flex', width: '100vw', marginLeft: '-8px', height: '100vh'}}>
             <div style={{width: '13%', height: '100vh', background: 'linear-gradient(rgb(235,235,235), white)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', paddingTop: '80px'}}>
-          
- 
-               <div 
+
+
+               <div
                onClick={()=>{
                 setCurrentTab('home');
                }}
                style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white', cursor: 'pointer',margin: '15px', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
                <i className='fas fa-home' style={{fontSize: '19px', color: currentTab == 'home' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
-                </div>  
-                
+                </div>
 
-                <div 
+
+                <div
                onClick={()=>{
                 setCurrentTab('analytics');
                }}
                style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white', margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
                <i className='fas fa-chart-pie' style={{fontSize: '19px', color: currentTab == 'analytics' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
-                </div> 
+                </div>
 
-                <div 
+                <div
                onClick={()=>{
                 setCurrentTab('notifications');
                }}
                style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white' , margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
                <i className='far fa-bell' style={{fontSize: '19px', color: currentTab == 'notifications' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
-                </div> 
+                </div>
 
 {/* log out */}
-                <div 
+                <div
                onClick={()=>{
                 var flag = window.confirm('You will be logged out! Do you wish to continue?');
                   if(flag){
@@ -162,36 +163,38 @@ function Dashboard(props) {
                     });
                   }
                }}
-               style={{ 
+               style={{
                 width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white',margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
                <i className='fas fa-power-off' style={{fontSize: '19px', color: 'red', cursor: 'pointer'}}></i>
-                </div> 
+                </div>
             </div>
 
 
-          
-
- 
 
 
 
 
-            <div align="left" style={{width: '87%', minHeight: '100vh'}}>
-                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 15px', boxShadow: `${'rgb(200, 200, 200)'} 0px 0px 0px`,}}>
-               
-                <img src={Logo} style={{width: '140px', borderRadius: '4px'}}  />
-       <div style={{display: 'flex', alignItems: 'center'}}>
-       <span style={{cursor: 'pointer', fontSize: '15px'}}>About </span>
-        &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;
-        <span style={{cursor:'pointer', fontSize: '15px'}} onClick={()=>{
-          toaster(0, <div>Email: <b>contact@aviatoh.com</b></div>);
-        }}>Help! </span>
-        &nbsp;&nbsp;
-        &nbsp;
-                </div>
-                {/* <Link to="/profile"><i className='fas fa-user-circle' style={{fontSize: '25px', color: 'white', cursor: 'pointer', backgroundColor: 'silver', borderRadius: '50%', padding: '3px'}}></i></Link> */}
-                </div>  
+
+
+
+            <div align="center" style={{width: '87%', minHeight: '100vh'}}>
+            <div align="center" style={{width: '92%', marginLeft: '30px'}}>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '27px 13px', boxShadow: `${'rgb(200, 200, 200)'} 0px 0px 0px`}}>
+
+<img src={Logo} style={{width: '150px'}}  />
+<div style={{display: 'flex', alignItems: 'center'}}>
+<span style={{cursor: 'pointer', fontSize: '15px'}}>About </span>
+&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;
+<span style={{cursor:'pointer', fontSize: '15px'}} onClick={()=>{
+toaster(0, <div>Email: <b>contact@aviatoh.com</b></div>);
+}}>Help! </span>
+&nbsp;&nbsp;
+&nbsp;
+</div>
+</div>
+                    </div>
+             
                 {/* <div align="left" style={{width: '100%', padding: '15px', backgroundColor: primaryBlueColour}}>
                             <span style={{marginLeft: '0px'}}>Recommended Feed</span>
                             <span style={{marginLeft: '0px'}}>Filters</span>
@@ -201,13 +204,14 @@ function Dashboard(props) {
                 <div align="center" style={{width: '90%', marginLeft: '30px'}}>
                   <br/>
                     { currentTab == 'home' && <Dashboardp email={email}/>}
+                    { currentTab == 'analytics' && <AviatohAnalytics email={email}/>}
                     </div>
-                 
+
                 </div>
-      
+
             </div>
 
-         
+
 
 
 
@@ -234,7 +238,7 @@ function Dashboard(props) {
 
 
             {/* add project modal */}
-       
+
       <div
         style={{
          display: addNewProject? "flex" : "none",
@@ -253,8 +257,8 @@ function Dashboard(props) {
         }}
         align="center"
       >
-    
-      
+
+
       <div style={{backgroundColor: 'white', width: '50%', borderRadius: '0px', padding: '40px 0px', position: 'relative', height: ''}}>
       <i
           onClick={() => {
@@ -273,12 +277,12 @@ function Dashboard(props) {
 <div style={{position: 'absolute', width: '15%', height: '100%', top: '0px', backgroundColor: primaryBlueColour}}></div>
 
 
-  
+
  <div style={{display: 'flex', flexDirection: 'column', width: '50%', alignItems: 'flex-start'}}>
-         
+
           <div style={{width: '100%', color: 'grey'}} align="left">
- <span style={{color: 'grey'}}>1. Project Title</span> <br/> 
-         
+ <span style={{color: 'grey'}}>1. Project Title</span> <br/>
+
           <input
           id="booktitle"
           style={{
@@ -295,15 +299,15 @@ function Dashboard(props) {
           placeholder="Type here ..."
         />
           </div>
-        
-        
-        <br/> 
-        <br/>  
+
+
+        <br/>
+        <br/>
           <div style={{width: '100%', color: 'grey'}} align="left">
-           2. Choose a template  
+           2. Choose a template
           <br/>
-        
-          
+
+
   <p>
     <input type="radio"
     value='Project'
@@ -318,7 +322,7 @@ function Dashboard(props) {
   </p>
 
   <p>
-    <input type="radio" 
+    <input type="radio"
     value='Startup/Business'
     onChange={(e)=>{
       if(e.target.checked){
@@ -327,9 +331,9 @@ function Dashboard(props) {
     }}
     id="test2" name="template" />
     <label for="test2">Startup/Business Idea</label>
-  </p> 
+  </p>
   <p>
-    <input type="radio" 
+    <input type="radio"
     value='Book'
     onChange={(e)=>{
       if(e.target.checked){
@@ -339,12 +343,12 @@ function Dashboard(props) {
     id="test3" name="template" />
     <label for="test3">Write a Book </label>
   </p>
-        <br/>  
+        <br/>
         </div>
 
 
-        <br/>  
-        <br/>  
+        <br/>
+        <br/>
 
         <button
           style={{

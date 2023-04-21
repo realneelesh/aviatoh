@@ -120,19 +120,21 @@ const renameProject = (title) => {
             flexDirection: 'column',
             position: 'relative',
             minHeight: '100vh',
-            width: '100vw',
+            width: '90vw',
             marginLeft: '-8px',
-            overflowX: 'hidden'
+            overflowX: 'hidden',
+            margin: 'auto'
            
         }}>  
-        <Link to={`/project/view/${email}/${projecttitle}`} className='fas fa-external-link-alt' style={{color: primaryBlueColour, fontSize: '13px', cursor: 'pointer', textDecoration: 'none', position: 'absolute', right: '11px', top: '29px'}}>&nbsp;  Docs View</Link>
+        <Link to={`/project/view/${email}/${projecttitle}`} className='fas fa-external-link-alt' style={{color: primaryBlueColour, fontSize: '13px', cursor: 'pointer', textDecoration: 'none', position: 'absolute', right: '0px', top: '29px'}}>&nbsp;  <span style={{fontFamily: 'poppins', cursor:'pointer'}}>Docs View</span></Link>
         {loading && <SearchLoader /> }
   
-  <div align="left" style={{marginTop: '0px', marginBottom: '10px', display: 'flex'}}>
-      <h1 id="projectTitle" style={{border: '0px', paddingLeft: '11px', paddingRight: '3px'}}>
-       <Link to={'/'} target={'dashboard'} style={{color: 'grey', textDecoration: 'none', cursor: 'pointer'}} className='far fa-arrow-alt-circle-left'></Link>
- &nbsp;
- &nbsp;
+  <div align="left" style={{marginTop: '0px', marginBottom: '20px', display: 'flex', justifyContent: '', borderBottom: '0px solid silver'}}>
+      <h1 id="projectTitle" style={{border: '0px', paddingRight: '3px', padding:'0px'}}>
+       <Link to={'/'} target={'dashboard'} style={{color: 'grey', textDecoration: 'none', cursor: 'pointer', position: 'absolute', left: '0px', top: '22px'}} className='far fa-arrow-alt-circle-left'></Link>
+ &nbsp; 
+ &nbsp; 
+ &nbsp;  
         { projecttitle.toUpperCase() }
         
        
@@ -164,18 +166,16 @@ const renameProject = (title) => {
       <div style={{ display: 'flex', alignItems: 'center'}}>
 
 <div>
-<div align="left" style={{paddingLeft: '10px'}}>Documentation Blocks </div>  
+<div align="left" >Documentation Blocks </div>  
 
       <div style={{
             display: 'flex'
         }}>
       <div style={{ 
-            marginLeft: "0px",
             paddingTop: '3px',
-            paddingBottom: '13px',
-            paddingLeft: '9px',
+            paddingBottom: '13px', 
             display: 'flex',
-            width: '100vw',
+            width: '90vw',
             overflowX: 'auto',
             whiteSpace: 'nowrap'
             // alignItems: 'center'
@@ -199,7 +199,8 @@ const renameProject = (title) => {
                 paddingBottom: "8px",
                     paddingLeft: "25px",
                     paddingRight: user?.projects?.find(x => x.title === projecttitle).type == 'Project' ? "35px" : "25px",
-                    boxShadow: `${'rgb(210, 210, 210)'} 0px 0px 2px`,
+                    // boxShadow: `${'rgb(210, 210, 210)'} 0px 0px 2px`,
+                    border: '1px dotted rgb(200, 200, 200)',
 
                     backgroundColor: "white", 
                     color: "grey",
@@ -253,7 +254,7 @@ const renameProject = (title) => {
                    paddingBottom: "8px",
                    paddingLeft: "14px",
                    paddingRight: "14px",
-                   boxShadow: `${'silver'} 0px 0px 3px`,
+                  //  boxShadow: `${'silver'} 0px 0px 3px`,
                    backgroundColor: "white", 
                    color: primaryBlueColour,
                    fontSize: '18px',
@@ -470,7 +471,7 @@ const renameProject = (title) => {
       </div>}
 
    {/* kanabn */}
-   <div style={{width: '100vw', background: `linear-gradient(${'transparent'})`, position: 'absolute', bottom: '0px'}}>
+   <div style={{width: '100%', background: `linear-gradient(${'transparent'})`, position: 'absolute', bottom: '0px'}}>
     <br/>
     <br/>
     <br/>
