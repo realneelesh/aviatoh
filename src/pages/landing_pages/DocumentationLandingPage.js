@@ -84,7 +84,7 @@ function DocumentationLandingPage(props) {
  
       </div>
      
-      <Footer from={"mobile"} />
+      {/* <Footer from={"mobile"} /> */}
     </div>
   );
 }
