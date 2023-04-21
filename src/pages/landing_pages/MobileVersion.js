@@ -70,7 +70,7 @@ function MobileVersion(props) {
  
                    
 <h3 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '700', backgroundColor: 'rgb(255, 255, 255, 0.7)'}}>
-  Your Ideation and Documentation <br/> Assistant 
+  Available only on Desktop
                  </h3>
                  &nbsp; 
                     &nbsp;
