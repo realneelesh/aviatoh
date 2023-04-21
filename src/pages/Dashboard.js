@@ -133,13 +133,13 @@ function Dashboard(props) {
                <i className='fas fa-home' style={{fontSize: '19px', color: currentTab == 'home' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
                 </div>
 
-                <div
+                {/* <div
                   onClick={()=>{
                     setCurrentTab('training');
                   }}
                   style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white', margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
                   <i className='fas fa-chalkboard-teacher' style={{fontSize: '19px', color: currentTab == 'training' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
-                </div>
+                </div> */}
 
                 <div
                   onClick={()=>{
@@ -220,6 +220,27 @@ Whatsapp: <b>+91 8126153920&nbsp;&nbsp;&nbsp;&nbsp;</b>
                    <br/> 
                     { currentTab == 'home' && <Dashboardp email={email}/>}
                     { currentTab == 'training' && <Training email={email}/>}
+                    { currentTab == 'notifications' && <div align="left"> 
+                      {/* <h2 style={{padding: '0px', margin: '0px'}}>Notifications center</h2> */}
+                      <div align="center">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h1 style={{color: 'silver'}}>No announcements &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1> 
+        </div>
+                      </div>}
                     </div>
 
                 </div>
