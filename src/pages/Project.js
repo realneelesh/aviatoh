@@ -123,15 +123,16 @@ const renameProject = (title) => {
             width: '90vw',
             marginLeft: '-8px',
             overflowX: 'hidden',
-            margin: 'auto'
+            margin: 'auto',
            
         }}>  
+        <div style={{height: '30px'}}/>
         <Link to={`/project/view/${email}/${projecttitle}`} className='fas fa-external-link-alt' style={{color: primaryBlueColour, fontSize: '13px', cursor: 'pointer', textDecoration: 'none', position: 'absolute', right: '0px', top: '29px'}}>&nbsp;  <span style={{fontFamily: 'poppins', cursor:'pointer'}}>Docs View</span></Link>
-        {loading && <SearchLoader /> }
+        {(loading || !user ) && <SearchLoader /> }
   
   <div align="left" style={{marginTop: '0px', marginBottom: '20px', display: 'flex', justifyContent: '', borderBottom: '0px solid silver'}}>
       <h1 id="projectTitle" style={{border: '0px', paddingRight: '3px', padding:'0px'}}>
-       <Link to={'/'} target={'dashboard'} style={{color: 'grey', textDecoration: 'none', cursor: 'pointer', position: 'absolute', left: '0px', top: '22px'}} className='far fa-arrow-alt-circle-left'></Link>
+       <Link to={'/'} target={'dashboard'} style={{color: 'grey', textDecoration: 'none', cursor: 'pointer', position: 'absolute', left: '0px', top: '52px'}} className='far fa-arrow-alt-circle-left'></Link>
  &nbsp; 
  &nbsp; 
  &nbsp;  

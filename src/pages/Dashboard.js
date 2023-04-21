@@ -21,7 +21,8 @@ import BlogCard from "../components/BlogCard";
 import { signOut } from "firebase/auth";
 import { browserStorage, userInfoKey } from "../BrowserStorage";
 import Dashboardp from "./Dashboardp";
-import AviatohAnalytics from "../components/AviatohAnalytics";
+import AviatohAnalytics from "../components/Training";
+import Training from "../components/Training";
 
 function Dashboard(props) {
   const { email, auth } = props;
@@ -120,8 +121,9 @@ function Dashboard(props) {
 
 
     return (
-        <div style={{display: 'flex', width: '100vw', marginLeft: '-8px', height: '100vh'}}>
-            <div style={{width: '13%', height: '100vh', background: 'linear-gradient(rgb(235,235,235), white)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', paddingTop: '80px'}}>
+        <div style={{display: 'flex', width: '100vw', marginLeft: '-8px', overflowX: 'hidden'}}>
+            <div style={{width: '10%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', paddingTop: '6px', zIndex: '0'}}></div>
+            <div style={{width: '10%',background: 'linear-gradient(rgb(239,239,239), rgb(239,239,239))', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', paddingTop: '6px', minHeight:'100vh', position: 'fixed'}}>
 
 
                <div
@@ -134,19 +136,19 @@ function Dashboard(props) {
 
 
                 <div
-               onClick={()=>{
-                setCurrentTab('analytics');
-               }}
-               style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white', margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
-               <i className='fas fa-chart-pie' style={{fontSize: '19px', color: currentTab == 'analytics' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
+                  onClick={()=>{
+                    setCurrentTab('training');
+                  }}
+                  style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white', margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+                  <i className='fas fa-chalkboard-teacher' style={{fontSize: '19px', color: currentTab == 'training' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
                 </div>
 
                 <div
-               onClick={()=>{
-                setCurrentTab('notifications');
-               }}
-               style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white' , margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
-               <i className='far fa-bell' style={{fontSize: '19px', color: currentTab == 'notifications' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
+                  onClick={()=>{
+                    setCurrentTab('notifications');
+                  }}
+                  style={{width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white' , margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+                  <i className='far fa-bell' style={{fontSize: '19px', color: currentTab == 'notifications' ? primaryBlueColour : 'silver', cursor: 'pointer'}}></i>
                 </div>
 
 {/* log out */}
@@ -164,9 +166,18 @@ function Dashboard(props) {
                   }
                }}
                style={{
-                width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'white',margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+                position: 'fixed', bottom: '10px',
+                width: '50px', height: '50px', borderRadius: '50%', backgroundColor: primarySilverColour,margin: '15px', cursor: 'pointer', display:'flex', alignItems: 'center', justifyContent: 'center', margin: 'auto'}}>
                <i className='fas fa-power-off' style={{fontSize: '19px', color: 'red', cursor: 'pointer'}}></i>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
 
 
@@ -177,9 +188,9 @@ function Dashboard(props) {
 
 
 
-            <div align="center" style={{width: '87%', minHeight: '100vh'}}>
-            <div align="center" style={{width: '92%', marginLeft: '30px'}}>
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '27px 13px', boxShadow: `${'rgb(200, 200, 200)'} 0px 0px 0px`}}>
+            <div align="center" style={{width: '90%'}}>
+            <div align="center" style={{width: '96%', marginLeft: '30px'}}>
+            <div style={{display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', paddingTop: '28px', paddingLeft: '13px', boxShadow: `${'rgb(200, 200, 200)'} 0px 0px 0px`}}>
 
 <img src={Logo} style={{width: '150px'}}  />
 <div style={{display: 'flex', alignItems: 'center'}}>
@@ -187,8 +198,10 @@ function Dashboard(props) {
 &nbsp;&nbsp;
 &nbsp;&nbsp; &nbsp;
 <span style={{cursor:'pointer', fontSize: '15px'}} onClick={()=>{
-toaster(0, <div>Email: <b>contact@aviatoh.com</b></div>);
-}}>Help! </span>
+toaster(0, <div align="right">Email: <b>contact@aviatoh.com&nbsp;&nbsp;&nbsp;&nbsp;</b><br/>
+Whatsapp: <b>+91 8126153920&nbsp;&nbsp;&nbsp;&nbsp;</b>
+</div>);
+}}>Contact Us </span>
 &nbsp;&nbsp;
 &nbsp;
 </div>
@@ -201,10 +214,13 @@ toaster(0, <div>Email: <b>contact@aviatoh.com</b></div>);
                         </div>
                         <br/> */}
                 <div align="center" style={{}}>
-                <div align="center" style={{width: '90%', marginLeft: '30px'}}>
-                  <br/>
+                <div align="center" style={{width: '94%', marginLeft: '30px'}}>
+                   {/* <hr style={{width: '100vw'}}/> */}
+                   <br/>
+                   <br/>
+                   <br/>
                     { currentTab == 'home' && <Dashboardp email={email}/>}
-                    { currentTab == 'analytics' && <AviatohAnalytics email={email}/>}
+                    { currentTab == 'training' && <Training email={email}/>}
                     </div>
 
                 </div>

@@ -4,6 +4,7 @@ import StickyNote from './StickyNote';
 import { getDocument, kanbanBoardsCollection, updateOrCreateDocument, usersCollection } from '../db';
 import { Link } from 'react-router-dom';
 import toaster from './toaster'; 
+import { SearchLoader } from './Loaders';
 
 function KanbanBoard(props) {
 
@@ -15,7 +16,7 @@ function KanbanBoard(props) {
     const [ updateTasks, setUpdateTasks ] = useState(false);
     const [ taskBeingDropped, setTitleBeingDropped ] = useState(null);
     const [ tasks, setTasks ] = useState(
-        []
+        null
     );
 
     useEffect(()=>{
@@ -25,7 +26,9 @@ function KanbanBoard(props) {
                     // console.log(res.data());
                     setTasks(res.data()?.data?.sort((x,y) => y.priority-x.priority));
                     setUpdateTasks(false);
-                })
+                }).catch(err => {
+                    setTasks([]);
+                });
         }
     }, [props.email, props.projecttitle, updateUserFlag, props.user]);
 
@@ -40,7 +43,7 @@ function KanbanBoard(props) {
         let droppedOn = e.target.querySelector(`span`).innerHTML.replaceAll(' ', '').trim().toLowerCase();
         switch(droppedOn){
             case "todo":
-                setTasks(tasks.map(task => {
+                setTasks(tasks?.map(task => {
                     if(task.title === taskBeingDropped){
                         return {
                             ...task,
@@ -52,7 +55,7 @@ function KanbanBoard(props) {
                 }));
                 break;
             case 'inprogress':
-                setTasks(tasks.map(task => {
+                setTasks(tasks?.map(task => {
                     if(task.title === taskBeingDropped){
                         return {
                             ...task,
@@ -64,7 +67,7 @@ function KanbanBoard(props) {
                 }));
                 break;
             case 'completed':
-                setTasks(tasks.map(task => {
+                setTasks(tasks?.map(task => {
                     if(task.title === taskBeingDropped){
                         return {
                             ...task,
@@ -76,7 +79,7 @@ function KanbanBoard(props) {
                 }));
                 break;
             case '.':
-                setTasks(tasks.filter(task => task.title !== taskBeingDropped));
+                setTasks(tasks?.filter(task => task.title !== taskBeingDropped));
                 break;
             default:
               
@@ -89,10 +92,13 @@ function KanbanBoard(props) {
         if(task.title.trim === ''){
             toaster(0, 'Task title can not be empty');
         } else {
-            if(tasks.map(x=>x.title).find(x=>x==task.title)){
+            if(tasks?.map(x=>x.title).find(x=>x==task.title)){
                 toaster(0, 'Task with this title already exists');
             } else {
                 if(props.email && props.projecttitle && props.user?.projects?.find(x=>x.title===props.projecttitle) !== undefined){
+                    if(tasks === null){
+                        setTasks([]);
+                    }
                     // update of create the kanbanboard in kanbanboards collection
                     updateOrCreateDocument(kanbanBoardsCollection, props.user?.projects?.find(x=>x.title===props.projecttitle)?.kanbanBoardId, {
                         data: [...tasks, task]
@@ -125,6 +131,7 @@ function KanbanBoard(props) {
 
     return (
         <div>   
+            {(!tasks ) && <SearchLoader /> }
          <div align="left"> 
         {/* <span align="left" style={{ paddingLeft: '20px', display: 'inline-block', width: '70%', border: '0px solid silver', display: 'flex', justifyContent: 'flex-start', position: 'sticky', top: '0px', borderRadius: '0px', marginBottom: '1px', alignItems: 'flex-end'}}>
         <span style={{width: '0%'}}>
@@ -147,7 +154,7 @@ function KanbanBoard(props) {
             flexDirection: 'column',
             alignItems: 'center', 
             justifyContent: 'center',
-            height: '50vh',
+            height: '60vh',
             backgroundColor: 'transparent',
         }}>
      {/* <div style={{width: '81vw', marginBottom: '4px'}} align="left">
@@ -162,7 +169,7 @@ function KanbanBoard(props) {
             justifyContent: 'space-between',}}>
             <div style={{
                 width: '32%',
-                height: '65vh',
+                height: '60vh',
                 overflowY: 'auto',
                 zIndex: taskBeingDropped ? '9999' : '999',
                 paddingBottom: '15px', 
@@ -291,7 +298,7 @@ function KanbanBoard(props) {
 
             <div style={{
                 width: '32%',
-                height: '65vh',
+                height: '60vh',
                 overflowY: 'auto',
                 borderRight: '0px solid ' + primarySilverColour,
                 background: `conic-gradient(from 180deg, white, rgb(244,244,244))`,
@@ -323,7 +330,7 @@ function KanbanBoard(props) {
 
             <div style={{
                 width: '32%',
-                height: '65vh',
+                height: '60vh',
                 overflowY: 'auto',
                 borderRadius: '0px 0px 0px 0px',
                 border: '1px dotted rgb(200, 200, 200)',

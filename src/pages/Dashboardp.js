@@ -120,7 +120,7 @@ function Dashboardp(props) {
   }
 
   return (
-    <div style={{ position: "relative", width: '100%', marginLeft: '-8px', minHeight: "100vh", 
+    <div style={{ position: "relative", width: '100%', marginLeft: '-8px', 
     justifyContent: 'center',
     background:
             'url("")',
@@ -138,25 +138,29 @@ function Dashboardp(props) {
         height: '230px'
       }}></div> */}
 
-     {(!user || Object.keys(activeTasksStore || {})?.length != user?.projects.length) && <SearchLoader/>} 
+     {(!user) && 
+     <span style={{position: 'fixed', bottom: '18px', right: '27px' }}>
+      
+      Loading...
+      </span> 
+     } 
  
-      <div  align={'left'} style={{marginBottom: '20px'}} >
-        <h1  style={{border: '0px', paddingLeft: '11px'}}>
-            Your Projects
-        </h1>
+      <div  align={'left'} style={{marginBottom: '12px', display:'flex', alignItems: 'center'}} >
+        <h2  style={{border: '0px', paddingLeft: '8px', paddingRight: '4px', margin: '0px'}}>
+            Your Projects 
+        </h2>
         <Link
               style={{
                   cursor: 'pointer',
                   padding: '7px 10px',
                   paddingTop: '8px',
-                  boxShadow: `${'silver'} 0px 0px 3px`,
+                  // boxShadow: `${'silver'} 0px 0px 3px`,
                   backgroundColor: "white", 
                   color: primaryBlueColour,
                   fontSize: '18px',
                   textDecoration: 'none',
                   zIndex: '999',
                   borderRadius: '50%',
-                  transform: 'scale(0.4)'
               }}
               onClick={() => {
                 setAddNewProject(true);
@@ -180,7 +184,7 @@ function Dashboardp(props) {
           paddingLeft: '13px',
         }}
       >
-        { user?.projects?.filter(x=>!x.title.includes('%arch')).map((project, i) => {
+        { user?.projects?.filter(x=>!x.title.includes('%arch')).reverse().map((project, i) => {
           
           if(!activeTasksStore || Object.keys(activeTasksStore).length != user.projects.length) { getDocument(kanbanBoardsCollection, project.kanbanBoardId).then(res => {
             let activeT = 0;
@@ -204,8 +208,9 @@ function Dashboardp(props) {
         }
           return (
             <Link to={"/project" + "/" + project.title} style={{
-                width: '29%',
-                textDecoration: 'none'
+                
+                textDecoration: 'none',
+                minWidth: '23%',
                 
             }}> 
                 <div
@@ -220,12 +225,12 @@ function Dashboardp(props) {
                     //boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 10px",
                      border: '1px solid rgb(225, 225, 225)',
                     // background: 'linear-gradient( 95.2deg, rgba(249, 249, 249) 26.8%, rgba(249, 249, 249) 64% )',
-                    marginRight: "22px",
-                    marginBottom: "22px",
+                    marginRight: "18px",
+                    marginBottom: "18px",
                     color: "grey",
                   }}
                 > 
-                  <span style={{ fontSize: "12px", color: "grey", cursor: 'pointer', }}>
+                  <span style={{ fontSize: "12px", color: "grey", cursor: 'pointer' }}>
                     {project.type}
                   </span>
 
@@ -233,11 +238,12 @@ function Dashboardp(props) {
                   fontSize: "20px",
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
-                  overflow: 'scroll',
+                  overflow: 'hidden',
                 }}>
                 
                     {project.title.toUpperCase()}
                   </div>  
+                  <br/>
                   <div
                   style={{
                     display: 'flex',
@@ -268,19 +274,21 @@ function Dashboardp(props) {
                   color: "gray",
                 }}
               >
-                <h4 style={{ fontSize: "12px", border: '0px solid #bbbbbb', padding: '0px', cursor:'pointer'}}>
-                 {activeTasksStore!=null && activeTasksStore[project.title]!=null && activeTasksStore[project.title] != 0 ?  <h3 style={{color: 'orange', fontWeight: '700', display: 'inline-block', margin: '0px', padding: '0px', color: 'transparent', textShadow: '0 0 0 ' + primaryGreenColour(0.6)}} title="Active Tasks"> {getActiveProjectDots(activeTasksStore[project.title])}</h3>
+                <h4 style={{ fontSize: "8px", border: '0px solid #bbbbbb', padding: '0px', cursor:'pointer'}}>
+                 {activeTasksStore!=null && activeTasksStore[project.title]!=null && activeTasksStore[project.title] != 0 ?  <h3 style={{color: 'orange', fontWeight: '700', display: 'inline-block', margin: '0px', padding: '0px', color: 'transparent', textShadow: '0 0 0 ' + primaryGreenColour(0.6)}} title="Active Tasks"> {getActiveProjectDots(activeTasksStore[project.title])}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                  :
-                 activeTasksStore!=null && activeTasksStore[project.title]!=null && activeTasksStore[project.title] == 0 ? <span style={{display: 'inline-flex', alignItems: 'center', color: 'grey'}}><h3 style={{color: 'orange', fontWeight: '700', display: 'inline-block', margin: '0px', padding: '0px', color: 'transparent', textShadow: '0 0 0 ' + primarySilverColour}} title="Active Tasks"> {getActiveProjectDots(1)}</h3> &nbsp; No active tasks</span>
+                 activeTasksStore!=null && activeTasksStore[project.title]!=null && activeTasksStore[project.title] == 0 ? <span style={{display: 'inline-flex', alignItems: 'center', color: 'grey'}}><h3 style={{color: 'orange', fontWeight: '700', display: 'inline-block', margin: '0px', padding: '0px', color: 'transparent', textShadow: '0 0 0 ' + primarySilverColour}} title="Active Tasks"> {getActiveProjectDots(1)}</h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                  :
-                 <h4 style={{
-                  width: '125px',
-                  padding: '0px',
-                  background: 'conic-gradient(from 90deg, rgb(248, 248, 248), rgb(234,234,234))',
-                  height: '20px',
-                  display: 'block',
-                  margin: '0px'
-                 }}></h4> } 
+                //  <h4 style={{
+                //   width: '125px',
+                //   padding: '0px',
+                //   background: 'conic-gradient(from 90deg, rgb(248, 248, 248), rgb(240,240,240))',
+                //   height: '20px',
+                //   display: 'block',
+                //   margin: '0px'
+                //  }}></h4>
+                <span style={{display: 'inline-flex', alignItems: 'center', color: 'grey'}}><h3 style={{color: 'orange', fontWeight: '700', display: 'inline-block', margin: '0px', padding: '0px', color: 'transparent', textShadow: '0 0 0 '+primarySilverColour}} title="Active Tasks"> {getActiveProjectDots(1)}</h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  } 
                 </h4>  
                 </Link>
                 </div>
