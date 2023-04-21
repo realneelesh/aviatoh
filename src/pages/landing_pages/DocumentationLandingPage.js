@@ -24,7 +24,7 @@ function DocumentationLandingPage(props) {
     <div id="documentationLandingPageView" style={{position: 'relative', width: '100vw', marginLeft: '-8px', backgroundColor: ''}}>
 
 {/* signIn */}
-      <div style={{position: 'absolute', top: '21px', right: '182px', display: 'flex', alignItems: 'center', cursor: 'pointer', zIndex: '99999'}}
+      <div style={{position: 'absolute', top: '18px', right: '30px', display: 'flex', alignItems: 'center', cursor: 'pointer', zIndex: '99999'}}
             onClick={() => {
                 signInWithPopup(auth, provider);
               }}
@@ -33,26 +33,14 @@ function DocumentationLandingPage(props) {
             <span style={{ color: 'grey', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Sign In</span>
       </div>
 {/* blogs */}
-            <div style={{ position: 'absolute', top: '21px', right: '25px', display: 'flex', alignItems: 'center', borderRight: '0px solid silver'}}
-           
-            > 
-            <img src={Signinwithgoogleicon} style={{width: '35px', visibility: 'hidden'}} />
-            <a target="blogaviatoh" href="https://medium.com/@aviatoh/managing-multiple-side-hustle-ideas-simultaneously-5df3987578e9?source=friends_link&sk=95c4c5b56b6260c2ae4c442f1272f4e6" style={{textDecoration: 'none', color: 'grey', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Blog</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://aviatoh.com/#/aboutus" style={{textDecoration: 'none', color: 'grey', fontSize: '16px', cursor: 'pointer'}}>About Us</a>
-            
-            </div>
+          
 
       <div align="left" style={{position: 'absolute', top: '25px', marginLeft: '20px'}}>
       <img
         src={Logo}
         width={190}
         style={{   }}
-      />
-      <br/>
-      <h3 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500', padding: '0px 7px'}}>
-  Ideation and Documentation Assistant
-</h3>
+      /> 
 
       </div>
       
@@ -75,10 +63,19 @@ function DocumentationLandingPage(props) {
       >
         <span align="left"  style={{fontSize: '38px', width: '50%',color: 'rgb(166, 166, 166)', padding: '10px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
  
-
-        Ideas become reality when you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them
+        The Ultimate Documentation and Project Management Tool for Your Side Hustles
+        {/* Ideas become reality when you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them */}
         </span>
- 
+        <br/>
+        <br/>
+        <a style={{
+          marginLeft: '7px',
+          textDecoration: 'none',
+          cursor: 'pointer',
+        }} target="blogAviatoh" href="https://medium.com/@aviatoh/managing-multiple-side-hustle-ideas-simultaneously-5df3987578e9">
+          <h3 style={{ cursor: 'pointer', color: 'white', marginLeft: '-7px', fontWeight: '700', backgroundColor: primaryGreenColour(0.9)}}>
+  Know more
+                 </h3></a>
  
       </div>
      

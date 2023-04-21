@@ -312,45 +312,21 @@ function Dashboardp(props) {
           );
         })} 
       </div>
-      {user?.projects?.filter(x=>!x.title.includes(projectArchiveStringSeparator)).length === 0 && (
-        <div
-          align="right"
-          style={{
-            position: "absolute",
-            top: "37px",
-            right: "50px",
-            borderRight: "0px solid " + "grey",
-            height: "120px",
-            display: "flex",
-            alignItems: "flex-end",
-            padding: "0px"
-          }}
-        >
-          <span
-            style={{
-              padding: "5px",
-              fontSize: "20px",
-            }}
-          >
-            <Typewriter
-              options={{
-                strings: [
-                  " No projects found",
-                  " Click on '+' to add",
-                ],
-                autoStart: true,
-                loop: true,
-                deleteSpeed: 20,
-                delay: 40,
-                pauseFor: 900,
-              }}
-            />
-          </span>
-
-       
-        </div>
-      )}
-
+      {user?.projects?.length == 0 ? <div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h1 style={{color: 'silver'}}>No Projects Found &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1> 
+        </div> : ''}
+    
 
 
 

@@ -191,15 +191,14 @@ function Dashboard(props) {
             <div style={{display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', paddingTop: '28px', paddingLeft: '13px', boxShadow: `${'rgb(200, 200, 200)'} 0px 0px 0px`}}>
 
 <img src={Logo} style={{width: '150px'}}  />
-<div style={{display: 'flex', alignItems: 'center'}}>
-<span style={{cursor: 'pointer', fontSize: '15px'}}>About</span>
+<div style={{display: 'flex', alignItems: 'center'}}> 
 &nbsp;&nbsp;
 &nbsp;&nbsp; &nbsp;
 <span style={{cursor:'pointer', fontSize: '15px'}} onClick={()=>{
 toaster(0, <div align="right">Email: <b>contact@aviatoh.com&nbsp;&nbsp;&nbsp;&nbsp;</b><br/>
 Whatsapp: <b>+91 8126153920&nbsp;&nbsp;&nbsp;&nbsp;</b>
 </div>);
-}}>Contact Us </span>
+}}> Help! </span>
 &nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;
@@ -218,7 +217,7 @@ Whatsapp: <b>+91 8126153920&nbsp;&nbsp;&nbsp;&nbsp;</b>
                    {/* <hr style={{width: '100vw'}}/> */}
                    <br/>
                    <br/>
-                   <br/>
+                   <br/> 
                     { currentTab == 'home' && <Dashboardp email={email}/>}
                     { currentTab == 'training' && <Training email={email}/>}
                     </div>
