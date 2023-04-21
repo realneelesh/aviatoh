@@ -38,7 +38,7 @@ function DocumentationLandingPage(props) {
            
             > 
             <img src={Signinwithgoogleicon} style={{width: '35px', visibility: 'hidden'}} />
-            <a href="https://aviatoh.com/#/insights" style={{textDecoration: 'none', color: 'grey', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Blogs</a>
+            <a target="blogaviatoh" href="https://medium.com/@aviatoh/managing-multiple-side-hustle-ideas-simultaneously-5df3987578e9?source=friends_link&sk=95c4c5b56b6260c2ae4c442f1272f4e6" style={{textDecoration: 'none', color: 'grey', fontSize: '16px', cursor: 'pointer'}}>&nbsp;&nbsp;Blog</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="https://aviatoh.com/#/aboutus" style={{textDecoration: 'none', color: 'grey', fontSize: '16px', cursor: 'pointer'}}>About Us</a>
             
@@ -62,12 +62,11 @@ function DocumentationLandingPage(props) {
       <div
       align="left"
         style={{
-          minHeight: "100vh",
+          height: "100vh",
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          paddingLeft: '20px',
-          paddingTop: '60px',
+          paddingLeft: '20px', 
           justifyContent: 'center',
           // backgroundColor: primaryGreenColour(0.5),
           background:
@@ -79,246 +78,12 @@ function DocumentationLandingPage(props) {
         <span align="left"  style={{fontSize: '38px', width: '50%',color: 'rgb(166, 166, 166)', padding: '10px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
  
 
-        Ideas hold no value unless you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them
+        Ideas become reality when you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them
         </span>
  
- <br/>
- <br/>
- <br/>
- <br/> <br/>
- <br/> 
- <div align="center" style={{ width: '100%', marginLeft: '-8px'}}>
- <div   style={{display: 'flex', alignItems: 'center', marginLeft: '17px', justifyContent: 'center', width: '100%', marginLeft: '-8px'}}>
-
-
-
-
- <i onClick={()=>{
-                  document.getElementById('aiAss').scrollIntoView({
-                    behavior: 'smooth'
-                  });
-                    }} style={{cursor: 'pointer', color: primaryGreenColour(1), fontSize: '25px'}} className='fas fa-info-circle'></i>
-<h1 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500'}}>Powered by AI  </h1>
-                
-      </div>
-      </div>
-      </div>
-
-      <div
-        style={{
-          minHeight: "60vh",
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-         <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-          <div style={{width: '50%'}} align="left">
-            Retain Ideas 
-            <br/>
-            <br/>
-
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
-            <br/>
-            <br/>
-            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
-            <br/>
-            <br/> */}
-            Nurturing a thought into an idea in itself is a project.
-
-            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
-            <br/>
-            <br/>
-            To start with, we provide project templates of following types<br/>
-            <ul>
-              <li className="list">Business/Startup Idea</li>
-              <li className="list">Book Writing</li>
-            </ul>
-            </div>
-          </div> 
-          {/* <img  src={Demo1} className="floating h" style={{ width: '35%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} /> */}
  
-
-        </div>
       </div>
-
-
-
-
-      <div
-        style={{
-          minHeight: "60vh",
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: `linear-gradient(to right, lavender, white)`
-        }}
-      >
-        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-        {/* <img className="floating" src={Demo3} style={{ width: '45%', cursor: 'not-allowed', wrap: '0px 20px 20px 0px'}} /> */}
-
-          <div style={{width: '50%'}} align="left">
-            Document Ideas<br/><br/>
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
-            <br/>
-            <br/>
-            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
-            <br/>
-            <br/> */}
-            Nurturing a thought into an idea in itself is a project.
-
-            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
-            <br/>
-            <br/>
-            To start with, we provide project templates of following types<br/>
-            <ul>
-              <li className="list">Business/Startup Idea</li>
-              <li className="list">Book Writing</li>
-            </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-
-
-
-
-      <div
-      id="aiAss"
-        style={{
-          minHeight: "60vh",
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-   <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-
-         <div style={{width: '50%'}} align="left">
-          Refine Ideas<br/><br/>
-          <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
-            <br/>
-            <br/>
-            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
-            <br/>
-            <br/> */}
-            Nurturing a thought into an idea in itself is a project.
-
-            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
-            <br/>
-            <br/>
-            To start with, we provide project templates of following types<br/>
-            <ul>
-              <li className="list">Business/Startup Idea</li>
-              <li className="list">Book Writing</li>
-            </ul>
-            </div>
-          </div>
-
-   {/* <img className="floating" src={IdeationAssistantView} style={{ width: '32%', cursor: 'not-allowed'}} /> */}
-
-        
-        </div>
-      </div>
-
-
-
-
-
-
-
-      <div
-        style={{
-          minHeight: "60vh",
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: `linear-gradient(to right, lavender, white)`
-        }}
-      >
-        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-       
-          {/* <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} /> */}
-          <div style={{width: '50%'}} align="left">
-            Scale Ideas <br/><br/>
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>Create Projects</h1>
-            <br/>
-            <br/>
-            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
-            <br/>
-            <br/> */}
-            Nurturing a thought into an idea in itself is a project.
-
-            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
-            <br/>
-            <br/>
-            To start with, we provide project templates of following types<br/>
-            <ul>
-              <li className="list">Business/Startup Idea</li>
-              <li className="list">Book Writing</li>
-            </ul>
-             </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-      <div
-        style={{
-          minHeight: "60vh",
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center', 
-        }}
-      >
-        <div style={{display: 'flex', alignItems :'center', justifyContent: 'space-around'}}>
-       
-          <div style={{width: '50%'}} align="left">
-            Share Ideas <br/><br/>
-            <h1 style={{padding: '0px', color: primaryBlueColour}}>The Social Media</h1>
-            <br/>
-            <br/>
-            <div align="left" style={{ color: 'grey', fontSize: '16px'}}>
-            {/* With Aviatoh, you can create as many projects as you need, each with a unique name and description. 
-            <br/>
-            <br/> */}
-            Nurturing a thought into an idea in itself is a project.
-
-            You can create a project on Aviatoh Dashboard which will help you to retain and collect related information
-            <br/>
-            <br/>
-            To start with, we provide project templates of following types<br/>
-            <ul>
-              <li className="list">Business/Startup Idea</li>
-              <li className="list">Book Writing</li>
-            </ul>
-             </div>
-          </div>
-          {/* <img className="floating" src={ProjectView} style={{ width: '45%', cursor: 'not-allowed', wrap: '20px 0px 0px 20px'}} /> */}
-
-        </div>
-      </div>
-
-
-
-
-
      
-
-
-
-
-
       <Footer from={"mobile"} />
     </div>
   );

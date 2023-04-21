@@ -12,7 +12,6 @@ function Footer(props) {
         color: "black",
         justifyContent: "flex-end",
         alignItems: "center", 
-        marginTop: '50px',
         backgroundColor: 'rgb(240, 240, 240)',
         // position: 'fixed',
         bottom: '0px',
