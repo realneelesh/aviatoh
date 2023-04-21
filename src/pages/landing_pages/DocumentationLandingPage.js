@@ -51,7 +51,7 @@ function DocumentationLandingPage(props) {
       />
       <br/>
       <h3 style={{margin: '0px', color: 'grey', marginLeft: '-7px', fontWeight: '500', padding: '0px 7px'}}>
-  Ideation and Documentation Platform
+  Ideation and Documentation Assistant
 </h3>
 
       </div>
