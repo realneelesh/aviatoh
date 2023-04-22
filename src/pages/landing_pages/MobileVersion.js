@@ -58,13 +58,23 @@ function MobileVersion(props) {
       >
         <h1 align="left"  style={{fontSize: '30px', width: '90%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
         The Ultimate Documentation and Project Management Tool designed for Freelancers
-
+        <br/>
+        <br/>
+        <a style={{
+          
+          marginLeft: '7px',
+          textDecoration: 'none',
+          cursor: 'pointer',
+        }} target="blogAviatoh" href="https://medium.com/@aviatoh/managing-multiple-side-hustle-ideas-simultaneously-5df3987578e9">
+          <h6 style={{  cursor: 'pointer', color: 'white', marginLeft: '-9px', fontWeight: '700', backgroundColor: primaryGreenColour(0.9)}}>
+  Know more
+                 </h6></a>
           </h1>
           <h1></h1>
           <h1></h1> 
-          <h1></h1> 
-          <h1></h1> 
+          <h1></h1>  
  <br/> 
+
  <div align="center" style={{ width: '100%', marginLeft: '-8px'}}>
  <div   style={{display: 'flex', alignItems: 'center', marginLeft: '17px', justifyContent: 'center', width: '100%', marginLeft: '-8px'}}>
 
