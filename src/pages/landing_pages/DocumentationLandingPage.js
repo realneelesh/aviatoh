@@ -63,7 +63,7 @@ function DocumentationLandingPage(props) {
       >
         <span align="left"  style={{fontSize: '38px', width: '50%',color: 'rgb(166, 166, 166)', padding: '10px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
  
-        The Ultimate Documentation and Project Management Tool for Your Side Hustles
+        The Ultimate Documentation and Project Management Tool designed for Freelancers
         {/* Ideas become reality when you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them */}
         </span>
         <br/>

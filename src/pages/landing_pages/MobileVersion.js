@@ -57,7 +57,8 @@ function MobileVersion(props) {
         }}
       >
         <h1 align="left"  style={{fontSize: '30px', width: '90%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
-        Ideas are worthless unless you <b>Retain</b>, <b>Document</b>, <b>Refine</b> and <b>Scale</b> them
+        The Ultimate Documentation and Project Management Tool designed for Freelancers
+
           </h1>
           <h1></h1>
           <h1></h1> 
