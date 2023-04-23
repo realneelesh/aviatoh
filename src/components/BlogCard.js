@@ -111,5 +111,4 @@ function BlogCard(props) {
         </div>
     );
 }
-
 export default BlogCard;
