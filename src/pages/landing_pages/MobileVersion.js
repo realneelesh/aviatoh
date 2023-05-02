@@ -65,7 +65,7 @@ function MobileVersion(props) {
           marginLeft: '7px',
           textDecoration: 'none',
           cursor: 'pointer',
-        }} target="blogAviatoh" href="https://medium.com/@aviatoh/managing-multiple-side-hustle-ideas-simultaneously-5df3987578e9">
+        }} target="blogAviatoh" href="https://medium.com/@aviatoh/streamline-management-and-documentation-of-your-ideas-223ee49645fb">
           <h6 style={{  cursor: 'pointer', color: 'white', marginLeft: '-9px', fontWeight: '700', backgroundColor: primaryGreenColour(0.9), fontSize: '17px'}}>
   Know more
                  </h6></a>

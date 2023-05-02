@@ -72,7 +72,7 @@ function DocumentationLandingPage(props) {
           marginLeft: '7px',
           textDecoration: 'none',
           cursor: 'pointer',
-        }} target="blogAviatoh" href="https://medium.com/@aviatoh/managing-multiple-side-hustle-ideas-simultaneously-5df3987578e9">
+        }} target="blogAviatoh" href="https://medium.com/@aviatoh/streamline-management-and-documentation-of-your-ideas-223ee49645fb">
           <h3 style={{ cursor: 'pointer', color: 'white', marginLeft: '-7px', fontWeight: '700', backgroundColor: primaryGreenColour(0.9)}}>
   Know more
                  </h3></a>
