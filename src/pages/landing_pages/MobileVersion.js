@@ -56,8 +56,8 @@ function MobileVersion(props) {
           backgroundSize: 'cover', 
         }}
       >
-        <h1 align="left"  style={{fontSize: '30px', width: '90%',color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
-        The Ultimate Documentation and Project Management Tool designed for Freelancers
+        <h1 align="left"  style={{fontSize: '30px', width: '90%', color: 'rgb(120, 120, 120)', padding: '39px 0px',fontWeight: '500', backgroundColor: 'rgb(255, 255, 255, 0)'}}>
+        Embrace Streamlined Management and Documentation of Your Ideas
         <br/>
         <br/>
         <a style={{
