@@ -147,7 +147,7 @@ function Dashboardp(props) {
  
       <div  align={'left'} style={{marginBottom: '12px', display:'flex', alignItems: 'center'}} >
         <h2  style={{border: '0px', paddingLeft: '8px', paddingRight: '4px', margin: '0px'}}>
-            Your Projects 
+            Your Projects/Ideas 
         </h2>
         <Link
               style={{
