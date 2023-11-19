@@ -31,6 +31,7 @@ import PaymentsPopUp from './pages/payments';
 import 'react-toastify/dist/ReactToastify.css';
 import toaster from './components/toaster';
 import { IconAviatoh, Logo } from './assets'; 
+import CoursesLandingPage from './courses_app/LandingPage';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -194,7 +195,8 @@ function App() {
       {
         window.mobileCheck() ? 
         
-         <MobileVersion />
+        <CoursesLandingPage />
+
   :
 <div>
     { browserStorage.getItem(userInfoKey) && <BrowserRouter >
@@ -273,7 +275,7 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route exact path="/" element={<>
-        <DocumentationLandingPage />
+        <CoursesLandingPage />
               </>} />
 
       <Route path="/aboutus" element={<>

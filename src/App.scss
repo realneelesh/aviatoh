@@ -81,24 +81,25 @@ textarea {
 }
 
 button {
-  background-color: white;
+  background-color: transparent;
   border: 0px;
   // margin: 10px;
   padding: 7px 10px;
   border-radius: 0px;
 }
 button:hover {
-  background-color: rgb(240, 240, 240);
-
+  // background-color: rgb(240, 240, 240);
   cursor: pointer;
+  // scale: 1.1;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 250;
-  display: inline;
+  display: inline-block;
   /* background-color: #254B62; */
   color: #254B62;
   padding: 6px 19px;
+  margin: 0px;
   border-radius: 4px;
 }
 .hbtn:hover {
@@ -107,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   font-weight: 250;
-  display: inline;
+  display: inline-block;
   /* background-color: #254B62; */
   color: #254B62;
   padding: 6px 19px;
@@ -532,7 +533,7 @@ a{
 
 hr{
   height: 1px;
-  background-color: rgb(221, 221, 221);
+  background-color: rgb(226, 226, 226);
   border: none;
 }
 
