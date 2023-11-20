@@ -19,7 +19,11 @@ function CourseCard(props) {
             // borderBottom: '2px solid rgb(230, 230, 230)',
             marginTop: '60px',
         }}> 
-            <h1 style={{padding: '0', fontWeight: '500'}}>{course.title}</h1>
+        <sup style={{
+                color: 'blue', fontSize: '15px'
+            }}>{course.area}</sup>
+            <br/>
+            <h1 style={{padding: '0', fontWeight: '500'}}>{course.title} </h1>
             <br/>
           
             <br/>
@@ -69,9 +73,11 @@ function CourseCard(props) {
             &nbsp;
             &nbsp;
 
-                <a href="https://wa.me/8126153920"><button style={{padding: '0'}}><h3 style={{padding: '0', fontWeight: '500'}}><b style={{fontSize: '25px'}}> &nbsp;💬</b> Contact Instructor</h3></button></a>
-<br/>
-<br/>
+                <a href="https://wa.me/8126153920"><button style={{padding: '0'}}><h3 style={{padding: '0', fontWeight: '500'}}><b style={{fontSize: '25px'}}> &nbsp;💬</b>&nbsp; Contact Instructor</h3></button></a>
+                &nbsp;
+                &nbsp;
+                &nbsp; 
+                &nbsp; 
                 
                 <hr/>
             </div>
