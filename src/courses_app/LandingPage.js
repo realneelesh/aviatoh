@@ -14,7 +14,7 @@ function CoursesLandingPage(props) {
             title: "Containerization with DOCKER",
             topics: ['Docker', 'CI/CD Piplelines', 'Computer Networking'],
             description: 'Embark on a transformative journey that will reshape your approach to software development, software packaging and deployment! Our exclusive 3-day workshop on Docker is not just a course—it\'s a hands-on experience designed to kickstart your DevOps journey with and propel your career to new heights.',
-            fees: "50",
+            fees: "40",
             originalFees: "100",
             duration: '3-day Workshop',
             area: 'DevOps',
@@ -24,7 +24,7 @@ function CoursesLandingPage(props) {
             title: "Container Orchestration with KUBERNETES",
             topics: ['Kubernetes', 'Cloud-Computing', 'GCP-Compute-Engine', 'Deployments'],
             description: 'In this 3-day workshop you\'ll learn about Cloud Computing Basics, Kubernetes Fundamentals, deploying containerized applications on Kubernetes and GCP Compute Engine. You will get to deploy application containers to Kubernetes cluster as a project in this workshop',
-            fees: "50",
+            fees: "80",
             originalFees: "250",
             duration: '3-day Workshop',
             area: 'DevOps',
@@ -42,10 +42,19 @@ function CoursesLandingPage(props) {
             title: "Web APIs with .NET Core",
             topics: ['C#', 'Restful APIs', '.NET Core', 'Postman'],
             description: 'In this dynamic 3-day workshop, dive deep into the world of Web APIs using cutting-edge technologies. Explore the intricacies of C#, Restful APIs, .NET Core, and master the art of seamless communication between applications. Elevate your skills with hands-on exercises and real-world application using tools like Postman',
-            fees: "50",
+            fees: "60",
             originalFees: "250",
             duration: '3-day Workshop',
             area: 'Backend'
+        },
+        {
+            title: "System Design",
+            topics: ['Requirements', 'Design', 'CQRS', 'Internet', 'Scaling'],
+            description: 'In this dynamic 3-day workshop, dive deep into the world of System Design, you\'ll learn how to create robust software systems, unlocking the secrets of building robust, scalable, and efficient systems in our System Design Course. Whether you\'re a seasoned developer looking to enhance your skills or a newcomer eager to understand the intricacies of system architecture, this course is tailored for you',
+            fees: "70",
+            originalFees: "290",
+            duration: '5-day Workshop',
+            area: 'System Design'
         },
     ]);
 
@@ -76,7 +85,7 @@ function CoursesLandingPage(props) {
             justifyContent: 'center',
             alignItems: 'center',
             width: '100vw',
-            background: 'linear-gradient(white, white, white, #edeeff)',
+            background: 'linear-gradient(white, white, white, #edeeff, #edeeff)',
         }}>
 <h1 style={{fontWeight: '500', fontSize: '33px', color: 'gray'}}>
 {/* Very <span style={{fontSize: '35px', color: '#a435f0'}}>effective fast paced training</span>,
@@ -114,6 +123,12 @@ Live training with <br/> <span style={{fontSize: '35px', color: '#a435f0'}}>one-
             return <CourseCard course={course} />
         })
       }
+      <div style={{
+        marginTop: '-7px',
+        height: '20vh',
+        width: '100vw',
+        background: 'linear-gradient( white, #edeeff, #edeeff)',
+      }}></div>
     </div>
   );
 }
