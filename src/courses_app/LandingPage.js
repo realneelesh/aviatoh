@@ -94,7 +94,7 @@ function CoursesLandingPage(props) {
 Level up your Full-stack game
 <br/>
 <br/>
-Live training with <br/> <span style={{fontSize: '35px', color: '#a435f0'}}>one-on-one</span> workshop sessions
+Live training with <br/> <span style={{fontSize: '35px', color: '#a435f0'}}>one-on-one</span> training sessions
 
 <br/>
 <br/>
