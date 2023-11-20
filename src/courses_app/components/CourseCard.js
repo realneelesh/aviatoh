@@ -78,6 +78,8 @@ function CourseCard(props) {
                 &nbsp;
                 &nbsp; 
                 &nbsp; 
+                <br/>
+                <br/>
                 
                 <hr/>
             </div>
