@@ -28,7 +28,6 @@ function CoursesLandingPage(props) {
             originalFees: "250",
             duration: '3-day Workshop',
             area: 'DevOps',
-            instructor: 'Neelesh Sharma, IIT Roorkee'
         },
         {
             title: "Front-end Development with ReactJS + Redux",
@@ -38,7 +37,6 @@ function CoursesLandingPage(props) {
             originalFees: "130",
             duration: '5-day Workshop',
             area: 'Frontend',
-            instructor: 'Prabh Das, IIT Delhi'
         },
         {
             title: "Web APIs with .NET Core",
@@ -47,7 +45,7 @@ function CoursesLandingPage(props) {
             fees: "50",
             originalFees: "250",
             duration: '3-day Workshop',
-            area: 'Niraj Rawat, IIT Roorkee'
+            area: 'Backend'
         },
     ]);
 
